@@ -18,4 +18,12 @@ enum VelaStrings {
     static let presetEnglishEnglish = "EN + EN UT"
     static let presetEnglishGerman = "EN + DE UT"
     static let presetGermanOff = "DE ohne UT"
+
+    static let skipIntro = "Intro überspringen"
+    static let skipRecap = "Rückblick überspringen"
+    static let skipPreview = "Vorschau überspringen"
+    static let skipCommercial = "Werbung überspringen"
+    static let nextEpisode = "Nächste Folge"
+    static let markFavorite = "Als Favorit markieren"
+    static let isFavorite = "Favorit"
 }

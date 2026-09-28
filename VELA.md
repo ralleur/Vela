@@ -17,6 +17,20 @@ self-written Vela app on the Apple TV. It runs next to the App Store Swiftfin.
   the audio track or full (non-forced) subtitles it needs. The active preset
   shows a checkmark.
 
+- Prompts in the bottom trailing corner (with the controls hidden, select
+  triggers them; with the controls shown they are normal buttons):
+  - "Intro überspringen" / "Rückblick überspringen" during intro and recap
+    segments (Jellyfin media segments; chapter names like "Intro" or "Vorspann"
+    as a fallback for episodes).
+  - Episode credits (outro segment, "Credits" chapter, or the last 30 s):
+    "Nächste Folge" with season/episode and title. After the last episode in the
+    library a card says what comes next, from TVmaze (no API key): the date of
+    the next episode or season, an announced season without a date, an episode
+    that aired but is missing from the library, or that the series has ended.
+  - Film credits (outro segment, "Credits" chapter, or the last 3 % of the
+    runtime, two to five minutes): "Als Favorit markieren", pressing again
+    removes the favorite.
+
 **Home (tvOS)**
 - Continue: films only if played within the last 7 days; series stay (the
   episode in progress or the next one). A series comes back to the front with a
@@ -46,6 +60,8 @@ Upstream files carry only small hooks, each marked with a `// Vela` comment (exc
 | `VideoPlayer+Toolbar.swift` | preset buttons on tvOS |
 | `BaseItemDto+Poster.swift` | "Neue Folge" badge in the poster overlay |
 | `MainTabView.swift` | tvOS home uses `VelaHomeContentGroupProvider` |
+| `PlaybackControls.swift` (tvOS) | prompt overlay |
+| `VideoPlayerContainerView.swift` | select press triggers a visible prompt while the controls are hidden |
 | `Swiftfin tvOS/Resources/Info.plist` | display name from `VELA_DISPLAY_NAME` |
 | `Swiftfin.xcodeproj/project.pbxproj` | tvOS app icon from `VELA_APP_ICON` (two lines) |
 

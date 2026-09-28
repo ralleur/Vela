@@ -57,6 +57,10 @@ extension VideoPlayer {
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottom)
             .edgePadding(.horizontal)
+            // Vela: skip intro, next episode, favorite prompts
+            .overlay {
+                VelaPlaybackPromptOverlay()
+            }
             .focusSection()
             .animation(.easeInOut(duration: 0.25), value: containerState.isPresentingSupplement)
             .animation(.easeInOut(duration: 0.25), value: containerState.isPresentingOverlay)

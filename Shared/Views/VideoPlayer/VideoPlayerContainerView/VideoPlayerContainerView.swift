@@ -875,6 +875,11 @@ extension VideoPlayer {
 
         private func handleSelectEnded(_ press: UIPress, event: UIPressesEvent?) {
             if !containerState.isPresentingOverlay {
+                // Vela: a visible prompt ("Intro überspringen", …) takes the press
+                if VelaPlaybackPrompts.shared.performPrompt() {
+                    return
+                }
+
                 containerState.isPresentingOverlay = true
                 containerState.timer.poke()
                 return
