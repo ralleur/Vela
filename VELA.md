@@ -2,7 +2,8 @@
 
 This branch (`vela`) is Swiftfin with a small set of changes for the Apple TV.
 Upstream is `jellyfin/Swiftfin` (remote `upstream`). The app installs as
-**Swiftfin+** (`com.ralleur.swiftfin`), next to the App Store Swiftfin.
+**Vela** (`com.ralleur.vela`) with the Vela tile and replaces the earlier,
+self-written Vela app on the Apple TV. It runs next to the App Store Swiftfin.
 
 ## What is different
 
@@ -31,12 +32,13 @@ New code lives in its own files, so upstream changes rarely touch it:
 
 - `Shared/Vela/` – track memory, language matching, presets, Continue logic, badge
 - `Swiftfin tvOS/Vela/` – the home screen provider
-- `XcodeConfig/DevelopmentTeam.xcconfig` – team, bundle ID, display name
+- `XcodeConfig/DevelopmentTeam.xcconfig` – team, bundle ID, display name, app icon
   (upstream ignores this file, so it never conflicts)
+- `Swiftfin tvOS/Vela/VelaAssets.xcassets` – the Vela tile and Top Shelf images
 - `Tools/VelaLogicTests/` – unit tests for the pure logic (`swift test`)
 - `Tools/vela/` – device install and upstream update scripts
 
-Upstream files carry only small hooks, each marked with a `// Vela` comment (the display name in `Info.plist` is the one exception):
+Upstream files carry only small hooks, each marked with a `// Vela` comment (except the two build-setting hooks in `Info.plist` and the project file):
 
 | File | Hook |
 |---|---|
@@ -45,6 +47,7 @@ Upstream files carry only small hooks, each marked with a `// Vela` comment (the
 | `BaseItemDto+Poster.swift` | "Neue Folge" badge in the poster overlay |
 | `MainTabView.swift` | tvOS home uses `VelaHomeContentGroupProvider` |
 | `Swiftfin tvOS/Resources/Info.plist` | display name from `VELA_DISPLAY_NAME` |
+| `Swiftfin.xcodeproj/project.pbxproj` | tvOS app icon from `VELA_APP_ICON` (two lines) |
 
 ## Build, test, install
 

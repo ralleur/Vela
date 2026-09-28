@@ -4,7 +4,11 @@
 // Upstream ignores this file, so keeping the fork's identity here avoids
 // touching Shared.xcconfig and never conflicts with upstream merges.
 //
+// The bundle ID is the old Vela app's, so installing the fork replaces it
+// on the Apple TV.
+//
 
 DEVELOPMENT_TEAM = M8735KCYG5
-PRODUCT_BUNDLE_IDENTIFIER = com.ralleur.swiftfin
-VELA_DISPLAY_NAME = Swiftfin+
+PRODUCT_BUNDLE_IDENTIFIER = com.ralleur.vela
+VELA_DISPLAY_NAME = Vela
+VELA_APP_ICON = Vela App Icon & Top Shelf Image
