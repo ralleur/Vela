@@ -34,5 +34,9 @@ APP="$DERIVED/Build/Products/$CONFIGURATION-appletvos/Swiftfin.app"
 [ -d "$APP" ] || { echo "Build produced no $APP" >&2; exit 1; }
 echo "Installing $BUNDLE_ID on ${UDID}…"
 xcrun devicectl device install app --device "$UDID" "$APP"
-xcrun devicectl device process launch --device "$UDID" "$BUNDLE_ID"
-echo "The fork is running on the Apple TV."
+# A sleeping Apple TV refuses foreground launches; the app is installed either way.
+if xcrun devicectl device process launch --device "$UDID" "$BUNDLE_ID" > /dev/null 2>&1; then
+  echo "Installed and running on the Apple TV."
+else
+  echo "Installed. Not launched (the Apple TV is probably asleep)."
+fi
