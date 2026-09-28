@@ -63,6 +63,21 @@ extension MediaPlayerItem {
             throw ErrorMessage(L10n.unknownError)
         }
 
+        // Vela: remember explicit track choices, restore remembered ones otherwise.
+        let streams = initialMediaSource.mediaStreams ?? []
+        VelaTrackMemory.remember(
+            audioStreamIndex: audioStreamIndex,
+            subtitleStreamIndex: subtitleStreamIndex,
+            streams: streams,
+            for: item
+        )
+        let (audioStreamIndex, subtitleStreamIndex) = VelaTrackMemory.resolve(
+            for: item,
+            streams: streams,
+            audioStreamIndex: audioStreamIndex,
+            subtitleStreamIndex: subtitleStreamIndex
+        )
+
         let maxBitrate = try await MediaPlayerManager.getMaxBitrate(for: requestedBitrate)
 
         let deviceProfile = DeviceProfile.build(
@@ -168,7 +183,7 @@ extension MediaPlayerItem {
             return nil
         }()
 
-        return .init(
+        let playerItem = MediaPlayerItem(
             baseItem: item,
             mediaSource: mediaSource,
             playSessionID: playSessionID,
@@ -180,6 +195,10 @@ extension MediaPlayerItem {
             previewImageProvider: previewImageProvider,
             thumbnailProvider: item.getNowPlayingImage
         )
+
+        playerItem.observers.append(VelaTrackMemoryObserver(item: playerItem))
+
+        return playerItem
     }
 
     // TODO: audio type stream

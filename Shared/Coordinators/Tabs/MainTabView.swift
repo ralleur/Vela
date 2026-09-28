@@ -38,7 +38,7 @@ struct MainTabView: View {
         }
         #else
         TabCoordinator {
-            TabItem.contentGroup(provider: DefaultContentGroupProvider())
+            TabItem.contentGroup(provider: VelaHomeContentGroupProvider())
             TabItem.library(
                 title: L10n.tvShowsCapitalized,
                 systemName: "tv",

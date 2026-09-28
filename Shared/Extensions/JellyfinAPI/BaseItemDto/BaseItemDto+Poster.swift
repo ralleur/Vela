@@ -93,6 +93,8 @@ extension BaseItemDto: Poster {
                 posterDisplayType: displayType
             )
 
+            VelaNewEpisodeBadge(item: self)
+
             PosterSelectionOverlay()
         }
     }

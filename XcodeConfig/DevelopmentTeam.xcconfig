@@ -1,0 +1,10 @@
+//
+// Vela fork: signing and app identity.
+//
+// Upstream ignores this file, so keeping the fork's identity here avoids
+// touching Shared.xcconfig and never conflicts with upstream merges.
+//
+
+DEVELOPMENT_TEAM = M8735KCYG5
+PRODUCT_BUNDLE_IDENTIFIER = com.ralleur.swiftfin
+VELA_DISPLAY_NAME = Swiftfin+
