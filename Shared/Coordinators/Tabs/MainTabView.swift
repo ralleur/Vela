@@ -38,6 +38,7 @@ struct MainTabView: View {
         }
         #else
         TabCoordinator {
+            // Vela: own home screen
             TabItem.contentGroup(provider: VelaHomeContentGroupProvider())
             TabItem.library(
                 title: L10n.tvShowsCapitalized,

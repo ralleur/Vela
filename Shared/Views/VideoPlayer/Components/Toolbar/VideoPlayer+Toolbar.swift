@@ -72,6 +72,7 @@ extension VideoPlayer.PlaybackControls {
                     .frame(maxWidth: .infinity, alignment: .leading)
 
                 #if os(tvOS)
+                // Vela: language presets
                 VelaLanguagePresetButtons()
                 #endif
 

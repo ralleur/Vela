@@ -1,17 +1,17 @@
 #!/bin/bash
-# Moves the fork onto the newest Swiftfin release (or a given ref) and checks that it still builds.
-#   Tools/vela/update-upstream.sh          # newest release tag
-#   Tools/vela/update-upstream.sh main     # upstream main instead
+# Moves the fork's commits onto newer Swiftfin code and checks that it still builds and tests pass.
+#   Tools/vela/update-upstream.sh          # upstream main
+#   Tools/vela/update-upstream.sh 1.7      # a release tag (only newer than the fork's current base)
+# The fork started on main because release 1.6.1 no longer builds with Xcode 27 (CoreStore).
 # Rebases the current branch; on conflicts it stops so they can be resolved by hand
 # (git status, fix, git rebase --continue), then run the script again.
 set -euo pipefail
 cd "$(dirname "$0")/../.."
 [ -z "$(git status --porcelain --untracked-files=no)" ] || { echo "Uncommitted changes; commit or stash first." >&2; exit 1; }
 git fetch --tags upstream
-TARGET="${1:-$(git tag --list --sort=-v:refname | grep -E '^v?[0-9]+(\.[0-9]+)+$' | head -1)}"
+TARGET="${1:-upstream/main}"
 [ "$TARGET" = "main" ] && TARGET="upstream/main"
 echo "Rebasing $(git branch --show-current) onto $TARGET…"
-BASE=$(git merge-base HEAD "$TARGET")
 # Only the fork's own commits move; everything already in the target stays.
 FORK_BASE=$(git merge-base HEAD upstream/main)
 git rebase --onto "$TARGET" "$FORK_BASE"

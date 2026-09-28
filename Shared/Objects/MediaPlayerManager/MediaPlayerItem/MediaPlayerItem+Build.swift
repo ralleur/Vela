@@ -196,6 +196,7 @@ extension MediaPlayerItem {
             thumbnailProvider: item.getNowPlayingImage
         )
 
+        // Vela: remember track changes made during playback
         playerItem.observers.append(VelaTrackMemoryObserver(item: playerItem))
 
         return playerItem
