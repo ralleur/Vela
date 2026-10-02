@@ -17,7 +17,10 @@ are trademarks of their respective owners.
 
 The Mac app adds native window and full-screen handling, keyboard controls,
 continued playback while the window is covered, a right-click playback menu,
-and a floating mini-player.
+and a floating mini-player. During playback the window follows the video's
+aspect ratio, can be dragged from anywhere in the player, and hides its macOS
+window buttons together with the playback controls. Closing the player restores
+the previous menu window size and shape.
 
 ## Playback presets
 

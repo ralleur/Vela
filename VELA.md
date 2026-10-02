@@ -59,6 +59,11 @@ Catalyst build of Swiftfin's iPhone/iPad target, with the same Vela changes.
 - Swiftfin's keyboard shortcuts work in the player (space, arrows, ⌘F, …).
 - In the player the window's toolbar (title and tabs) is hidden, also in full
   screen, and comes back when the player closes.
+- The window is resized and locked to the video's aspect ratio during playback;
+  closing the player restores the menu's previous size and aspect constraint.
+- The red, yellow and green window buttons disappear together with the playback
+  controls. The window can be dragged from anywhere in the player, including
+  while it is the floating mini player.
 - Playback goes on when the window is covered, hidden or another app is in
   front (Swiftfin pauses when the app goes to the background, which a Mac
   window does as soon as it is covered).
