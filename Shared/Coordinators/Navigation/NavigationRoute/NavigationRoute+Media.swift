@@ -108,7 +108,8 @@ struct VideoPlayerViewShim: View {
         .persistentSystemOverlays(.hidden)
         .toolbar(.hidden, for: .navigationBar)
         .onSceneDidEnterBackground {
-            if Defaults[.VideoPlayer.Transition.pauseOnBackground] {
+            // Vela: a Mac window goes to the background when it is covered; keep playing
+            if Defaults[.VideoPlayer.Transition.pauseOnBackground], !ProcessInfo.processInfo.isMacCatalystApp {
                 manager.setPlaybackRequestStatus(status: .paused)
             }
         }

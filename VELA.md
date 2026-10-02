@@ -1,13 +1,17 @@
 # Vela fork of Swiftfin
 
-This branch (`vela`) is Swiftfin with a small set of changes for the Apple TV.
-Upstream is `jellyfin/Swiftfin` (remote `upstream`). The app installs as
-**Vela** (`com.ralleur.vela`) with the Vela tile and replaces the earlier,
-self-written Vela app on the Apple TV. It runs next to the App Store Swiftfin.
+This branch (`vela`) is Swiftfin with a small set of changes for the Apple TV
+and a Mac app. Upstream is `jellyfin/Swiftfin` (remote `upstream`). The app
+installs as **Vela** (`com.ralleur.vela`) with the Vela tile and replaces the
+earlier, self-written Vela app on the Apple TV. It runs next to the App Store
+Swiftfin.
+
+The Mac app (`com.ralleur.vela.mac`, `/Applications/Vela.app`) is the Mac
+Catalyst build of Swiftfin's iPhone/iPad target, with the same Vela changes.
 
 ## What is different
 
-**Player (tvOS)**
+**Player (tvOS and Mac)**
 - Audio and subtitle choices are remembered per film and per series, by
   language. The next episode of a series starts with the series' choice.
   Changes made through the presets or through Swiftfin's own menus count.
@@ -18,7 +22,8 @@ self-written Vela app on the Apple TV. It runs next to the App Store Swiftfin.
   shows a checkmark.
 
 - Prompts in the bottom trailing corner (with the controls hidden, select
-  triggers them; with the controls shown they are normal buttons):
+  triggers them on tvOS; on the Mac they can be clicked, and Return triggers
+  them; with the controls shown they are normal buttons):
   - "Intro überspringen" / "Rückblick überspringen" during intro and recap
     segments (Jellyfin media segments; chapter names like "Intro" or "Vorspann"
     as a fallback for episodes).
@@ -31,7 +36,7 @@ self-written Vela app on the Apple TV. It runs next to the App Store Swiftfin.
     runtime, two to five minutes): "Als Favorit markieren", pressing again
     removes the favorite.
 
-**Home (tvOS)**
+**Home (tvOS and Mac)**
 - Continue: films only if played within the last 7 days; series stay (the
   episode in progress or the next one). A series comes back to the front with a
   "Neue Folge" badge when an episode was added after it was last watched.
@@ -39,31 +44,62 @@ self-written Vela app on the Apple TV. It runs next to the App Store Swiftfin.
   (Settings, one year by default).
 - Rows: Zuletzt hinzugefügt: Filme, Zuletzt hinzugefügt: Serien, Neueste Filme,
   Neueste Serien (plus Swiftfin's optional Recently Played and Live TV rows).
+  On tvOS Continue is the large selector at the top; on the Mac it is a row of
+  landscape posters.
+
+**Mac**
+- Resizable window, Vela icon (Icon Composer file built from the tvOS layers),
+  name "Vela" in the menu bar and Dock.
+- Shows up in Jellyfin as client "Swiftfin macOS", device "Mac" (Swiftfin would
+  report an iPad).
+- Swiftfin's keyboard shortcuts work in the player (space, arrows, ⌘F, …).
+- In the player the window's toolbar (title and tabs) is hidden, also in full
+  screen, and comes back when the player closes.
+- Playback goes on when the window is covered, hidden or another app is in
+  front (Swiftfin pauses when the app goes to the background, which a Mac
+  window does as soon as it is covered).
+- Right click in the player: play/pause and "Bild in Bild". Bild in Bild turns
+  the window into a 480 pt wide 16:9 player in the bottom right corner that
+  floats above other windows and follows to every Space; "Bild in Bild beenden"
+  (or closing the player, or quitting) brings the window back, into full screen
+  if it came from there. The system's Picture in Picture cannot show VLC's video
+  in a Mac Catalyst app (AVKit never reports it possible for libVLC's sample
+  buffer output, and starting it anyway does nothing), so the window itself
+  becomes the mini player; Mac Catalyst has no API for window level and frame,
+  so the AppKit window is driven through its public methods at runtime.
 
 ## Where the code is
 
 New code lives in its own files, so upstream changes rarely touch it:
 
-- `Shared/Vela/` – track memory, language matching, presets, Continue logic, badge
-- `Swiftfin tvOS/Vela/` – the home screen provider
-- `XcodeConfig/DevelopmentTeam.xcconfig` – team, bundle ID, display name, app icon
-  (upstream ignores this file, so it never conflicts)
+- `Shared/Vela/` – track memory, language matching, presets, Continue logic,
+  badge, home screen provider, prompt overlay (all platforms)
+- `XcodeConfig/DevelopmentTeam.xcconfig` – team, bundle IDs, display name, app
+  icons, Mac entitlements (upstream ignores this file, so it never conflicts)
 - `Swiftfin tvOS/Vela/VelaAssets.xcassets` – the Vela tile and Top Shelf images
+- `Swiftfin/Vela/` – the Mac/iOS icon (`AppIcon-vela.icon`) and the Mac
+  entitlements (Swiftfin's without Wi-Fi info, plus a keychain group)
+- `Vela.xcworkspace` – the Mac build: Swiftfin's project plus two fixed packages
+  (see below)
 - `Tools/VelaLogicTests/` – unit tests for the pure logic (`swift test`)
-- `Tools/vela/` – device install and upstream update scripts
+- `Tools/vela/` – device and Mac install, Mac package preparation, upstream update
 
 Upstream files carry only small hooks, each marked with a `// Vela` comment (except the two build-setting hooks in `Info.plist` and the project file):
 
 | File | Hook |
 |---|---|
 | `MediaPlayerItem+Build.swift` | restore/remember tracks before asking the server; attach the observer |
-| `VideoPlayer+Toolbar.swift` | preset buttons on tvOS |
+| `VideoPlayer+Toolbar.swift` | preset buttons |
 | `BaseItemDto+Poster.swift` | "Neue Folge" badge in the poster overlay |
-| `MainTabView.swift` | tvOS home uses `VelaHomeContentGroupProvider` |
-| `PlaybackControls.swift` (tvOS) | prompt overlay |
+| `MainTabView.swift` | home uses `VelaHomeContentGroupProvider` (tvOS and iOS/Mac) |
+| `PlaybackControls.swift` (tvOS and iOS) | prompt overlay; on iOS also `VelaMacPlayerSupport` (Mac window handling, right-click menu) |
+| `NavigationRoute+Media.swift` | no pause on background in the Mac app |
+| `VideoPlayer+KeyCommands.swift` (iOS) | Return triggers the visible prompt |
+| `JellyfinClient.swift` | the Mac app reports client "Swiftfin macOS", device "Mac" |
 | `VideoPlayerContainerView.swift` | select press triggers a visible prompt while the controls are hidden |
 | `Swiftfin tvOS/Resources/Info.plist` | display name from `VELA_DISPLAY_NAME` |
-| `Swiftfin.xcodeproj/project.pbxproj` | tvOS app icon from `VELA_APP_ICON` (two lines) |
+| `Swiftfin/Resources/Info.plist` | display and bundle name from `VELA_DISPLAY_NAME` |
+| `Swiftfin.xcodeproj/project.pbxproj` | tvOS app icon from `VELA_APP_ICON`; iOS target: Mac Catalyst on, `Shared.xcconfig` as base of both configurations (upstream only has it on the project's Debug), app icon and entitlements from `VELA_IOS_*`, no hard-coded Release bundle ID, OpenGLES linked on iOS only |
 
 ## Build, test, install
 
@@ -86,6 +122,48 @@ of the fork.
 
 In Debug builds, launching with `-VelaDebugMarkNextUpNew YES` marks every next
 episode as new, to check the badge without waiting for a new episode.
+
+### Mac
+
+```sh
+Tools/vela/install-mac.sh                     # Release build → /Applications/Vela.app
+CONFIGURATION=Debug Tools/vela/install-mac.sh # Debug build, stays in build/dd-mac
+```
+
+The Mac build goes through `Vela.xcworkspace`, not the project, because two of
+Swiftfin's packages do not build for Mac Catalyst as published.
+`Tools/vela/prepare-mac-packages.sh` (run by the install script; run it once
+before opening the workspace in Xcode) puts fixed copies into
+`build/mac-packages`, at the revisions the project pins, and the workspace uses
+them in place of the remote packages:
+
+- BlurHashKit takes Mac Catalyst for AppKit (`canImport(AppKit)`) and does not
+  compile. The copy adds `!targetEnvironment(macCatalyst)`.
+- MPVUI's `Libmpv.xcframework` ships its Mac Catalyst slice as an iOS-style
+  bundle, which Xcode refuses to embed in a Mac app. The copy turns it into a
+  versioned bundle.
+
+When a Swiftfin update moves those pins, the script fetches the new revisions
+and applies the same fixes; if upstream fixes them, the overrides can go.
+
+The Mac app must be signed with a provisioning profile: the keychain group in
+`Swiftfin/Vela/Vela-Mac.entitlements` asks for one. Without it the keychain
+refuses Swiftfin's access token and the Debug build stops right after sign-in
+(same assertion as in the unsigned simulator build).
+
+Debug builds of the Mac app write a picture and the view hierarchy of their
+window on `notifyutil -p com.ralleur.vela.snapshot` to
+`~/Library/Containers/com.ralleur.vela.mac/Data/Library/Caches/vela-snapshots/`
+(`latest.png`, `latest.txt`, which also holds the prompt state, the mini
+player's steps and the AppKit state of the windows: frame, full screen, level). That is how
+the player can be checked from a script without screen recording permission;
+the player controls do not show up in the accessibility tree. Trust the AppKit
+line over `CGWindowListCopyWindowInfo`: a full-screen window with its title bar
+hidden looks there like a screen-sized ordinary window.
+
+When testing playback through Jellyfin's remote control, pick the session by
+client "Swiftfin macOS" *and* this Mac's IP address. Other Macs run Vela too and
+show up with the same client and device name.
 
 ## Taking Swiftfin updates
 

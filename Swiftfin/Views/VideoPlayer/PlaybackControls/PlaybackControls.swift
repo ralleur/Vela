@@ -86,6 +86,10 @@ extension VideoPlayer {
 
                 PlaybackButtons()
                     .isVisible(!isScrubbing && containerState.isPresentingPlaybackControls)
+
+                // Vela: skip intro, next episode, favorite prompts; Mac window handling
+                VelaPlaybackPromptOverlay()
+                VelaMacPlayerSupport()
             }
             .modifier(VideoPlayer.KeyCommandsModifier())
             .animation(.linear(duration: 0.1), value: isScrubbing)

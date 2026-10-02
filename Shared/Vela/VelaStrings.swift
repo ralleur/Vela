@@ -26,4 +26,7 @@ enum VelaStrings {
     static let nextEpisode = "Nächste Folge"
     static let markFavorite = "Als Favorit markieren"
     static let isFavorite = "Favorit"
+    static let promptKeyCommand = "Hinweis ausführen"
+    static let pictureInPicture = "Bild in Bild"
+    static let pictureInPictureStop = "Bild in Bild beenden"
 }

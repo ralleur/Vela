@@ -178,6 +178,14 @@ extension VideoPlayer {
                             systemName: "goforward"
                         )
                     }
+
+                    // Vela: Return triggers the visible prompt ("Intro überspringen", …)
+                    KeyCommandAction(
+                        title: VelaStrings.promptKeyCommand,
+                        input: "\r"
+                    ) {
+                        VelaPlaybackPrompts.shared.performPrompt()
+                    }
                 }
         }
     }

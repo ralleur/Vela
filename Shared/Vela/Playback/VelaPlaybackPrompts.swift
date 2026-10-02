@@ -239,3 +239,15 @@ final class VelaPlaybackPrompts: ObservableObject {
         return episodes[index + 1]
     }
 }
+
+#if DEBUG
+extension VelaPlaybackPrompts {
+
+    /// State summary for `VelaDebugSnapshot`.
+    var debugSummary: String {
+        "prompt=\(String(describing: prompt)) attached=\(manager != nil) item=\(item?.name ?? "-") content=\(content) "
+            + "duration=\(duration) segments=\(segments) nextEpisode=\(nextEpisode?.name ?? "-") outlook=\(outlook ?? "-") "
+            + "seconds=\(manager.map { $0.seconds / .seconds(1) } ?? -1)"
+    }
+}
+#endif

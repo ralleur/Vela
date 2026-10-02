@@ -32,7 +32,8 @@ struct MainTabView: View {
     private static var defaultTabCoordinator: TabCoordinator {
         #if os(iOS)
         TabCoordinator {
-            TabItem.contentGroup(provider: DefaultContentGroupProvider())
+            // Vela: own home screen
+            TabItem.contentGroup(provider: VelaHomeContentGroupProvider())
             TabItem.search
             TabItem.media
         }

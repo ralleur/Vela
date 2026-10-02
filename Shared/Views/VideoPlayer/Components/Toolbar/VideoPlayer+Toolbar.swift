@@ -71,10 +71,8 @@ extension VideoPlayer.PlaybackControls {
                 TitleView(item: manager.item)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
-                #if os(tvOS)
                 // Vela: language presets
                 VelaLanguagePresetButtons()
-                #endif
 
                 ActionButtons()
                     .frame(height: Self.buttonSize)

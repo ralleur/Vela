@@ -1,0 +1,18 @@
+{
+  "fill" : {
+    "solid" : "srgb:0.06667,0.08235,0.11765,1.00000"
+  },
+  "groups" : [
+    {
+      "layers" : [
+        {
+          "image-name" : "Glyph.png",
+          "name" : "Glyph"
+        }
+      ]
+    }
+  ],
+  "supported-platforms" : {
+    "squares" : "shared"
+  }
+}

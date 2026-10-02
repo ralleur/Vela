@@ -16,7 +16,7 @@
 		62666E0327E5017100EC0ECD /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5362E4B8267D40CE000E2F71 /* CoreMedia.framework */; };
 		62666E0427E5017500EC0ECD /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5362E4BA267D40D2000E2F71 /* CoreText.framework */; };
 		62666E0627E5017A00EC0ECD /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62666E0527E5017A00EC0ECD /* CoreVideo.framework */; };
-		62666E0C27E501A500EC0ECD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62666E0B27E501A500EC0ECD /* OpenGLES.framework */; };
+		62666E0C27E501A500EC0ECD /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62666E0B27E501A500EC0ECD /* OpenGLES.framework */; platformFilters = (ios, ); };
 		62666E0D27E501AA00EC0ECD /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5362E4C2267D40EC000E2F71 /* QuartzCore.framework */; };
 		62666E0E27E501AF00EC0ECD /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5362E4C4267D40F0000E2F71 /* Security.framework */; };
 		62666E1027E501B400EC0ECD /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 62666E0F27E501B400EC0ECD /* VideoToolbox.framework */; };
@@ -1111,12 +1111,14 @@
 		};
 		5377CC1C263B596B003A4E83 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = E150B7D12DFF2E7C00DC7CF4 /* XcodeConfig */;
+			baseConfigurationReferenceRelativePath = Shared.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon-dark-jellyfin AppIcon-dark-green AppIcon-dark-orange AppIcon-dark-red AppIcon-dark-yellow";
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dark-blue";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(VELA_IOS_APP_ICON:default=AppIcon-dark-blue)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = Swiftfin/Resources/Swiftfin.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "$(VELA_IOS_ENTITLEMENTS:default=Swiftfin/Resources/Swiftfin.entitlements)";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1139,7 +1141,7 @@
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = Swiftfin;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1150,12 +1152,14 @@
 		};
 		5377CC1D263B596B003A4E83 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = E150B7D12DFF2E7C00DC7CF4 /* XcodeConfig */;
+			baseConfigurationReferenceRelativePath = Shared.xcconfig;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_ALTERNATE_APPICON_NAMES = "AppIcon-dark-jellyfin AppIcon-dark-green AppIcon-dark-orange AppIcon-dark-red AppIcon-dark-yellow";
-				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-dark-blue";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(VELA_IOS_APP_ICON:default=AppIcon-dark-blue)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = "";
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_ENTITLEMENTS = Swiftfin/Resources/Swiftfin.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "$(VELA_IOS_ENTITLEMENTS:default=Swiftfin/Resources/Swiftfin.entitlements)";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1177,10 +1181,9 @@
 				);
 				MARKETING_VERSION = 1.0;
 				OTHER_CFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = org.jellyfin.swiftfin;
 				PRODUCT_NAME = Swiftfin;
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MACCATALYST = YES;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

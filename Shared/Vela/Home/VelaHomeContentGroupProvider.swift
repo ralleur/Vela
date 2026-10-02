@@ -19,6 +19,10 @@ struct VelaHomeContentGroupProvider: ContentGroupProvider {
     let id: String = "vela-home-content-group-provider"
 
     func makeGroups(environment: Empty) async throws -> [any ContentGroup] {
+        #if DEBUG && targetEnvironment(macCatalyst)
+        await VelaDebugSnapshot.install()
+        #endif
+
         guard userSession != nil else { return [] }
         return _makeGroups()
     }
@@ -26,7 +30,17 @@ struct VelaHomeContentGroupProvider: ContentGroupProvider {
     @ContentGroupBuilder
     private func _makeGroups() -> [any ContentGroup] {
 
+        #if os(tvOS)
         VelaContinueContentGroup()
+        #else
+        PosterGroup(
+            id: "vela-continue",
+            library: VelaContinueLibrary(),
+            posterDisplayType: .landscape,
+            posterSize: .medium,
+            _viewContext: .isInResume
+        )
+        #endif
 
         itemRow(
             id: "vela-recently-added-movies",
@@ -99,6 +113,8 @@ struct VelaHomeContentGroupProvider: ContentGroupProvider {
     }
 }
 
+#if os(tvOS)
+
 /// The large Continue selector at the top of the home screen, fed by `VelaContinueLibrary`.
 ///
 /// Mirrors Swiftfin's `CinematicSelectionContentGroup`, which is tied to its own resume library.
@@ -165,3 +181,5 @@ struct VelaContinueContentGroup: ContentGroup {
         }
     }
 }
+
+#endif

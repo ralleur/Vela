@@ -10,10 +10,14 @@ import SwiftUI
 /// The prompt in the player's bottom trailing corner: skip intro, next episode,
 /// what comes after the last episode, or favorite a film.
 ///
-/// With the controls hidden the prompt looks selected and the select button triggers it
-/// (see the hook in `VideoPlayerContainerView`). With the controls shown it is a normal
+/// With the controls hidden the prompt looks selected. On tvOS the select button triggers it
+/// (see the hook in `VideoPlayerContainerView`); on iOS and the Mac it can be clicked, and
+/// Return triggers it (see `VideoPlayer+KeyCommands`). With the controls shown it is a normal
 /// button above the toolbar.
 struct VelaPlaybackPromptOverlay: View {
+
+    @Environment(\.safeAreaInsets)
+    private var safeAreaInsets
 
     @EnvironmentObject
     private var containerState: VideoPlayerContainerState
@@ -27,17 +31,32 @@ struct VelaPlaybackPromptOverlay: View {
         containerState.isScrubbing || containerState.isPresentingSupplement
     }
 
+    private var bottomPadding: CGFloat {
+        if UIDevice.isTV {
+            containerState.isPresentingOverlay ? 200 : 60
+        } else {
+            (containerState.isPresentingOverlay ? 110 : 40) + safeAreaInsets.bottom
+        }
+    }
+
     var body: some View {
-        content
-            .padding(.bottom, containerState.isPresentingOverlay ? 200 : 60)
-            .edgePadding(.trailing)
-            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
-            .opacity(isHidden ? 0 : 1)
-            .animation(.easeInOut(duration: 0.25), value: prompts.prompt)
-            .animation(.easeInOut(duration: 0.25), value: containerState.isPresentingOverlay)
-            .onAppear {
-                prompts.attach(to: manager)
-            }
+        ZStack(alignment: .bottomTrailing) {
+            // Keeps the overlay in the hierarchy when there is no prompt (an empty view never appears).
+            Color.clear
+                .allowsHitTesting(false)
+                .onAppear {
+                    prompts.attach(to: manager)
+                }
+
+            content
+                .padding(.bottom, bottomPadding)
+                .padding(.trailing, UIDevice.isTV ? 0 : safeAreaInsets.trailing)
+                .edgePadding(.trailing)
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomTrailing)
+        .opacity(isHidden ? 0 : 1)
+        .animation(.easeInOut(duration: 0.25), value: prompts.prompt)
+        .animation(.easeInOut(duration: 0.25), value: containerState.isPresentingOverlay)
     }
 
     @ViewBuilder
@@ -93,29 +112,30 @@ extension VelaPlaybackPromptOverlay {
                 VelaPlaybackPrompts.shared.performPrompt()
                 containerState.timer.poke()
             } label: {
-                HStack(spacing: 14) {
+                HStack(spacing: UIDevice.isTV ? 14 : 10) {
                     Image(systemName: systemImage)
 
                     VStack(alignment: .leading, spacing: 2) {
                         Text(title)
-                            .font(.system(size: 28, weight: .semibold))
+                            .font(.system(size: UIDevice.isTV ? 28 : 17, weight: .semibold))
 
                         if let subtitle, subtitle.isNotEmpty {
                             Text(subtitle)
-                                .font(.system(size: 20, weight: .medium))
+                                .font(.system(size: UIDevice.isTV ? 20 : 13, weight: .medium))
                                 .lineLimit(1)
                                 .opacity(0.8)
                         }
                     }
                 }
-                .font(.system(size: 26, weight: .semibold))
-                .padding(.horizontal, 30)
-                .padding(.vertical, 16)
+                .font(.system(size: UIDevice.isTV ? 26 : 16, weight: .semibold))
+                .padding(.horizontal, UIDevice.isTV ? 30 : 18)
+                .padding(.vertical, UIDevice.isTV ? 16 : 10)
+                .contentShape(.capsule)
             }
             .buttonStyle(PromptButtonStyle(isArmed: !containerState.isPresentingOverlay))
-            // Hidden controls: the container's select hook triggers the prompt instead of focus.
-            .disabled(!containerState.isPresentingOverlay)
-            .frame(maxWidth: 620, alignment: .trailing)
+            // Hidden controls on tvOS: the container's select hook triggers the prompt instead of focus.
+            .disabled(UIDevice.isTV && !containerState.isPresentingOverlay)
+            .frame(maxWidth: UIDevice.isTV ? 620 : 380, alignment: .trailing)
         }
     }
 
@@ -138,10 +158,10 @@ extension VelaPlaybackPromptOverlay {
                 }
                 .overlay {
                     Capsule()
-                        .strokeBorder(Color.white.opacity(isHighlighted ? 0 : 0.35), lineWidth: 2)
+                        .strokeBorder(Color.white.opacity(isHighlighted ? 0 : 0.35), lineWidth: UIDevice.isTV ? 2 : 1)
                 }
                 .scaleEffect(configuration.isPressed ? 0.96 : (isFocused ? 1.06 : 1))
-                .shadow(color: .black.opacity(0.4), radius: 16, y: 6)
+                .shadow(color: .black.opacity(0.4), radius: UIDevice.isTV ? 16 : 8, y: UIDevice.isTV ? 6 : 3)
                 .animation(.easeOut(duration: 0.15), value: isFocused)
         }
     }
@@ -152,21 +172,21 @@ extension VelaPlaybackPromptOverlay {
         let message: String
 
         var body: some View {
-            VStack(alignment: .leading, spacing: 8) {
+            VStack(alignment: .leading, spacing: UIDevice.isTV ? 8 : 4) {
                 Text(VelaSeriesOutlook.title)
-                    .font(.system(size: 22, weight: .semibold))
+                    .font(.system(size: UIDevice.isTV ? 22 : 13, weight: .semibold))
                     .opacity(0.8)
 
                 Text(message)
-                    .font(.system(size: 28, weight: .semibold))
+                    .font(.system(size: UIDevice.isTV ? 28 : 17, weight: .semibold))
                     .fixedSize(horizontal: false, vertical: true)
             }
             .foregroundStyle(.white)
-            .padding(.horizontal, 30)
-            .padding(.vertical, 22)
-            .frame(maxWidth: 640, alignment: .leading)
-            .background(Color.black.opacity(0.65), in: .rect(cornerRadius: 24))
-            .shadow(color: .black.opacity(0.4), radius: 16, y: 6)
+            .padding(.horizontal, UIDevice.isTV ? 30 : 18)
+            .padding(.vertical, UIDevice.isTV ? 22 : 12)
+            .frame(maxWidth: UIDevice.isTV ? 640 : 380, alignment: .leading)
+            .background(Color.black.opacity(0.65), in: .rect(cornerRadius: UIDevice.isTV ? 24 : 14))
+            .shadow(color: .black.opacity(0.4), radius: UIDevice.isTV ? 16 : 8, y: UIDevice.isTV ? 6 : 3)
         }
     }
 }

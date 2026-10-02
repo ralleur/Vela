@@ -139,8 +139,6 @@ enum VelaLanguagePreset: String, CaseIterable, Identifiable {
     }
 }
 
-#if os(tvOS)
-
 /// The preset buttons shown next to the player's action buttons.
 struct VelaLanguagePresetButtons: View {
 
@@ -181,19 +179,38 @@ struct VelaLanguagePresetButtons: View {
 
                                 Text(preset.title)
                             }
-                            .font(.system(size: 24, weight: .semibold))
-                            .padding(.horizontal, 8)
+                            .font(.system(size: UIDevice.isTV ? 24 : 15, weight: .semibold))
+                            .padding(.horizontal, UIDevice.isTV ? 8 : 12)
                             .frame(height: VideoPlayer.PlaybackControls.Toolbar.buttonSize)
                         }
                         .accessibilityAddTraits(isActive ? .isSelected : [])
                     }
                 }
-                .buttonStyle(VideoPlayer.PlaybackControls.OverlayGlassButtonStyle())
-                .buttonBorderShape(.capsule)
-                .focusSection()
+                .modifier(PresetButtonStyle())
             }
         }
     }
-}
 
-#endif
+    private struct PresetButtonStyle: ViewModifier {
+
+        func body(content: Content) -> some View {
+            #if os(tvOS)
+            content
+                .buttonStyle(VideoPlayer.PlaybackControls.OverlayGlassButtonStyle())
+                .buttonBorderShape(.capsule)
+                .focusSection()
+            #else
+            if #available(iOS 26.0, *), UIDevice.supportsLiquidGlass {
+                content
+                    .buttonStyle(VideoPlayer.PlaybackControls.OverlayGlassButtonStyle())
+                    .buttonBorderShape(.capsule)
+            } else {
+                content
+                    .buttonStyle(.plain)
+                    .foregroundStyle(.white)
+                    .background(Color.black.opacity(0.5), in: .capsule)
+            }
+            #endif
+        }
+    }
+}
