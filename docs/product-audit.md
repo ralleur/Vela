@@ -92,3 +92,14 @@ the chrome fix. The final 44-test run and strict deep signature check passed.
 Physical Apple TV, drag/drop gestures, mini-player behavior and all codec variants
 were not newly exhaustively exercised by this launch pass; code/prior-phase
 coverage is identified separately above and in VELA.md.
+
+## Distribution follow-up — 2026-10-02
+
+The audited 0.9.4 (5) source was built in Release for arm64 and x86_64, exported
+with Developer ID signing, accepted by Apple notarization and packaged as a
+universal DMG. The app started from the final image and played a local MKV.
+The public download was fetched again and its SHA-256 matched.
+
+[Release notes](release/0.9.4.md) record remaining beta qualification limits;
+[publication.json](release/publication.json) records the release artifacts and
+successful GitHub Pages deployment. The website now links to this installer.

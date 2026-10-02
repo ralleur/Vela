@@ -143,22 +143,37 @@ mark, one brief idea and a genuine product capture crop. No generated app UI.
 - All five MP4s have verified duration/codec/dimensions, decoded without errors,
   and were reviewed through extracted scene contact sheets. See
   [render manifest](video/render-manifest.json) and [web QA](validation.json).
-- `git diff --check` passed. No user code was reset and no commit was created.
+- The initial source-change whitespace check passed. Third-party notices retain
+  upstream formatting. No user code was reset. The release source is committed
+  and tagged as `vela-0.9.4`.
 
-[GitHub Pages workflow](../.github/workflows/pages.yml) is ready. Actions are
-SHA-pinned; deployment permissions are limited to the deployment job. No remote
-Pages configuration existed during the audit, so deployment has not run.
+[GitHub Pages workflow](../.github/workflows/pages.yml) is deployed. Actions are
+SHA-pinned; deployment permissions are limited to the deployment job.
 
-## 12. Manual publication steps
+## 12. Publication
 
-1. Review and commit the completed engineering prerequisites together with the
-   launch files. Enable repository Settings → Pages → GitHub Actions, push to
-   `vela`, and run **Project site** if the push did not already trigger it.
-2. Upload the reviewed MP4s, matching captions and thumbnails to the existing
-   channel using their supplied titles/descriptions. Keep the film credits.
-3. A current downloadable app is a separate release step: qualify the build,
-   complete bundled-binary license/source obligations and signing/notarization,
-   then update the source-preview CTA to that real release.
+Published on 2026-10-02:
+
+- [Project website](https://ralleur.github.io/Vela/), with a working direct DMG
+  download in the hero and installation section.
+- [Vela 0.9.4 Beta release](https://github.com/ralleur/Vela/releases/tag/vela-0.9.4):
+  a 140,288,000-byte universal Mac DMG, SHA-256, matching source bundle and its
+  SHA-256. The app is Developer ID signed, notarized and stapled.
+- Release source commit `f343155bf247e5881d6f4b1da8bfc660207a958d` on `vela`,
+  tagged `vela-0.9.4`.
+- [Successful Pages deployment](https://github.com/ralleur/Vela/actions/runs/37048480493).
+  The public HTML matches the source; all 19 deployed files returned HTTP 200.
+  A fresh public DMG download matched the original SHA-256.
+- The exact DMG app passed bundle/architecture/sandbox/signature verification,
+  Apple-ticket validation and Gatekeeper assessment, and played a local MKV.
+
+See [release notes](../docs/release/0.9.4.md) and the machine-readable
+[publication record](../docs/release/publication.json). The GitHub repository's
+homepage now points to the live site.
+
+The remaining channel-publication step is to upload the reviewed MP4s, matching
+captions and thumbnails using the supplied titles/descriptions and film credits.
+No social-account upload was performed.
 
 The local `build/launch/Vela-launch-media.zip` bundles the five final videos,
 captions, descriptions, public screenshots, thumbnails and production notes.
@@ -166,8 +181,9 @@ It deliberately excludes private server data and rejected raw takes.
 
 ## 13. Explicit limits and cleanup
 
-No external publication, social upload or new installer was performed. No new
-physical Apple TV capture/qualification or exhaustive codec test is claimed.
+The website, README, release and DMG are public. No social upload, new physical
+Apple TV qualification or exhaustive codec test is claimed. The Intel slice
+is included; runtime qualification was on Apple silicon.
 The non-priority default-player Short has an exact Finder pickup left; Finder
 associations were not changed. The main film and all four priority Shorts were
 produced, so there is no remaining render/tooling blocker for that launch batch.
