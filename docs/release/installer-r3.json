@@ -1,0 +1,37 @@
+{
+  "file": "Vela-0.9.4-macOS-universal-r3.dmg",
+  "sha256": "1bc80d1a53db3fffd38ad07a9f7749cef5e9cc38538e1185e9c9263db42c2e62",
+  "version": "0.9.4",
+  "build": "5",
+  "packaging_revision": 3,
+  "architectures": [
+    "x86_64",
+    "arm64"
+  ],
+  "minimum_macos": "15.6",
+  "development_only": false,
+  "size": 142029312,
+  "window_points": [
+    768,
+    512
+  ],
+  "visible_items": [
+    "Vela.app",
+    "Applications"
+  ],
+  "background_sha256": "f13d936827ea21f7214b0c6ed755838887e86ffe122b027351417e306290f2a7",
+  "date": "2026-10-03",
+  "timezone": "Europe/Berlin",
+  "app_source_commit": "f343155bf247e5881d6f4b1da8bfc660207a958d",
+  "url": "https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-macOS-universal-r3.dmg",
+  "github_digest": "sha256:1bc80d1a53db3fffd38ad07a9f7749cef5e9cc38538e1185e9c9263db42c2e62",
+  "published_at": "2026-10-02T22:09:13Z",
+  "change": "Custom Vela wordmark following the app symbol, rounded letter shapes and blue-dot accent",
+  "signature": "Strict deep verification passed",
+  "notarization": "Stapled ticket validated; Gatekeeper accepted Notarized Developer ID",
+  "app_executable_unchanged": true,
+  "finder_validation": "Actual Finder image inspected; logo and heading consistent; two visible items",
+  "applications_link": "/Applications",
+  "notices": "Available in Vela Settings and hidden .licenses folder",
+  "preview": "../../marketing/dmg/installer-preview.png"
+}

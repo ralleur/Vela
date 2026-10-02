@@ -6,7 +6,10 @@ items: the real Vela app and an Applications-folder link.
 
 `background@2x.png` is an opaque RGB image, 1536 × 1024 pixels. It was created
 with the built-in **Imagegen** tool, then refined for opacity and readable
-Finder labels. [The complete prompt sequence](final-prompts.txt) is retained.
+Finder labels. The heading is a bespoke wordmark derived from the app symbol:
+a rounded V, the original blue-dot accent, and matching rounded lowercase
+lettering with angled terminals. The [background prompts](final-prompts.txt)
+and [wordmark edit prompt](wordmark-prompt.txt) are retained.
 The artwork is new; it contains no movie still or fabricated app icon.
 
 ## Finder layout
@@ -28,7 +31,7 @@ hidden `.licenses` directory. There are no extra visible text documents.
 python3 -m venv build/dmg-tools
 build/dmg-tools/bin/python -m pip install -r Tools/vela/dmg-requirements.txt
 build/dmg-tools/bin/python Tools/vela/package-dmg.py \
-  build/release/notarized/Vela.app --output build/release/installer --revision 2
+  build/release/notarized/Vela.app --output build/release/installer-r3 --revision 3
 ```
 
 The builder refuses to overwrite an existing image or working directory.
@@ -39,5 +42,5 @@ Build dependencies are pinned and are not shipped inside Vela.
 The app's signed contents stay unchanged. In particular, no FinderInfo
 attribute is added to the app bundle, which would invalidate strict signature
 verification. The image is compressed as UDZO with an APFS volume; ASIF is only
-an intermediate format on newer build hosts. Package revision 2 identifies the
-new installer while the application remains version 0.9.4, build 5.
+an intermediate format on newer build hosts. Package revision 3 identifies the
+wordmark update while the application remains version 0.9.4, build 5.

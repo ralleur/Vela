@@ -76,9 +76,9 @@ macro dependencies. `package-dmg.py` verifies the signed/notarized universal app
 preserves its signature, adds the Applications link/notices, creates a compressed
 DMG and writes its SHA-256. It does not replace an installed app.
 
-## Installer presentation revision 2
+## Installer presentation revision 3
 
-The current download uses a custom Finder background, fixed icon positions and
+The current download uses a logo-derived Vela wordmark, custom Finder background, fixed icon positions and
 a direct Applications-folder link. Only the app and destination are visible.
 The app's existing notices remain accessible in Settings; complete release
 license/source records are retained under `.licenses` in the disk image.
