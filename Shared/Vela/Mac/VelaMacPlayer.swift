@@ -219,8 +219,8 @@ struct VelaMacPlayerSupport: View {
             watermark.contentMode = .scaleAspectFit
             watermark.alpha = 0.35
             watermark.isUserInteractionEnabled = false
-            // Beside the traffic lights, in the original upper-left title-bar position.
-            watermark.frame = CGRect(x: 110, y: -4, width: 44, height: 44)
+            // A discreet station-style mark anchored to the upper-left picture edge.
+            watermark.frame = CGRect(x: 8, y: -4, width: 44, height: 44)
             window.addSubview(watermark)
             if let appKitWindow {
                 for name in ["NSWindowWillEnterFullScreenNotification", "NSWindowWillExitFullScreenNotification", "NSWindowDidEnterFullScreenNotification", "NSWindowDidExitFullScreenNotification", "NSWindowDidFailToEnterFullScreenNotification"] {
