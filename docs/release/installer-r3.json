@@ -33,5 +33,14 @@
   "finder_validation": "Actual Finder image inspected; logo and heading consistent; two visible items",
   "applications_link": "/Applications",
   "notices": "Available in Vela Settings and hidden .licenses folder",
-  "preview": "../../marketing/dmg/installer-preview.png"
+  "preview": "../../marketing/dmg/installer-preview.png",
+  "deployment": {
+    "conclusion": "success",
+    "headSha": "9eeeaa30f162291f57c9d92189b6c040ad8445ab",
+    "status": "completed",
+    "url": "https://github.com/ralleur/Vela/actions/runs/37071159552"
+  },
+  "public_site_download_links_verified": 2,
+  "public_download_sha256": "1bc80d1a53db3fffd38ad07a9f7749cef5e9cc38538e1185e9c9263db42c2e62",
+  "design_source_url": "https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-dmg-design-r3.tar.gz"
 }
