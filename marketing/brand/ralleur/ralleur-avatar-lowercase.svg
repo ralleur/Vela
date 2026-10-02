@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img"><title>Ralleur</title><rect width="512" height="512" fill="#11151e"/>  <g fill="none" stroke="#f8f4f1" stroke-width="64" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M172 216 V396"/>
+    <path d="M172 294 C172 230 246 207 324 226"/>
+  </g>
+  <circle cx="344" cy="136" r="27" fill="#77c9b5"/>
+</svg>

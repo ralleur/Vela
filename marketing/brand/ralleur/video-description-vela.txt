@@ -1,0 +1,8 @@
+Vela by Ralleur.
+A modern Mac video player for your local files and Jellyfin library.
+
+Download Vela: https://ralleur.github.io/Vela/
+Source code: https://github.com/ralleur/Vela
+More from Ralleur: https://www.youtube.com/@ralleurapps
+
+Vela is an independent fork of Swiftfin and is not an official or endorsed Jellyfin or Swiftfin application.

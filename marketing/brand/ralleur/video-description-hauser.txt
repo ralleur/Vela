@@ -1,0 +1,7 @@
+Hauser by Ralleur.
+A room-first smart home interface for Apple Home and Home Assistant.
+
+Explore Hauser: https://ralleur.github.io/hauser/
+Source code: https://github.com/ralleur/hauser
+More from Ralleur: https://www.youtube.com/@ralleurapps
+
