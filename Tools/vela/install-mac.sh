@@ -9,7 +9,7 @@ cd "$(dirname "$0")/../.."
 DERIVED="${DERIVED_DATA:-build/dd-mac}"
 CONFIGURATION="${CONFIGURATION:-Release}"
 TARGET_APP="${TARGET_APP:-/Applications/Vela.app}"
-BUNDLE_ID=$(sed -n 's/^PRODUCT_BUNDLE_IDENTIFIER\[sdk=macosx\*\] = //p' XcodeConfig/DevelopmentTeam.xcconfig)
+BUNDLE_ID=$(sed -n 's/^PRODUCT_BUNDLE_IDENTIFIER\[sdk=macosx\*\] = //p' XcodeConfig/Vela.xcconfig)
 
 Tools/vela/prepare-mac-packages.sh
 

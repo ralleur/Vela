@@ -9,4 +9,5 @@
 DEVELOPMENT_TEAM = 
 PRODUCT_BUNDLE_IDENTIFIER = org.jellyfin.swiftfin
 
+#include "Vela.xcconfig"
 #include? "DevelopmentTeam.xcconfig"

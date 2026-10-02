@@ -13,6 +13,28 @@ enum VelaLanguage {
     static let english = "eng"
     static let german = "deu"
 
+    /// The language selected for the app. Apple's per-app language setting is reflected in
+    /// `preferredLocalizations`; on a German Mac this resolves to German by default.
+    static var appLanguage: String {
+        preferredAppLanguage(
+            preferredLocalizations: Bundle.main.preferredLocalizations,
+            preferredLanguages: Locale.preferredLanguages
+        )
+    }
+
+    static func preferredAppLanguage(
+        preferredLocalizations: [String],
+        preferredLanguages: [String]
+    ) -> String {
+        for identifier in preferredLocalizations + preferredLanguages {
+            if let language = normalize(identifier) {
+                return language
+            }
+        }
+
+        return german
+    }
+
     /// ISO 639-2/B codes (what Jellyfin usually reports) mapped to their 639-2/T form.
     private static let bibliographicToTerminologic: [String: String] = [
         "alb": "sqi", "arm": "hye", "baq": "eus", "bur": "mya", "chi": "zho",
@@ -40,6 +62,100 @@ enum VelaLanguage {
 
     static func matches(_ stream: MediaStream, language: String) -> Bool {
         normalize(stream.language) == normalize(language)
+    }
+
+    static func shortCode(_ language: String) -> String {
+        guard let normalized = normalize(language) else { return language.uppercased() }
+
+        return (Locale.LanguageCode(normalized).identifier(.alpha2) ?? normalized).uppercased()
+    }
+}
+
+/// One-press audio and subtitle combinations for the player. English remains the
+/// original-language choice while the app language replaces the former fixed German choice.
+struct VelaLanguagePreset: Identifiable, Equatable {
+
+    let audioLanguage: String
+    /// `nil` means subtitles off.
+    let subtitleLanguage: String?
+    let appLanguage: String
+
+    var id: String {
+        "\(audioLanguage):\(subtitleLanguage ?? "off")"
+    }
+
+    var title: String {
+        let audio = VelaLanguage.shortCode(audioLanguage)
+
+        if let subtitleLanguage {
+            return "\(audio) + \(VelaLanguage.shortCode(subtitleLanguage)) \(subtitleAbbreviation)"
+        }
+
+        return "\(audio) \(withoutSubtitles)"
+    }
+
+    static func presets(appLanguage: String) -> [Self] {
+        let local = VelaLanguage.normalize(appLanguage) ?? VelaLanguage.german
+        var presets = [
+            Self(audioLanguage: VelaLanguage.english, subtitleLanguage: VelaLanguage.english, appLanguage: local),
+        ]
+
+        if local != VelaLanguage.english {
+            presets.append(Self(audioLanguage: VelaLanguage.english, subtitleLanguage: local, appLanguage: local))
+        }
+
+        presets.append(Self(audioLanguage: local, subtitleLanguage: nil, appLanguage: local))
+        return presets
+    }
+
+    /// The stream indexes for this preset, or `nil` when the item lacks a needed track.
+    func streamIndexes(
+        audioStreams: [MediaStream],
+        subtitleStreams: [MediaStream]
+    ) -> (audio: Int, subtitle: Int)? {
+        guard let audio = audioStreams.velaBestAudio(language: audioLanguage)?.index else { return nil }
+
+        guard let subtitleLanguage else {
+            return (audio, -1)
+        }
+
+        // Forced subtitles only cover foreign-language parts, so they never count as
+        // the full subtitle selection represented by these buttons.
+        guard let subtitle = subtitleStreams
+            .filter({ $0.isForced != true })
+            .velaBestSubtitle(language: subtitleLanguage)?.index
+        else { return nil }
+
+        return (audio, subtitle)
+    }
+
+    /// No quick buttons at all are shown when the title has no full subtitle choice.
+    static func availablePresets(
+        appLanguage: String,
+        audioStreams: [MediaStream],
+        subtitleStreams: [MediaStream]
+    ) -> [Self] {
+        guard subtitleStreams.contains(where: { $0.isForced != true }) else { return [] }
+
+        return presets(appLanguage: appLanguage).filter {
+            $0.streamIndexes(audioStreams: audioStreams, subtitleStreams: subtitleStreams) != nil
+        }
+    }
+
+    private var subtitleAbbreviation: String {
+        switch VelaLanguage.normalize(appLanguage) {
+        case VelaLanguage.german: "UT"
+        case "fra": "ST"
+        default: "SUB"
+        }
+    }
+
+    private var withoutSubtitles: String {
+        switch VelaLanguage.normalize(appLanguage) {
+        case VelaLanguage.german: "ohne UT"
+        case "fra": "sans ST"
+        default: "no SUB"
+        }
     }
 }
 
@@ -100,4 +216,3 @@ private extension MediaStream {
         ]
     }
 }
-

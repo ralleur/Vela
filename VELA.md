@@ -16,10 +16,14 @@ Catalyst build of Swiftfin's iPhone/iPad target, with the same Vela changes.
   language. The next episode of a series starts with the series' choice.
   Changes made through the presets or through Swiftfin's own menus count.
   A track picked on the detail page before playing wins over the memory.
-- Three preset buttons next to the player's action buttons:
-  `EN + EN UT`, `EN + DE UT`, `DE ohne UT`. A preset is hidden if the title lacks
-  the audio track or full (non-forced) subtitles it needs. The active preset
-  shows a checkmark.
+- Up to three preset buttons next to the player's action buttons. The app
+  language replaces German in the combinations: a German app shows
+  `EN + EN UT`, `EN + DE UT`, `DE ohne UT`; a French app shows
+  `EN + EN ST`, `EN + FR ST`, `FR sans ST`. The effective app language follows
+  Apple's per-app language setting and therefore defaults to the Mac's language.
+  No preset buttons are shown for titles without a full (non-forced) subtitle
+  choice. Otherwise, each preset is hidden when its required audio or subtitle
+  track is missing, and the active preset shows a checkmark.
 
 - Prompts in the bottom trailing corner (with the controls hidden, select
   triggers them on tvOS; on the Mac they can be clicked, and Return triggers
@@ -74,8 +78,10 @@ New code lives in its own files, so upstream changes rarely touch it:
 
 - `Shared/Vela/` – track memory, language matching, presets, Continue logic,
   badge, home screen provider, prompt overlay (all platforms)
-- `XcodeConfig/DevelopmentTeam.xcconfig` – team, bundle IDs, display name, app
-  icons, Mac entitlements (upstream ignores this file, so it never conflicts)
+- `XcodeConfig/Vela.xcconfig` – public bundle IDs, display name, app icons and
+  Mac entitlements
+- `XcodeConfig/DevelopmentTeam.xcconfig` – local signing team (ignored; copy the
+  tracked `DevelopmentTeam.example.xcconfig` before building)
 - `Swiftfin tvOS/Vela/VelaAssets.xcassets` – the Vela tile and Top Shelf images
 - `Swiftfin/Vela/` – the Mac/iOS icon (`AppIcon-vela.icon`) and the Mac
   entitlements (Swiftfin's without Wi-Fi info, plus a keychain group)
@@ -99,6 +105,7 @@ Upstream files carry only small hooks, each marked with a `// Vela` comment (exc
 | `VideoPlayerContainerView.swift` | select press triggers a visible prompt while the controls are hidden |
 | `Swiftfin tvOS/Resources/Info.plist` | display name from `VELA_DISPLAY_NAME` |
 | `Swiftfin/Resources/Info.plist` | display and bundle name from `VELA_DISPLAY_NAME` |
+| `XcodeConfig/Shared.xcconfig` | includes the public Vela identity and the optional local signing team |
 | `Swiftfin.xcodeproj/project.pbxproj` | tvOS app icon from `VELA_APP_ICON`; iOS target: Mac Catalyst on, `Shared.xcconfig` as base of both configurations (upstream only has it on the project's Debug), app icon and entitlements from `VELA_IOS_*`, no hard-coded Release bundle ID, OpenGLES linked on iOS only |
 
 ## Build, test, install

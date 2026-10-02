@@ -38,10 +38,74 @@ struct LanguageTests {
     }
 
     @Test
+    func appLanguageFollowsTheAppsLocalizationBeforeTheSystemFallback() {
+        #expect(VelaLanguage.preferredAppLanguage(
+            preferredLocalizations: ["fr"],
+            preferredLanguages: ["de-DE"]
+        ) == "fra")
+        #expect(VelaLanguage.preferredAppLanguage(
+            preferredLocalizations: [],
+            preferredLanguages: ["de-DE"]
+        ) == "deu")
+    }
+
+    @Test
     func undeterminedIsNil() {
         #expect(VelaLanguage.normalize(nil) == nil)
         #expect(VelaLanguage.normalize("") == nil)
         #expect(VelaLanguage.normalize("und") == nil)
+    }
+}
+
+@Suite
+struct LanguagePresetTests {
+
+    @Test
+    func germanPresetsKeepTheirExistingTitles() {
+        let presets = VelaLanguagePreset.presets(appLanguage: "de-DE")
+
+        #expect(presets.map(\.title) == ["EN + EN UT", "EN + DE UT", "DE ohne UT"])
+    }
+
+    @Test
+    func frenchReplacesTheGermanTrackChoices() {
+        let presets = VelaLanguagePreset.presets(appLanguage: "fr-FR")
+
+        #expect(presets.map(\.title) == ["EN + EN ST", "EN + FR ST", "FR sans ST"])
+        #expect(presets[1].subtitleLanguage == "fra")
+        #expect(presets[2].audioLanguage == "fra")
+    }
+
+    @Test
+    func englishDoesNotCreateDuplicatePresets() {
+        #expect(VelaLanguagePreset.presets(appLanguage: "en").map(\.title) == ["EN + EN SUB", "EN no SUB"])
+    }
+
+    @Test
+    func titleWithoutFullSubtitleSelectionHasNoQuickButtons() {
+        let audios = [audio(1, "eng"), audio(2, "ger")]
+
+        #expect(VelaLanguagePreset.availablePresets(
+            appLanguage: "de",
+            audioStreams: audios,
+            subtitleStreams: []
+        ).isEmpty)
+        #expect(VelaLanguagePreset.availablePresets(
+            appLanguage: "de",
+            audioStreams: audios,
+            subtitleStreams: [subtitle(3, "ger", forced: true)]
+        ).isEmpty)
+    }
+
+    @Test
+    func onlyPresetsWithAvailableTracksAreShown() {
+        let presets = VelaLanguagePreset.availablePresets(
+            appLanguage: "fr",
+            audioStreams: [audio(1, "eng"), audio(2, "fre")],
+            subtitleStreams: [subtitle(3, "eng"), subtitle(4, "fre")]
+        )
+
+        #expect(presets.map(\.title) == ["EN + EN ST", "EN + FR ST", "FR sans ST"])
     }
 }
 

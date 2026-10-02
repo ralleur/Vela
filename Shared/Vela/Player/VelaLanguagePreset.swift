@@ -7,58 +7,11 @@
 import JellyfinAPI
 import SwiftUI
 
-/// One-press audio and subtitle combinations for the player.
-enum VelaLanguagePreset: String, CaseIterable, Identifiable {
+extension VelaLanguagePreset {
 
-    case englishWithEnglishSubtitles
-    case englishWithGermanSubtitles
-    case germanWithoutSubtitles
-
-    var id: String {
-        rawValue
-    }
-
-    var title: String {
-        switch self {
-        case .englishWithEnglishSubtitles: VelaStrings.presetEnglishEnglish
-        case .englishWithGermanSubtitles: VelaStrings.presetEnglishGerman
-        case .germanWithoutSubtitles: VelaStrings.presetGermanOff
-        }
-    }
-
-    var audioLanguage: String {
-        switch self {
-        case .englishWithEnglishSubtitles, .englishWithGermanSubtitles: VelaLanguage.english
-        case .germanWithoutSubtitles: VelaLanguage.german
-        }
-    }
-
-    /// `nil` means subtitles off.
-    var subtitleLanguage: String? {
-        switch self {
-        case .englishWithEnglishSubtitles: VelaLanguage.english
-        case .englishWithGermanSubtitles: VelaLanguage.german
-        case .germanWithoutSubtitles: nil
-        }
-    }
-
-    /// The stream indexes for this preset, or `nil` when the item lacks a needed track.
-    /// Unavailable presets are hidden in the player.
     @MainActor
     func streamIndexes(in item: MediaPlayerItem) -> (audio: Int, subtitle: Int)? {
-        guard let audio = item.audioStreams.velaBestAudio(language: audioLanguage)?.index else { return nil }
-
-        guard let subtitleLanguage else {
-            return (audio, -1)
-        }
-
-        // Forced subtitles only cover foreign-language parts, so they never count as "with subtitles".
-        guard let subtitle = item.subtitleStreams
-            .filter({ $0.isForced != true })
-            .velaBestSubtitle(language: subtitleLanguage)?.index
-        else { return nil }
-
-        return (audio, subtitle)
+        streamIndexes(audioStreams: item.audioStreams, subtitleStreams: item.subtitleStreams)
     }
 
     /// Whether the player currently plays this combination, judged by language so that
@@ -160,7 +113,11 @@ struct VelaLanguagePresetButtons: View {
         var item: MediaPlayerItem
 
         private var availablePresets: [VelaLanguagePreset] {
-            VelaLanguagePreset.allCases.filter { $0.streamIndexes(in: item) != nil }
+            VelaLanguagePreset.availablePresets(
+                appLanguage: VelaLanguage.appLanguage,
+                audioStreams: item.audioStreams,
+                subtitleStreams: item.subtitleStreams
+            )
         }
 
         var body: some View {

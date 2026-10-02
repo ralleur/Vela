@@ -1,0 +1,4 @@
+// Copy this file to DevelopmentTeam.xcconfig and enter the team shown in
+// Xcode under Settings > Accounts. The local file is ignored by Git.
+
+DEVELOPMENT_TEAM = YOUR_TEAM_ID

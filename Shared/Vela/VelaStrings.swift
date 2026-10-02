@@ -15,10 +15,6 @@ enum VelaStrings {
     static let newestMovies = "Neueste Filme"
     static let newestSeries = "Neueste Serien"
 
-    static let presetEnglishEnglish = "EN + EN UT"
-    static let presetEnglishGerman = "EN + DE UT"
-    static let presetGermanOff = "DE ohne UT"
-
     static let skipIntro = "Intro überspringen"
     static let skipRecap = "Rückblick überspringen"
     static let skipPreview = "Vorschau überspringen"

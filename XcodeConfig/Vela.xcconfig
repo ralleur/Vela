@@ -1,0 +1,11 @@
+//
+// Public Vela app identity. Signing credentials belong in the ignored
+// DevelopmentTeam.xcconfig file, copied from DevelopmentTeam.example.xcconfig.
+//
+
+PRODUCT_BUNDLE_IDENTIFIER = com.ralleur.vela
+PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*] = com.ralleur.vela.mac
+VELA_DISPLAY_NAME = Vela
+VELA_APP_ICON = Vela App Icon & Top Shelf Image
+VELA_IOS_APP_ICON = AppIcon-vela
+VELA_IOS_ENTITLEMENTS[sdk=macosx*] = Swiftfin/Vela/Vela-Mac.entitlements
