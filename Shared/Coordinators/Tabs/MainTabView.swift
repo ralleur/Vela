@@ -161,8 +161,17 @@ private struct FirstTabSettingsBarButton: View {
                 server: userSession.server,
                 user: userSession.user
             ) {
+                #if targetEnvironment(macCatalyst)
+                NotificationCenter.default.post(name: VelaSettings.open, object: nil)
+                #else
                 router.route(to: .settings)
+                #endif
             }
+            #if targetEnvironment(macCatalyst)
+            .contextMenu {
+                Button("Konto und Server …") { router.route(to: .settings) }
+            }
+            #endif
         }
     }
 }

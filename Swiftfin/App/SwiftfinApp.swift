@@ -32,6 +32,9 @@ struct SwiftfinApp: App {
                         RootView()
                             .supportedOrientations(UIDevice.isPad ? .allButUpsideDown : .portrait)
                     }
+                    #if targetEnvironment(macCatalyst)
+                    .modifier(VelaSettingsHost())
+                    #endif
                 }
             }
             .ignoresSafeArea()

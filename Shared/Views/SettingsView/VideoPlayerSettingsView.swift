@@ -24,6 +24,11 @@ struct VideoPlayerSettingsView: View {
     @Default(.VideoPlayer.videoPlayerType)
     private var videoPlayerType
 
+    #if targetEnvironment(macCatalyst)
+    @Default(.Vela.Mac.showPlayerWindowTitle)
+    private var showPlayerWindowTitle
+    #endif
+
     // MARK: - Button Defaults
 
     @Default(.VideoPlayer.jumpBackwardInterval)
@@ -87,6 +92,10 @@ struct VideoPlayerSettingsView: View {
     var body: some View {
         Form(systemImage: "tv") {
             engineSettings
+
+            #if targetEnvironment(macCatalyst)
+            macWindowSettings
+            #endif
 
             #if os(iOS)
             gestureSettings
@@ -154,6 +163,19 @@ struct VideoPlayerSettingsView: View {
             )
         }
     }
+
+    #if targetEnvironment(macCatalyst)
+    @ViewBuilder
+    private var macWindowSettings: some View {
+        Section {
+            Toggle(VelaStrings.showPlayerWindowTitle, isOn: $showPlayerWindowTitle)
+        } header: {
+            Text(VelaStrings.macWindow)
+        } footer: {
+            Text(VelaStrings.showPlayerWindowTitleDescription)
+        }
+    }
+    #endif
 
     // MARK: - Gesture Settings
 

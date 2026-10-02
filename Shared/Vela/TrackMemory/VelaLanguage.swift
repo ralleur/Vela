@@ -16,7 +16,9 @@ enum VelaLanguage {
     /// The language selected for the app. Apple's per-app language setting is reflected in
     /// `preferredLocalizations`; on a German Mac this resolves to German by default.
     static var appLanguage: String {
-        preferredAppLanguage(
+        if let selected = UserDefaults.standard.string(forKey: "vela.language"),
+           let normalized = normalize(selected) { return normalized }
+        return preferredAppLanguage(
             preferredLocalizations: Bundle.main.preferredLocalizations,
             preferredLanguages: Locale.preferredLanguages
         )

@@ -22,9 +22,16 @@ extension VideoPlayer.PlaybackControls.Toolbar.ActionButtons {
 
         var body: some View {
             Button {
+                #if targetEnvironment(macCatalyst)
+                VelaMiniPlayer.toggleFullScreen()
+                #else
                 isAspectFilled.toggle()
+                #endif
             } label: {
                 Group {
+                    #if targetEnvironment(macCatalyst)
+                    Label("Vollbild", systemImage: VideoPlayerActionButton.aspectFill.systemImage)
+                    #else
                     if isAspectFilled {
                         Label(
                             L10n.aspectFill,
@@ -36,6 +43,7 @@ extension VideoPlayer.PlaybackControls.Toolbar.ActionButtons {
                             systemImage: VideoPlayerActionButton.aspectFill.systemImage
                         )
                     }
+                    #endif
                 }
                 .videoPlayerActionButtonTransition()
             }

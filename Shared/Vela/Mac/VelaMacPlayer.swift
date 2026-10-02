@@ -4,6 +4,7 @@
 // file, you can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
+import Defaults
 import SwiftUI
 
 #if targetEnvironment(macCatalyst)
@@ -22,6 +23,9 @@ struct VelaMacPlayerSupport: View {
     private var manager: MediaPlayerManager
     @EnvironmentObject
     private var containerState: VideoPlayerContainerState
+
+    @Default(.Vela.Mac.showPlayerWindowTitle)
+    private var showPlayerWindowTitle
 
     private var declaredVideoSize: CGSize {
         guard let stream = manager.playbackItem?.videoStreams.first else { return .zero }
@@ -43,43 +47,15 @@ struct VelaMacPlayerSupport: View {
     }
 
     var body: some View {
-        Group {
-            if let videoSizeBox = (manager.proxy as? any VideoMediaPlayerProxy)?.videoSize {
-                ObservedWindowAccessor(
-                    manager: manager,
-                    videoSizeBox: videoSizeBox,
-                    fallbackVideoSize: declaredVideoSize,
-                    controlsVisible: containerState.isPresentingOverlay
-                )
-            } else {
-                WindowAccessor(
-                    manager: manager,
-                    videoSize: declaredVideoSize,
-                    controlsVisible: containerState.isPresentingOverlay
-                )
-            }
-        }
+        WindowAccessor(
+            manager: manager,
+            videoSize: declaredVideoSize,
+            controlsVisible: containerState.isPresentingOverlay,
+            showPlayerWindowTitle: showPlayerWindowTitle
+        )
         .frame(width: 0, height: 0)
         .allowsHitTesting(false)
         .accessibilityHidden(true)
-    }
-
-    private struct ObservedWindowAccessor: View {
-
-        let manager: MediaPlayerManager
-        @ObservedObject var videoSizeBox: PublishedBox<CGSize>
-        let fallbackVideoSize: CGSize
-        let controlsVisible: Bool
-
-        private var videoSize: CGSize {
-            videoSizeBox.value.width > 0 && videoSizeBox.value.height > 0
-                ? videoSizeBox.value
-                : fallbackVideoSize
-        }
-
-        var body: some View {
-            WindowAccessor(manager: manager, videoSize: videoSize, controlsVisible: controlsVisible)
-        }
     }
 
     private struct WindowAccessor: UIViewRepresentable {
@@ -87,14 +63,24 @@ struct VelaMacPlayerSupport: View {
         let manager: MediaPlayerManager
         let videoSize: CGSize
         let controlsVisible: Bool
+        let showPlayerWindowTitle: Bool
 
         func makeUIView(context: Context) -> SupportView {
-            SupportView(manager: manager, videoSize: videoSize, controlsVisible: controlsVisible)
+            SupportView(
+                manager: manager,
+                videoSize: videoSize,
+                controlsVisible: controlsVisible,
+                showPlayerWindowTitle: showPlayerWindowTitle
+            )
         }
 
         func updateUIView(_ uiView: SupportView, context: Context) {
             uiView.manager = manager
-            uiView.update(videoSize: videoSize, controlsVisible: controlsVisible)
+            uiView.update(
+                videoSize: videoSize,
+                controlsVisible: controlsVisible,
+                showPlayerWindowTitle: showPlayerWindowTitle
+            )
         }
 
         static func dismantleUIView(_ uiView: SupportView, coordinator: ()) {
@@ -112,22 +98,35 @@ struct VelaMacPlayerSupport: View {
         private weak var menuHost: UIView?
         private var contextMenu: UIContextMenuInteraction?
         private var dragGesture: UIPanGestureRecognizer?
-        private var dragStartFrame: CGRect?
+        private var dragOrigin: (mouse: CGPoint, frame: CGRect)?
+        private var windowObservers: [NSObjectProtocol] = []
+        private var isChangingFullScreen = false
+        private let watermark = UIImageView(image: UIImage(named: "VelaWatermark"))
         private var savedTitleVisibility: UITitlebarTitleVisibility?
         private var savedTabBarHidden: Bool?
         private var appKitWindow: NSObject?
         private var savedWindowFrame: CGRect?
+        private var savedWindowTitle: String?
+        private var savedAppKitTitleVisibility: Int?
         private var savedContentAspectRatio: CGSize?
         private var savedContentResizeIncrements: CGSize?
+        private var savedCollectionBehavior: UInt?
         private var savedWindowButtonHidden: [UInt: Bool] = [:]
         private var lockedAspectRatio: CGFloat?
         private var videoSize: CGSize
         private var controlsVisible: Bool
+        private var showPlayerWindowTitle: Bool
 
-        init(manager: MediaPlayerManager, videoSize: CGSize, controlsVisible: Bool) {
+        init(
+            manager: MediaPlayerManager,
+            videoSize: CGSize,
+            controlsVisible: Bool,
+            showPlayerWindowTitle: Bool
+        ) {
             self.manager = manager
             self.videoSize = videoSize
             self.controlsVisible = controlsVisible
+            self.showPlayerWindowTitle = showPlayerWindowTitle
             super.init(frame: .zero)
             isUserInteractionEnabled = false
         }
@@ -147,9 +146,10 @@ struct VelaMacPlayerSupport: View {
             }
         }
 
-        func update(videoSize: CGSize, controlsVisible: Bool) {
+        func update(videoSize: CGSize, controlsVisible: Bool, showPlayerWindowTitle: Bool) {
             self.videoSize = videoSize
             self.controlsVisible = controlsVisible
+            self.showPlayerWindowTitle = showPlayerWindowTitle
             updateAppKitWindow()
         }
 
@@ -167,6 +167,11 @@ struct VelaMacPlayerSupport: View {
             if let appKitWindow = VelaMiniPlayer.appKitWindow(for: window) {
                 self.appKitWindow = appKitWindow
                 savedWindowFrame = VelaMiniPlayer.frame(of: appKitWindow)
+                let currentWindowTitle = appKitWindow.value(forKey: "title") as? String
+                savedWindowTitle = currentWindowTitle?.isEmpty == false
+                    ? currentWindowTitle
+                    : Bundle.main.object(forInfoDictionaryKey: "CFBundleDisplayName") as? String
+                savedAppKitTitleVisibility = (appKitWindow.value(forKey: "titleVisibility") as? NSNumber)?.intValue
                 savedContentAspectRatio = VelaMiniPlayer.sizeValue("contentAspectRatio", on: appKitWindow)
                 savedContentResizeIncrements = VelaMiniPlayer.sizeValue("contentResizeIncrements", on: appKitWindow)
                 for buttonType in VelaMiniPlayer.standardWindowButtonTypes {
@@ -200,15 +205,43 @@ struct VelaMacPlayerSupport: View {
             let dragGesture = UIPanGestureRecognizer(target: self, action: #selector(dragWindow(_:)))
             dragGesture.delegate = self
             host.addGestureRecognizer(dragGesture)
-            // The player already owns pan recognizers for supplements and seeking. A window
-            // drag must win on the Mac; simple clicks still pass through because a pan only
-            // begins after pointer movement.
+            // Supplements and seeking already use pan gestures. Window dragging wins when
+            // the pointer moves, while ordinary clicks still reach the player unchanged.
             for recognizer in Self.descendantPanGestures(in: host) where recognizer !== dragGesture {
                 recognizer.require(toFail: dragGesture)
             }
             menuHost = host
             contextMenu = interaction
             self.dragGesture = dragGesture
+            watermark.contentMode = .scaleAspectFit
+            watermark.alpha = 0.35
+            watermark.isUserInteractionEnabled = false
+            // Keep the mark clear of the title-bar and the player's close/title row.
+            watermark.frame = CGRect(x: 18, y: 90, width: 48, height: 48)
+            window.addSubview(watermark)
+            if let appKitWindow {
+                for name in ["NSWindowWillEnterFullScreenNotification", "NSWindowWillExitFullScreenNotification", "NSWindowDidEnterFullScreenNotification", "NSWindowDidExitFullScreenNotification", "NSWindowDidFailToEnterFullScreenNotification"] {
+                    windowObservers.append(NotificationCenter.default.addObserver(
+                        forName: Notification.Name(name), object: appKitWindow, queue: .main
+                    ) { [weak self] notification in
+                        MainActor.assumeIsolated {
+                            guard let self, let native = self.appKitWindow else { return }
+                            if notification.name.rawValue.contains("Will") {
+                                self.isChangingFullScreen = true
+                                self.watermark.isHidden = true
+                                VelaMiniPlayer.setContentSize(CGSize(width: 1, height: 1), selector: "setContentResizeIncrements:", on: native)
+                            } else {
+                                self.isChangingFullScreen = false
+                                self.lockedAspectRatio = nil
+                                self.updateAppKitWindow()
+                            }
+                        }
+                    })
+                }
+                let behavior = appKitWindow.value(forKey: "collectionBehavior") as? UInt ?? 0
+                savedCollectionBehavior = behavior
+                appKitWindow.setValue((behavior | (1 << 7)) & ~(1 << 8), forKey: "collectionBehavior")
+            }
             updateAppKitWindow()
         }
 
@@ -216,13 +249,21 @@ struct VelaMacPlayerSupport: View {
             guard let window = attachedWindow else { return }
 
             VelaMiniPlayer.shared.exit(animated: false)
+            windowObservers.forEach(NotificationCenter.default.removeObserver)
+            windowObservers.removeAll()
+            watermark.removeFromSuperview()
+            dragOrigin = nil
 
             if let appKitWindow {
                 restoreResizeConstraint(on: appKitWindow)
                 if let savedWindowFrame, !VelaMiniPlayer.isFullScreen(appKitWindow) {
                     VelaMiniPlayer.setFrame(savedWindowFrame, on: appKitWindow)
                 }
+                restoreWindowTitle(on: appKitWindow)
                 restoreWindowButtons(on: appKitWindow)
+                if let savedCollectionBehavior {
+                    appKitWindow.setValue(savedCollectionBehavior, forKey: "collectionBehavior")
+                }
             }
 
             if let savedTitleVisibility {
@@ -242,25 +283,30 @@ struct VelaMacPlayerSupport: View {
             savedTabBarHidden = nil
             contextMenu = nil
             dragGesture = nil
-            dragStartFrame = nil
             menuHost = nil
             attachedWindow = nil
             appKitWindow = nil
             savedWindowFrame = nil
+            savedWindowTitle = nil
+            savedAppKitTitleVisibility = nil
             savedContentAspectRatio = nil
             savedContentResizeIncrements = nil
+            savedCollectionBehavior = nil
             savedWindowButtonHidden.removeAll()
             lockedAspectRatio = nil
         }
 
         private func updateAppKitWindow() {
             guard let appKitWindow else { return }
+            updateWindowTitle(on: appKitWindow)
             updateWindowButtons(on: appKitWindow)
             lockWindowAspectRatio(on: appKitWindow)
         }
 
         private func lockWindowAspectRatio(on appKitWindow: NSObject) {
             guard !VelaMiniPlayer.shared.isActive,
+                  !isChangingFullScreen,
+                  !VelaMiniPlayer.isFullScreen(appKitWindow),
                   videoSize.width > 0,
                   videoSize.height > 0
             else { return }
@@ -350,35 +396,60 @@ struct VelaMacPlayerSupport: View {
             }
         }
 
+        private func updateWindowTitle(on appKitWindow: NSObject) {
+            attachedWindow?.bringSubviewToFront(watermark)
+            watermark.isHidden = !showPlayerWindowTitle || isChangingFullScreen || VelaMiniPlayer.isFullScreen(appKitWindow)
+            attachedWindow?.windowScene?.titlebar?.titleVisibility = .hidden
+            appKitWindow.setValue("", forKey: "title")
+            appKitWindow.setValue(NSNumber(value: 1), forKey: "titleVisibility")
+        }
+
+        private func restoreWindowTitle(on appKitWindow: NSObject) {
+            if let savedWindowTitle {
+                appKitWindow.setValue(savedWindowTitle, forKey: "title")
+            }
+            if let savedAppKitTitleVisibility {
+                appKitWindow.setValue(NSNumber(value: savedAppKitTitleVisibility), forKey: "titleVisibility")
+            }
+        }
+
         // MARK: Window dragging
 
         @objc
         private func dragWindow(_ gesture: UIPanGestureRecognizer) {
-            guard let host = menuHost,
-                  let appKitWindow,
+            guard let appKitWindow,
                   !VelaMiniPlayer.isFullScreen(appKitWindow)
             else { return }
 
             switch gesture.state {
             case .began:
-                dragStartFrame = VelaMiniPlayer.frame(of: appKitWindow)
+                if let mouse = VelaMiniPlayer.mouseLocation, let frame = VelaMiniPlayer.frame(of: appKitWindow) {
+                    dragOrigin = (mouse, frame)
+                }
             case .changed:
-                guard let dragStartFrame else { return }
-                let translation = gesture.translation(in: host)
-                let movedFrame = dragStartFrame.offsetBy(dx: translation.x, dy: -translation.y)
+                guard let start = dragOrigin, let mouse = VelaMiniPlayer.mouseLocation else { return }
+                // Both positions are in AppKit screen coordinates, independent of the moving view.
+                let movedFrame = start.frame.offsetBy(dx: mouse.x - start.mouse.x, dy: mouse.y - start.mouse.y)
                 VelaMiniPlayer.setFrame(movedFrame, on: appKitWindow, animate: false)
             case .ended, .cancelled, .failed:
-                dragStartFrame = nil
+                dragOrigin = nil
             default:
                 break
             }
         }
 
-        func gestureRecognizer(
-            _ gestureRecognizer: UIGestureRecognizer,
-            shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
-        ) -> Bool {
-            false
+        override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+            guard gestureRecognizer === dragGesture, let appKitWindow else { return true }
+            return !VelaMiniPlayer.isFullScreen(appKitWindow)
+        }
+
+        func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+            var view = touch.view
+            while let candidate = view {
+                if candidate.accessibilityIdentifier == "VelaTimeline" || candidate is UIControl { return false }
+                view = candidate.superview
+            }
+            return true
         }
 
         private static func tabBarController(in window: UIWindow) -> UITabBarController? {
@@ -448,6 +519,26 @@ struct VelaMacPlayerSupport: View {
 /// methods at runtime.
 @MainActor
 final class VelaMiniPlayer {
+
+    static var mouseLocation: CGPoint? {
+        (NSClassFromString("NSEvent") as? NSObject.Type)?.value(forKey: "mouseLocation")
+            .flatMap { ($0 as? NSValue)?.cgPointValue }
+    }
+
+    static func toggleFullScreen() {
+        guard let window = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene })
+            .flatMap(\.windows).first(where: \.isKeyWindow),
+            let native = appKitWindow(for: window) else { return }
+        if shared.isActive { shared.exit(animated: false) }
+        native.perform(NSSelectorFromString("toggleFullScreen:"), with: nil)
+    }
+
+    static func leaveFullScreen() {
+        guard let window = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene })
+            .flatMap(\.windows).first(where: \.isKeyWindow),
+            let native = appKitWindow(for: window), isFullScreen(native) else { return }
+        native.perform(NSSelectorFromString("toggleFullScreen:"), with: nil)
+    }
 
     static let shared = VelaMiniPlayer()
 

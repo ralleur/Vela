@@ -106,6 +106,15 @@ struct VelaLanguagePresetButtons: View {
 
     private struct Row: View {
 
+        @AppStorage("vela.quick.enabled") private var quickEnabled = true
+        @AppStorage("vela.quick.custom") private var custom = false
+        @AppStorage("vela.quick.audio.0") private var audio0 = "en"
+        @AppStorage("vela.quick.audio.1") private var audio1 = "en"
+        @AppStorage("vela.quick.audio.2") private var audio2 = "app"
+        @AppStorage("vela.quick.subtitle.0") private var subtitle0 = "en"
+        @AppStorage("vela.quick.subtitle.1") private var subtitle1 = "app"
+        @AppStorage("vela.quick.subtitle.2") private var subtitle2 = "off"
+
         @EnvironmentObject
         private var manager: MediaPlayerManager
 
@@ -113,7 +122,22 @@ struct VelaLanguagePresetButtons: View {
         var item: MediaPlayerItem
 
         private var availablePresets: [VelaLanguagePreset] {
-            VelaLanguagePreset.availablePresets(
+            guard quickEnabled else { return [] }
+            if custom {
+                guard item.subtitleStreams.contains(where: { $0.isForced != true }) else { return [] }
+                var seen = Set<String>()
+                return zip([audio0, audio1, audio2], [subtitle0, subtitle1, subtitle2]).compactMap { audio, subtitle in
+                    let language = VelaLanguage.appLanguage
+                    let preset = VelaLanguagePreset(
+                        audioLanguage: audio == "app" ? language : audio,
+                        subtitleLanguage: subtitle == "off" ? nil : (subtitle == "app" ? language : subtitle),
+                        appLanguage: language
+                    )
+                    guard preset.streamIndexes(in: item) != nil, seen.insert(preset.id).inserted else { return nil }
+                    return preset
+                }
+            }
+            return VelaLanguagePreset.availablePresets(
                 appLanguage: VelaLanguage.appLanguage,
                 audioStreams: item.audioStreams,
                 subtitleStreams: item.subtitleStreams
@@ -138,7 +162,7 @@ struct VelaLanguagePresetButtons: View {
                             }
                             .font(.system(size: UIDevice.isTV ? 24 : 15, weight: .semibold))
                             .padding(.horizontal, UIDevice.isTV ? 8 : 12)
-                            .frame(height: VideoPlayer.PlaybackControls.Toolbar.buttonSize)
+                            .frame(height: UIDevice.isTV ? VideoPlayer.PlaybackControls.Toolbar.buttonSize : 28)
                         }
                         .accessibilityAddTraits(isActive ? .isSelected : [])
                     }

@@ -175,8 +175,13 @@ extension VideoPlayer.PlaybackControls {
                         .edgePadding(.horizontal)
                         .frame(maxWidth: .infinity, alignment: .leading)
                 } else {
+                    #if targetEnvironment(macCatalyst)
+                    VelaTimeline()
+                        .trackingSize($sliderSize)
+                    #else
                     capsuleSlider
                         .trackingSize($sliderSize)
+                    #endif
 
                     SplitTimeStamp()
                         .offset(y: isScrubbing ? 5 : 0)

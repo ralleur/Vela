@@ -25,4 +25,8 @@ enum VelaStrings {
     static let promptKeyCommand = "Hinweis ausführen"
     static let pictureInPicture = "Bild in Bild"
     static let pictureInPictureStop = "Bild in Bild beenden"
+    static let macWindow = "Mac-Fenster"
+    static let showPlayerWindowTitle = "Vela-Logo im Fenster anzeigen"
+    static let showPlayerWindowTitleDescription =
+        "Dezentes Logo oben links. Im Vollbild bleibt es immer ausgeblendet."
 }

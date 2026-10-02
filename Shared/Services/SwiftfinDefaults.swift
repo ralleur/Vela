@@ -91,6 +91,17 @@ extension Defaults.Keys {
 
     static let signOutOnBackground: Key<Bool> = AppKey("signOutOnBackground", default: true)
     static let signOutOnClose: Key<Bool> = AppKey("signOutOnClose", default: false)
+
+    enum Vela {
+
+        enum Mac {
+
+            static let showPlayerWindowTitle: Key<Bool> = AppKey(
+                "velaMacShowPlayerLogo",
+                default: true
+            )
+        }
+    }
 }
 
 // MARK: User

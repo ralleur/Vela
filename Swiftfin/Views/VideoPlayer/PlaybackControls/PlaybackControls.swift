@@ -91,7 +91,11 @@ extension VideoPlayer {
                 VelaPlaybackPromptOverlay()
                 VelaMacPlayerSupport()
             }
+            #if targetEnvironment(macCatalyst)
+            .modifier(VelaMacKeyCommands())
+            #else
             .modifier(VideoPlayer.KeyCommandsModifier())
+            #endif
             .animation(.linear(duration: 0.1), value: isScrubbing)
             .animation(.bouncy(duration: 0.4), value: containerState.isPresentingSupplement)
             .animation(.bouncy(duration: 0.25), value: containerState.isPresentingOverlay)

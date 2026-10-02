@@ -20,7 +20,15 @@ continued playback while the window is covered, a right-click playback menu,
 and a floating mini-player. During playback the window follows the video's
 aspect ratio, can be dragged from anywhere in the player, and hides its macOS
 window buttons together with the playback controls. Closing the player restores
-the previous menu window size and shape.
+the previous menu window size and shape. Stable whole-player window dragging
+takes precedence over player swipe gestures, except on interactive controls.
+A translucent Vela logo is shown by default in windowed playback, hidden in
+full screen, and can be disabled in Settings (⌘,). Settings also provide language,
+independent seek intervals, customizable audio/subtitle presets and 35 remappable
+playback shortcuts based on VLC for Mac. This is not VLC's entire application
+command set. Right-click the home settings button for account/server settings.
+Click the timeline to seek; hovering shows the target time and a thumbnail when
+the server provides preview images.
 
 ## Playback presets
 
