@@ -15,6 +15,8 @@ struct PosterImage<Element: Poster>: View {
     @Environment(\.self)
     private var environment
 
+    @State private var requestedWidth: CGFloat = 0
+
     private let contentMode: ContentMode
     private let element: Element
     private var pipeline: ImagePipeline
@@ -37,7 +39,7 @@ struct PosterImage<Element: Poster>: View {
     private var imageSources: [ImageSource] {
         element.imageSources(
             for: displayType,
-            size: size,
+            size: resolvedSize,
             environment: element.resolveEnvironment(environment)
         )
     }
@@ -74,6 +76,9 @@ struct PosterImage<Element: Poster>: View {
                         )
                     }
                     .accessibilityRemoveTraits(.isImage)
+                    #if targetEnvironment(macCatalyst)
+                    .id(imageSources)
+                    #endif
                     .accessibilityIgnoresInvertColors()
             }
         }
@@ -81,6 +86,22 @@ struct PosterImage<Element: Poster>: View {
             displayType,
             contentMode: contentMode
         )
+        #if targetEnvironment(macCatalyst)
+        .onGeometryChange(for: CGFloat.self) { geometry in
+            // Bucket requests, retaining the larger cached image when shrinking.
+            min(2048, ceil(geometry.size.width / 256) * 256)
+        } action: { width in
+            requestedWidth = max(requestedWidth, width)
+        }
+        #endif
+    }
+
+    private var resolvedSize: PosterDisplayType.Size {
+        #if targetEnvironment(macCatalyst)
+        .custom(width: max(size.width(for: displayType) ?? 300, requestedWidth))
+        #else
+        size
+        #endif
     }
 }
 

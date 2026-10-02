@@ -1,5 +1,9 @@
 # Vela fork of Swiftfin
 
+Beta releases stay on `0.9.x`, incrementing only the patch number (0.9.1 →
+0.9.2 → 0.9.3) until beta is explicitly declared finished. The earlier
+1.0.0/1.1.0 release labels were mistakes.
+
 This branch (`vela`) is Swiftfin with a small set of changes for the Apple TV
 and a Mac app. Upstream is `jellyfin/Swiftfin` (remote `upstream`). The app
 installs as **Vela** (`com.ralleur.vela`) with the Vela tile and replaces the

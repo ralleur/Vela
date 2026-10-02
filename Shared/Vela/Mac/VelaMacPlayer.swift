@@ -112,6 +112,9 @@ struct VelaMacPlayerSupport: View {
         private var savedContentResizeIncrements: CGSize?
         private var savedCollectionBehavior: UInt?
         private var savedWindowButtonHidden: [UInt: Bool] = [:]
+        private weak var fullScreenButton: NSObject?
+        private var savedFullScreenTarget: AnyObject?
+        private var savedFullScreenAction: Selector?
         private var lockedAspectRatio: CGFloat?
         private var videoSize: CGSize
         private var controlsVisible: Bool
@@ -216,8 +219,8 @@ struct VelaMacPlayerSupport: View {
             watermark.contentMode = .scaleAspectFit
             watermark.alpha = 0.35
             watermark.isUserInteractionEnabled = false
-            // Keep the mark clear of the title-bar and the player's close/title row.
-            watermark.frame = CGRect(x: 18, y: 90, width: 48, height: 48)
+            // Beside the traffic lights, in the original upper-left title-bar position.
+            watermark.frame = CGRect(x: 110, y: -4, width: 44, height: 44)
             window.addSubview(watermark)
             if let appKitWindow {
                 for name in ["NSWindowWillEnterFullScreenNotification", "NSWindowWillExitFullScreenNotification", "NSWindowDidEnterFullScreenNotification", "NSWindowDidExitFullScreenNotification", "NSWindowDidFailToEnterFullScreenNotification"] {
@@ -252,6 +255,7 @@ struct VelaMacPlayerSupport: View {
             windowObservers.forEach(NotificationCenter.default.removeObserver)
             windowObservers.removeAll()
             watermark.removeFromSuperview()
+            restoreFullScreenButton()
             dragOrigin = nil
 
             if let appKitWindow {
@@ -383,6 +387,7 @@ struct VelaMacPlayerSupport: View {
         }
 
         private func updateWindowButtons(on appKitWindow: NSObject) {
+            connectFullScreenButton(on: appKitWindow)
             for buttonType in VelaMiniPlayer.standardWindowButtonTypes {
                 VelaMiniPlayer.standardWindowButton(buttonType, on: appKitWindow)?
                     .setValue(!controlsVisible, forKey: "hidden")
@@ -394,6 +399,39 @@ struct VelaMacPlayerSupport: View {
                 VelaMiniPlayer.standardWindowButton(buttonType, on: appKitWindow)?
                     .setValue(wasHidden, forKey: "hidden")
             }
+        }
+
+        private func connectFullScreenButton(on window: NSObject) {
+            guard let button = VelaMiniPlayer.standardWindowButton(2, on: window), button !== fullScreenButton else { return }
+            restoreFullScreenButton()
+            fullScreenButton = button
+            savedFullScreenTarget = button.value(forKey: "target") as AnyObject?
+            typealias GetAction = @convention(c) (NSObject, Selector) -> Selector?
+            let action = NSSelectorFromString("action")
+            savedFullScreenAction = unsafeBitCast(button.method(for: action), to: GetAction.self)(button, action)
+            button.perform(NSSelectorFromString("setTarget:"), with: self)
+            setButtonAction(#selector(togglePlayerFullScreen(_:)), on: button)
+        }
+
+        private func restoreFullScreenButton() {
+            if let button = fullScreenButton {
+                button.perform(NSSelectorFromString("setTarget:"), with: savedFullScreenTarget)
+                setButtonAction(savedFullScreenAction, on: button)
+            }
+            fullScreenButton = nil
+            savedFullScreenTarget = nil
+            savedFullScreenAction = nil
+        }
+
+        private func setButtonAction(_ action: Selector?, on button: NSObject) {
+            typealias SetAction = @convention(c) (NSObject, Selector, Selector?) -> Void
+            let setter = NSSelectorFromString("setAction:")
+            unsafeBitCast(button.method(for: setter), to: SetAction.self)(button, setter, action)
+        }
+
+        @objc private func togglePlayerFullScreen(_ sender: Any?) {
+            guard !isChangingFullScreen else { return }
+            VelaMiniPlayer.toggleFullScreen()
         }
 
         private func updateWindowTitle(on appKitWindow: NSObject) {

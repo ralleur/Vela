@@ -9,6 +9,9 @@ next-episode actions, and a Mac Catalyst app.
 Vela is not an official Jellyfin or Swiftfin application. Jellyfin and Swiftfin
 are trademarks of their respective owners.
 
+Vela is in beta. Releases use `0.9.x`, incrementing the last number only until
+the beta ends. Earlier 1.0.0/1.1.0 labels were numbering mistakes.
+
 ## Platforms
 
 - Apple TV: the `Swiftfin tvOS` target, distributed as **Vela**
