@@ -11,10 +11,6 @@ import Defaults
 import Foundation
 import JellyfinAPI
 
-// TODO: respond properly to end of playback
-//       - when item changes
-// TODO: only send stop on manager stop, not per-item
-
 class MediaProgressObserver: ViewModel, MediaPlayerObserver {
 
     weak var manager: MediaPlayerManager? {
@@ -27,10 +23,11 @@ class MediaProgressObserver: ViewModel, MediaPlayerObserver {
 
     private let timer = PokeIntervalTimer()
     private var hasSentStart = false
-    private var item: MediaPlayerItem?
+    private var hasFinished = false
+    private weak var item: JellyfinMediaPlayerItem?
     private var lastPlaybackRequestStatus: MediaPlayerManager.PlaybackRequestStatus = .playing
 
-    init(item: MediaPlayerItem) {
+    init(item: JellyfinMediaPlayerItem) {
         self.item = item
         super.init()
     }
@@ -77,19 +74,26 @@ class MediaProgressObserver: ViewModel, MediaPlayerObserver {
             .store(in: &cancellables)
     }
 
-    private func endPlaybackSession() {
-        guard let item else { return }
-        sendStopReport(for: item, seconds: manager?.seconds)
+    func finish(at position: Duration?) {
+        guard !hasFinished else { return }
+        hasFinished = true
+        timer.stop()
+        cancellables = []
+        if let item { sendStopReport(for: item, seconds: position) }
+        item = nil
     }
+
+    private func endPlaybackSession() { finish(at: manager?.seconds) }
 
     private func playbackItemDidChange(_ newItem: MediaPlayerItem?) {
         timer.poke()
 
         if let item, newItem !== item {
             endPlaybackSession()
-            self.item = newItem
+            self.item = nil
             self.hasSentStart = false
-            sendReport()
+            timer.stop()
+            cancellables = []
         }
     }
 
@@ -98,11 +102,9 @@ class MediaProgressObserver: ViewModel, MediaPlayerObserver {
         lastPlaybackRequestStatus = newStatus
     }
 
-    // TODO: respond to error
-    // TODO: respond properly to ended
     private func didReceive(action: MediaPlayerManager._Action) {
         switch action {
-        case .stop:
+        case .stop, .error:
             endPlaybackSession()
             timer.stop()
             cancellables = []
@@ -111,7 +113,7 @@ class MediaProgressObserver: ViewModel, MediaPlayerObserver {
         }
     }
 
-    private func sendStartReport(for item: MediaPlayerItem, seconds: Duration?) {
+    private func sendStartReport(for item: JellyfinMediaPlayerItem, seconds: Duration?) {
 
         #if DEBUG
         guard Defaults[.sendProgressReports] else { return }
@@ -135,7 +137,7 @@ class MediaProgressObserver: ViewModel, MediaPlayerObserver {
         }
     }
 
-    private func sendStopReport(for item: MediaPlayerItem, seconds: Duration?) {
+    private func sendStopReport(for item: JellyfinMediaPlayerItem, seconds: Duration?) {
 
         #if DEBUG
         guard Defaults[.sendProgressReports] else { return }
@@ -155,7 +157,7 @@ class MediaProgressObserver: ViewModel, MediaPlayerObserver {
         }
     }
 
-    private func sendProgressReport(for item: MediaPlayerItem, seconds: Duration?, isPaused: Bool = false) {
+    private func sendProgressReport(for item: JellyfinMediaPlayerItem, seconds: Duration?, isPaused: Bool = false) {
 
         #if DEBUG
         guard Defaults[.sendProgressReports] else { return }

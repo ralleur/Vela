@@ -2,13 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<!-- Vela Mac app: Swiftfin's entitlements without Wi-Fi info, which Mac Catalyst
-	     cannot have. Sandbox and outgoing connections come from the target's build settings.
-	     The keychain group makes Xcode sign with a provisioning profile; without one the
-	     keychain refuses Swiftfin's access token and the app stops right after sign-in. -->
 	<key>keychain-access-groups</key>
 	<array>
 		<string>$(AppIdentifierPrefix)$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	</array>
+	<key>com.apple.security.files.user-selected.read-write</key>
+	<true/>
+	<key>com.apple.security.files.bookmarks.app-scope</key>
+	<true/>
 </dict>
 </plist>

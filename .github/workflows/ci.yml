@@ -12,6 +12,15 @@ on:
     branches: [ main ]
 
 jobs:
+  playback-logic:
+    name: Playback source and Vela logic
+    runs-on: macos-26
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+      - name: Run source-independent playback and Vela tests
+        run: swift test --package-path Tools/VelaLogicTests
+
   build:
     name: "Build 🔨"
     if: github.event.pull_request.draft == false

@@ -76,7 +76,7 @@ class EpisodeMediaPlayerQueue: ViewModel, MediaPlayerQueue {
                 self.hasPreviousItem = false
             }
 
-            try await self.getAdjacentEpisodes(for: newItem?.baseItem)
+            try await self.getAdjacentEpisodes(for: (newItem as? JellyfinMediaPlayerItem)?.baseItem)
         }
         .asAnyCancellable()
     }
@@ -125,7 +125,7 @@ class EpisodeMediaPlayerQueue: ViewModel, MediaPlayerQueue {
         if let nextItem {
             nextProvider = MediaPlayerItemProvider(item: nextItem) { [weak self] item, modifyItem in
                 let bitrate = await self?.manager?.playbackBitrate ?? Defaults[.VideoPlayer.Playback.appMaximumBitrate]
-                return try await MediaPlayerItem.build(for: item, requestedBitrate: bitrate) { item in
+                return try await JellyfinMediaPlayerItem.build(for: item, requestedBitrate: bitrate) { item in
                     item.userData?.playbackPositionTicks = .zero
                     modifyItem?(&item)
                 }
@@ -135,7 +135,7 @@ class EpisodeMediaPlayerQueue: ViewModel, MediaPlayerQueue {
         if let previousItem {
             previousProvider = MediaPlayerItemProvider(item: previousItem) { [weak self] item, modifyItem in
                 let bitrate = await self?.manager?.playbackBitrate ?? Defaults[.VideoPlayer.Playback.appMaximumBitrate]
-                return try await MediaPlayerItem.build(for: item, requestedBitrate: bitrate) { item in
+                return try await JellyfinMediaPlayerItem.build(for: item, requestedBitrate: bitrate) { item in
                     item.userData?.playbackPositionTicks = .zero
                     modifyItem?(&item)
                 }
@@ -175,7 +175,7 @@ extension EpisodeMediaPlayerQueue {
 
         private func select(episode: BaseItemDto) {
             let provider = MediaPlayerItemProvider(item: episode) { [manager] item, modifyItem in
-                try await MediaPlayerItem.build(
+                try await JellyfinMediaPlayerItem.build(
                     for: item,
                     requestedBitrate: manager.playbackBitrate,
                     modifyItem: modifyItem
@@ -186,7 +186,7 @@ extension EpisodeMediaPlayerQueue {
         }
 
         private func selectInitialSeason() {
-            if let seasonID = manager.item.seasonID, let season = viewModel.elements[id: seasonID] {
+            if let seasonID = manager.jellyfinItem?.seasonID, let season = viewModel.elements[id: seasonID] {
                 if season.elements.isEmpty {
                     season.refresh()
                 }

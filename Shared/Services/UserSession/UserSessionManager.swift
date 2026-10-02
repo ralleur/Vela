@@ -192,6 +192,11 @@ final class UserSessionManager: ObservableObject {
 
     @MainActor
     func appWillEnterForeground() async {
+        // File playback neither refreshes nor replaces the user's server session.
+        guard state != .initial else { return }
+        #if targetEnvironment(macCatalyst)
+        guard !VelaLocalFiles.shared.isOpeningOrPlaying else { return }
+        #endif
         await refreshCurrentSession()
 
         Task {

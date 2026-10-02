@@ -6,210 +6,139 @@
 // Copyright (c) 2026 Jellyfin & Jellyfin Contributors
 //
 
-import Defaults
-import JellyfinAPI
+// Vela playback abstractions. Licensed under MPL-2.0.
+import Combine
+import Foundation
 import SwiftUI
 
-// TODO: get preview image for current manager seconds?
-//       - would make scrubbing image possibly ready before scrubbing
-// TODO: fix leaks
-//       - made from publishers of observers not being cancelled
-
+/// A playable resource plus source-specific policy hooks. Engine control, selection and
+/// metadata are shared; a source owns its access lease, progress observer and rebuild policy.
 @MainActor
-class MediaPlayerItem: ViewModel, MediaPlayerObserver {
-
+class MediaPlayerItem: ObservableObject, MediaPlayerObserver {
     typealias ThumbnailProvider = () async -> UIImage?
-
     @Published
-    var selectedAudioStreamIndex: Int? = nil {
+    var metadata: PlaybackMedia
+    @Published
+    var audioStreams: [PlaybackTrack] = []
+    @Published
+    var subtitleStreams: [PlaybackTrack] = []
+    @Published
+    var videoStreams: [PlaybackTrack] = []
+    @Published
+    var selectedAudioStreamIndex: Int? {
         didSet {
-            guard let selectedAudioStreamIndex, selectedAudioStreamIndex != oldValue else { return }
+            guard selectedAudioStreamIndex != oldValue else { return }
             manager?.setTrack(type: .audio, from: oldValue, to: selectedAudioStreamIndex)
         }
     }
 
     @Published
-    var selectedSubtitleStreamIndex: Int? = nil {
+    var selectedSubtitleStreamIndex: Int? = -1 {
         didSet {
             guard selectedSubtitleStreamIndex != oldValue else { return }
             manager?.setTrack(type: .subtitle, from: oldValue, to: selectedSubtitleStreamIndex)
         }
     }
 
-    private(set) var indexMap: MediaTrackIndexMap
-
     weak var manager: MediaPlayerManager? {
-        didSet {
-            for var o in observers {
-                o.manager = manager
-            }
-        }
+        didSet { for var observer in observers {
+            observer.manager = manager
+        } }
     }
 
+    var retainedResources: [AnyObject] = []
     var observers: [any MediaPlayerObserver] = []
-
-    let baseItem: BaseItemDto
-    let deviceProfile: DeviceProfile
-    let mediaSource: MediaSourceInfo
-    let playSessionID: String
-    let previewImageProvider: (any PreviewImageProvider)?
-    let thumbnailProvider: ThumbnailProvider?
+    var indexMap = MediaTrackIndexMap()
     let url: URL
+    var previewImageProvider: (any PreviewImageProvider)?
+    var thumbnailProvider: ThumbnailProvider?
+    var sidecarSubtitles: [PlaybackTrack] {
+        subtitleStreams.filter { $0.externalURL != nil }
+    }
 
-    let audioStreams: [MediaStream]
-    let subtitleStreams: [MediaStream]
-    let videoStreams: [MediaStream]
+    var requestedBitrate: PlaybackBitrate {
+        .max
+    }
 
-    let requestedBitrate: PlaybackBitrate
+    var canSetBitrate: Bool {
+        false
+    }
 
-    // MARK: init
+    var autoplayNextItem: Bool {
+        false
+    }
 
-    init(
-        baseItem: BaseItemDto,
-        mediaSource: MediaSourceInfo,
-        playSessionID: String,
-        url: URL,
-        requestedBitrate: PlaybackBitrate = .max,
-        deviceProfile: DeviceProfile,
-        initialAudioStreamIndex: Int? = nil,
-        initialSubtitleStreamIndex: Int? = nil,
-        previewImageProvider: (any PreviewImageProvider)? = nil,
-        thumbnailProvider: ThumbnailProvider? = nil
-    ) {
-        self.baseItem = baseItem
-        self.mediaSource = mediaSource
-        self.playSessionID = playSessionID
-        self.requestedBitrate = requestedBitrate
-        self.deviceProfile = deviceProfile
-        self.previewImageProvider = previewImageProvider
-        self.thumbnailProvider = thumbnailProvider
+    var discoversTracks: Bool {
+        true
+    }
+
+    init(metadata: PlaybackMedia, url: URL) {
+        self.metadata = metadata
         self.url = url
-
-        let mediaStreams = mediaSource.mediaStreams
-        let isTranscoding = mediaSource.transcodingURL != nil
-
-        // TODO: Fix External Audio Tracks & Re-Enable
-        self.audioStreams = mediaStreams?.filter { $0.type == .audio && $0.isExternal != true } ?? []
-        self.subtitleStreams = mediaStreams?.filter {
-            $0.type == .subtitle
-                && $0.deliveryMethod != .drop
-                && !(Defaults[.VideoPlayer.Playback.compatibilityMode] == .directPlay
-                    && $0.isExternal == true
-                    && $0.isTextSubtitleStream != true)
-        } ?? []
-        self.videoStreams = mediaStreams?.filter { $0.type == .video } ?? []
-
-        let resolvedAudioStreamIndex: Int = initialAudioStreamIndex
-            ?? mediaSource.defaultAudioStreamIndex
-            ?? mediaSource.mediaStreams?.first(where: { $0.type == .audio })?.index ?? 0
-
-        self.indexMap = MediaTrackIndexMap.build(
-            from: mediaStreams ?? [],
-            for: isTranscoding ? .transcode : .directPlay,
-            selectedAudioStreamIndex: resolvedAudioStreamIndex
-        )
-
-        super.init()
-
-        selectedAudioStreamIndex = resolvedAudioStreamIndex
-
-        selectedSubtitleStreamIndex = initialSubtitleStreamIndex
-            ?? mediaSource.defaultSubtitleStreamIndex
-            ?? -1
-
-        observers.append(MediaProgressObserver(item: self))
     }
 
-    /// Decides whether a track change can be performed by the player in place, or whether the server must produce a new stream.
-    func isRebuildRequired(type: MediaStreamType, from oldIndex: Int?, to newIndex: Int?) -> Bool {
-        let isTranscoding = mediaSource.transcodingURL != nil
+    func isRebuildRequired(type: PlaybackTrack.Kind, from: Int?, to: Int?) -> Bool {
+        false
+    }
 
-        // Disabling a track is ALWAYS a local-only operation.
-        guard let newIndex, newIndex != -1 else { return false }
+    func rebuild(audio: Int?, subtitle: Int?, bitrate: PlaybackBitrate?, position: Duration) async throws -> MediaPlayerItem {
+        self
+    }
 
+    func makeSupplements(queue: AnyMediaPlayerQueue?) -> [any MediaPlayerSupplement] {
+        []
+    }
+
+    /// Called before replacement or teardown, while the final position is still available.
+    func finish(at position: Duration) {}
+
+    func switchTrack(type: PlaybackTrack.Kind, index: Int?) {
+        let mapped = indexMap.playerIndex(for: index)
         switch type {
-        case .audio:
-
-            // Transcodes contain a single audio track and MUST rebuild.
-            if isTranscoding {
-                return true
-            }
-
-            guard let newStream = audioStreams.first(where: { $0.index == newIndex }) else { return true }
-
-            // TODO: When audio playback exists then get the type dynamically.
-            return !deviceProfile.canPlay(
-                type: .video,
-                audioCodec: newStream.codec,
-                container: mediaSource.container
-            )
-
-        case .subtitle:
-            // Optional (do not guard) since this could be -1 for disabled.
-            let oldStream = oldIndex.flatMap { idx in subtitleStreams.first { $0.index == idx } }
-
-            // Transitioning away from encoded subtitles always requires a rebuild so the server stops burning them into the video.
-            if oldStream?.deliveryMethod == .encode {
-                return true
-            }
-
-            // Catch if the new stream doesn't exist. If non-existent this will fallback to -1 and disable locally.
-            guard let newStream = subtitleStreams.first(where: { $0.index == newIndex }) else { return false }
-
-            if newStream.isExternal == true {
-
-                // External subtitles can only be loaded as sidecars when the profile allows external or HLS delivery for the format.
-                // E.G, This should disable external PGS for VLC since VLC cannot play them.
-                return !(deviceProfile.canPlay(subtitleFormat: newStream.codec, method: .external)
-                    || deviceProfile.canPlay(subtitleFormat: newStream.codec, method: .hls))
-            }
-
-            // Embedded subtitles are in the source container.
-            // Only reachable while direct-playing AND when the profile supports embed delivery.
-            return isTranscoding || !deviceProfile.canPlay(subtitleFormat: newStream.codec, method: .embed)
-
-        default:
-            return false
+        case .audio: (manager?.proxy as? any MediaPlayerAudioTrackConfigurable)?.setAudioStream(index: mapped)
+        case .subtitle: (manager?.proxy as? any MediaPlayerSubtitleTrackConfigurable)?.setSubtitleStream(index: mapped)
+        case .video: break
         }
     }
 
-    /// Switches audio or subtitles without rebuilding the stream.
-    func switchTrack(type: MediaStreamType, index: Int?) {
-        let playerIndex = indexMap.playerIndex(for: index)
-
-        switch type {
-        case .audio:
-            guard let playerIndex,
-                  let proxy = manager?.proxy as? any MediaPlayerAudioTrackConfigurable
-            else { return }
-            proxy.setAudioStream(.init(index: playerIndex))
-        case .subtitle:
-            guard let proxy = manager?.proxy as? any MediaPlayerSubtitleTrackConfigurable else { return }
-            // Disable subtitles until the requested track is available.
-            proxy.setSubtitleStream(.init(index: playerIndex ?? -1))
-        default:
-            return
-        }
-    }
-
-    /// Replaces estimated track indexes with those reported by the player.
-    func setTrackIndexes(_ indexMap: MediaTrackIndexMap) {
-        self.indexMap = indexMap
+    func setTrackIndexes(_ indexes: MediaTrackIndexMap) {
+        indexMap = indexes
         switchTrack(type: .audio, index: selectedAudioStreamIndex)
         switchTrack(type: .subtitle, index: selectedSubtitleStreamIndex)
     }
 
-    /// Refreshes sidecar mappings and reapplies the selected subtitle.
-    func updateSubtitleTrackMapping(subtitleTracks: [(playerIndex: Int, id: String)]) {
-        let sidecars: [(jellyfinIndex: Int, url: URL)] = subtitleStreams.sidecarSubtitles.compactMap { subtitle in
-            guard let jellyfinIndex = subtitle.index,
-                  let client = manager?.userSession?.client,
-                  let url = subtitle.url(with: client)
-            else { return nil }
-            return (jellyfinIndex, url)
+    /// Engine discovery uses per-kind identifiers. Offset subtitle identities to avoid collisions.
+    func updateEngineTracks(audio: [PlaybackTrack], subtitles: [PlaybackTrack]) {
+        var map = MediaTrackIndexMap()
+        audioStreams = audio.map { track in
+            if let index = track.index {
+                map.setPlayerIndex(index, for: index)
+            }
+            return track
         }
-
-        indexMap = indexMap.resolvingSidecarSubtitles(sidecars, subtitleTracks: subtitleTracks)
-        switchTrack(type: .subtitle, index: selectedSubtitleStreamIndex)
+        subtitleStreams = subtitles.map { track in
+            var track = track
+            if let index = track.index {
+                track.index = index + 10000
+                map.setPlayerIndex(index, for: index + 10000)
+            }
+            return track
+        }
+        if selectedAudioStreamIndex == nil {
+            selectedAudioStreamIndex = audioStreams.first?.index
+        }
+        setTrackIndexes(map)
+        manager?.objectWillChange.send()
     }
+
+    func updateDuration(_ duration: Duration?) {
+        guard let duration, duration > .zero, metadata.runtime != duration else { return }
+        metadata.runtime = duration
+        manager?.updateMetadata(metadata)
+    }
+}
+
+protocol PlaybackItemProviding {
+    var metadata: PlaybackMedia { get }
+    func callAsFunction() async throws -> MediaPlayerItem
 }

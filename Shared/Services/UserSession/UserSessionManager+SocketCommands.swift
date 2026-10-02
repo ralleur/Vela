@@ -82,7 +82,7 @@ extension UserSessionManager {
 
     @MainActor
     private func onReceive(playstateCommand: PlaystateRequest) {
-        guard let mediaPlayerManager else { return }
+        guard let mediaPlayerManager, mediaPlayerManager.playbackItem is JellyfinMediaPlayerItem else { return }
 
         switch playstateCommand.command {
         case .fastForward:
@@ -117,12 +117,15 @@ extension UserSessionManager {
 
         switch generalCommand.name {
         case .setAudioStreamIndex:
+            guard mediaPlayerManager?.playbackItem is JellyfinMediaPlayerItem else { return }
             guard let index = generalCommand.arguments?["Index"], let index = Int(index) else { return }
             mediaPlayerManager?.playbackItem?.selectedAudioStreamIndex = index
         case .setMaxStreamingBitrate:
+            guard mediaPlayerManager?.playbackItem is JellyfinMediaPlayerItem else { return }
             guard let bitrate = generalCommand.arguments?["Bitrate"], let bitrate = Int(bitrate) else { return }
             mediaPlayerManager?.setBitrate(bitrate: PlaybackBitrate(for: bitrate))
         case .setSubtitleStreamIndex:
+            guard mediaPlayerManager?.playbackItem is JellyfinMediaPlayerItem else { return }
             guard let index = generalCommand.arguments?["Index"], let index = Int(index) else { return }
             mediaPlayerManager?.playbackItem?.selectedSubtitleStreamIndex = index
         case .displayContent:

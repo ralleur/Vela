@@ -4,29 +4,34 @@
 // file, you can obtain one at https://mozilla.org/MPL/2.0/.
 //
 
+import Foundation
+
 /// Texts for the Vela additions. Kept out of Swiftfin's generated strings so
 /// upstream translation updates never conflict with them.
 enum VelaStrings {
+    static func text(_ key: String) -> String {
+        Bundle.main.localizedString(forKey: key, value: key, table: "Vela")
+    }
 
-    static let newEpisode = "Neue Folge"
+    static let newEpisode = text("New Episode")
 
-    static let recentlyAddedMovies = "Zuletzt hinzugefügt: Filme"
-    static let recentlyAddedSeries = "Zuletzt hinzugefügt: Serien"
-    static let newestMovies = "Neueste Filme"
-    static let newestSeries = "Neueste Serien"
+    static let recentlyAddedMovies = text("Recently Added: Movies")
+    static let recentlyAddedSeries = text("Recently Added: Series")
+    static let newestMovies = text("Newest Movies")
+    static let newestSeries = text("Newest Series")
 
-    static let skipIntro = "Intro überspringen"
-    static let skipRecap = "Rückblick überspringen"
-    static let skipPreview = "Vorschau überspringen"
-    static let skipCommercial = "Werbung überspringen"
-    static let nextEpisode = "Nächste Folge"
-    static let markFavorite = "Als Favorit markieren"
-    static let isFavorite = "Favorit"
-    static let promptKeyCommand = "Hinweis ausführen"
-    static let pictureInPicture = "Bild in Bild"
-    static let pictureInPictureStop = "Bild in Bild beenden"
-    static let macWindow = "Mac-Fenster"
-    static let showPlayerWindowTitle = "Vela-Logo im Fenster anzeigen"
+    static let skipIntro = text("Skip Intro")
+    static let skipRecap = text("Skip Recap")
+    static let skipPreview = text("Skip Preview")
+    static let skipCommercial = text("Skip Commercial")
+    static let nextEpisode = text("Next Episode")
+    static let markFavorite = text("Mark as Favorite")
+    static let isFavorite = text("Favorite")
+    static let promptKeyCommand = text("Perform Playback Prompt")
+    static let pictureInPicture = text("Mini Player")
+    static let pictureInPictureStop = text("Exit Mini Player")
+    static let macWindow = text("Mac Window")
+    static let showPlayerWindowTitle = text("Show Vela Logo in Window")
     static let showPlayerWindowTitleDescription =
-        "Dezentes Logo oben links. Im Vollbild bleibt es immer ausgeblendet."
+        text("Subtle logo at the top left. Always hidden in fullscreen.")
 }

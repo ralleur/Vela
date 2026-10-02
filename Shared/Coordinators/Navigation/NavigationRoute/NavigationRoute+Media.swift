@@ -94,11 +94,11 @@ struct VideoPlayerViewShim: View {
 
     var body: some View {
         Group {
-            switch Defaults[.VideoPlayer.videoPlayerType] {
+            switch manager.preferredPlayer ?? Defaults[.VideoPlayer.videoPlayerType] {
             case .native:
                 NativeVideoPlayer()
             case .vlc, .mpv:
-                VideoPlayer()
+                VideoPlayer(manager: manager, playerType: manager.preferredPlayer ?? Defaults[.VideoPlayer.videoPlayerType])
             }
         }
         .colorScheme(.dark) // use over `preferredColorScheme(.dark)` to not have destination change

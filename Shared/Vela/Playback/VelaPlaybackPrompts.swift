@@ -129,7 +129,7 @@ final class VelaPlaybackPrompts: ObservableObject {
         outlook = nil
         isOutlookRequested = false
 
-        guard let playbackItem else {
+        guard let playbackItem = playbackItem as? JellyfinMediaPlayerItem else {
             item = nil
             return
         }

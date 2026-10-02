@@ -35,10 +35,11 @@ extension VideoPlayer.PlaybackControls.Toolbar {
                 filteredButtons.removeAll { $0 == .audio }
             }
 
-            if manager.playbackItem?.subtitleStreams.isEmpty == true {
+            if manager.playbackItem?.subtitleStreams.isEmpty == true, manager.playbackItem?.discoversTracks != true {
                 filteredButtons.removeAll { $0 == .subtitles }
             }
 
+            if manager.playbackItem?.canSetBitrate != true { filteredButtons.removeAll { $0 == .playbackSettings } }
             if manager.queue == nil {
                 filteredButtons.removeAll { $0 == .autoPlay }
                 filteredButtons.removeAll { $0 == .playNextItem }

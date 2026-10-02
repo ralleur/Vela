@@ -1,0 +1,18 @@
+1
+00:00:00,000 --> 00:00:05,000
+A player should
+just play the file.
+
+2
+00:00:05,000 --> 00:00:10,000
+Thank you, VideoLAN.
+Vela uses libVLC.
+
+3
+00:00:10,000 --> 00:00:15,000
+Now put your Jellyfin
+library beside it.
+
+4
+00:00:15,000 --> 00:00:20,000
+Your files. Your library.

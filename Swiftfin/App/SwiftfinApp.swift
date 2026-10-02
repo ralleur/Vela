@@ -12,9 +12,15 @@ import UIKit
 
 @main
 struct SwiftfinApp: App {
+    #if targetEnvironment(macCatalyst)
+    @UIApplicationDelegateAdaptor(VelaFileMenuDelegate.self) private var fileMenu
+    #endif
 
     init() {
         Self.configure()
+        #if DEBUG && targetEnvironment(macCatalyst)
+        VelaDebugSnapshot.install()
+        #endif
 
         UIScrollView.appearance().keyboardDismissMode = .onDrag
 
@@ -24,20 +30,40 @@ struct SwiftfinApp: App {
         SwiftfinSpotlight().addSwiftfinToSpotlight()
     }
 
+    @ViewBuilder
+    private var initialContent: some View {
+        #if DEBUG && targetEnvironment(macCatalyst)
+        if ProcessInfo.processInfo.arguments.contains("-VelaLocalOnly") {
+            // Exercising the player before any account/store/authentication startup.
+            VelaWelcomeView()
+        } else {
+            authenticatedContent
+        }
+        #else
+        authenticatedContent
+        #endif
+    }
+
+    private var authenticatedContent: some View {
+        WithLocalUserAuthentication {
+            RootView().supportedOrientations(UIDevice.isPad ? .allButUpsideDown : .portrait)
+        }
+    }
+
     var body: some Scene {
         WindowGroup {
             OverlayToastView {
                 PreferencesView {
-                    WithLocalUserAuthentication {
-                        RootView()
-                            .supportedOrientations(UIDevice.isPad ? .allButUpsideDown : .portrait)
-                    }
+                    initialContent
                     #if targetEnvironment(macCatalyst)
                     .modifier(VelaSettingsHost())
                     #endif
                 }
             }
             .ignoresSafeArea()
+            #if targetEnvironment(macCatalyst)
+            .modifier(VelaFileHost())
+            #endif
         }
     }
 }

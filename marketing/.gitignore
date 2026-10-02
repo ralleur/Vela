@@ -1,0 +1,7 @@
+# Raw capture masters and final video exports are kept outside the Git history.
+raw/
+exports/
+*.mov
+*.mp4
+*.mkv
+*.zip

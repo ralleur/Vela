@@ -1,0 +1,41 @@
+name: Project site
+on:
+  push:
+    branches: [vela]
+    paths: ['website/**', 'Tools/marketing/build-site.py', '.github/workflows/pages.yml']
+  pull_request:
+    paths: ['website/**', 'Tools/marketing/build-site.py', '.github/workflows/pages.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  build:
+    if: github.repository == 'ralleur/Vela'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: Validate and stage static site
+        run: python3 Tools/marketing/build-site.py
+      - name: Upload Pages artifact
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        with:
+          path: build/site
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/vela'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4

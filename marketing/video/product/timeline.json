@@ -1,0 +1,118 @@
+{
+  "title": "Vela — Just watch the video.",
+  "format": "1920×1080, 30 fps, silent, text-led",
+  "duration": 60,
+  "beats": [
+    {
+      "duration": 5,
+      "text": "A file. A library.\nWhy choose a different app?",
+      "asset": "",
+      "crop": "contain",
+      "action": "Hold; no simulated UI interaction",
+      "transition": "clean cut",
+      "capture_status": "typeset",
+      "voiceover": "None in silent master; optional VO is the on-screen text."
+    },
+    {
+      "duration": 5,
+      "text": "Open the file.",
+      "asset": "local-workflow.jpg",
+      "crop": "contain",
+      "action": "Actual native Open Video picker; selected MKV",
+      "transition": "clean cut",
+      "capture_status": "captured",
+      "voiceover": "None in silent master; optional VO is the on-screen text."
+    },
+    {
+      "duration": 7,
+      "text": "Vela plays it.",
+      "asset": "local-playback.mov",
+      "crop": "contain",
+      "action": "Actual local playback; live screen recording",
+      "transition": "clean cut",
+      "capture_status": "captured",
+      "voiceover": "None in silent master; optional VO is the on-screen text."
+    },
+    {
+      "duration": 5,
+      "text": "Your Jellyfin library lives here, too.",
+      "asset": "jellyfin-home.jpg",
+      "crop": "library",
+      "action": "Actual demo home; inspect the real movie row",
+      "transition": "clean cut",
+      "capture_status": "captured",
+      "voiceover": "None in silent master; optional VO is the on-screen text."
+    },
+    {
+      "duration": 5,
+      "text": "Choose a film.",
+      "asset": "jellyfin-detail.jpg",
+      "crop": "contain",
+      "action": "Actual Jellyfin detail page; Play is visible",
+      "transition": "clean cut",
+      "capture_status": "captured",
+      "voiceover": "None in silent master; optional VO is the on-screen text."
+    },
+    {
+      "duration": 5,
+      "text": "The same player.",
+      "asset": "jellyfin-playback.mov",
+      "crop": "contain",
+      "action": "Actual server playback; live screen recording",
+      "transition": "clean cut",
+      "capture_status": "captured",
+      "voiceover": "None in silent master; optional VO is the on-screen text."
+    },
+    {
+      "duration": 5,
+      "text": "Your language. Your pace.",
+      "asset": "subtitles.jpg",
+      "crop": "contain",
+      "action": "Actual embedded-subtitle menu; no invented track list",
+      "transition": "clean cut",
+      "capture_status": "captured",
+      "voiceover": "None in silent master; optional VO is the on-screen text."
+    },
+    {
+      "duration": 6,
+      "text": "Then the controls get out of the way.",
+      "asset": "player-clean.jpg",
+      "crop": "contain",
+      "action": "Real captured clean state; optional watermark off",
+      "transition": "clean cut",
+      "capture_status": "captured",
+      "voiceover": "None in silent master; optional VO is the on-screen text."
+    },
+    {
+      "duration": 6,
+      "text": "Built on Swiftfin.\nWith gratitude.",
+      "asset": "jellyfin-detail.jpg",
+      "crop": "contain",
+      "action": "Credit Swiftfin and its Apple Jellyfin client foundation",
+      "transition": "clean cut",
+      "capture_status": "captured",
+      "voiceover": "None in silent master; optional VO is the on-screen text."
+    },
+    {
+      "duration": 5,
+      "text": "No subscription. No Pro tier.\nThe whole app is free.",
+      "asset": "",
+      "crop": "contain",
+      "action": "Hold; no simulated UI interaction",
+      "transition": "clean cut",
+      "capture_status": "typeset",
+      "voiceover": "None in silent master; optional VO is the on-screen text."
+    },
+    {
+      "duration": 6,
+      "text": "Vela. Just watch the video.",
+      "asset": "player-clean.jpg",
+      "crop": "contain",
+      "action": "End card includes repository, source-beta status and film credits",
+      "transition": "clean cut",
+      "capture_status": "captured",
+      "voiceover": "None in silent master; optional VO is the on-screen text."
+    }
+  ],
+  "description": "Vela 0.9.4 beta source preview. The older 0.9.3 download predates local playback and is development-signed, not notarized. Build: https://github.com/ralleur/Vela\n\nDemo: Sintel © Blender Foundation / durian.blender.org (CC BY 3.0); Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0); Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. Video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela is based on Swiftfin; independent, not endorsed by Jellyfin or Swiftfin."
+}

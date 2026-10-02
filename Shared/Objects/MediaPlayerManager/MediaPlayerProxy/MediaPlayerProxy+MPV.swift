@@ -7,7 +7,6 @@
 //
 
 import Defaults
-import JellyfinAPI
 import MPVUI
 import SwiftUI
 
@@ -22,6 +21,7 @@ class MPVMediaPlayerProxy: @MainActor VideoMediaPlayerProxy,
     let droppedFrames: PublishedBox<Int> = .init(initialValue: 0)
     let corruptedFrames: PublishedBox<Int> = .init(initialValue: 0)
     let player = MPVPlayer()
+    private var isStopping = false
 
     weak var manager: MediaPlayerManager? {
         didSet {
@@ -44,6 +44,7 @@ class MPVMediaPlayerProxy: @MainActor VideoMediaPlayerProxy,
     }
 
     func stop() {
+        isStopping = true
         player.stop()
     }
 
@@ -59,16 +60,31 @@ class MPVMediaPlayerProxy: @MainActor VideoMediaPlayerProxy,
         player.seek(to: seconds)
     }
 
+    private var pendingExternalSelection = false
+
+    func attachSubtitle(_ url: URL) throws {
+        pendingExternalSelection = true
+        player.command("sub-add", arguments: [url.absoluteString, "select"])
+    }
+
+    func setVolume(_ volume: Float) {
+        player.setVolume(Double(volume) * 100)
+    }
+
+    func setMuted(_ muted: Bool) {
+        player.setMuted(muted)
+    }
+
     func setRate(_ rate: Float) {
         player.setPlaybackRate(Double(rate))
     }
 
-    func setAudioStream(_ stream: MediaStream) {
-        setTrack(stream.index, type: .audio)
+    func setAudioStream(index: Int?) {
+        setTrack(index, type: .audio)
     }
 
-    func setSubtitleStream(_ stream: MediaStream) {
-        setTrack(stream.index, type: .subtitle)
+    func setSubtitleStream(index: Int?) {
+        setTrack(index, type: .subtitle)
     }
 
     private func setTrack(_ index: Int?, type: MPVTrackType) {
@@ -140,12 +156,17 @@ extension MPVMediaPlayerProxy {
         private func load(_ item: MediaPlayerItem) {
             guard loadedItem !== item else { return }
             loadedItem = item
+            proxy.isStopping = false
             loadedSubtitleIndexes.removeAll()
             item.setTrackIndexes(.init())
             proxy.isBuffering.value = true
 
-            let start = max(.zero, (item.baseItem.startSeconds ?? .zero) - .seconds(Defaults[.VideoPlayer.resumeOffset]))
-            player.load(item.url, autoPlay: manager.playbackRequestStatus == .playing, startTime: item.baseItem.isLiveStream ? nil : start)
+            let start = max(.zero, (item.metadata.startSeconds ?? .zero) - .seconds(Defaults[.VideoPlayer.resumeOffset]))
+            #if targetEnvironment(macCatalyst)
+            let encoding = UserDefaults.standard.string(forKey: "vela.subtitle.encoding") ?? ""
+            player.setProperty("sub-codepage", to: encoding.isEmpty ? "auto" : encoding)
+            #endif
+            player.load(item.url, autoPlay: manager.playbackRequestStatus == .playing, startTime: item.metadata.isLiveStream ? nil : start)
             proxy.setRate(manager.rate)
             proxy.setAspectFill(false)
         }
@@ -160,28 +181,36 @@ extension MPVMediaPlayerProxy {
                 break
             }
 
-            let indexMap = MediaTrackIndexMap.mpv(
-                mediaStreams: item.mediaSource.mediaStreams ?? [],
-                tracks: player.mediaInformation.tracks,
-                isTranscoding: item.mediaSource.transcodingURL != nil,
-                selectedAudioStreamIndex: item.selectedAudioStreamIndex
-            )
-            item.setTrackIndexes(indexMap)
-
-            for stream in item.subtitleStreams.sidecarSubtitles {
-                guard let index = stream.index,
-                      indexMap.playerIndex(for: index) == nil,
-                      let client = manager.userSession?.client,
-                      let url = stream.url(with: client),
-                      loadedSubtitleIndexes.insert(index).inserted
-                else { continue }
-
-                // Tag sidecars so a failed load cannot shift the remaining stream mappings.
-                player.command("sub-add", arguments: [url.absoluteString, "auto", "swiftfin-subtitle-\(index)"])
+            func tracks(_ type: MPVTrackType, kind: PlaybackTrack.Kind) -> [PlaybackTrack] {
+                player.mediaInformation.tracks.filter { $0.type == type }.map { track in
+                    PlaybackTrack(
+                        index: track.mpvID,
+                        type: kind,
+                        displayTitle: PlaybackTrackLabel.make(title: track.title, language: track.language, ordinal: track.mpvID),
+                        language: track.language,
+                        isExternal: track.isExternal
+                    )
+                }
+            }
+            item.updateEngineTracks(audio: tracks(.audio, kind: .audio), subtitles: tracks(.subtitle, kind: .subtitle))
+            if proxy.pendingExternalSelection, item.discoversTracks,
+               let selected = player.mediaInformation.tracks.last(where: { $0.type == .subtitle && $0.isExternal })
+            {
+                proxy.pendingExternalSelection = false
+                item.selectedSubtitleStreamIndex = selected.mpvID + 10000
+            }
+            for stream in item.sidecarSubtitles {
+                guard let index = stream.index, item.indexMap.playerIndex(for: index) == nil,
+                      let url = stream.externalURL, loadedSubtitleIndexes.insert(index).inserted else { continue }
+                player.command(
+                    "sub-add",
+                    arguments: [url.absoluteString, "auto", item.discoversTracks ? url.lastPathComponent : "swiftfin-subtitle-\(index)"]
+                )
             }
         }
 
         private func updateState(_ state: MPVPlaybackState) {
+            guard !proxy.isStopping else { return }
             proxy.isBuffering.value = state.isTransient
 
             switch state {
@@ -189,14 +218,21 @@ extension MPVMediaPlayerProxy {
                 loadedSubtitleIndexes.removeAll()
             case .playing:
                 manager.setPlaybackRequestStatus(status: .playing)
+                proxy.setAudioOffset(manager.audioOffset)
+                proxy.setSubtitleOffset(manager.subtitleOffset)
             case .paused:
                 manager.setPlaybackRequestStatus(status: .paused)
             case .ended:
-                guard manager.playbackItem?.baseItem.isLiveStream == false else { return }
+                guard manager.playbackItem?.metadata.isLiveStream == false else { return }
                 manager.seconds = player.position
                 manager.ended()
             case let .failed(error):
-                manager.error(error)
+                manager.logger.error("Alternative playback failed: \(error)")
+                manager
+                    .error(manager.playbackItem?
+                        .discoversTracks == true ?
+                        ErrorMessage(VelaStrings.text("This video could not be played. It may be damaged or use an unsupported format.")) :
+                        error)
             case .idle, .ready, .buffering, .seeking, .stopped:
                 break
             }
@@ -225,6 +261,7 @@ extension MPVMediaPlayerProxy {
                             containerState.scrubbedSeconds.value = player.position
                         }
                         manager.seconds = player.position
+                        item.updateDuration(player.duration)
                     }
                     .onChange(of: player.state) {
                         updateState(player.state)
@@ -244,46 +281,5 @@ extension MPVMediaPlayerProxy {
                     }
             }
         }
-    }
-}
-
-extension MediaTrackIndexMap {
-
-    /// mpv numbers tracks separately by type; Jellyfin uses global stream indexes.
-    static func mpv(
-        mediaStreams: [MediaStream],
-        tracks: [MPVMediaTrack],
-        isTranscoding: Bool,
-        selectedAudioStreamIndex: Int?
-    ) -> MediaTrackIndexMap {
-        var map = MediaTrackIndexMap()
-
-        for (streamType, trackType) in [(MediaStreamType.audio, MPVTrackType.audio), (.subtitle, .subtitle)] {
-            let streams = mediaStreams.filter { $0.type == streamType && $0.isExternal != true }
-                .sorted { ($0.index ?? -1) < ($1.index ?? -1) }
-            let internalTracks = tracks.filter { $0.type == trackType && !$0.isExternal }
-
-            if isTranscoding {
-                if streamType == .audio, let index = selectedAudioStreamIndex, let track = internalTracks.first {
-                    map.setPlayerIndex(track.mpvID, for: index)
-                }
-            } else {
-                for (stream, track) in zip(streams, internalTracks) {
-                    if let index = stream.index {
-                        map.setPlayerIndex(track.mpvID, for: index)
-                    }
-                }
-            }
-        }
-
-        for stream in mediaStreams.sidecarSubtitles {
-            if let index = stream.index,
-               let track = tracks.first(where: { $0.type == .subtitle && $0.isExternal && $0.title == "swiftfin-subtitle-\(index)" })
-            {
-                map.setPlayerIndex(track.mpvID, for: index)
-            }
-        }
-
-        return map
     }
 }

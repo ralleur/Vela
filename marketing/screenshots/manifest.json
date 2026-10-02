@@ -1,0 +1,183 @@
+[
+  {
+    "id": "player-clean",
+    "raw": "build/launch/raw/player-clean-retina.png",
+    "raw_size": [
+      1366,
+      614
+    ],
+    "crop": null,
+    "export_size": [
+      1366,
+      614
+    ],
+    "sha256": "04588205518c0aeea395d8482d553f7c5fc952f6e56a6e9ee6714917e956384d",
+    "app": "Vela 0.9.4 (5)",
+    "date": "2026-10-02",
+    "kind": "real application capture",
+    "source_phase": "initial-build.json",
+    "derivatives": {}
+  },
+  {
+    "id": "player-controls",
+    "raw": "build/launch/raw/player-controls-native.png",
+    "raw_size": [
+      1366,
+      614
+    ],
+    "crop": null,
+    "export_size": [
+      1366,
+      614
+    ],
+    "sha256": "94da55c3a12c32782b3e3a44ec5bda0bda4d8b52d2fcdd1670740d9f23bf77d4",
+    "app": "Vela 0.9.4 (5)",
+    "date": "2026-10-02",
+    "kind": "real application capture",
+    "source_phase": "initial-build.json",
+    "derivatives": {}
+  },
+  {
+    "id": "local-workflow",
+    "raw": "build/launch/raw/local-workflow.png",
+    "raw_size": [
+      880,
+      500
+    ],
+    "crop": [
+      0,
+      52,
+      880,
+      500
+    ],
+    "export_size": [
+      880,
+      448
+    ],
+    "sha256": "576925af82d986e4c2bcc53088a92577d7f38e1dd691a5c8c0e38b42d3ef1607",
+    "app": "Vela 0.9.4 (5)",
+    "date": "2026-10-02",
+    "kind": "real application capture",
+    "source_phase": "intermediate: account-menu fix present; before tab-bar fix",
+    "derivatives": {}
+  },
+  {
+    "id": "jellyfin-home",
+    "raw": "build/launch/raw/jellyfin-home.png",
+    "raw_size": [
+      823,
+      803
+    ],
+    "crop": [
+      0,
+      48,
+      823,
+      803
+    ],
+    "export_size": [
+      823,
+      755
+    ],
+    "sha256": "29737094362805f086d3ab21166d5120d6d0945c697ca0124d9546e1165fdfd7",
+    "app": "Vela 0.9.4 (5)",
+    "date": "2026-10-02",
+    "kind": "real application capture",
+    "source_phase": "build.json",
+    "derivatives": {
+      "jellyfin-home-mobile.webp": {
+        "crop": [
+          0,
+          0,
+          430,
+          610
+        ]
+      }
+    }
+  },
+  {
+    "id": "jellyfin-detail",
+    "raw": "build/launch/raw/jellyfin-detail.png",
+    "raw_size": [
+      823,
+      803
+    ],
+    "crop": [
+      0,
+      48,
+      823,
+      803
+    ],
+    "export_size": [
+      823,
+      755
+    ],
+    "sha256": "d2cb10aae6e348e20019b5caa119c468f359b8d8cf26c49f98b2a0b4803c84df",
+    "app": "Vela 0.9.4 (5)",
+    "date": "2026-10-02",
+    "kind": "real application capture",
+    "source_phase": "intermediate: account-menu fix present; before tab-bar fix",
+    "derivatives": {}
+  },
+  {
+    "id": "subtitles",
+    "raw": "build/launch/raw/subtitles-full.png",
+    "raw_size": [
+      3840,
+      2218
+    ],
+    "crop": [
+      3040,
+      58,
+      3840,
+      700
+    ],
+    "export_size": [
+      800,
+      642
+    ],
+    "sha256": "477153726b8efca1d10730f0751fddbc5c4a8dbc52497fe6b9d159d361f149a0",
+    "app": "Vela 0.9.4 (5)",
+    "date": "2026-10-02",
+    "kind": "real application capture",
+    "source_phase": "build.json",
+    "derivatives": {}
+  },
+  {
+    "id": "fullscreen",
+    "raw": "build/launch/raw/fullscreen-final.png",
+    "raw_size": [
+      3840,
+      2192
+    ],
+    "crop": null,
+    "export_size": [
+      3840,
+      2192
+    ],
+    "sha256": "f3818ab9e350f62bd09db9fac3124b52031112d75a7d4f748e378b86d703c977",
+    "app": "Vela 0.9.4 (5)",
+    "date": "2026-10-02",
+    "kind": "real application capture",
+    "source_phase": "build.json",
+    "derivatives": {}
+  },
+  {
+    "id": "mac-window",
+    "raw": "build/launch/raw/player-clean-retina.png",
+    "raw_size": [
+      1366,
+      614
+    ],
+    "crop": null,
+    "export_size": [
+      1366,
+      614
+    ],
+    "sha256": "04588205518c0aeea395d8482d553f7c5fc952f6e56a6e9ee6714917e956384d",
+    "app": "Vela 0.9.4 (5)",
+    "date": "2026-10-02",
+    "kind": "real application capture",
+    "source_phase": "initial-build.json",
+    "derivatives": {}
+  }
+]

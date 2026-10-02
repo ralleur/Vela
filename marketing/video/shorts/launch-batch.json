@@ -1,0 +1,464 @@
+[
+  {
+    "id": "01",
+    "slug": "why-choose",
+    "working_title": "The unnecessary choice",
+    "hook": "Why choose an app before choosing a video?",
+    "youtube_title": "Why do local videos and Jellyfin need different apps?",
+    "thumbnail": "WHY TWO APPS?",
+    "duration": 18,
+    "beats": [
+      {
+        "duration": 5,
+        "text": "A file in Downloads.",
+        "asset": "local-workflow.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "A film on Jellyfin.",
+        "asset": "jellyfin-home.jpg",
+        "crop": "library",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 8,
+        "text": "One activity.\nOne player.",
+        "asset": "player-clean.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      }
+    ],
+    "description": "Why choose an app before choosing a video?\n\nVela 0.9.4 beta source preview. The older 0.9.3 download predates local playback and is development-signed, not notarized. Build: https://github.com/ralleur/Vela\n\nDemo: Sintel © Blender Foundation / durian.blender.org (CC BY 3.0); Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0); Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. Video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela is based on Swiftfin; independent, not endorsed by Jellyfin or Swiftfin.",
+    "hashtags": [
+      "#Vela",
+      "#Jellyfin"
+    ],
+    "framing": "1080×1920; headlines in top safe area, native UI crops at readable scale, credits below. Main text and CTA use x=84…996 and y=310…1610; supplemental film credits sit below and repeat in the description. No central 9:16 crop of a whole desktop.",
+    "thumbnail_concept": "Vela glyph, WHY TWO APPS?, one genuine capture crop on navy. No face, badges or competing claims.",
+    "priority": "fully specified; pickup if marked"
+  },
+  {
+    "id": "02",
+    "slug": "play-the-file",
+    "working_title": "A good idea, carried forward",
+    "hook": "A player should just play the file.",
+    "youtube_title": "VLC got this right. Vela starts from the same expectation.",
+    "thumbnail": "PLAY THE FILE",
+    "duration": 20,
+    "beats": [
+      {
+        "duration": 5,
+        "text": "A player should\njust play the file.",
+        "asset": "",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "typeset",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "Thank you, VideoLAN.\nVela uses libVLC.",
+        "asset": "",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "typeset",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "Now put your Jellyfin\nlibrary beside it.",
+        "asset": "jellyfin-detail.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "Your files. Your library.",
+        "asset": "player-clean.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      }
+    ],
+    "description": "A player should just play the file.\n\nVela 0.9.4 beta source preview. The older 0.9.3 download predates local playback and is development-signed, not notarized. Build: https://github.com/ralleur/Vela\n\nDemo: Sintel © Blender Foundation / durian.blender.org (CC BY 3.0); Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0); Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. Video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela is based on Swiftfin; independent, not endorsed by Jellyfin or Swiftfin.",
+    "hashtags": [
+      "#Vela",
+      "#Jellyfin"
+    ],
+    "framing": "1080×1920; headlines in top safe area, native UI crops at readable scale, credits below. Main text and CTA use x=84…996 and y=310…1610; supplemental film credits sit below and repeat in the description. No central 9:16 crop of a whole desktop.",
+    "thumbnail_concept": "Vela glyph, PLAY THE FILE, one genuine capture crop on navy. No face, badges or competing claims.",
+    "priority": "fully specified; pickup if marked"
+  },
+  {
+    "id": "03",
+    "slug": "disappearing-ui",
+    "working_title": "Room for the film",
+    "hook": "The player is still here.",
+    "youtube_title": "The best part of Vela’s player UI? Watching it disappear.",
+    "thumbnail": "JUST THE VIDEO",
+    "duration": 18,
+    "beats": [
+      {
+        "duration": 5,
+        "text": "There when you need it.",
+        "asset": "player-controls.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 8,
+        "text": "Gone when you don’t.",
+        "asset": "player-clean.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "Vela. Just watch the video.",
+        "asset": "player-clean.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      }
+    ],
+    "description": "The player is still here.\n\nVela 0.9.4 beta source preview. The older 0.9.3 download predates local playback and is development-signed, not notarized. Build: https://github.com/ralleur/Vela\n\nDemo: Sintel © Blender Foundation / durian.blender.org (CC BY 3.0); Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0); Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. Video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela is based on Swiftfin; independent, not endorsed by Jellyfin or Swiftfin.",
+    "hashtags": [
+      "#Vela",
+      "#Jellyfin"
+    ],
+    "framing": "1080×1920; headlines in top safe area, native UI crops at readable scale, credits below. Main text and CTA use x=84…996 and y=310…1610; supplemental film credits sit below and repeat in the description. No central 9:16 crop of a whole desktop.",
+    "thumbnail_concept": "Vela glyph, JUST THE VIDEO, one genuine capture crop on navy. No face, badges or competing claims.",
+    "priority": "render"
+  },
+  {
+    "id": "04",
+    "slug": "local-and-jellyfin",
+    "working_title": "Two sources, one player",
+    "hook": "Your MKV. Your Jellyfin library.",
+    "youtube_title": "Your MKV and your Jellyfin library. One Mac player.",
+    "thumbnail": "ONE PLAYER",
+    "duration": 20,
+    "beats": [
+      {
+        "duration": 5,
+        "text": "Your MKV.",
+        "asset": "local-workflow.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "Your Jellyfin library.",
+        "asset": "jellyfin-detail.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "The same player.",
+        "asset": "jellyfin-playback.mov",
+        "crop": "contain",
+        "action": "Actual server playback; live screen recording",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "Vela. Local or Jellyfin.",
+        "asset": "player-clean.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      }
+    ],
+    "description": "Your MKV. Your Jellyfin library.\n\nVela 0.9.4 beta source preview. The older 0.9.3 download predates local playback and is development-signed, not notarized. Build: https://github.com/ralleur/Vela\n\nDemo: Sintel © Blender Foundation / durian.blender.org (CC BY 3.0); Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0); Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. Video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela is based on Swiftfin; independent, not endorsed by Jellyfin or Swiftfin.",
+    "hashtags": [
+      "#Vela",
+      "#Jellyfin"
+    ],
+    "framing": "1080×1920; headlines in top safe area, native UI crops at readable scale, credits below. Main text and CTA use x=84…996 and y=310…1610; supplemental film credits sit below and repeat in the description. No central 9:16 crop of a whole desktop.",
+    "thumbnail_concept": "Vela glyph, ONE PLAYER, one genuine capture crop on navy. No face, badges or competing claims.",
+    "priority": "render"
+  },
+  {
+    "id": "05",
+    "slug": "whole-app-free",
+    "working_title": "This is the version",
+    "hook": "Remember when great apps were just free?",
+    "youtube_title": "No Pro version. Vela is the whole app.",
+    "thumbnail": "NO PRO VERSION",
+    "duration": 18,
+    "beats": [
+      {
+        "duration": 5,
+        "text": "Remember when great apps\nwere just free?",
+        "asset": "",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "typeset",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 4,
+        "text": "No subscription.",
+        "asset": "",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "typeset",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 4,
+        "text": "No in-app purchases.\nNo Pro unlock.",
+        "asset": "",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "typeset",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "Vela is free\nand open source.",
+        "asset": "player-clean.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      }
+    ],
+    "description": "Remember when great apps were just free?\n\nVela 0.9.4 beta source preview. The older 0.9.3 download predates local playback and is development-signed, not notarized. Build: https://github.com/ralleur/Vela\n\nDemo: Sintel © Blender Foundation / durian.blender.org (CC BY 3.0); Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0); Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. Video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela is based on Swiftfin; independent, not endorsed by Jellyfin or Swiftfin.",
+    "hashtags": [
+      "#Vela",
+      "#OpenSource"
+    ],
+    "framing": "1080×1920; headlines in top safe area, native UI crops at readable scale, credits below. Main text and CTA use x=84…996 and y=310…1610; supplemental film credits sit below and repeat in the description. No central 9:16 crop of a whole desktop.",
+    "thumbnail_concept": "Vela glyph, NO PRO VERSION, one genuine capture crop on navy. No face, badges or competing claims.",
+    "priority": "render"
+  },
+  {
+    "id": "06",
+    "slug": "built-on-swiftfin",
+    "working_title": "Start with something good",
+    "hook": "I didn’t build the Jellyfin part from scratch.",
+    "youtube_title": "Vela started with Swiftfin. That belongs in the story.",
+    "thumbnail": "THANK YOU, SWIFTFIN",
+    "duration": 22,
+    "beats": [
+      {
+        "duration": 5,
+        "text": "I didn’t build the Jellyfin\npart from scratch.",
+        "asset": "",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "typeset",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 6,
+        "text": "Swiftfin built the\nApple client foundation.",
+        "asset": "jellyfin-detail.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 6,
+        "text": "Vela asks:\nwhy stop at the server?",
+        "asset": "local-workflow.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "Built on Swiftfin.\nWith gratitude.",
+        "asset": "",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "typeset",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      }
+    ],
+    "description": "I didn’t build the Jellyfin part from scratch.\n\nVela 0.9.4 beta source preview. The older 0.9.3 download predates local playback and is development-signed, not notarized. Build: https://github.com/ralleur/Vela\n\nDemo: Sintel © Blender Foundation / durian.blender.org (CC BY 3.0); Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0); Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. Video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela is based on Swiftfin; independent, not endorsed by Jellyfin or Swiftfin.",
+    "hashtags": [
+      "#Vela",
+      "#OpenSource"
+    ],
+    "framing": "1080×1920; headlines in top safe area, native UI crops at readable scale, credits below. Main text and CTA use x=84…996 and y=310…1610; supplemental film credits sit below and repeat in the description. No central 9:16 crop of a whole desktop.",
+    "thumbnail_concept": "Vela glyph, THANK YOU, SWIFTFIN, one genuine capture crop on navy. No face, badges or competing claims.",
+    "priority": "render"
+  },
+  {
+    "id": "07",
+    "slug": "default-player",
+    "working_title": "Choose your default",
+    "hook": "A double-click can be enough.",
+    "youtube_title": "Make Vela your Mac’s default player for MKVs",
+    "thumbnail": "DOUBLE-CLICK. PLAY.",
+    "duration": 20,
+    "beats": [
+      {
+        "duration": 5,
+        "text": "A double-click\ncan be enough.",
+        "asset": "",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "typeset",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 7,
+        "text": "Finder → Get Info\nOpen with → Vela",
+        "asset": "finder-get-info.mov",
+        "crop": "contain",
+        "action": "Select a demo MKV; open Get Info; choose Vela; show Change All without changing the user’s defaults",
+        "transition": "clean cut",
+        "capture_status": "not captured; exact pickup specified",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 4,
+        "text": "Choose the default\nfor that file type.",
+        "asset": "",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "typeset",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 4,
+        "text": "Then just open the video.",
+        "asset": "player-clean.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      }
+    ],
+    "description": "A double-click can be enough.\n\nVela 0.9.4 beta source preview. The older 0.9.3 download predates local playback and is development-signed, not notarized. Build: https://github.com/ralleur/Vela\n\nDemo: Sintel © Blender Foundation / durian.blender.org (CC BY 3.0); Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0); Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. Video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela is based on Swiftfin; independent, not endorsed by Jellyfin or Swiftfin.",
+    "hashtags": [
+      "#Vela",
+      "#Jellyfin"
+    ],
+    "framing": "1080×1920; headlines in top safe area, native UI crops at readable scale, credits below. Main text and CTA use x=84…996 and y=310…1610; supplemental film credits sit below and repeat in the description. No central 9:16 crop of a whole desktop.",
+    "thumbnail_concept": "Vela glyph, DOUBLE-CLICK. PLAY., one genuine capture crop on navy. No face, badges or competing claims.",
+    "priority": "fully specified; pickup if marked"
+  },
+  {
+    "id": "08",
+    "slug": "small-comforts",
+    "working_title": "Nothing extraordinary",
+    "hook": "Nothing revolutionary. That’s the point.",
+    "youtube_title": "Subtitles. Resume. Fullscreen. Nothing revolutionary.",
+    "thumbnail": "JUST PRESS PLAY",
+    "duration": 24,
+    "beats": [
+      {
+        "duration": 4,
+        "text": "Open a video.",
+        "asset": "local-workflow.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "Choose your subtitles.",
+        "asset": "subtitles.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "Keep your place.",
+        "asset": "jellyfin-home.jpg",
+        "crop": "library",
+        "action": "Real Jellyfin Continue; explain local history separately in description",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "Make room for the film.",
+        "asset": "fullscreen.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      },
+      {
+        "duration": 5,
+        "text": "Nothing revolutionary.\nThat’s the point.",
+        "asset": "player-clean.jpg",
+        "crop": "contain",
+        "action": "Hold; no simulated UI interaction",
+        "transition": "clean cut",
+        "capture_status": "captured",
+        "voiceover": "None in silent master; optional VO is the on-screen text."
+      }
+    ],
+    "description": "Nothing revolutionary. That’s the point.\n\nVela 0.9.4 beta source preview. The older 0.9.3 download predates local playback and is development-signed, not notarized. Build: https://github.com/ralleur/Vela\n\nDemo: Sintel © Blender Foundation / durian.blender.org (CC BY 3.0); Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0); Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. Video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela is based on Swiftfin; independent, not endorsed by Jellyfin or Swiftfin.",
+    "hashtags": [
+      "#Vela",
+      "#Jellyfin"
+    ],
+    "framing": "1080×1920; headlines in top safe area, native UI crops at readable scale, credits below. Main text and CTA use x=84…996 and y=310…1610; supplemental film credits sit below and repeat in the description. No central 9:16 crop of a whole desktop.",
+    "thumbnail_concept": "Vela glyph, JUST PRESS PLAY, one genuine capture crop on navy. No face, badges or competing claims.",
+    "priority": "fully specified; pickup if marked"
+  }
+]

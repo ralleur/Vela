@@ -1,0 +1,107 @@
+[
+  {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1920,
+        "height": 1080,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "30/1"
+      }
+    ],
+    "format": {
+      "duration": "60.000000",
+      "size": "3396377"
+    },
+    "file": "build/launch/exports/vela-product-60s.mp4",
+    "sha256": "06211b69c270dd7152e4ec287a1d65f7492fb326bab978e07c26f4f7aeb293a5",
+    "silent": true,
+    "review_contact_sheet": "build/launch/render/vela-product-60s/contact-sheet.jpg"
+  },
+  {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "30/1"
+      }
+    ],
+    "format": {
+      "duration": "18.000000",
+      "size": "333183"
+    },
+    "file": "build/launch/exports/vela-short-03-disappearing-ui.mp4",
+    "sha256": "b00622aa78c6351b2d9e864a74876470c07d6f17aab919b9e536162286711097",
+    "silent": true,
+    "review_contact_sheet": "build/launch/render/vela-short-03-disappearing-ui/contact-sheet.jpg"
+  },
+  {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "30/1"
+      }
+    ],
+    "format": {
+      "duration": "20.000000",
+      "size": "1515704"
+    },
+    "file": "build/launch/exports/vela-short-04-local-and-jellyfin.mp4",
+    "sha256": "54da87afdc7725dbf1498763c297f75eb29671a2733e792e862cf2887c2aceb9",
+    "silent": true,
+    "review_contact_sheet": "build/launch/render/vela-short-04-local-and-jellyfin/contact-sheet.jpg"
+  },
+  {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "30/1"
+      }
+    ],
+    "format": {
+      "duration": "18.000000",
+      "size": "242198"
+    },
+    "file": "build/launch/exports/vela-short-05-whole-app-free.mp4",
+    "sha256": "7f0214280929b569e239f26131d007f3cb4685e3639ac08d57e97e1c4338463d",
+    "silent": true,
+    "review_contact_sheet": "build/launch/render/vela-short-05-whole-app-free/contact-sheet.jpg"
+  },
+  {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "h264",
+        "width": 1080,
+        "height": 1920,
+        "pix_fmt": "yuv420p",
+        "r_frame_rate": "30/1"
+      }
+    ],
+    "format": {
+      "duration": "22.000000",
+      "size": "285264"
+    },
+    "file": "build/launch/exports/vela-short-06-built-on-swiftfin.mp4",
+    "sha256": "132f9e36c4f71100cb44a6c403edd5a891f6ef3c08cb414512a1fbc527790c97",
+    "silent": true,
+    "review_contact_sheet": "build/launch/render/vela-short-06-built-on-swiftfin/contact-sheet.jpg"
+  }
+]

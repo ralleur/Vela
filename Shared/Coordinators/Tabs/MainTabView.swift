@@ -157,19 +157,30 @@ private struct FirstTabSettingsBarButton: View {
         if router.isRootOfPath,
            let userSession
         {
+            #if targetEnvironment(macCatalyst)
+            Menu {
+                Button(VelaStrings.text("Settings…")) {
+                    NotificationCenter.default.post(name: VelaSettings.open, object: nil)
+                }
+                Button(VelaStrings.text("Accounts and Servers…")) { router.route(to: .settings) }
+            } label: {
+                AlternateLayoutView {
+                    Image(systemName: "gearshape.fill")
+                } content: {
+                    UserProfileImage(
+                        userID: userSession.user.id,
+                        source: userSession.user.profileImageSource(client: userSession.server.client),
+                        pipeline: .Swiftfin.local
+                    )
+                }
+            }
+            .accessibilityLabel(VelaStrings.text("Settings and Accounts"))
+            #else
             SettingsBarButton(
                 server: userSession.server,
                 user: userSession.user
             ) {
-                #if targetEnvironment(macCatalyst)
-                NotificationCenter.default.post(name: VelaSettings.open, object: nil)
-                #else
                 router.route(to: .settings)
-                #endif
-            }
-            #if targetEnvironment(macCatalyst)
-            .contextMenu {
-                Button("Konto und Server …") { router.route(to: .settings) }
             }
             #endif
         }

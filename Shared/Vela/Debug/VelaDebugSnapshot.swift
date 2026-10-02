@@ -63,6 +63,10 @@ enum VelaDebugSnapshot {
                 describe(subview, depth: depth + 1)
             }
         }
+        if let manager = VelaLocalFiles.shared.activeManager {
+            lines.append("Playback: source=\(manager.playbackItem.map { String(describing: type(of: $0)) } ?? "loading") state=\(manager.state) request=\(manager.playbackRequestStatus) time=\(manager.seconds.seconds) duration=\(manager.item.runtime?.seconds ?? 0) rate=\(manager.rate) volume=\(manager.volume) muted=\(manager.isMuted)")
+            lines.append("Tracks: audio=\(manager.playbackItem?.audioStreams.count ?? 0) subtitles=\(manager.playbackItem?.subtitleStreams.count ?? 0) selectedAudio=\(manager.playbackItem?.selectedAudioStreamIndex ?? -1) selectedSubtitle=\(manager.playbackItem?.selectedSubtitleStreamIndex ?? -1)")
+        }
         lines.append("VelaPlaybackPrompts: " + VelaPlaybackPrompts.shared.debugSummary)
         lines.append("mini player: \(VelaMiniPlayer.shared.isActive) \(VelaMiniPlayer.shared.debugLog)")
         lines.append("AppKit windows: \(VelaMiniPlayer.debugWindows)")

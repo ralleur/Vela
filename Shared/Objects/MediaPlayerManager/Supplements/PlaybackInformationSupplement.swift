@@ -53,19 +53,19 @@ extension PlaybackInformationSupplement {
         var viewModel: PlaybackInformationProvider
 
         private var mediaSource: MediaSourceInfo? {
-            manager.playbackItem?.mediaSource
+            (manager.playbackItem as? JellyfinMediaPlayerItem)?.mediaSource
         }
 
         private var videoStream: MediaStream? {
-            manager.playbackItem?.videoStreams.first
+            (manager.playbackItem as? JellyfinMediaPlayerItem)?.serverVideoStreams.first
         }
 
         private var audioStream: MediaStream? {
-            guard let playbackItem = manager.playbackItem else { return nil }
+            guard let playbackItem = manager.playbackItem as? JellyfinMediaPlayerItem else { return nil }
             if let selectedIndex = playbackItem.selectedAudioStreamIndex {
-                return playbackItem.audioStreams.first { $0.index == selectedIndex }
+                return playbackItem.serverAudioStreams.first { $0.index == selectedIndex }
             }
-            return playbackItem.audioStreams.first
+            return playbackItem.serverAudioStreams.first
         }
 
         @ViewBuilder

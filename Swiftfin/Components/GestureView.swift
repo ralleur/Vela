@@ -21,6 +21,10 @@ struct GestureView: PlatformViewRepresentable {
         view.addGestureRecognizer(context.coordinator.pinchGesture)
         view.addGestureRecognizer(context.coordinator.tapGesture)
         view.addGestureRecognizer(context.coordinator.doubleTouchGesture)
+        #if targetEnvironment(macCatalyst)
+        // A Mac double click is two taps with one pointer, not a two-finger touch.
+        context.coordinator.tapGesture.require(toFail: context.coordinator.doubleTouchGesture)
+        #endif
 
         view.backgroundColor = .clear
         return view
@@ -47,7 +51,11 @@ struct GestureView: PlatformViewRepresentable {
                 target: self,
                 action: #selector(handleTap)
             )
+            #if targetEnvironment(macCatalyst)
+            recognizer.numberOfTapsRequired = 2
+            #else
             recognizer.numberOfTouchesRequired = 2
+            #endif
             return recognizer
         }()
 
@@ -160,10 +168,15 @@ struct GestureView: PlatformViewRepresentable {
                 y: location.y / view.bounds.height
             )
 
+            #if targetEnvironment(macCatalyst)
+            let count = gesture.numberOfTapsRequired
+            #else
+            let count = gesture.numberOfTouches
+            #endif
             tapAction?(
                 location: location,
                 unitPoint: unitPoint,
-                count: gesture.numberOfTouches
+                count: count
             )
         }
     }

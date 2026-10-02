@@ -153,7 +153,7 @@ final class VelaTrackMemoryObserver: MediaPlayerObserver {
 
     private var cancellables: Set<AnyCancellable> = []
 
-    init(item: MediaPlayerItem) {
+    init(item: JellyfinMediaPlayerItem) {
         let baseItem = item.baseItem
 
         // The first value is the starting selection, not a choice.
@@ -162,7 +162,7 @@ final class VelaTrackMemoryObserver: MediaPlayerObserver {
             .removeDuplicates()
             .sink { [weak item] index in
                 guard let item, let index else { return }
-                VelaTrackMemory.remember(audio: item.audioStreams.first { $0.index == index }, for: baseItem)
+                VelaTrackMemory.remember(audio: item.serverAudioStreams.first { $0.index == index }, for: baseItem)
             }
             .store(in: &cancellables)
 
@@ -177,7 +177,7 @@ final class VelaTrackMemoryObserver: MediaPlayerObserver {
                     return
                 }
 
-                if let stream = item.subtitleStreams.first(where: { $0.index == index }) {
+                if let stream = item.serverSubtitleStreams.first(where: { $0.index == index }) {
                     VelaTrackMemory.remember(subtitle: stream, for: baseItem)
                 }
             }

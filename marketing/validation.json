@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-02",
+  "browser": "Chrome via CUA",
+  "viewports": [
+    {
+      "name": "desktop",
+      "width": 1440,
+      "height": 1000,
+      "document_width": 1425
+    },
+    {
+      "name": "laptop",
+      "width": 1280,
+      "height": 800,
+      "document_width": 1265
+    },
+    {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024,
+      "document_width": 753
+    },
+    {
+      "name": "mobile",
+      "width": 390,
+      "height": 844,
+      "document_width": 375
+    }
+  ],
+  "checks": [
+    "No page-level horizontal overflow at all four sizes",
+    "Visual screenshots reviewed at all four sizes",
+    "Compare buttons click and Enter update aria-pressed and real image",
+    "Expandable library works; 430x610 mobile source verified",
+    "All nine DOM images loaded on visited sections",
+    "Credits route works",
+    "No browser console errors/warnings observed",
+    "One h1; image alt and sizes; relative links validated by build",
+    "Reduced motion rule and noscript fallback reviewed in source",
+    "No autoplay video, external fonts or analytics"
+  ],
+  "contrast_ratios": {
+    "body": 9.36,
+    "foundation body": 8.19,
+    "blue labels": 7.24,
+    "small credits": 7.96,
+    "button": 13.92
+  },
+  "static_site_bytes": 439697
+}

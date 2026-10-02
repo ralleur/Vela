@@ -15,7 +15,7 @@ import Logging
 // TODO: build report of determined values for playback information
 //       - transcode, video stream, path
 
-extension MediaPlayerItem {
+extension JellyfinMediaPlayerItem {
 
     /// The main `MediaPlayerItem` builder for normal online usage.
     static func build(
@@ -183,7 +183,7 @@ extension MediaPlayerItem {
             return nil
         }()
 
-        let playerItem = MediaPlayerItem(
+        let playerItem = JellyfinMediaPlayerItem(
             baseItem: item,
             mediaSource: mediaSource,
             playSessionID: playSessionID,

@@ -43,6 +43,13 @@ extension VideoPlayer.PlaybackControls.Toolbar.ActionButtons {
                     Text(selectedAudioStream.displayTitle ?? L10n.unknown)
                 }
             }
+            #if targetEnvironment(macCatalyst)
+            .pickerStyle(.inline)
+            #endif
+            #if targetEnvironment(macCatalyst)
+            Divider()
+            VelaTrackTimingMenu(subtitles: false)
+            #endif
         }
 
         var body: some View {

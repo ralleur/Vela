@@ -1,0 +1,20 @@
+1
+00:00:00,000 --> 00:00:04,000
+Open a video.
+
+2
+00:00:04,000 --> 00:00:09,000
+Choose your subtitles.
+
+3
+00:00:09,000 --> 00:00:14,000
+Keep your place.
+
+4
+00:00:14,000 --> 00:00:19,000
+Make room for the film.
+
+5
+00:00:19,000 --> 00:00:24,000
+Nothing revolutionary.
+That’s the point.

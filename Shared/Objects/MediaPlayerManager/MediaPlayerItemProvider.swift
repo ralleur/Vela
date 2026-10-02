@@ -12,7 +12,9 @@ import JellyfinAPI
 typealias MediaPlayerItemProviderResolver = @Sendable (BaseItemDto, (@Sendable (inout BaseItemDto) -> Void)?) async throws
     -> MediaPlayerItem
 
-struct MediaPlayerItemProvider {
+struct MediaPlayerItemProvider: PlaybackItemProviding {
+
+    var metadata: PlaybackMedia { PlaybackMedia(item) }
 
     let item: BaseItemDto
     let mediaSource: MediaSourceInfo?

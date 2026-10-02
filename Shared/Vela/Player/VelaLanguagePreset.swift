@@ -11,7 +11,13 @@ extension VelaLanguagePreset {
 
     @MainActor
     func streamIndexes(in item: MediaPlayerItem) -> (audio: Int, subtitle: Int)? {
-        streamIndexes(audioStreams: item.audioStreams, subtitleStreams: item.subtitleStreams)
+        if let server = item as? JellyfinMediaPlayerItem {
+            return streamIndexes(audioStreams: server.serverAudioStreams, subtitleStreams: server.serverSubtitleStreams)
+        }
+        guard let audio = item.audioStreams.first(where: { VelaLanguage.normalize($0.language) == VelaLanguage.normalize(audioLanguage) })?.index else { return nil }
+        guard let subtitleLanguage else { return (audio, -1) }
+        guard let subtitle = item.subtitleStreams.first(where: { $0.isForced != true && VelaLanguage.normalize($0.language) == VelaLanguage.normalize(subtitleLanguage) })?.index else { return nil }
+        return (audio, subtitle)
     }
 
     /// Whether the player currently plays this combination, judged by language so that
@@ -19,7 +25,7 @@ extension VelaLanguagePreset {
     @MainActor
     func isActive(in item: MediaPlayerItem) -> Bool {
         guard let audio = item.audioStreams.first(where: { $0.index == item.selectedAudioStreamIndex }),
-              VelaLanguage.matches(audio, language: audioLanguage)
+              VelaLanguage.normalize(audio.language) == VelaLanguage.normalize(audioLanguage)
         else { return false }
 
         let subtitle = item.subtitleStreams.first { $0.index == item.selectedSubtitleStreamIndex }
@@ -30,7 +36,7 @@ extension VelaLanguagePreset {
 
         guard let subtitle else { return false }
 
-        return VelaLanguage.matches(subtitle, language: subtitleLanguage) && subtitle.isForced != true
+        return VelaLanguage.normalize(subtitle.language) == VelaLanguage.normalize(subtitleLanguage) && subtitle.isForced != true
     }
 
     /// Switches both tracks at once. Changes the player cannot make in place go
@@ -61,7 +67,8 @@ extension VelaLanguagePreset {
             return
         }
 
-        // Explicit indexes are remembered by MediaPlayerItem.build.
+        // Explicit indexes are remembered by JellyfinMediaPlayerItem.build.
+        guard let item = item as? JellyfinMediaPlayerItem else { return }
         let mediaSource = item.mediaSource
         let requestedBitrate = item.requestedBitrate
         let positionTicks = manager.seconds.ticks
@@ -73,7 +80,7 @@ extension VelaLanguagePreset {
             subtitleStreamIndex: target.subtitle,
             requestedBitrate: requestedBitrate
         ) { baseItem, modifyItem in
-            try await MediaPlayerItem.build(
+            try await JellyfinMediaPlayerItem.build(
                 for: baseItem,
                 mediaSource: mediaSource,
                 audioStreamIndex: target.audio,
@@ -137,11 +144,7 @@ struct VelaLanguagePresetButtons: View {
                     return preset
                 }
             }
-            return VelaLanguagePreset.availablePresets(
-                appLanguage: VelaLanguage.appLanguage,
-                audioStreams: item.audioStreams,
-                subtitleStreams: item.subtitleStreams
-            )
+            return VelaLanguagePreset.presets(appLanguage: VelaLanguage.appLanguage).filter { $0.streamIndexes(in: item) != nil }
         }
 
         var body: some View {

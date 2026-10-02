@@ -1,0 +1,18 @@
+1
+00:00:00,000 --> 00:00:05,000
+A double-click
+can be enough.
+
+2
+00:00:05,000 --> 00:00:12,000
+Finder → Get Info
+Open with → Vela
+
+3
+00:00:12,000 --> 00:00:16,000
+Choose the default
+for that file type.
+
+4
+00:00:16,000 --> 00:00:20,000
+Then just open the video.

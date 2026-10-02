@@ -18,7 +18,10 @@ import Nuke
 // TODO: have MediaPlayerItem report supported commands
 
 @MainActor
-class NowPlayableObserver: ViewModel, MediaPlayerObserver {
+class NowPlayableObserver: ObservableObject, MediaPlayerObserver {
+    private static weak var sessionOwner: NowPlayableObserver?
+    let logger = Logger.swiftfin()
+    var cancellables = Set<AnyCancellable>()
 
     private var defaultRegisteredCommands: [NowPlayableCommand] {
         [
@@ -45,6 +48,7 @@ class NowPlayableObserver: ViewModel, MediaPlayerObserver {
     }
 
     private func setup(with manager: MediaPlayerManager) {
+        Self.sessionOwner = self
         do {
             try startSession()
         } catch {
@@ -79,6 +83,7 @@ class NowPlayableObserver: ViewModel, MediaPlayerObserver {
             .store(in: &cancellables)
 
         Task { @MainActor in
+            guard Self.sessionOwner === self else { return }
             configureRemoteCommands(
                 defaultRegisteredCommands,
                 commandHandler: handleCommand
@@ -98,8 +103,9 @@ class NowPlayableObserver: ViewModel, MediaPlayerObserver {
 
     private func secondsDidChange(_ newSeconds: Duration) {
         handleNowPlayablePlaybackChange(
-            playing: true,
+            playing: manager?.playbackRequestStatus == .playing,
             metadata: .init(
+                rate: manager?.rate ?? 1,
                 position: newSeconds,
                 duration: manager?.item.runtime ?? .zero
             )
@@ -121,16 +127,16 @@ class NowPlayableObserver: ViewModel, MediaPlayerObserver {
         itemImageCancellable = nil
         guard let newItem else { return }
 
-        setNowPlayingMetadata(newItem.baseItem.nowPlayableStaticMetadata())
+        setNowPlayingMetadata(.init(mediaType: .video, isLiveStream: newItem.metadata.isLiveStream, title: newItem.metadata.displayTitle))
 
         itemImageCancellable = Task {
-            let currentBaseItem = newItem.baseItem
+            let currentBaseItem = newItem.metadata
             guard let image = await newItem.thumbnailProvider?() else { return }
-            guard manager?.item.id == currentBaseItem.id else { return }
+            guard Self.sessionOwner === self, manager?.state != .stopped, manager?.item.id == currentBaseItem.id else { return }
 
             await MainActor.run {
                 setNowPlayingMetadata(
-                    currentBaseItem.nowPlayableStaticMetadata(image)
+                    .init(mediaType: .video, isLiveStream: currentBaseItem.isLiveStream, title: currentBaseItem.displayTitle, artwork: MPMediaItemArtwork(boundsSize: image.size) { _ in image })
                 )
             }
         }
@@ -147,6 +153,9 @@ class NowPlayableObserver: ViewModel, MediaPlayerObserver {
 
     private func handleStopAction() {
         cancellables = []
+        itemImageCancellable?.cancel()
+        itemImageCancellable = nil
+        guard Self.sessionOwner === self else { return }
 
         for command in defaultRegisteredCommands {
             command.removeHandler()
@@ -157,6 +166,8 @@ class NowPlayableObserver: ViewModel, MediaPlayerObserver {
             // Delay to wait for io to stop
             try? await Task.sleep(for: .seconds(0.3))
 
+            guard Self.sessionOwner === self else { return }
+            Self.sessionOwner = nil
             do {
                 try stopSession()
             } catch {

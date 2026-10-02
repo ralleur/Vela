@@ -16,7 +16,7 @@ struct VideoPlayer: View {
     @Environment(\.presentationCoordinator)
     private var presentationCoordinator
 
-    @InjectedObject(\.mediaPlayerManager)
+    @ObservedObject
     private var manager: MediaPlayerManager
 
     @LazyState
@@ -25,23 +25,19 @@ struct VideoPlayer: View {
     @Router
     private var router
 
-    // TODO: move audio/subtitle offset to container state?
-    @State
-    private var audioOffset: Duration = .zero
     @State
     private var isBeingDismissedByTransition = false
 
     // TODO: move behavior to `PlaybackProgress`?
     @State
     private var scrubbingStartTime: CFTimeInterval? = nil
-    @State
-    private var subtitleOffset: Duration = .zero
 
     @StateObject
     private var containerState: VideoPlayerContainerState = .init()
 
-    init() {
-        switch Defaults[.VideoPlayer.videoPlayerType] {
+    init(manager: MediaPlayerManager, playerType: VideoPlayerType = Defaults[.VideoPlayer.videoPlayerType]) {
+        self.manager = manager
+        switch playerType {
         case .mpv:
             self._proxy = .init(wrappedValue: MPVMediaPlayerProxy())
         case .native, .vlc:
@@ -63,12 +59,14 @@ struct VideoPlayer: View {
             manager.proxy = proxy
             manager.start()
         }
-        .prefersStatusBarHidden(!containerState.isPresentingOverlay)
-        .onChange(of: audioOffset) {
-            if let proxy = proxy as? MediaPlayerOffsetConfigurable {
-                proxy.setAudioOffset(audioOffset)
+        #if targetEnvironment(macCatalyst)
+        .onDisappear {
+            if manager.state != .stopped {
+                manager.stop()
             }
         }
+        #endif
+        .prefersStatusBarHidden(!containerState.isPresentingOverlay)
         .onChange(of: containerState.isAspectFilled) {
             UIView.animate(withDuration: 0.2) {
                 proxy.setAspectFill(containerState.isAspectFilled)
@@ -89,11 +87,6 @@ struct VideoPlayer: View {
             manager.seconds = scrubbedSeconds
             proxy.setSeconds(scrubbedSeconds)
         }
-        .onChange(of: subtitleOffset) {
-            if let proxy = proxy as? MediaPlayerOffsetConfigurable {
-                proxy.setSubtitleOffset(subtitleOffset)
-            }
-        }
         .preference(
             key: PresentationControllerShouldDismissPreferenceKey.self,
             value: containerState.presentationControllerShouldDismiss
@@ -105,14 +98,12 @@ struct VideoPlayer: View {
         }
         .onReceive(manager.$playbackItem) { newItem in
             containerState.isAspectFilled = false
-            audioOffset = .zero
-            subtitleOffset = .zero
 
             // TODO: move to container view
-            containerState.scrubbedSeconds.value = newItem?.baseItem.startSeconds ?? .zero
+            containerState.scrubbedSeconds.value = newItem?.metadata.startSeconds ?? .zero
         }
         .onReceive(manager.$state) { newState in
-            if newState == .stopped, !isBeingDismissedByTransition {
+            if newState == .stopped, !isBeingDismissedByTransition, manager.onStop == nil {
                 router.dismiss()
             }
         }
@@ -121,12 +112,22 @@ struct VideoPlayer: View {
             L10n.error,
             isPresented: .constant(manager.error != nil)
         ) {
+            if let retry = manager.retryPlayback {
+                Button(VelaStrings.text("Try Compatible Playback")) { retry() }
+            }
+            #if targetEnvironment(macCatalyst)
+            if manager.playbackItem?.discoversTracks == true {
+                Button(VelaStrings.text("Choose Another Video…")) { VelaLocalFiles.shared.showPicker(subtitle: false) }
+            }
+            #endif
             Button(L10n.close, role: .cancel) {
-                Container.shared.mediaPlayerManager.reset()
-                router.dismiss()
+                manager.stop()
+                if manager.onStop == nil {
+                    router.dismiss()
+                }
             }
         } message: {
-            Text(L10n.unableToLoadThisItem)
+            Text(manager.error?.localizedDescription ?? L10n.unableToLoadThisItem)
         }
     }
 }

@@ -6,19 +6,19 @@
 // Copyright (c) 2026 Jellyfin & Jellyfin Contributors
 //
 
-import JellyfinAPI
 import SwiftUI
 
 extension VideoPlayer.PlaybackControls.PlaybackProgress {
 
     struct ChapterTrackMask: View {
 
-        let chapters: [ChapterInfo.FullInfo]
+        let chapters: [PlaybackChapter]
         let runtime: Duration
 
         private var unitPoints: [Double] {
             chapters.map { chapter in
-                guard let startSeconds = chapter.chapterInfo.startSeconds,
+                let startSeconds = chapter.startSeconds
+                guard
                       runtime > .zero,
                       startSeconds >= .zero,
                       startSeconds < runtime

@@ -12,6 +12,7 @@ import SwiftUI
 extension VideoPlayer {
 
     struct PlaybackControls: View {
+        @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
         // since this view ignores safe area, it must
         // get safe area insets from parent views
@@ -97,8 +98,8 @@ extension VideoPlayer {
             .modifier(VideoPlayer.KeyCommandsModifier())
             #endif
             .animation(.linear(duration: 0.1), value: isScrubbing)
-            .animation(.bouncy(duration: 0.4), value: containerState.isPresentingSupplement)
-            .animation(.bouncy(duration: 0.25), value: containerState.isPresentingOverlay)
+            .animation(reduceMotion ? nil : .bouncy(duration: 0.4), value: containerState.isPresentingSupplement)
+            .animation(reduceMotion ? nil : .bouncy(duration: 0.25), value: containerState.isPresentingOverlay)
             .onChange(of: manager.proxy?.isBuffering.value) {
                 activeIsBuffering = manager.proxy?.isBuffering.value ?? false
             }

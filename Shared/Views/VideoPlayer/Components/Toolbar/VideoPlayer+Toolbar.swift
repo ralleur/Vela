@@ -6,7 +6,6 @@
 // Copyright (c) 2026 Jellyfin & Jellyfin Contributors
 //
 
-import JellyfinAPI
 import SwiftUI
 
 extension VideoPlayer.PlaybackControls {
@@ -43,7 +42,7 @@ extension VideoPlayer.PlaybackControls {
                     containerState.select(supplement: nil)
                 } else {
                     manager.stop()
-                    router.dismiss()
+                    if manager.onStop == nil { router.dismiss() }
                 }
             } label: {
                 AlternateLayoutView {
@@ -71,6 +70,13 @@ extension VideoPlayer.PlaybackControls {
                 TitleView(item: manager.item)
                     .frame(maxWidth: .infinity, alignment: .leading)
 
+                #if targetEnvironment(macCatalyst)
+                HStack(spacing: 8) {
+                    Button { manager.isMuted.toggle() } label: { Image(systemName: manager.isMuted ? "speaker.slash.fill" : "speaker.wave.2.fill") }
+                        .accessibilityLabel(VelaStrings.text(manager.isMuted ? "Unmute" : "Mute"))
+                    Slider(value: $manager.volume, in: 0...1).frame(width: 80).accessibilityLabel(VelaStrings.text("Volume"))
+                }.font(.body)
+                #endif
                 // Vela: language presets
                 VelaLanguagePresetButtons()
 
@@ -112,16 +118,10 @@ extension VideoPlayer.PlaybackControls.Toolbar {
         @State
         private var subtitleContentSize: CGSize = .zero
 
-        let item: BaseItemDto
+        let item: PlaybackMedia
 
         private var _titleSubtitle: (title: String, subtitle: String?) {
-            if item.type == .episode {
-                if let parentTitle = item.parentTitle {
-                    return (title: parentTitle, subtitle: item.seasonEpisodeLabel)
-                }
-            }
-
-            return (title: item.displayTitle, subtitle: nil)
+            (title: item.displayTitle, subtitle: item.subtitle)
         }
 
         @ViewBuilder

@@ -10,10 +10,7 @@ import Combine
 import Defaults
 import FactoryKit
 import Foundation
-import JellyfinAPI
-
-// TODO: proper error catching
-// TODO: be a UserSessionService?
+import Logging
 
 typealias MediaPlayerManagerPublisher = LegacyEventPublisher<MediaPlayerManager?>
 
@@ -30,15 +27,7 @@ extension Container {
 
     var mediaPlayerManager: Factory<MediaPlayerManager> {
         self { @MainActor in
-            .init(
-                playbackItem: .init(
-                    baseItem: .init(),
-                    mediaSource: .init(),
-                    playSessionID: "",
-                    url: URL(string: "/")!,
-                    deviceProfile: .init()
-                )
-            )
+            .init(playbackItem: MediaPlayerItem(metadata: .init(id: nil, displayTitle: ""), url: URL(fileURLWithPath: "/")))
         }
         .scope(.session)
     }
@@ -48,17 +37,42 @@ import StatefulMacros
 
 @MainActor
 @Stateful
-final class MediaPlayerManager: ViewModel {
+final class MediaPlayerManager: ObservableObject {
+    let logger = Logger.swiftfin()
+    var cancellables = Set<AnyCancellable>()
+    @Published
+    var volume: Float = 1 {
+        didSet { proxy?.setVolume(volume) }
+    }
+
+    @Published
+    var isMuted = false {
+        didSet { proxy?.setMuted(isMuted) }
+    }
+
+    var preferredPlayer: VideoPlayerType?
+    var onStop: (() -> Void)?
+    /// Source-owned recovery. The shared player only presents this action.
+    var retryPlayback: (() -> Void)?
+    @Published
+    var audioOffset: Duration = .zero {
+        didSet { (proxy as? any MediaPlayerOffsetConfigurable)?.setAudioOffset(audioOffset) }
+    }
+
+    @Published
+    var subtitleOffset: Duration = .zero {
+        didSet { (proxy as? any MediaPlayerOffsetConfigurable)?.setSubtitleOffset(subtitleOffset) }
+    }
 
     @CasePathable
     enum Action {
         case ended
         case error
-        case playNewItem(provider: MediaPlayerItemProvider)
+        case playNewItem(provider: any PlaybackItemProviding)
         case setBitrate(bitrate: PlaybackBitrate)
         case setPlaybackRequestStatus(status: PlaybackRequestStatus)
         case setRate(rate: Float)
-        case setTrack(type: MediaStreamType, from: Int?, to: Int? = nil)
+        case setTrack(type: PlaybackTrack.Kind, from: Int?, to: Int? = nil)
         case start
         case stop
         case togglePlayPause
@@ -101,19 +115,21 @@ final class MediaPlayerManager: ViewModel {
     @Published
     var playbackItem: MediaPlayerItem? = nil {
         didSet {
+            audioOffset = .zero
+            subtitleOffset = .zero
             if let playbackItem {
-                self.item = playbackItem.baseItem
-                seconds = playbackItem.baseItem.startSeconds ?? .zero
+                self.item = playbackItem.metadata
+                seconds = playbackItem.metadata.startSeconds ?? .zero
                 playbackItem.manager = self
                 setSupplements()
 
                 logger.info(
                     "Playing new item",
                     metadata: [
-                        "itemID": .stringConvertible(playbackItem.baseItem.id ?? "Unknown"),
-                        "itemTitle": .stringConvertible(playbackItem.baseItem.displayTitle),
-                        "url": .stringConvertible(playbackItem.url.absoluteString),
-                        "isTranscoding": .stringConvertible(playbackItem.mediaSource.transcodingURL != nil),
+                        "itemID": .stringConvertible(playbackItem.url.isFileURL ? "local" : (playbackItem.metadata.id ?? "Unknown")),
+                        "itemTitle": .stringConvertible(playbackItem.url.isFileURL ? "Local video" : playbackItem.metadata.displayTitle),
+                        "url": .stringConvertible(playbackItem.url.isFileURL ? "file://(private)" : playbackItem.url.absoluteString),
+                        "isTranscoding": .stringConvertible(playbackItem.canSetBitrate),
                     ]
                 )
 
@@ -123,7 +139,7 @@ final class MediaPlayerManager: ViewModel {
     }
 
     @Published
-    private(set) var item: BaseItemDto
+    private(set) var item: PlaybackMedia
     @Published
     private(set) var playbackRequestStatus: PlaybackRequestStatus = .playing
     @Published
@@ -141,30 +157,11 @@ final class MediaPlayerManager: ViewModel {
 
     // TODO: replace with graph dependency package
     private func setSupplements() {
-        var newSupplements = Defaults[.VideoPlayer.supplements].compactMap { kind -> (any MediaPlayerSupplement)? in
-            switch kind {
-            case .info:
-                return MediaInfoSupplement(item: item)
-            case .chapters:
-                guard let chapters = item.fullChapterInfo, chapters.isNotEmpty else { return nil }
-                return MediaChaptersSupplement(chapters: chapters)
-            case .queue:
-                return queue
-            case .people:
-                guard let people = item.mergedPeople?.filter({ $0.type?.isSupported == true }),
-                      people.isNotEmpty else { return nil }
-                return MediaPeopleSupplement(people: people)
-            case .playbackInformation:
-                guard let itemID = item.id else { return nil }
-                return PlaybackInformationSupplement(itemID: itemID)
-            }
-        }
+        supplements = playbackItem?.makeSupplements(queue: queue) ?? []
+    }
 
-        if item.isLiveStream, Defaults[.Experimental.videoPlayerEPG] {
-            newSupplements.append(EPGSupplement())
-        }
-
-        self.supplements = newSupplements
+    func updateMetadata(_ metadata: PlaybackMedia) {
+        item = metadata
     }
 
     /// The current seconds media playback is set to.
@@ -184,31 +181,24 @@ final class MediaPlayerManager: ViewModel {
         didSet {
             if var proxy {
                 proxy.manager = self
+                proxy.setVolume(volume)
+                proxy.setMuted(isMuted)
             }
         }
     }
 
-    private var initialMediaPlayerItemProvider: MediaPlayerItemProvider?
+    private var initialMediaPlayerItemProvider: (any PlaybackItemProviding)?
 
     // MARK: init
 
-//    static let empty: MediaPlayerManager = .init()
-
-//    override private init() {
-//        self.item = .init()
-//        self.state = .stopped
-//        super.init()
-//    }
-
     init(
-        provider: MediaPlayerItemProvider,
+        provider: any PlaybackItemProviding,
         queue: (any MediaPlayerQueue)? = nil
     ) {
-        self.item = provider.item
+        self.item = provider.metadata
         self.queue = queue.map { AnyMediaPlayerQueue($0) }
         self.state = .loadingItem
         self.initialMediaPlayerItemProvider = provider
-        super.init()
 
         self.queue?.manager = self
     }
@@ -217,13 +207,15 @@ final class MediaPlayerManager: ViewModel {
         playbackItem: MediaPlayerItem,
         queue: (any MediaPlayerQueue)? = nil
     ) {
-        self.item = playbackItem.baseItem
+        self.item = playbackItem.metadata
         self.queue = queue.map { AnyMediaPlayerQueue($0) }
         self.state = .playback
-        super.init()
 
         self.queue?.manager = self
         self.playbackItem = playbackItem
+        self.seconds = playbackItem.metadata.startSeconds ?? .zero
+        playbackItem.manager = self
+        setSupplements()
     }
 
     @Function(\Action.Cases.ended)
@@ -245,7 +237,7 @@ final class MediaPlayerManager: ViewModel {
             return
         }
 
-        if let nextItem = queue?.nextItem, try authenticatedUser.data.configuration?.enableNextEpisodeAutoPlay == true {
+        if let nextItem = queue?.nextItem, playbackItem?.autoplayNextItem == true {
             await self.playNewItem(provider: nextItem)
         } else {
             await self.stop()
@@ -259,9 +251,9 @@ final class MediaPlayerManager: ViewModel {
                 "Error while playing item",
                 metadata: [
                     "error": .stringConvertible(error.localizedDescription),
-                    "itemID": .stringConvertible(playbackItem.baseItem.id ?? "Unknown"),
-                    "itemTitle": .stringConvertible(playbackItem.baseItem.displayTitle),
-                    "url": .stringConvertible(playbackItem.url.absoluteString),
+                    "itemID": .stringConvertible(playbackItem.url.isFileURL ? "local" : (playbackItem.metadata.id ?? "Unknown")),
+                    "itemTitle": .stringConvertible(playbackItem.url.isFileURL ? "Local video" : playbackItem.metadata.displayTitle),
+                    "url": .stringConvertible(playbackItem.url.isFileURL ? "file://(private)" : playbackItem.url.absoluteString),
                 ]
             )
         } else {
@@ -275,17 +267,21 @@ final class MediaPlayerManager: ViewModel {
             )
         }
 
+        playbackItem?.finish(at: seconds)
         proxy?.stop()
-        Container.shared.mediaPlayerManagerPublisher().send(nil)
-        Container.shared.mediaPlayerManager.reset()
+        playbackItem?.manager = nil
     }
 
     @Function(\Action.Cases.playNewItem)
-    private func _playNewItem(_ provider: MediaPlayerItemProvider) async throws {
-        item = provider.item
-        setSupplements()
+    private func _playNewItem(_ provider: any PlaybackItemProviding) async throws {
+        playbackItem?.finish(at: seconds)
         proxy?.stop()
-        playbackItem = try await provider()
+        playbackItem?.manager = nil
+        item = provider.metadata
+        let prepared = try await provider()
+        try Task.checkCancellation()
+        guard state != .stopped else { return }
+        playbackItem = prepared
     }
 
     @Function(\Action.Cases.setBitrate)
@@ -320,7 +316,7 @@ final class MediaPlayerManager: ViewModel {
     }
 
     @Function(\Action.Cases.setTrack)
-    private func _setTrack(_ type: MediaStreamType, _ oldIndex: Int?, _ newIndex: Int?) async throws {
+    private func _setTrack(_ type: PlaybackTrack.Kind, _ oldIndex: Int?, _ newIndex: Int?) async throws {
         guard let playbackItem else {
             logger.warning("MediaPlayerManager.SetTrack call with an invalid playbackItem")
             return
@@ -362,23 +358,28 @@ final class MediaPlayerManager: ViewModel {
 
     @Function(\Action.Cases.start)
     private func _start() async throws {
-        guard let initialMediaPlayerItemProvider else {
-            await self.stop()
-            return
-        }
+        guard let initialMediaPlayerItemProvider else { return }
         self.initialMediaPlayerItemProvider = nil
-        playbackItem = try await initialMediaPlayerItemProvider()
+        let prepared = try await initialMediaPlayerItemProvider()
+        try Task.checkCancellation()
+        guard state != .stopped else { return }
+        playbackItem = prepared
     }
 
-    // TODO: remove playback item?
-    //       - check that observers would respond correctly to stopping
     @Function(\Action.Cases.stop)
     private func _stop() async throws {
         await self.cancel()
 
+        playbackItem?.finish(at: seconds)
         proxy?.stop()
-        Container.shared.mediaPlayerManagerPublisher().send(nil)
-        Container.shared.mediaPlayerManager.reset()
+        playbackItem?.manager = nil
+        // A disappearing view may finish after its replacement has registered.
+        // Only the current session may clear global playback ownership.
+        if Container.shared.mediaPlayerManager() === self {
+            Container.shared.mediaPlayerManagerPublisher().send(nil)
+            Container.shared.mediaPlayerManager.reset()
+        }
+        onStop?()
     }
 
     @Function(\Action.Cases.togglePlayPause)
@@ -391,10 +392,7 @@ final class MediaPlayerManager: ViewModel {
         }
     }
 
-    /// Rebuilds the playback item with new stream indexes / bitrate.
-    /// Stops the current proxy, requests new playback info from the server, and starts playback with the new configuration.
-    ///
-    /// Rebuilds the current item
+    /// Asks the source to rebuild its resource while preserving the shared playback position.
     private func updateMediaPlayerItem(
         currentItem: MediaPlayerItem,
         audioStreamIndex: Int? = nil,
@@ -416,54 +414,17 @@ final class MediaPlayerManager: ViewModel {
 
         proxy?.stop()
 
-        let newItem = try await MediaPlayerItem.build(
-            for: currentItem.baseItem,
-            mediaSource: currentItem.mediaSource,
-            audioStreamIndex: audioStreamIndex ?? currentItem.selectedAudioStreamIndex,
-            subtitleStreamIndex: subtitleStreamIndex ?? currentItem.selectedSubtitleStreamIndex,
-            requestedBitrate: requestedBitrate ?? currentItem.requestedBitrate,
-            modifyItem: { item in
-                if item.userData == nil {
-                    item.userData = UserItemDataDto(key: "")
-                }
-                item.userData?.playbackPositionTicks = currentSeconds.ticks
-            }
+        let newItem = try await currentItem.rebuild(
+            audio: audioStreamIndex ?? currentItem.selectedAudioStreamIndex,
+            subtitle: subtitleStreamIndex ?? currentItem.selectedSubtitleStreamIndex,
+            bitrate: requestedBitrate,
+            position: currentSeconds
         )
-
-        logger.info(
-            "Built new playback item",
-            metadata: [
-                "playSessionID": "\(newItem.playSessionID)",
-                "isTranscoding": "\(newItem.mediaSource.transcodingURL != nil)",
-                "url": "\(newItem.url.absoluteString)",
-            ]
-        )
+        guard !Task.isCancelled, state != .stopped else { return }
+        currentItem.finish(at: currentSeconds)
+        currentItem.manager = nil
 
         self.playbackItem = newItem
         self.seconds = currentSeconds
-    }
-
-    nonisolated static func getMaxBitrate(
-        for requestedBitrate: PlaybackBitrate,
-        testSize: PlaybackBitrateTestSize = Defaults[.VideoPlayer.appMaximumBitrateTest]
-    ) async throws -> Int {
-
-        guard requestedBitrate == .auto else { return requestedBitrate.rawValue }
-
-        guard let userSession = Container.shared.currentUserSession() else {
-            throw UserSessionError.missingCurrentSession
-        }
-
-        let testStartTime = Date()
-        let _ = try await userSession.client.send(Paths.getBitrateTestBytes(size: testSize.rawValue))
-        let testDuration = Date().timeIntervalSince(testStartTime)
-        let testSizeBits = Double(testSize.rawValue * 8)
-        let testBitrate = testSizeBits / testDuration
-
-        return clamp(
-            Int(testBitrate),
-            min: PlaybackBitrate.kbps420.rawValue,
-            max: Int(Int32.max)
-        )
     }
 }

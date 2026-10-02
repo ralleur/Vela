@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import JellyfinAPI
 import SwiftUI
 
 // TODO: feature implementations
@@ -27,6 +26,8 @@ protocol MediaPlayerProxy: ObservableObject, MediaPlayerObserver {
 
     func jumpForward(_ seconds: Duration)
     func jumpBackward(_ seconds: Duration)
+    func setVolume(_ volume: Float)
+    func setMuted(_ muted: Bool)
     func setRate(_ rate: Float)
     func setSeconds(_ seconds: Duration)
 }
@@ -50,12 +51,13 @@ protocol VideoMediaPlayerProxy: MediaPlayerProxy, MediaPlayerAudioTrackConfigura
 
 @MainActor
 protocol MediaPlayerAudioTrackConfigurable {
-    func setAudioStream(_ stream: MediaStream)
+    func setAudioStream(index: Int?)
 }
 
 @MainActor
 protocol MediaPlayerSubtitleTrackConfigurable {
-    func setSubtitleStream(_ stream: MediaStream)
+    func attachSubtitle(_ url: URL) throws
+    func setSubtitleStream(index: Int?)
 }
 
 @MainActor
@@ -67,4 +69,8 @@ protocol MediaPlayerOffsetConfigurable {
 @MainActor
 protocol MediaPlayerSubtitleConfigurable {
     func setSubtitleConfiguration(_ configuration: SubtitleConfiguration)
+}
+
+extension MediaPlayerSubtitleTrackConfigurable {
+    func attachSubtitle(_ url: URL) throws { throw ErrorMessage("This player cannot attach external subtitles. Choose VLC or mpv.") }
 }

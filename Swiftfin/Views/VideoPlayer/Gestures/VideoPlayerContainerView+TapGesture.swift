@@ -54,6 +54,9 @@ extension VideoPlayer.UIVideoPlayerContainerViewController {
             )
         }
 
+        #if targetEnvironment(macCatalyst)
+        if count == 2 { VelaMiniPlayer.toggleFullScreen(); return }
+        #endif
         if count == 2 {
             handleDoubleTouchGesture(
                 location: location,

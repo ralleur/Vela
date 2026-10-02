@@ -10,8 +10,7 @@ import AVFoundation
 import Combine
 import Defaults
 import Foundation
-@preconcurrency import JellyfinAPI
-import SwiftUI
+@preconcurrency import SwiftUI
 
 // TODO: After NativeVideoPlayer is removed, can move bindings and
 //       observers to AVPlayerView, like the VLC delegate
@@ -48,17 +47,17 @@ class AVMediaPlayerProxy: VideoMediaPlayerProxy {
 
             if let manager {
                 managerItemObserver = manager.$playbackItem
-                    .sink { playbackItem in
+                    .sink { [weak self] playbackItem in
                         if let playbackItem {
-                            self.playNew(item: playbackItem)
+                            self?.playNew(item: playbackItem)
                         }
                     }
 
                 managerStateObserver = manager.$state
-                    .sink { state in
+                    .sink { [weak self] state in
                         switch state {
                         case .stopped:
-                            self.playbackStopped()
+                            self?.playbackStopped()
                         default: break
                         }
                     }
@@ -80,14 +79,15 @@ class AVMediaPlayerProxy: VideoMediaPlayerProxy {
         timeObserver = player.addPeriodicTimeObserver(
             forInterval: CMTime(seconds: 1, preferredTimescale: 1000),
             queue: .main
-        ) { newTime in
-            let newSeconds = Duration.seconds(newTime.seconds)
-
-            if !self.isScrubbing.wrappedValue {
-                self.scrubbedSeconds.wrappedValue = newSeconds
+        ) { [weak self] newTime in
+            Task { @MainActor in
+                guard let self else { return }
+                let newSeconds = Duration.seconds(newTime.seconds)
+                if !self.isScrubbing.wrappedValue {
+                    self.scrubbedSeconds.wrappedValue = newSeconds
+                }
+                self.manager?.seconds = newSeconds
             }
-
-            self.manager?.seconds = newSeconds
         }
     }
 
@@ -101,6 +101,7 @@ class AVMediaPlayerProxy: VideoMediaPlayerProxy {
 
     func stop() {
         player.pause()
+        player.replaceCurrentItem(with: nil)
     }
 
     func jumpForward(_ seconds: Duration) {
@@ -121,9 +122,17 @@ class AVMediaPlayerProxy: VideoMediaPlayerProxy {
     }
 
     // TODO: complete
+    func setVolume(_ volume: Float) {
+        player.volume = volume
+    }
+
+    func setMuted(_ muted: Bool) {
+        player.isMuted = muted
+    }
+
     func setRate(_ rate: Float) {}
-    func setAudioStream(_ stream: MediaStream) {}
-    func setSubtitleStream(_ stream: MediaStream) {}
+    func setAudioStream(index: Int?) {}
+    func setSubtitleStream(index: Int?) {}
 
     func setAspectFill(_ aspectFill: Bool) {
         avPlayerLayer.videoGravity = aspectFill ? .resizeAspectFill : .resizeAspect
@@ -159,10 +168,13 @@ extension AVMediaPlayerProxy {
     }
 
     private func playNew(item: MediaPlayerItem) {
-        let baseItem = item.baseItem
+        let baseItem = item.metadata
 
         let newAVPlayerItem = AVPlayerItem(url: item.url)
-        newAVPlayerItem.externalMetadata = item.baseItem.avMetadata
+        let title = AVMutableMetadataItem()
+        title.identifier = .commonIdentifierTitle
+        title.value = item.metadata.displayTitle as NSString
+        newAVPlayerItem.externalMetadata = [title]
 
         player.replaceCurrentItem(with: newAVPlayerItem)
 
@@ -173,47 +185,41 @@ extension AVMediaPlayerProxy {
 //            }
 //        }
 
-        timeControlStatusObserver = player.observe(\.timeControlStatus, options: [.new, .initial]) { player, _ in
+        timeControlStatusObserver = player.observe(\.timeControlStatus, options: [.new, .initial]) { [weak self] player, _ in
             let timeControlStatus = player.timeControlStatus
 
-            DispatchQueue.main.async {
+            Task { @MainActor [weak self] in
                 switch timeControlStatus {
                 case .paused:
-                    self.manager?.setPlaybackRequestStatus(status: .paused)
+                    self?.manager?.setPlaybackRequestStatus(status: .paused)
                 case .waitingToPlayAtSpecifiedRate: ()
                 // TODO: buffering
                 case .playing:
-                    self.manager?.setPlaybackRequestStatus(status: .playing)
+                    self?.manager?.setPlaybackRequestStatus(status: .playing)
                 @unknown default: ()
                 }
             }
         }
 
-        // TODO: proper handling of none/unknown states
-        statusObserver = player.observe(\.currentItem?.status, options: [.new, .initial]) { _, value in
+        statusObserver = player.observe(\.currentItem?.status, options: [.new, .initial]) { [weak self] _, value in
             guard let newValue = value.newValue else { return }
-            switch newValue {
-            case .failed:
-                if let error = self.player.error {
-                    DispatchQueue.main.async {
-                        self.manager?.error(ErrorMessage("AVPlayer error: \(error.localizedDescription)"))
+            Task { @MainActor [weak self] in
+                guard let self else { return }
+                switch newValue {
+                case .failed:
+                    manager?.error(ErrorMessage(player.currentItem?.error?.localizedDescription ?? "AVPlayer could not decode this media."))
+                case .readyToPlay:
+                    let start = max(.zero, (baseItem.startSeconds ?? .zero) - .seconds(Defaults[.VideoPlayer.resumeOffset]))
+                    player.seek(
+                        to: CMTime(seconds: start.seconds, preferredTimescale: 1000),
+                        toleranceBefore: .zero,
+                        toleranceAfter: .zero
+                    ) { [weak self] _ in
+                        Task { @MainActor in self?.play() }
                     }
+                case .none, .unknown: break
+                @unknown default: break
                 }
-            case .none, .readyToPlay, .unknown:
-                let startSeconds = max(.zero, (baseItem.startSeconds ?? .zero) - Duration.seconds(Defaults[.VideoPlayer.resumeOffset]))
-
-                self.player.seek(
-                    to: CMTimeMake(
-                        value: startSeconds.components.seconds,
-                        timescale: 1
-                    ),
-                    toleranceBefore: .zero,
-                    toleranceAfter: .zero,
-                    completionHandler: { _ in
-                        self.play()
-                    }
-                )
-            @unknown default: ()
             }
         }
     }

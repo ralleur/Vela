@@ -1,14 +1,18 @@
 //
-// Vela additions to Swiftfin, subject to the terms of the Mozilla Public
+// Swiftfin is subject to the terms of the Mozilla Public
 // License, v2.0. If a copy of the MPL was not distributed with this
 // file, you can obtain one at https://mozilla.org/MPL/2.0/.
 //
+// Copyright (c) 2026 Jellyfin & Jellyfin Contributors
+//
 
+import Combine
 import Defaults
 import SwiftUI
 
 #if targetEnvironment(macCatalyst)
 
+import ObjectiveC
 import UIKit
 
 /// Mac window behaviour while the player is on screen:
@@ -27,7 +31,13 @@ struct VelaMacPlayerSupport: View {
     @Default(.Vela.Mac.showPlayerWindowTitle)
     private var showPlayerWindowTitle
 
+    @State
+    private var decodedVideoSize: CGSize = .zero
+
     private var declaredVideoSize: CGSize {
+        if decodedVideoSize.width > 0, decodedVideoSize.height > 0 {
+            return decodedVideoSize
+        }
         guard let stream = manager.playbackItem?.videoStreams.first else { return .zero }
 
         if let aspectRatio = stream.aspectRatio {
@@ -56,6 +66,8 @@ struct VelaMacPlayerSupport: View {
         .frame(width: 0, height: 0)
         .allowsHitTesting(false)
         .accessibilityHidden(true)
+        .onReceive((manager.proxy as? any VideoMediaPlayerProxy)?.videoSize.$value.eraseToAnyPublisher()
+            ?? Just(CGSize.zero).eraseToAnyPublisher()) { decodedVideoSize = $0 }
     }
 
     private struct WindowAccessor: UIViewRepresentable {
@@ -201,7 +213,9 @@ struct VelaMacPlayerSupport: View {
             var host: UIView = self
             while let superview = host.superview, !(superview is UIWindow) {
                 host = superview
-                if host.bounds.size == window.bounds.size { break }
+                if host.bounds.size == window.bounds.size {
+                    break
+                }
             }
             let interaction = UIContextMenuInteraction(delegate: self)
             host.addInteraction(interaction)
@@ -223,7 +237,13 @@ struct VelaMacPlayerSupport: View {
             watermark.frame = CGRect(x: 8, y: -4, width: 44, height: 44)
             window.addSubview(watermark)
             if let appKitWindow {
-                for name in ["NSWindowWillEnterFullScreenNotification", "NSWindowWillExitFullScreenNotification", "NSWindowDidEnterFullScreenNotification", "NSWindowDidExitFullScreenNotification", "NSWindowDidFailToEnterFullScreenNotification"] {
+                for name in [
+                    "NSWindowWillEnterFullScreenNotification",
+                    "NSWindowWillExitFullScreenNotification",
+                    "NSWindowDidEnterFullScreenNotification",
+                    "NSWindowDidExitFullScreenNotification",
+                    "NSWindowDidFailToEnterFullScreenNotification"
+                ] {
                     windowObservers.append(NotificationCenter.default.addObserver(
                         forName: Notification.Name(name), object: appKitWindow, queue: .main
                     ) { [weak self] notification in
@@ -232,7 +252,11 @@ struct VelaMacPlayerSupport: View {
                             if notification.name.rawValue.contains("Will") {
                                 self.isChangingFullScreen = true
                                 self.watermark.isHidden = true
-                                VelaMiniPlayer.setContentSize(CGSize(width: 1, height: 1), selector: "setContentResizeIncrements:", on: native)
+                                VelaMiniPlayer.setContentSize(
+                                    CGSize(width: 1, height: 1),
+                                    selector: "setContentResizeIncrements:",
+                                    on: native
+                                )
                             } else {
                                 self.isChangingFullScreen = false
                                 self.lockedAspectRatio = nil
@@ -251,6 +275,7 @@ struct VelaMacPlayerSupport: View {
         private func detach() {
             guard let window = attachedWindow else { return }
 
+            Self.setCursorHiddenUntilMovement(false)
             VelaMiniPlayer.shared.exit(animated: false)
             windowObservers.forEach(NotificationCenter.default.removeObserver)
             windowObservers.removeAll()
@@ -305,6 +330,25 @@ struct VelaMacPlayerSupport: View {
             updateWindowTitle(on: appKitWindow)
             updateWindowButtons(on: appKitWindow)
             lockWindowAspectRatio(on: appKitWindow)
+            if !controlsVisible, appKitWindow.value(forKey: "keyWindow") as? Bool == true,
+               let mouse = (NSClassFromString("NSEvent") as? NSObject.Type)?.value(forKey: "mouseLocation") as? NSValue,
+               let frame = VelaMiniPlayer.frame(of: appKitWindow), frame.contains(mouse.cgPointValue)
+            {
+                Self.setCursorHiddenUntilMovement(true)
+            } else if controlsVisible {
+                Self.setCursorHiddenUntilMovement(false)
+            }
+        }
+
+        private static func setCursorHiddenUntilMovement(_ hidden: Bool) {
+            guard let cursor = NSClassFromString("NSCursor"),
+                  let method = class_getClassMethod(cursor, NSSelectorFromString("setHiddenUntilMouseMoves:")) else { return }
+            typealias SetHidden = @convention(c) (AnyClass, Selector, Bool) -> Void
+            unsafeBitCast(method_getImplementation(method), to: SetHidden.self)(
+                cursor,
+                NSSelectorFromString("setHiddenUntilMouseMoves:"),
+                hidden
+            )
         }
 
         private func lockWindowAspectRatio(on appKitWindow: NSObject) {
@@ -429,12 +473,20 @@ struct VelaMacPlayerSupport: View {
             unsafeBitCast(button.method(for: setter), to: SetAction.self)(button, setter, action)
         }
 
-        @objc private func togglePlayerFullScreen(_ sender: Any?) {
+        @objc
+        private func togglePlayerFullScreen(_ sender: Any?) {
             guard !isChangingFullScreen else { return }
             VelaMiniPlayer.toggleFullScreen()
         }
 
         private func updateWindowTitle(on appKitWindow: NSObject) {
+            // Account/source transitions can install the tab controller after attach.
+            // Reapply the player chrome policy once it exists, retaining its original
+            // state only once so browsing is restored when playback closes.
+            if let window = attachedWindow, let tabs = Self.tabBarController(in: window) {
+                if savedTabBarHidden == nil { savedTabBarHidden = tabs.isTabBarHidden }
+                if !tabs.isTabBarHidden { tabs.isTabBarHidden = true }
+            }
             attachedWindow?.bringSubviewToFront(watermark)
             watermark.isHidden = !showPlayerWindowTitle || isChangingFullScreen || VelaMiniPlayer.isFullScreen(appKitWindow)
             attachedWindow?.windowScene?.titlebar?.titleVisibility = .hidden
@@ -484,7 +536,9 @@ struct VelaMacPlayerSupport: View {
         func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
             var view = touch.view
             while let candidate = view {
-                if candidate.accessibilityIdentifier == "VelaTimeline" || candidate is UIControl { return false }
+                if candidate.accessibilityIdentifier == "VelaTimeline" || candidate is UIControl {
+                    return false
+                }
                 view = candidate.superview
             }
             return true
@@ -567,7 +621,9 @@ final class VelaMiniPlayer {
         guard let window = UIApplication.shared.connectedScenes.compactMap({ $0 as? UIWindowScene })
             .flatMap(\.windows).first(where: \.isKeyWindow),
             let native = appKitWindow(for: window) else { return }
-        if shared.isActive { shared.exit(animated: false) }
+        if shared.isActive {
+            shared.exit(animated: false)
+        }
         native.perform(NSSelectorFromString("toggleFullScreen:"), with: nil)
     }
 

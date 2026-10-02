@@ -20,13 +20,13 @@ extension VideoPlayer.PlaybackControls.Toolbar.ActionButtons {
         @EnvironmentObject
         private var manager: MediaPlayerManager
 
-        private func makeProvider(for mediaSource: MediaSourceInfo, playbackItem: MediaPlayerItem) -> MediaPlayerItemProvider {
+        private func makeProvider(for mediaSource: MediaSourceInfo, playbackItem: JellyfinMediaPlayerItem) -> MediaPlayerItemProvider {
             var adjustedBaseItem = playbackItem.baseItem
             adjustedBaseItem.userData?.playbackPositionTicks = manager.seconds.ticks
             let requestedBitrate = playbackItem.requestedBitrate
 
             return MediaPlayerItemProvider(item: adjustedBaseItem, mediaSource: mediaSource) { baseItem, modifyItem in
-                try await MediaPlayerItem.build(
+                try await JellyfinMediaPlayerItem.build(
                     for: baseItem,
                     mediaSource: mediaSource,
                     requestedBitrate: requestedBitrate,
@@ -36,7 +36,7 @@ extension VideoPlayer.PlaybackControls.Toolbar.ActionButtons {
         }
 
         var body: some View {
-            if let playbackItem = manager.playbackItem {
+            if let playbackItem = manager.playbackItem as? JellyfinMediaPlayerItem {
                 let bitrates = playbackItem.mediaSource.supportedBitrates
                 let versions = playbackItem.baseItem.mediaSources ?? []
                 let hasVersionSection = versions.count > 1

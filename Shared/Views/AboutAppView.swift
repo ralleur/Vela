@@ -21,12 +21,12 @@ struct AboutAppView: View {
             Section {
                 VStack(alignment: .center, spacing: 10) {
 
-                    Image(.jellyfinBlobBlue)
+                    Image("VelaWatermark")
                         .resizable()
                         .aspectRatio(1, contentMode: .fit)
                         .frame(height: 150)
 
-                    Text(verbatim: "Swiftfin")
+                    Text(verbatim: "Vela")
                         .fontWeight(.semibold)
                         .font(.title2)
                 }
@@ -77,7 +77,7 @@ struct AboutAppView: View {
                     image: .logoGithub,
                     external: true
                 ) {
-                    UIApplication.shared.open(.swiftfinGithub)
+                    UIApplication.shared.open(URL(string: "https://github.com/ralleur/Vela")!)
                 }
 
                 ChevronButton(
@@ -86,7 +86,7 @@ struct AboutAppView: View {
                     systemName: "text.document",
                     external: true
                 ) {
-                    UIApplication.shared.open(.swiftfinGithubLicense)
+                    UIApplication.shared.open(URL(string: "https://github.com/ralleur/Vela/blob/vela/LICENSE.md")!)
                 }
 
                 ChevronButton(
@@ -94,7 +94,7 @@ struct AboutAppView: View {
                     systemName: "plus.circle.fill",
                     external: true
                 ) {
-                    UIApplication.shared.open(.swiftfinGithubIssues)
+                    UIApplication.shared.open(URL(string: "https://github.com/ralleur/Vela/issues")!)
                 }
                 .symbolRenderingMode(.monochrome)
                 #endif

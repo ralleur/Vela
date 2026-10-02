@@ -251,7 +251,7 @@ extension BaseItemDto {
                     throw ErrorMessage(L10n.unknownError)
                 }
 
-                return try await MediaPlayerItem.build(
+                return try await JellyfinMediaPlayerItem.build(
                     for: channel,
                     modifyItem: modifyItem
                 )
@@ -266,7 +266,7 @@ extension BaseItemDto {
                 subtitleStreamIndex: subtitleStreamIndex,
                 requestedBitrate: requestedBitrate
             ) { item, modifyItem in
-                try await MediaPlayerItem.build(
+                try await JellyfinMediaPlayerItem.build(
                     for: item,
                     mediaSource: selectedMediaSource,
                     audioStreamIndex: audioStreamIndex,

@@ -14,7 +14,7 @@ extension L10n {
 
     // MARK: - Licenses
 
-    static let mlp2 = "MLP 2.0"
+    static let mlp2 = "MPL 2.0"
 
     // MARK: - Video ranges
 

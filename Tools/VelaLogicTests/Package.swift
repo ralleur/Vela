@@ -14,6 +14,8 @@ let package = Package(
         .package(url: "https://github.com/jellyfin/jellyfin-sdk-swift.git", exact: "3.2.0"),
     ],
     targets: [
+        .target(name: "PlaybackCore", swiftSettings: [.swiftLanguageMode(.v5)]),
+        .testTarget(name: "PlaybackCoreTests", dependencies: ["PlaybackCore"], swiftSettings: [.swiftLanguageMode(.v5)]),
         .target(
             name: "VelaLogic",
             dependencies: [.product(name: "JellyfinAPI", package: "jellyfin-sdk-swift")],

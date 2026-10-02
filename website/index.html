@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vela — Just watch the video.</title>
+  <meta name="description" content="A modern macOS video player with Jellyfin built in. Your files and your library, in one player. Free and open source. Vela 0.9.4 beta.">
+  <meta name="theme-color" content="#11151e">
+  <link rel="canonical" href="https://ralleur.github.io/Vela/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Vela — Just watch the video.">
+  <meta property="og:description" content="Your files. Your Jellyfin library. One Mac player. Free and open source. Vela 0.9.4 beta for Apple silicon and Intel Macs.">
+  <meta property="og:url" content="https://ralleur.github.io/Vela/">
+  <meta property="og:image" content="https://ralleur.github.io/Vela/assets/social-preview.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" type="image/png" href="assets/vela-icon.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav wrap">
+  <a class="brand" href="#" aria-label="Vela home"><img src="assets/vela-icon.png" alt="" width="44" height="44">Vela</a>
+  <nav aria-label="Main navigation"><a href="#experience">The experience</a><a href="#foundation">The foundation</a><a href="https://github.com/ralleur/Vela">GitHub</a></nav>
+  <a class="nav-cta" href="#get-vela">Get Vela</a>
+</header>
+<main id="main">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <p class="eyebrow">A Mac video player. With Jellyfin built in.</p>
+    <h1 id="hero-title">Just watch<br>the video<span class="blue">.</span></h1>
+    <p class="intro">Your files. Your Jellyfin library.<br>One player that feels at home on your Mac.</p>
+    <div class="actions"><a class="button" href="https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-macOS-universal.dmg">Download for Mac</a><a class="text-link" href="#experience">Meet Vela</a></div>
+    <p class="micro">Free &amp; open source · 0.9.4 beta · macOS 15.6+</p>
+    <figure class="hero-frame">
+      <img src="assets/player-clean-1366.webp" srcset="assets/player-clean-768.webp 768w, assets/player-clean-1366.webp 1366w" sizes="(max-width: 760px) 100vw, min(92vw, 1366px)" width="1366" height="614" fetchpriority="high" alt="Sintel playing in the real Vela Mac window with all playback controls hidden.">
+      <figcaption>Vela, with the controls out of the way. <span>Sintel © Blender Foundation.</span></figcaption>
+    </figure>
+  </section>
+
+  <section class="story wrap" id="experience">
+    <div class="section-label">01 / One activity</div>
+    <div class="story-copy"><h2>Where it lives<br>isn't the point.</h2><p>An MKV in Downloads. A film on your Jellyfin server. Different places, same plan for the evening.</p><p>Watching a video shouldn't start with choosing an app. Vela brings local playback and a full Jellyfin client together, so you can get on with watching.</p></div>
+  </section>
+
+  <section class="moments wrap" aria-label="Two ways to press play">
+    <article class="moment">
+      <div class="moment-copy"><p class="eyebrow">Your files</p><h2>Open it.<br>You're watching.</h2><p>Choose a video in Finder's Open With menu, use <kbd>⌘</kbd> <kbd>O</kbd>, or drop it into Vela. No account. No server. Just the file you wanted to play.</p><p class="detail">Make Vela the default for a format in Finder, and a double-click is enough.</p></div>
+      <figure class="window-shot"><img src="assets/local-workflow.webp" width="880" height="448" loading="lazy" alt="The real macOS Open Video panel selecting Sintel.mkv for Vela."><figcaption>A normal Mac file. A normal way to open it.</figcaption></figure>
+    </article>
+    <article class="moment library-moment">
+      <div class="moment-copy"><p class="eyebrow">Your Jellyfin library</p><h2>Browse a little.<br>Stay for a film.</h2><p>Your server has a home here, too. Browse your library, open a film's detail page and carry on where you stopped.</p><p class="detail">The same player, with the Jellyfin client foundation that made Vela possible.</p></div>
+      <figure class="window-shot"><picture><source media="(max-width: 600px)" srcset="assets/jellyfin-detail.webp"><img src="assets/jellyfin-detail.webp" width="823" height="755" loading="lazy" alt="Vela’s actual Jellyfin detail page for Sintel, with playback and library recommendations."></picture><figcaption>A real Jellyfin library, filled with openly licensed films.</figcaption><details><summary>See the library home</summary><picture><source media="(max-width: 600px)" srcset="assets/jellyfin-home-mobile.webp" width="430" height="610"><img src="assets/jellyfin-home.webp" width="823" height="755" loading="lazy" alt="Vela’s home page with Continue and three openly licensed demo films."></picture></details></figure>
+    </article>
+  </section>
+
+  <section class="disappear" aria-labelledby="quiet-title">
+    <div class="wrap"><p class="eyebrow">02 / Room for the film</p><h2 id="quiet-title">There when you need it.<br>Gone when you don't.</h2><p class="section-intro">Seek to a scene. Choose a track. Then let the controls fade.</p>
+      <div class="comparison" data-player-comparison>
+        <div class="state-switch" role="group" aria-label="Compare real player captures" hidden><button type="button" aria-pressed="true" data-state="clean">Just the video</button><button type="button" aria-pressed="false" data-state="controls">Show the controls</button></div>
+        <figure><img id="comparison-image" src="assets/player-clean-1366.webp" width="1366" height="614" loading="lazy" alt="Vela playing Sintel with controls hidden."><figcaption id="comparison-caption" aria-live="polite">Actual Vela window. Controls hidden; optional watermark switched off.</figcaption></figure>
+        <noscript><p><a href="assets/player-controls-1366.webp">View the matching capture with controls visible.</a></p></noscript>
+      </div>
+    </div>
+  </section>
+
+  <section class="comfort wrap">
+    <div class="section-label">03 / The things you expect</div>
+    <div class="comfort-content"><h2>Small comforts.<br>All evening.</h2><p>Pick the right audio track. Turn subtitles on. Adjust the speed. Go fullscreen. Come back to your local video where you left it.</p><p>These aren't extraordinary requests. They are the details a player should take care of.</p><div class="comfort-pair"><figure><img src="assets/subtitles.webp" width="800" height="642" loading="lazy" alt="Vela’s actual subtitle menu with embedded language choices and the external subtitle command."><figcaption>Your language. Your pace.</figcaption></figure><div class="quiet-note"><p>Local history<br><strong>stays on your Mac.</strong></p><p class="detail">Remembered files, positions and track choices. Clear or switch off history in Settings.</p><p class="detail">Use a floating mini player when you want to keep watching alongside something else.</p></div></div></div>
+  </section>
+
+  <section class="foundation" id="foundation"><div class="wrap foundation-grid">
+    <p class="section-label">04 / A good place to start</p><div><h2>Built on Swiftfin.<br>With gratitude.</h2><p>Swiftfin and its contributors built a native Apple Jellyfin client worth building on. Vela is a fork of that work.</p><p>The library, the client foundation, the player lineage: that credit belongs in the story. Vela adds a broader Mac role, making the same app useful when the video is a file on your computer.</p><a class="text-link" href="https://github.com/jellyfin/Swiftfin">Meet Swiftfin and its contributors</a><p class="detail affiliation">Vela is an independent project. It is not an official Jellyfin or Swiftfin application, and is not endorsed by those projects.</p></div>
+  </div></section>
+
+  <section class="free wrap"><img src="assets/vela-icon.png" alt="" width="84" height="84" loading="lazy"><p class="eyebrow">The whole app is free</p><h2>No better version<br>waiting behind a price.</h2><p>No subscription. No in-app purchases. No Pro unlock.<br>Vela is free and open source. This is the whole app.</p><a class="text-link" href="https://github.com/ralleur/Vela">Read the source</a></section>
+
+  <section class="get wrap" id="get-vela"><div><p class="eyebrow">Start here</p><h2>A beta.<br>In the open.</h2><p><strong>Vela 0.9.4 Beta</strong> brings your local files and Jellyfin library into the same Mac player. Download the universal disk image, then drag Vela into Applications.</p><div class="actions"><a class="button" href="https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-macOS-universal.dmg">Download Vela 0.9.4</a><a class="text-link" href="https://github.com/ralleur/Vela/releases/tag/vela-0.9.4">Release notes</a></div><p class="detail">Developer-ID signed and notarized by Apple. For Apple silicon and Intel Macs running macOS 15.6 or later. Vela is beta software. <a href="https://github.com/ralleur/Vela/blob/vela/docs/BUILDING.md">Building from source</a> is also supported.</p></div><div class="platforms"><h3>On your Mac</h3><p>macOS 15.6 or later. One universal DMG for Apple silicon and Intel. Built with Mac Catalyst; shown here on Apple silicon.</p><h3>On Apple TV</h3><p>The tvOS app carries Vela's Jellyfin experience. The file-opening and local-history features shown here are Mac features.</p><h3>Worth knowing</h3><p>VLC is the default local engine; mpv is the alternative. Format support varies. The floating mini player is separate from system Picture-in-Picture.</p><a href="https://github.com/ralleur/Vela/blob/vela/docs/product-audit.md">Read the verified status</a></div></section>
+</main>
+<footer class="wrap"><div class="footer-top"><a class="brand" href="#"><img src="assets/vela-icon.png" alt="" width="36" height="36">Vela</a><nav aria-label="Footer"><a href="https://github.com/ralleur/Vela">GitHub</a><a href="https://github.com/ralleur/Vela/blob/vela/docs/BUILDING.md">Build &amp; contribute</a><a href="https://github.com/ralleur/Vela/blob/vela/LICENSE.md">MPL-2.0</a><a href="credits.html">Media &amp; credits</a></nav></div><p>Based on Swiftfin. Made for the moment you press play.</p><p class="credits">Real app captures. Demo films © Blender Foundation and the Caminandes team; <a href="credits.html">sources, adaptations and licenses</a>. Playback libraries retain their own licenses and notices.</p></footer>
+</body>
+</html>
