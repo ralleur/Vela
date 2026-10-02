@@ -14,7 +14,7 @@ are there when you need them, then they get out of the way.
 
 **Free. Open source. No subscription, in-app purchases or Pro tier.**
 
-[Download Vela 0.9.4 for Mac](https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-macOS-universal.dmg) · [Website](https://ralleur.github.io/Vela/) · [Release notes](https://github.com/ralleur/Vela/releases/tag/vela-0.9.4)
+[Download Vela 0.9.4 for Mac](https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-macOS-universal-r2.dmg) · [Website](https://ralleur.github.io/Vela/) · [Release notes](https://github.com/ralleur/Vela/releases/tag/vela-0.9.4)
 
 > **Vela 0.9.4 Beta is available as a universal DMG.** macOS 15.6 or later;
 > Apple silicon and Intel. The app is Developer-ID signed and notarized by Apple.

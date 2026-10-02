@@ -1,6 +1,6 @@
 # Build and install Vela
 
-Vela **0.9.4 Beta** is available as a [universal Mac DMG](https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-macOS-universal.dmg).
+Vela **0.9.4 Beta** is available as a [universal Mac DMG](https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-macOS-universal-r2.dmg).
 The app is Developer-ID signed and notarized by Apple. It supports Apple silicon
 and Intel on macOS 15.6 or later. Open the DMG and drag Vela into Applications.
 [Release notes and SHA-256](https://github.com/ralleur/Vela/releases/tag/vela-0.9.4)

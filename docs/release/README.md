@@ -75,3 +75,12 @@ this avoids an Xcode 27 archive-action collision between Catalyst and host Swift
 macro dependencies. `package-dmg.py` verifies the signed/notarized universal app,
 preserves its signature, adds the Applications link/notices, creates a compressed
 DMG and writes its SHA-256. It does not replace an installed app.
+
+## Installer presentation revision 2
+
+The current download uses a custom Finder background, fixed icon positions and
+a direct Applications-folder link. Only the app and destination are visible.
+The app's existing notices remain accessible in Settings; complete release
+license/source records are retained under `.licenses` in the disk image.
+The signed executable and stapled ticket are unchanged from the initial 0.9.4
+release. See [installer artwork and reproduction](../../marketing/dmg/README.md).

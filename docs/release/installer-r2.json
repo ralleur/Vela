@@ -1,0 +1,35 @@
+{
+  "file": "Vela-0.9.4-macOS-universal-r2.dmg",
+  "sha256": "b6fd347eb062faa55f42a0865e58088706448f7c6a71f4e85064591a6578fe20",
+  "version": "0.9.4",
+  "build": "5",
+  "packaging_revision": 2,
+  "architectures": [
+    "x86_64",
+    "arm64"
+  ],
+  "minimum_macos": "15.6",
+  "development_only": false,
+  "size": 142069760,
+  "window_points": [
+    768,
+    512
+  ],
+  "visible_items": [
+    "Vela.app",
+    "Applications"
+  ],
+  "background_sha256": "1b1b3f201da95bd121daa18bcb9250a729f65a78a276d41189ecbb5aeceff451",
+  "date": "2026-10-02",
+  "app_source_commit": "f343155bf247e5881d6f4b1da8bfc660207a958d",
+  "url": "https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-macOS-universal-r2.dmg",
+  "github_digest": "sha256:b6fd347eb062faa55f42a0865e58088706448f7c6a71f4e85064591a6578fe20",
+  "published_at": "2026-10-02T21:10:49Z",
+  "signature": "Developer ID Application; strict deep verification passed",
+  "notarization": "stapled ticket validated; Gatekeeper accepted Notarized Developer ID",
+  "app_executable_unchanged": true,
+  "finder_validation": "Opened final image through Finder; custom background, icon placement and two visible items verified",
+  "applications_link": "/Applications",
+  "notices": "Available in Vela Settings and hidden .licenses folder",
+  "preview": "../../marketing/dmg/installer-preview.png"
+}
