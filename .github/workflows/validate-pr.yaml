@@ -7,7 +7,7 @@ on:
       - reopened
       - synchronize
       - ready_for_review
-    branches: [ main ]
+    branches: [ vela, main ]
 
 jobs:
   build:
@@ -37,27 +37,44 @@ jobs:
               f"{os.environ['BASE_SHA']}...{os.environ['HEAD_SHA']}", "--",
           ]).split(b"\0")
           blocked_files = [
-              os.fsdecode(path) for path in changed_files if path and any(
+              os.fsdecode(path) for path in changed_files if path and PurePosixPath(os.fsdecode(path)).name != "Vela.strings" and any(
                   part.endswith(".lproj") and part != "en.lproj"
                   for part in PurePosixPath(os.fsdecode(path)).parts[:-1]
               )
           ]
 
           if blocked_files:
-              print("::error::Only en.lproj localization files may be changed. "
+              print("::error::Only upstream en.lproj and Vela.strings localization files may be changed. "
                     "Submit other translations through Weblate.")
               for path in blocked_files:
                   print(f"  {path!r}")
               sys.exit(1)
 
-          print("Localization changes are limited to en.lproj.")
+          print("Localization changes are limited to upstream en.lproj and Vela.strings.")
           PY
 
       - name: Install Homebrew dependencies
         run: brew bundle --file Brewfile
 
-      - name: Run Swiftformat
-        run: swiftformat . --lint --config ".swiftformat"
+      - name: Check formatting of changed Swift files
+        # Preserve Vela/upstream authorship and avoid reformatting untouched fork code.
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          python3 <<'PYTHON'
+          import os
+          import subprocess
+          from pathlib import Path
+          paths = subprocess.check_output([
+              "git", "diff", "--name-only", "--diff-filter=ACMR", "-z",
+              f"{os.environ['BASE_SHA']}...{os.environ['HEAD_SHA']}", "--", "*.swift"
+          ]).split(b"\0")
+          paths = [os.fsdecode(p) for p in paths if p and Path(os.fsdecode(p)).is_file()]
+          if paths:
+              subprocess.run(["swiftformat", *paths, "--lint", "--config", ".swiftformat",
+                              "--header", "ignore"], check=True)
+          PYTHON
 
       - name: Run SwiftLint
         run: swiftlint lint --strict --config ".swiftlint.yml"

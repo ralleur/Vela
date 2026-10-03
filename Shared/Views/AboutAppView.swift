@@ -70,6 +70,16 @@ struct AboutAppView: View {
 
             Section {
 
+                Text(VelaStrings.text("Built on Swiftfin. An independent app by Ralleur."))
+                #if os(tvOS)
+                ChevronButton(
+                    VelaStrings.text("Open Source Notices"),
+                    systemName: "text.document"
+                ) {
+                    router.route(to: NavigationRoute(id: "vela-notices") { VelaTVNoticesView() })
+                }
+                #endif
+
                 // tvOS cannot open generic web links
                 #if !os(tvOS)
                 ChevronButton(

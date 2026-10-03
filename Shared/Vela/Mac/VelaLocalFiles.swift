@@ -7,7 +7,7 @@
 //
 
 // Vela Mac file integration. Licensed under MPL-2.0.
-#if targetEnvironment(macCatalyst)
+#if os(iOS)
 import Combine
 import Defaults
 import FactoryKit
@@ -85,7 +85,28 @@ final class VelaLocalFiles: NSObject, ObservableObject, UIDocumentPickerDelegate
     override private init() {
         super.init()
         if let data = defaults.data(forKey: recentKey), let saved = try? JSONDecoder().decode([Recent].self, from: data) {
-            recent = saved
+            // iOS can move an app's data container during updates. Resolve the
+            // stored bookmarks before matching newly selected URLs to history.
+            var seen = Set<URL>()
+            recent = saved.compactMap { entry in
+                var updated = entry
+                var stale = false
+                if let bookmark = entry.bookmark,
+                   let resolved = try? URL(
+                       resolvingBookmarkData: bookmark,
+                       options: Self.bookmarkResolutionOptions,
+                       relativeTo: nil,
+                       bookmarkDataIsStale: &stale
+                   )
+                {
+                    updated.url = resolved
+                }
+                return seen.insert(updated.url).inserted ? updated : nil
+            }
+            if defaults.object(forKey: "vela.local.history") as? Bool == false {
+                recent = []
+            }
+            persist()
         }
         observer = Container.shared.mediaPlayerManagerPublisher().sink { [weak self] manager in
             self?.activeManager = manager
@@ -140,10 +161,28 @@ final class VelaLocalFiles: NSObject, ObservableObject, UIDocumentPickerDelegate
         }
     }
 
+    // Security scope is implicit in iOS bookmarks returned by document providers.
+    // The explicit macOS flags are unavailable on iOS.
+    private static var bookmarkResolutionOptions: URL.BookmarkResolutionOptions {
+        #if targetEnvironment(macCatalyst)
+        [.withoutUI, .withSecurityScope]
+        #else
+        [.withoutUI]
+        #endif
+    }
+
+    private static var bookmarkCreationOptions: URL.BookmarkCreationOptions {
+        #if targetEnvironment(macCatalyst)
+        [.withSecurityScope, .securityScopeAllowOnlyReadAccess]
+        #else
+        [.minimalBookmark]
+        #endif
+    }
+
     func reopen(_ entry: Recent) {
         var stale = false
         let resolved = entry.bookmark.flatMap {
-            try? URL(resolvingBookmarkData: $0, options: [.withoutUI, .withSecurityScope], relativeTo: nil, bookmarkDataIsStale: &stale)
+            try? URL(resolvingBookmarkData: $0, options: Self.bookmarkResolutionOptions, relativeTo: nil, bookmarkDataIsStale: &stale)
         }
         // Refresh the bookmark on open and carry history across a Finder move.
         enqueue(.init(url: resolved ?? entry.url, attempt: preferredAttempt, oldRecentURL: entry.url))
@@ -210,7 +249,7 @@ final class VelaLocalFiles: NSObject, ObservableObject, UIDocumentPickerDelegate
             )
             if defaults.object(forKey: "vela.local.history") as? Bool != false {
                 let bookmark = try? request.url.bookmarkData(
-                    options: [.withSecurityScope, .securityScopeAllowOnlyReadAccess],
+                    options: Self.bookmarkCreationOptions,
                     includingResourceValuesForKeys: nil,
                     relativeTo: nil
                 )
@@ -277,7 +316,7 @@ final class VelaLocalFiles: NSObject, ObservableObject, UIDocumentPickerDelegate
 
     private func present(_ manager: MediaPlayerManager) async {
         guard let root = Self.rootController else {
-            message = "The player window is not ready. Try opening the file again."
+            message = VelaStrings.text("The player is not ready. Try opening the file again.")
             return
         }
         Container.shared.mediaPlayerManager.register { manager }
@@ -415,6 +454,9 @@ struct VelaFileHost: ViewModifier {
                     files.open(url)
                 }
             }
+            #if DEBUG && !targetEnvironment(macCatalyst)
+            .onAppear { VelaMobilePlaybackCheck.startIfRequested() }
+            #endif
             .onReceive(NotificationCenter.default.publisher(for: VelaLocalFiles.openFile)) { _ in files.showPicker(subtitle: false) }
             .onReceive(NotificationCenter.default.publisher(for: VelaLocalFiles.openSubtitle)) { _ in files.showPicker(subtitle: true) }
     }

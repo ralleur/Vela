@@ -233,6 +233,8 @@ class VLCMediaPlayerProxy: VideoMediaPlayerProxy,
             // The bundled libass has no CoreText font provider. Its supported
             // fonts-directory option supplies the Mac's readable system fonts.
             media.addOption(":ssa-fontsdir=/System/Library/Fonts")
+            #endif
+            #if os(iOS)
             if let encoding = UserDefaults.standard.string(forKey: "vela.subtitle.encoding"), !encoding.isEmpty {
                 media.addOption(":subsdec-encoding=\(encoding)")
             }

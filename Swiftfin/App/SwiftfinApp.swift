@@ -13,7 +13,8 @@ import UIKit
 @main
 struct SwiftfinApp: App {
     #if targetEnvironment(macCatalyst)
-    @UIApplicationDelegateAdaptor(VelaFileMenuDelegate.self) private var fileMenu
+    @UIApplicationDelegateAdaptor(VelaFileMenuDelegate.self)
+    private var fileMenu
     #endif
 
     init() {
@@ -46,7 +47,7 @@ struct SwiftfinApp: App {
 
     private var authenticatedContent: some View {
         WithLocalUserAuthentication {
-            RootView().supportedOrientations(UIDevice.isPad ? .allButUpsideDown : .portrait)
+            RootView().supportedOrientations(UIDevice.isPad ? .all : .portrait)
         }
     }
 
@@ -55,15 +56,13 @@ struct SwiftfinApp: App {
             OverlayToastView {
                 PreferencesView {
                     initialContent
-                    #if targetEnvironment(macCatalyst)
-                    .modifier(VelaSettingsHost())
-                    #endif
+                        #if targetEnvironment(macCatalyst)
+                            .modifier(VelaSettingsHost())
+                        #endif
                 }
             }
             .ignoresSafeArea()
-            #if targetEnvironment(macCatalyst)
             .modifier(VelaFileHost())
-            #endif
         }
     }
 }

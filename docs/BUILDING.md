@@ -49,8 +49,7 @@ Tools/vela/install-device.sh "Your Apple TV name"
 ```
 
 Physical-device signing and provisioning are required. The inherited iOS target
-is also the basis of the Mac Catalyst build; this launch does not announce a
-separately qualified Vela iPhone/iPad release.
+is also the basis of the Mac Catalyst build; the iPhone/iPad app is now being prepared for release, with a local Files workflow in addition to Jellyfin. It is not yet a qualified App Store release.
 
 ## Validate
 
@@ -89,3 +88,31 @@ sources, patches and build recipes. Future releases must update this record
 when dependencies change. The wrapper licenses do not replace engine licenses.
 [Third-party notices](../Shared/Resources/VelaThirdPartyNotices.txt) are retained
 in the repository and the app. No new decoder dependency was added for marketing.
+
+## iPhone, iPad and Apple TV release preparation
+
+The working tree prepares **0.9.6 beta** (iOS/Mac build 7, tvOS build 73).
+The public Mac download remains 0.9.5; no iOS/tvOS store release is announced.
+iPhone and iPad share the Swiftfin target (minimum iOS/iPadOS 18.6). The local
+player uses the same source-independent playback stack as Mac, with document
+picker access, recent files and mobile settings. tvOS remains Jellyfin-only.
+
+```sh
+Tools/vela/validate-apple.sh       # logic tests + iOS, tvOS and Mac builds
+Tools/vela/validate-apple.sh ios   # logic tests + iPhone/iPad simulator build
+Tools/vela/archive-apple.sh ios   # local device archive, no upload
+Tools/vela/archive-apple.sh tvos  # local device archive, no upload
+```
+
+The validators use configured signing and never replace the installed Mac app.
+Provisioning failures require configuring your own Apple development team.
+Build success does not establish device or App Store qualification. See the
+[release plan](release/apple-release-plan.md) and [App Review preparation](release/app-review.md).
+
+For Debug-only local playback regression checks, copy the synthetic `sample.mkv`
+from `Tools/LocalPlaybackFixtures/create.sh` into the simulator app's Documents
+directory, then launch with `-VelaCheckFixture sample.mkv`. The check opens the
+file, exercises transport/tracks/timing, stops and reopens the saved bookmark,
+and writes `Documents/vela-playback-checks.txt`. Do not use a private video.
+These launch checks are excluded from Release builds. Copy `external.ass` into
+Documents as well to test external subtitles and the one-time mpv retry.

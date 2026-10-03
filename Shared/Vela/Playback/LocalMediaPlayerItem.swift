@@ -7,7 +7,7 @@
 //
 
 // Vela local media source. Licensed under MPL-2.0.
-#if targetEnvironment(macCatalyst)
+#if os(iOS)
 import Combine
 import Foundation
 

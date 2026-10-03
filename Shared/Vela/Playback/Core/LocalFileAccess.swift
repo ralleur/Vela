@@ -7,7 +7,7 @@
 //
 
 // Vela narrow filesystem access. Licensed under MPL-2.0.
-#if os(macOS) || targetEnvironment(macCatalyst)
+#if os(macOS) || os(iOS)
 import Foundation
 
 enum LocalMediaError: LocalizedError {
@@ -15,8 +15,12 @@ enum LocalMediaError: LocalizedError {
     case unreadable
     var errorDescription: String? {
         switch self {
-        case .notAFile: "Choose a video on your Mac."
-        case .unreadable: "This file cannot be read. Choose it again with File → Open."
+        case .notAFile: NSLocalizedString("Choose a video on your device.", tableName: "Vela", comment: "Invalid local video URL")
+        case .unreadable: NSLocalizedString(
+                "This file cannot be read. Choose it again using Open Video.",
+                tableName: "Vela",
+                comment: "File access failed"
+            )
         }
     }
 }

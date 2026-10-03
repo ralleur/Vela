@@ -32,6 +32,11 @@ struct MainTabView: View {
     private static var defaultTabCoordinator: TabCoordinator {
         #if os(iOS)
         TabCoordinator {
+            #if !targetEnvironment(macCatalyst)
+            TabItem(id: "vela-files", title: VelaStrings.text("Files"), systemImage: "play.rectangle") {
+                VelaMobileHomeView()
+            }
+            #endif
             // Vela: own home screen
             TabItem.contentGroup(provider: VelaHomeContentGroupProvider())
             TabItem.search
@@ -72,7 +77,7 @@ struct MainTabView: View {
         NavigationInjectionView(coordinator: tab.coordinator) {
             tab.item.content
                 #if os(iOS)
-                    .if(tabCoordinator.tabs.first?.item.id == tab.item.id) { view in
+                    .if(tabCoordinator.tabs.first(where: { $0.item.id != "vela-files" })?.item.id == tab.item.id) { view in
                         view.topBarTrailing {
                             FirstTabSettingsBarButton()
                         }

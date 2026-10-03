@@ -134,3 +134,25 @@
 
 "Accounts and Servers…" = "Accounts and Servers…";
 "Settings and Accounts" = "Settings and Accounts";
+
+"Files" = "Files";
+
+"Your videos. Your library." = "Your videos. Your library.";
+
+"Open a video from Files, or watch from your Jellyfin server." = "Open a video from Files, or watch from your Jellyfin server.";
+
+"Videos you open appear here when history is enabled." = "Videos you open appear here when history is enabled.";
+
+"History stays on this device. Turning this off clears saved files, positions and track choices." = "History stays on this device. Turning this off clears saved files, positions and track choices.";
+
+"Built on Swiftfin. An independent app by Ralleur." = "Built on Swiftfin. An independent app by Ralleur.";
+
+"This removes saved positions and track choices. Your video files are kept." = "This removes saved positions and track choices. Your video files are kept.";
+
+"The player is not ready. Try opening the file again." = "The player is not ready. Try opening the file again.";
+
+"Language Presets" = "Language Presets";
+
+"Choose a video on your device." = "Choose a video on your device.";
+
+"This file cannot be read. Choose it again using Open Video." = "This file cannot be read. Choose it again using Open Video.";

@@ -30,7 +30,7 @@ extension VideoPlayer.PlaybackControls.Toolbar.ActionButtons {
             } label: {
                 Group {
                     #if targetEnvironment(macCatalyst)
-                    Label("Vollbild", systemImage: VideoPlayerActionButton.aspectFill.systemImage)
+                    Label(VelaStrings.text("Fullscreen"), systemImage: VideoPlayerActionButton.aspectFill.systemImage)
                     #else
                     if isAspectFilled {
                         Label(

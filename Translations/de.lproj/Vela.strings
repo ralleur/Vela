@@ -134,3 +134,25 @@
 
 "Accounts and Servers…" = "Konten und Server …";
 "Settings and Accounts" = "Einstellungen und Konten";
+
+"Files" = "Dateien";
+
+"Your videos. Your library." = "Deine Videos. Deine Mediathek.";
+
+"Open a video from Files, or watch from your Jellyfin server." = "Öffne ein Video aus der Dateien-App oder schaue über deinen Jellyfin-Server.";
+
+"Videos you open appear here when history is enabled." = "Geöffnete Videos erscheinen hier, wenn der Verlauf aktiviert ist.";
+
+"History stays on this device. Turning this off clears saved files, positions and track choices." = "Der Verlauf bleibt auf diesem Gerät. Beim Ausschalten werden gespeicherte Verweise, Positionen und Spurauswahlen gelöscht.";
+
+"Built on Swiftfin. An independent app by Ralleur." = "Basiert auf Swiftfin. Eine unabhängige App von Ralleur.";
+
+"This removes saved positions and track choices. Your video files are kept." = "Gespeicherte Positionen und Spurauswahlen werden gelöscht. Deine Videodateien bleiben erhalten.";
+
+"The player is not ready. Try opening the file again." = "Der Player ist noch nicht bereit. Öffne die Datei erneut.";
+
+"Language Presets" = "Sprachkombinationen";
+
+"Choose a video on your device." = "Wähle ein Video auf deinem Gerät.";
+
+"This file cannot be read. Choose it again using Open Video." = "Diese Datei kann nicht gelesen werden. Wähle sie über Video öffnen erneut aus.";

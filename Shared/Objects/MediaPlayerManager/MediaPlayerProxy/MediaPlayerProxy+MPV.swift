@@ -162,7 +162,7 @@ extension MPVMediaPlayerProxy {
             proxy.isBuffering.value = true
 
             let start = max(.zero, (item.metadata.startSeconds ?? .zero) - .seconds(Defaults[.VideoPlayer.resumeOffset]))
-            #if targetEnvironment(macCatalyst)
+            #if os(iOS)
             let encoding = UserDefaults.standard.string(forKey: "vela.subtitle.encoding") ?? ""
             player.setProperty("sub-codepage", to: encoding.isEmpty ? "auto" : encoding)
             #endif

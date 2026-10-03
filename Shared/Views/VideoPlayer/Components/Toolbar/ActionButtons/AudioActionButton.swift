@@ -46,7 +46,7 @@ extension VideoPlayer.PlaybackControls.Toolbar.ActionButtons {
             #if targetEnvironment(macCatalyst)
             .pickerStyle(.inline)
             #endif
-            #if targetEnvironment(macCatalyst)
+            #if os(iOS)
             Divider()
             VelaTrackTimingMenu(subtitles: false)
             #endif

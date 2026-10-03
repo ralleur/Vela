@@ -14,9 +14,12 @@ extension VelaLanguagePreset {
         if let server = item as? JellyfinMediaPlayerItem {
             return streamIndexes(audioStreams: server.serverAudioStreams, subtitleStreams: server.serverSubtitleStreams)
         }
-        guard let audio = item.audioStreams.first(where: { VelaLanguage.normalize($0.language) == VelaLanguage.normalize(audioLanguage) })?.index else { return nil }
+        guard let audio = item.audioStreams.first(where: { VelaLanguage.normalize($0.language) == VelaLanguage.normalize(audioLanguage) })?
+            .index else { return nil }
         guard let subtitleLanguage else { return (audio, -1) }
-        guard let subtitle = item.subtitleStreams.first(where: { $0.isForced != true && VelaLanguage.normalize($0.language) == VelaLanguage.normalize(subtitleLanguage) })?.index else { return nil }
+        guard let subtitle = item.subtitleStreams
+            .first(where: { $0.isForced != true && VelaLanguage.normalize($0.language) == VelaLanguage.normalize(subtitleLanguage) })?
+            .index else { return nil }
         return (audio, subtitle)
     }
 
@@ -113,14 +116,22 @@ struct VelaLanguagePresetButtons: View {
 
     private struct Row: View {
 
-        @AppStorage("vela.quick.enabled") private var quickEnabled = true
-        @AppStorage("vela.quick.custom") private var custom = false
-        @AppStorage("vela.quick.audio.0") private var audio0 = "en"
-        @AppStorage("vela.quick.audio.1") private var audio1 = "en"
-        @AppStorage("vela.quick.audio.2") private var audio2 = "app"
-        @AppStorage("vela.quick.subtitle.0") private var subtitle0 = "en"
-        @AppStorage("vela.quick.subtitle.1") private var subtitle1 = "app"
-        @AppStorage("vela.quick.subtitle.2") private var subtitle2 = "off"
+        @AppStorage("vela.quick.enabled")
+        private var quickEnabled = true
+        @AppStorage("vela.quick.custom")
+        private var custom = false
+        @AppStorage("vela.quick.audio.0")
+        private var audio0 = "en"
+        @AppStorage("vela.quick.audio.1")
+        private var audio1 = "en"
+        @AppStorage("vela.quick.audio.2")
+        private var audio2 = "app"
+        @AppStorage("vela.quick.subtitle.0")
+        private var subtitle0 = "en"
+        @AppStorage("vela.quick.subtitle.1")
+        private var subtitle1 = "app"
+        @AppStorage("vela.quick.subtitle.2")
+        private var subtitle2 = "off"
 
         @EnvironmentObject
         private var manager: MediaPlayerManager
@@ -149,40 +160,66 @@ struct VelaLanguagePresetButtons: View {
 
         var body: some View {
             if availablePresets.isNotEmpty {
-                HStack(spacing: VideoPlayer.PlaybackControls.Toolbar.buttonSpacing) {
-                    ForEach(availablePresets) { preset in
-                        let isActive = preset.isActive(in: item)
-
-                        Button {
-                            preset.apply(to: manager)
-                        } label: {
-                            HStack(spacing: 8) {
-                                if isActive {
-                                    Image(systemName: "checkmark")
+                #if os(iOS)
+                if UIDevice.isPhone {
+                    Menu {
+                        ForEach(availablePresets) { preset in
+                            Button { preset.apply(to: manager) } label: {
+                                if preset.isActive(in: item) {
+                                    Label(preset.title, systemImage: "checkmark")
+                                } else {
+                                    Text(preset.title)
                                 }
-
-                                Text(preset.compactTitle)
-                                    .lineLimit(1)
                             }
-                            .font(.system(size: UIDevice.isTV ? 24 : (ProcessInfo.processInfo.isMacCatalystApp ? 20 : 15), weight: .semibold))
-                            .padding(.horizontal, UIDevice.isTV ? 8 : 12)
-                            #if os(iOS) && !targetEnvironment(macCatalyst)
-                            .frame(height: 28)
-                            #endif
                         }
-                        #if os(tvOS) || targetEnvironment(macCatalyst)
-                        // Size the styled button, as for the adjacent transport controls.
-                        // A full-height label would add the glass style's padding on top.
-                        .frame(minWidth: VideoPlayer.PlaybackControls.Toolbar.buttonSize)
+                    } label: {
+                        Image(systemName: "character.bubble")
+                            .frame(width: 44, height: 44)
+                    }
+                    .accessibilityLabel(VelaStrings.text("Language Presets"))
+                } else {
+                    presetRow
+                }
+                #else
+                presetRow
+                #endif
+            }
+        }
+
+        private var presetRow: some View {
+            HStack(spacing: VideoPlayer.PlaybackControls.Toolbar.buttonSpacing) {
+                ForEach(availablePresets) { preset in
+                    let isActive = preset.isActive(in: item)
+
+                    Button {
+                        preset.apply(to: manager)
+                    } label: {
+                        HStack(spacing: 8) {
+                            if isActive {
+                                Image(systemName: "checkmark")
+                            }
+
+                            Text(preset.compactTitle)
+                                .lineLimit(1)
+                        }
+                        .font(.system(size: UIDevice.isTV ? 24 : (ProcessInfo.processInfo.isMacCatalystApp ? 20 : 15), weight: .semibold))
+                        .padding(.horizontal, UIDevice.isTV ? 8 : 12)
+                        #if os(iOS) && !targetEnvironment(macCatalyst)
+                        .frame(height: 28)
+                        #endif
+                    }
+                    #if os(tvOS) || targetEnvironment(macCatalyst)
+                    // Size the styled button, as for the adjacent transport controls.
+                    // A full-height label would add the glass style's padding on top.
+                    .frame(minWidth: VideoPlayer.PlaybackControls.Toolbar.buttonSize)
                         .frame(height: VideoPlayer.PlaybackControls.Toolbar.buttonSize)
                         .fixedSize(horizontal: true, vertical: false)
-                        #endif
-                        .accessibilityLabel(preset.title)
-                        .accessibilityAddTraits(isActive ? .isSelected : [])
-                    }
+                    #endif
+                    .accessibilityLabel(preset.title)
+                    .accessibilityAddTraits(isActive ? .isSelected : [])
                 }
-                .modifier(PresetButtonStyle())
             }
+            .modifier(PresetButtonStyle())
         }
     }
 

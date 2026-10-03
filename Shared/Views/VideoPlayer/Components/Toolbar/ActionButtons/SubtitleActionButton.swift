@@ -40,7 +40,7 @@ extension VideoPlayer.PlaybackControls.Toolbar.ActionButtons {
             #if targetEnvironment(macCatalyst)
             .pickerStyle(.inline)
             #endif
-            #if targetEnvironment(macCatalyst)
+            #if os(iOS)
             Divider()
             if playbackItem.discoversTracks {
                 Button(VelaStrings.text("Add Subtitle File…")) { VelaLocalFiles.shared.showPicker(subtitle: true) }
