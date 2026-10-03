@@ -1,13 +1,13 @@
 # Build and install Vela
 
-Vela **0.9.4 Beta** is available as a [universal Mac DMG](https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-macOS-universal-r3.dmg).
+Vela **0.9.5 Beta** is available as a [universal Mac DMG](https://github.com/ralleur/Vela/releases/download/vela-0.9.5/Vela-0.9.5-macOS-universal.dmg).
 The app is Developer-ID signed and notarized by Apple. It supports Apple silicon
 and Intel on macOS 15.6 or later. Open the DMG and drag Vela into Applications.
-[Release notes and SHA-256](https://github.com/ralleur/Vela/releases/tag/vela-0.9.4)
+[Release notes and SHA-256](https://github.com/ralleur/Vela/releases/tag/vela-0.9.5)
 identify the exact package. Vela is not distributed through the App Store.
 
 The older 0.9.3 ZIP predates local playback and was development-signed rather
-than notarized. Use 0.9.4 for the experience shown on the project website.
+than notarized. Use 0.9.5 for the experience shown on the project website.
 
 ## Mac
 
@@ -59,7 +59,7 @@ swift test --package-path Tools/VelaLogicTests
 Tools/LocalPlaybackFixtures/create.sh build/local-fixtures --high-bitrate
 ```
 
-44 logic tests passed during launch work (33 Vela tests and 11 playback tests).
+46 logic tests passed for 0.9.5 (35 Vela tests and 11 playback tests).
 See [the product audit](product-audit.md) for what was independently exercised,
 and [VELA.md](../VELA.md) for architecture, previous test evidence, Debug checks,
 source adapters, sandbox behavior and the upstream update process.
@@ -83,7 +83,7 @@ Start with [VELA.md](../VELA.md) and the inherited
 [ralleur/Vela](https://github.com/ralleur/Vela), and discuss generally useful
 upstream fixes with Swiftfin separately. Keep upstream notices and MPL headers.
 
-The 0.9.4 binary uses the GPL-enabled mpv build. The
+The 0.9.5 binary uses the GPL-enabled mpv build. The
 [release source record](release/README.md) identifies the corresponding native
 sources, patches and build recipes. Future releases must update this record
 when dependencies change. The wrapper licenses do not replace engine licenses.

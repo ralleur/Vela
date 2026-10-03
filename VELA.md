@@ -28,10 +28,21 @@ Catalyst build of Swiftfin's iPhone/iPad target, with the same Vela changes.
   No preset buttons are shown for titles without a full (non-forced) subtitle
   choice. Otherwise, each preset is hidden when its required audio or subtitle
   track is missing, and the active preset shows a checkmark.
+  On tvOS and Mac the quick buttons use the same height as the other player buttons;
+  the subtitles-off choice is labeled with just the audio language (for example
+  `DE`), with the full description retained for VoiceOver.
 
 - Prompts in the bottom trailing corner (with the controls hidden, select
   triggers them on tvOS; on the Mac they can be clicked, and Return triggers
   them; with the controls shown they are normal buttons):
+  On tvOS, merely touching the Siri Remote while a skip or next-episode button is
+  visible keeps the controls hidden, so the following Select click performs its
+  action immediately. A next-episode prompt without an available next episode
+  (only an outlook card) does not suppress touch. Otherwise touch reveals the
+  controls as usual; directional and Play/Pause presses still provide explicit
+  access to the controls.
+  Mac uses direct pointer clicks and Return for these same prompt actions;
+  the Siri Remote touch interception only applies on tvOS.
   - "Intro überspringen" / "Rückblick überspringen" during intro and recap
     segments (Jellyfin media segments; chapter names like "Intro" or "Vorspann"
     as a fallback for episodes).

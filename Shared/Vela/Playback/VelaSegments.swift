@@ -100,6 +100,19 @@ enum VelaPromptPolicy {
         case other
     }
 
+    /// Touching the Siri Remote must not steal the following Select click from
+    /// a skip or next-episode button. An outlook card has no action to preserve.
+    static func keepsControlsHiddenOnTouch(prompt: VelaPlaybackPrompt?, hasNextEpisode: Bool) -> Bool {
+        switch prompt {
+        case .skip:
+            true
+        case .endOfEpisode:
+            hasNextEpisode
+        case .endOfMovie, nil:
+            false
+        }
+    }
+
     /// Shorter segments are not worth a button.
     static let minimumSkipDuration: TimeInterval = 4
     /// The button leaves this long before the segment ends.

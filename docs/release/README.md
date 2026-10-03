@@ -1,4 +1,4 @@
-# Vela 0.9.4 — distribution source and licenses
+# Vela 0.9.5 — distribution source and licenses
 
 The release contains Vela/Swiftfin application code, Swift packages, static
 libVLC and the GPL-enabled libmpv framework. The combined executable distribution
@@ -7,9 +7,9 @@ Vela/Swiftfin source files. This uses MPL-2.0 section 3.3's secondary-license
 permission for the combined work. MIT/BSD/Apache/LGPL and other component
 notices remain in force. No warranty is provided.
 
-- [Vela 0.9.4 source](https://github.com/ralleur/Vela/tree/vela-0.9.4)
-- [Vela source archive](https://github.com/ralleur/Vela/archive/refs/tags/vela-0.9.4.tar.gz)
-- [Release downloads, including the source bundle](https://github.com/ralleur/Vela/releases/tag/vela-0.9.4)
+- [Vela 0.9.5 source](https://github.com/ralleur/Vela/tree/vela-0.9.5)
+- [Vela source archive](https://github.com/ralleur/Vela/archive/refs/tags/vela-0.9.5.tar.gz)
+- [Release downloads, including the source bundle](https://github.com/ralleur/Vela/releases/tag/vela-0.9.5)
 - [MPL-2.0](../../LICENSE.md), [GPL-3.0](licenses/GPL-3.0.txt),
   [GPL-2.0](licenses/GPL-2.0.txt), [LGPL-3.0](licenses/LGPL-3.0.txt),
   [LGPL-2.1](licenses/LGPL-2.1.txt)
@@ -76,11 +76,11 @@ macro dependencies. `package-dmg.py` verifies the signed/notarized universal app
 preserves its signature, adds the Applications link/notices, creates a compressed
 DMG and writes its SHA-256. It does not replace an installed app.
 
-## Installer presentation revision 3
+## Installer presentation
 
 The current download uses a logo-derived Vela wordmark, custom Finder background, fixed icon positions and
 a direct Applications-folder link. Only the app and destination are visible.
 The app's existing notices remain accessible in Settings; complete release
 license/source records are retained under `.licenses` in the disk image.
-The signed executable and stapled ticket are unchanged from the initial 0.9.4
-release. See [installer artwork and reproduction](../../marketing/dmg/README.md).
+The 0.9.5 installer retains the artwork introduced in 0.9.4 revision 3, with a
+new application executable and notarization ticket. See [installer artwork and reproduction](../../marketing/dmg/README.md).

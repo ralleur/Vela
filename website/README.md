@@ -21,7 +21,7 @@ Publishing uses GitHub Pages with GitHub Actions. Commit and push changes to
 `vela`; matching changes trigger **Project site**, which can also be dispatched
 manually. The workflow is scoped to `ralleur/Vela`. Publish a versioned release
 asset before updating the public download links. The current installer is
-`Vela-0.9.4-macOS-universal-r3.dmg` on release `vela-0.9.4`.
+`Vela-0.9.5-macOS-universal.dmg` on release `vela-0.9.5`.
 
 Responsive image choices include a portrait library crop. The comparison uses
 an intentionally scrollable full-player image on narrow screens so its controls

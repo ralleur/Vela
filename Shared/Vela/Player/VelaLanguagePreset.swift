@@ -161,12 +161,23 @@ struct VelaLanguagePresetButtons: View {
                                     Image(systemName: "checkmark")
                                 }
 
-                                Text(preset.title)
+                                Text(preset.compactTitle)
+                                    .lineLimit(1)
                             }
-                            .font(.system(size: UIDevice.isTV ? 24 : 15, weight: .semibold))
+                            .font(.system(size: UIDevice.isTV ? 24 : (ProcessInfo.processInfo.isMacCatalystApp ? 20 : 15), weight: .semibold))
                             .padding(.horizontal, UIDevice.isTV ? 8 : 12)
-                            .frame(height: UIDevice.isTV ? VideoPlayer.PlaybackControls.Toolbar.buttonSize : 28)
+                            #if os(iOS) && !targetEnvironment(macCatalyst)
+                            .frame(height: 28)
+                            #endif
                         }
+                        #if os(tvOS) || targetEnvironment(macCatalyst)
+                        // Size the styled button, as for the adjacent transport controls.
+                        // A full-height label would add the glass style's padding on top.
+                        .frame(minWidth: VideoPlayer.PlaybackControls.Toolbar.buttonSize)
+                        .frame(height: VideoPlayer.PlaybackControls.Toolbar.buttonSize)
+                        .fixedSize(horizontal: true, vertical: false)
+                        #endif
+                        .accessibilityLabel(preset.title)
                         .accessibilityAddTraits(isActive ? .isSelected : [])
                     }
                 }

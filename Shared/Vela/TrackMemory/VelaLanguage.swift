@@ -96,6 +96,11 @@ struct VelaLanguagePreset: Identifiable, Equatable {
         return "\(audio) \(withoutSubtitles)"
     }
 
+    /// Short toolbar label; retain the full title for accessibility.
+    var compactTitle: String {
+        subtitleLanguage == nil ? VelaLanguage.shortCode(audioLanguage) : title
+    }
+
     static func presets(appLanguage: String) -> [Self] {
         let local = VelaLanguage.normalize(appLanguage) ?? VelaLanguage.german
         var presets = [

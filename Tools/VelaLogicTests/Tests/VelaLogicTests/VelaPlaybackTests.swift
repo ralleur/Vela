@@ -68,6 +68,24 @@ struct PromptTests {
     }
 
     @Test
+    func remoteTouchKeepsNextEpisodeButtonReadyButAllowsNavigationForOutlook() {
+        let prompt = VelaPromptPolicy.prompt(at: 2400, segments: episode, duration: 2500, content: .episode)
+
+        #expect(VelaPromptPolicy.keepsControlsHiddenOnTouch(prompt: prompt, hasNextEpisode: true))
+        #expect(!VelaPromptPolicy.keepsControlsHiddenOnTouch(prompt: prompt, hasNextEpisode: false))
+    }
+
+    @Test
+    func remoteTouchKeepsSkipReadyAndReturnsToNormalAfterThePromptDisappears() {
+        let intro = VelaPromptPolicy.prompt(at: 90, segments: episode, duration: 2500, content: .episode)
+        let afterIntro = VelaPromptPolicy.prompt(at: 150, segments: episode, duration: 2500, content: .episode)
+
+        #expect(VelaPromptPolicy.keepsControlsHiddenOnTouch(prompt: intro, hasNextEpisode: false))
+        #expect(!VelaPromptPolicy.keepsControlsHiddenOnTouch(prompt: afterIntro, hasNextEpisode: true))
+        #expect(!VelaPromptPolicy.keepsControlsHiddenOnTouch(prompt: .endOfMovie, hasNextEpisode: false))
+    }
+
+    @Test
     func withoutCreditsEpisodesUseThirtySeconds() {
         #expect(VelaPromptPolicy.endWindowStart(segments: [], duration: 2500, content: .episode) == 2470)
     }

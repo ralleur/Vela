@@ -776,6 +776,19 @@ extension VideoPlayer {
         override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
             super.touchesBegan(touches, with: event)
 
+            // Touch precedes the Select click on the Siri Remote. Keep the visible
+            // skip/next-episode button armed for handleSelectEnded.
+            if !containerState.isPresentingOverlay,
+               !containerState.isScrubbing,
+               !containerState.isPresentingSupplement,
+               VelaPromptPolicy.keepsControlsHiddenOnTouch(
+                   prompt: VelaPlaybackPrompts.shared.prompt,
+                   hasNextEpisode: VelaPlaybackPrompts.shared.nextEpisode != nil || manager.queue?.hasNextItem == true
+               )
+            {
+                return
+            }
+
             let now = CACurrentMediaTime()
             guard now - lastTouchPokeTime > 1.0 else { return }
             lastTouchPokeTime = now
