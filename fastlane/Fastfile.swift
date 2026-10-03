@@ -10,7 +10,7 @@ import Foundation
 
 class Fastfile: LaneFile {
     
-    private let bundleIdentifier = "org.jellyfin.swiftfin"
+    private let bundleIdentifier = "com.ralleur.vela"
     private let xcodeProject = "Swiftfin.xcodeproj"
     private let sourcePackagesPath = "build/SourcePackages"
     
@@ -82,7 +82,9 @@ class Fastfile: LaneFile {
             "keyContents",
             "scheme",
             "codeSign64",
-            "profileName64"
+            "profileName64",
+            "version",
+            "build"
         ]
 
         guard let options else {
@@ -139,76 +141,26 @@ class Fastfile: LaneFile {
             bundleIdentifier: .userDefined(bundleIdentifier)
         )
         
-        let resolvedVersion: String
-
-        if let providedVersion = options["version"]?.trimOption() {
-            guard let version = Version(string: providedVersion) else {
-                fail("invalid provided version '\(providedVersion)'")
-            }
-            
-            resolvedVersion = providedVersion
-            
-            incrementVersionNumber(
-                versionNumber: .userDefined(version.description),
-                xcodeproj: .userDefined(xcodeProject)
-            )
-        } else {
-            
-            appStoreBuildNumber(
-                initialBuildNumber: "1",
-                appIdentifier: bundleIdentifier,
-                live: .userDefined(true),
-                platform: appPlatform
-            )
-
-            let liveVersion: String? = laneContextValue(for: "LATEST_VERSION")
-            
-            latestTestflightBuildNumber(
-                appIdentifier: bundleIdentifier,
-                platform: appPlatform,
-                initialBuildNumber: 1
-            )
-            
-            let testFlightVersion: String? = laneContextValue(for: "LATEST_TESTFLIGHT_VERSION")
-            
-            guard let testFlightVersion else {
-                fail("missing testflight version")
-            }
-            
-            guard var version = Version(string: testFlightVersion) else {
-                fail("invalid version '\(testFlightVersion)'")
-            }
-            
-            if let liveVersion, Version(string: liveVersion) == version {
-                version.bump(.minor)
-            }
-            
-            resolvedVersion = version.description
-            
-            incrementVersionNumber(
-                versionNumber: .userDefined(version.description),
-                xcodeproj: .userDefined(xcodeProject)
-            )
+        // Vela's first store release has no live/TestFlight version to infer.
+        // Use explicit beta versions and build numbers for every submission.
+        guard let providedVersion = options["version"]?.trimOption(),
+              providedVersion.wholeMatch(of: /^0\.9\.\d+$/) != nil,
+              let version = Version(string: providedVersion),
+              version.major == 0, version.minor == 9,
+              let build = options["build"]?.trimOption(),
+              let buildNumber = Int(build), buildNumber > 0 else {
+            fail("Vela beta uploads require an explicit 0.9.x version and positive build number")
         }
-        
-        let resolvedBuild: String
-
-        if let build = options["build"]?.trimOption() {
-            resolvedBuild = build
-            
-            incrementBuildNumber(
-                buildNumber: .userDefined(build),
-                xcodeproj: .userDefined(xcodeProject)
-            )
-        } else {
-            let testFlightBuild: Int = laneContextValue(for: "LATEST_TESTFLIGHT_BUILD_NUMBER") ?? 0
-            resolvedBuild = "\(testFlightBuild)"
-
-            incrementBuildNumber(
-                buildNumber: .userDefined("\(testFlightBuild + 1)"),
-                xcodeproj: .userDefined(xcodeProject)
-            )
-        }
+        let resolvedVersion = version.description
+        let resolvedBuild = String(buildNumber)
+        incrementVersionNumber(
+            versionNumber: .userDefined(resolvedVersion),
+            xcodeproj: .userDefined(xcodeProject)
+        )
+        incrementBuildNumber(
+            buildNumber: .userDefined(resolvedBuild),
+            xcodeproj: .userDefined(xcodeProject)
+        )
 
         let outputDirectory = "fastlane/build/\(sanitizedName(for: scheme))"
         try? FileManager.default.removeItem(atPath: outputDirectory)
@@ -219,7 +171,7 @@ class Fastfile: LaneFile {
             outputName: .userDefined("\(sanitizedName(for: scheme)).ipa"),
             skipArchive: .userDefined(false),
             sdk: .userDefined(sdk),
-            xcargs: .userDefined("-skipMacroValidation"),
+            xcargs: .userDefined("-skipMacroValidation -skipPackagePluginValidation"),
             skipProfileDetection: false,
             clonedSourcePackagesPath: .userDefined(sourcePackagesPath),
             disablePackageAutomaticUpdates: true
@@ -269,7 +221,7 @@ class Fastfile: LaneFile {
             skipCodesigning: .userDefined(true),
             archivePath: .userDefined("fastlane/build/\(sanitizedName(for: scheme)).xcarchive"),
             sdk: .userDefined(sdk(forScheme: scheme)),
-            xcargs: .userDefined("-skipMacroValidation"),
+            xcargs: .userDefined("-skipMacroValidation -skipPackagePluginValidation"),
             skipProfileDetection: true,
             clonedSourcePackagesPath: .userDefined(sourcePackagesPath),
             disablePackageAutomaticUpdates: true

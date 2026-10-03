@@ -26,6 +26,8 @@ struct UserSessionRootView: View {
             case .signedOut:
                 #if targetEnvironment(macCatalyst)
                 VelaWelcomeView()
+                #elseif os(iOS)
+                NavigationStack { VelaMobileHomeView() }
                 #else
                 NavigationInjectionView(coordinator: .init()) { SelectUserView() }
                 #endif
@@ -38,7 +40,7 @@ struct UserSessionRootView: View {
         }
         .animation(.linear(duration: 0.1), value: userSessionManager.state)
         .task {
-            #if targetEnvironment(macCatalyst)
+            #if os(iOS)
             // Let a cold-launch document event reach the file host before restoring
             // any server connection. Browse Jellyfin normally after the file closes.
             try? await Task.sleep(for: .milliseconds(200))

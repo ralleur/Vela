@@ -7,7 +7,7 @@
 //
 
 // On-device behavioral checks for the shared player. Licensed under MPL-2.0.
-#if DEBUG && targetEnvironment(macCatalyst)
+#if DEBUG && os(iOS)
 import SwiftUI
 
 @MainActor
@@ -77,10 +77,11 @@ enum VelaLocalPlaybackChecks {
         }
     }
 
-    static func run() async {
+    @discardableResult
+    static func run(showResult: Bool = true) async -> [String] {
         guard let manager = VelaLocalFiles.shared.activeManager,
               let item = manager.playbackItem as? LocalMediaPlayerItem,
-              let proxy = manager.proxy as? VLCMediaPlayerProxy else { return }
+              let proxy = manager.proxy as? VLCMediaPlayerProxy else { return ["FAIL Local VLC session unavailable"] }
         var results: [String] = []
         func check(_ label: String, _ passes: Bool) {
             results.append("\(passes ? "PASS" : "FAIL") \(label)")
@@ -150,7 +151,10 @@ enum VelaLocalPlaybackChecks {
         await manager.setPlaybackRequestStatus(status: .paused)
 
         print("VELA_PLAYBACK_CHECKS \(results.joined(separator: "; "))")
-        present(title: "Local Playback Checks", result: results.joined(separator: "\n"))
+        if showResult {
+            present(title: "Local Playback Checks", result: results.joined(separator: "\n"))
+        }
+        return results
     }
 
     private static func present(title: String, result: String, actionTitle: String = "Done", action: (() -> Void)? = nil) {

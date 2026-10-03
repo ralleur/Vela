@@ -27,3 +27,8 @@ Responsive image choices include a portrait library crop. The comparison uses
 an intentionally scrollable full-player image on narrow screens so its controls
 remain legible. The site works without JavaScript; the alternate capture is a
 normal link. Motion is limited to anchor scrolling and honors reduced motion.
+
+The platform section distinguishes released Mac binaries from mobile/TV release
+preparation. Keep those labels until the corresponding public release exists.
+Mac captures must stay labeled as Mac; never imply they show the mobile app.
+`privacy.html` documents current behavior and platform availability.

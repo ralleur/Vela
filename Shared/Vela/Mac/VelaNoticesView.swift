@@ -7,11 +7,11 @@
 //
 
 // Vela additions, licensed under the Mozilla Public License 2.0.
-#if targetEnvironment(macCatalyst)
+#if os(iOS)
 import SwiftUI
 
 struct VelaNoticesView: View {
-    var close: (() -> Void)? = nil
+    var close: (() -> Void)?
     @Environment(\.dismiss)
     private var dismiss
     @State
@@ -21,16 +21,25 @@ struct VelaNoticesView: View {
             HStack {
                 Text(VelaStrings.text("Open Source Notices")).font(.title2.bold())
                 Spacer()
-                Button(VelaStrings.text("Done")) { if let close { close() } else { dismiss() } }.keyboardShortcut(.defaultAction)
+                Button(VelaStrings.text("Done")) {
+                    if let close {
+                        close()
+                    } else {
+                        dismiss()
+                    }
+                }.keyboardShortcut(.defaultAction)
             }
-            Text("Vela · \(UIApplication.appVersion ?? "") (\(UIApplication.bundleVersion ?? ""))")
+            Text(verbatim: "Vela · \(UIApplication.appVersion ?? "") (\(UIApplication.bundleVersion ?? ""))")
             Text(VelaStrings.text("Free. Open source. No subscription. No in-app purchases."))
             Link(VelaStrings.text("Source Code"), destination: URL(string: "https://github.com/ralleur/Vela")!)
             ScrollView {
                 Text(verbatim: notices).font(.system(.caption, design: .monospaced)).textSelection(.enabled)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
-        }.padding(24).frame(minWidth: 620, minHeight: 520)
+        }.padding(24)
+            #if targetEnvironment(macCatalyst)
+                .frame(minWidth: 620, minHeight: 520)
+            #endif
             .task {
                 if let url = Bundle.main.url(forResource: "VelaThirdPartyNotices", withExtension: "txt") {
                     notices = (try? String(contentsOf: url, encoding: .utf8)) ?? ""

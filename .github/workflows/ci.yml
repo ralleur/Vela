@@ -2,14 +2,14 @@ name: "Build 🔨"
 
 on:
   push:
-    branches: [ main ]
+    branches: [ vela, main ]
   pull_request:
     types:
       - opened
       - reopened
       - synchronize
       - ready_for_review
-    branches: [ main ]
+    branches: [ vela, main ]
 
 jobs:
   playback-logic:
@@ -33,7 +33,7 @@ jobs:
     runs-on: macos-26
 
     env:
-      XCODE_VERSION: "26.6"
+      XCODE_VERSION: "27.0"
 
     steps:
       - name: Checkout
@@ -101,3 +101,17 @@ jobs:
             build/SourcePackages/artifacts
             build/SourcePackages/workspace-state.json
           key: ${{ steps.swift-packages.outputs.cache-primary-key }}
+
+  mac-catalyst:
+    name: Mac Catalyst regression build
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v7
+      - name: Prepare pinned Mac dependencies
+        run: Tools/vela/prepare-mac-packages.sh
+      - name: Compile Mac Catalyst without distribution signing
+        run: >-
+          xcodebuild -workspace Vela.xcworkspace -scheme Swiftfin
+          -configuration Debug -destination 'platform=macOS,variant=Mac Catalyst'
+          -derivedDataPath build/dd-mac-ci -skipMacroValidation -skipPackagePluginValidation
+          CODE_SIGNING_ALLOWED=NO build

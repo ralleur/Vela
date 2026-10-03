@@ -115,7 +115,7 @@ struct VideoPlayer: View {
             if let retry = manager.retryPlayback {
                 Button(VelaStrings.text("Try Compatible Playback")) { retry() }
             }
-            #if targetEnvironment(macCatalyst)
+            #if os(iOS)
             if manager.playbackItem?.discoversTracks == true {
                 Button(VelaStrings.text("Choose Another Video…")) { VelaLocalFiles.shared.showPicker(subtitle: false) }
             }

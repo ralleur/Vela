@@ -2,7 +2,9 @@
 
 # Vela
 
-**A modern macOS video player with Jellyfin built in.**
+**A video player for Mac, iPhone, iPad and Apple TV — with Jellyfin built in.**
+
+Mac beta available now. iPhone/iPad and Apple TV App Store releases are in preparation.
 
 Your files. Your Jellyfin library. One player.
 
@@ -70,13 +72,15 @@ application. Their names and marks belong to their respective owners.
 | Platform | Current scope |
 | --- | --- |
 | **macOS** | Mac Catalyst; local files and Jellyfin. Build minimum macOS 15.6; launch captures on Apple silicon. Release is configured for Apple silicon and Intel. |
-| **Apple TV** | Jellyfin browsing and playback; tvOS 26.1 target. Local Finder integration and file history are Mac features. |
-| **iPhone / iPad** | Inherited iOS target remains in the repository; this launch does not announce a separately qualified Vela mobile release. |
+| **Apple TV** | Jellyfin browsing and playback; tvOS 26.1+. Source builds available; App Store release in preparation. No local-file workflow. |
+| **iPhone / iPad** | iOS/iPadOS 18.6+. Local videos from Files, recent files, subtitles and Jellyfin in one app. Development builds; device qualification and App Store release in preparation. |
 
 Vela is beta software. Physical Apple TV behavior, oldest supported operating
 systems and long-session reliability still need further qualification. Existing downloads are listed in
 [releases](https://github.com/ralleur/Vela/releases); read their signing/version
 notes before choosing a build.
+
+See the [Apple release plan](docs/release/apple-release-plan.md) for implementation evidence and remaining release gates. There are no public iOS/tvOS App Store or TestFlight links yet. Windows and Linux are not supported. Screenshots above show the Mac release.
 
 ## Build, understand, contribute
 

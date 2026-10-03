@@ -7,7 +7,7 @@
 //
 
 // Vela additions, licensed under the Mozilla Public License 2.0.
-#if targetEnvironment(macCatalyst)
+#if os(iOS)
 import SwiftUI
 
 struct VelaTrackTimingMenu: View {
