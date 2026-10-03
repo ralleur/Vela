@@ -1,131 +1,153 @@
 {
-  "date": "2026-10-02",
-  "version": "0.9.4",
-  "build": 5,
-  "source_commit": "f343155bf247e5881d6f4b1da8bfc660207a958d",
+  "date": "2026-10-04",
+  "version": "0.9.5",
+  "build": 6,
+  "source_commit": "7dd6c89fd8cdabbde80f029bf79171d7fd50e825",
   "site": "https://ralleur.github.io/Vela/",
   "deployment": {
     "conclusion": "success",
-    "headSha": "f343155bf247e5881d6f4b1da8bfc660207a958d",
+    "headSha": "7dd6c89fd8cdabbde80f029bf79171d7fd50e825",
     "status": "completed",
-    "url": "https://github.com/ralleur/Vela/actions/runs/37048480493"
+    "url": "https://github.com/ralleur/Vela/actions/runs/37158384102"
   },
-  "release": "https://github.com/ralleur/Vela/releases/tag/vela-0.9.4",
-  "published_at": "2026-10-02T18:35:33Z",
+  "release": "https://github.com/ralleur/Vela/releases/tag/vela-0.9.5",
+  "published_at": "2026-10-03T22:25:02Z",
   "artifacts": [
     {
-      "name": "Vela-0.9.4-macOS-universal.dmg",
-      "size": 140288000,
-      "digest": "sha256:b9c15665b7698bc3ed4d79c08605692226e2cf360e34736017cbb116ad32140a",
-      "url": "https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-macOS-universal.dmg"
+      "name": "Vela-0.9.5-macOS-universal.dmg",
+      "size": 142029312,
+      "digest": "sha256:2736bf514532352df6946d86193c7ea2629a3b4fade0e5e9385cbf1f413cae86",
+      "url": "https://github.com/ralleur/Vela/releases/download/vela-0.9.5/Vela-0.9.5-macOS-universal.dmg"
     },
     {
-      "name": "Vela-0.9.4-macOS-universal.dmg.sha256",
+      "name": "Vela-0.9.5-macOS-universal.dmg.sha256",
       "size": 97,
-      "digest": "sha256:a87935fac9233c3c1edbea1e8a5131f38a2a1d52d8b713a757287b8468c55f7f",
-      "url": "https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-macOS-universal.dmg.sha256"
+      "digest": "sha256:d7656febf9bef4b64068eafb2a065841f87146c9bfcc527f1ddcd9fde802efd7",
+      "url": "https://github.com/ralleur/Vela/releases/download/vela-0.9.5/Vela-0.9.5-macOS-universal.dmg.sha256"
     },
     {
-      "name": "Vela-0.9.4-sources.tar.gz",
-      "size": 395129198,
-      "digest": "sha256:a698bec797bd2f59a7b1763ce6f37144d1f4c3c8fec12183e3e2c8b9f9362cd8",
-      "url": "https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-sources.tar.gz"
+      "name": "Vela-0.9.5-sources.tar.gz",
+      "size": 396596043,
+      "digest": "sha256:ba7c60d6bdcad43b94fa558b3e53a281b997feb8198dc794dc75b225d303f8cd",
+      "url": "https://github.com/ralleur/Vela/releases/download/vela-0.9.5/Vela-0.9.5-sources.tar.gz"
     },
     {
-      "name": "Vela-0.9.4-sources.tar.gz.sha256",
+      "name": "Vela-0.9.5-sources.tar.gz.sha256",
       "size": 92,
-      "digest": "sha256:a0cb3e845d5fb6ca86411157f004bbfa94b1d40568e6daa38eadaec4125fa4e1",
-      "url": "https://github.com/ralleur/Vela/releases/download/vela-0.9.4/Vela-0.9.4-sources.tar.gz.sha256"
+      "digest": "sha256:b563876c8bca4f67492c5cfab3bad57033bcfdfdd0d192798f873ad5da4259ff",
+      "url": "https://github.com/ralleur/Vela/releases/download/vela-0.9.5/Vela-0.9.5-sources.tar.gz.sha256"
     }
   ],
-  "public_dmg_download_sha256": "b9c15665b7698bc3ed4d79c08605692226e2cf360e34736017cbb116ad32140a",
+  "public_dmg_download_sha256": "2736bf514532352df6946d86193c7ea2629a3b4fade0e5e9385cbf1f413cae86",
   "site_files": [
     {
-      "path": "index.html",
-      "status": 200
-    },
-    {
       "path": "README.md",
-      "status": 200
-    },
-    {
-      "path": ".nojekyll",
-      "status": 200
-    },
-    {
-      "path": "style.css",
-      "status": 200
-    },
-    {
-      "path": "site.js",
-      "status": 200
-    },
-    {
-      "path": "credits.html",
-      "status": 200
-    },
-    {
-      "path": "assets/player-controls-1366.webp",
-      "status": 200
-    },
-    {
-      "path": "assets/player-clean-1366.webp",
-      "status": 200
-    },
-    {
-      "path": "assets/jellyfin-home-mobile.webp",
-      "status": 200
-    },
-    {
-      "path": "assets/player-clean-768.webp",
-      "status": 200
-    },
-    {
-      "path": "assets/social-preview.jpg",
-      "status": 200
-    },
-    {
-      "path": "assets/mac-window.webp",
-      "status": 200
+      "status": 200,
+      "matches_release_source": true
     },
     {
       "path": "assets/fullscreen.webp",
-      "status": 200
-    },
-    {
-      "path": "assets/player-controls-768.webp",
-      "status": 200
-    },
-    {
-      "path": "assets/vela-icon.png",
-      "status": 200
-    },
-    {
-      "path": "assets/jellyfin-home.webp",
-      "status": 200
-    },
-    {
-      "path": "assets/local-workflow.webp",
-      "status": 200
+      "status": 200,
+      "matches_release_source": true
     },
     {
       "path": "assets/jellyfin-detail.webp",
-      "status": 200
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "assets/jellyfin-home-mobile.webp",
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "assets/jellyfin-home.webp",
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "assets/local-workflow.webp",
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "assets/mac-window.webp",
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "assets/player-clean-1366.webp",
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "assets/player-clean-768.webp",
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "assets/player-controls-1366.webp",
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "assets/player-controls-768.webp",
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "assets/social-preview.jpg",
+      "status": 200,
+      "matches_release_source": true
     },
     {
       "path": "assets/subtitles.webp",
-      "status": 200
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "assets/vela-icon.png",
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "assets/vela-wordmark.svg",
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "credits.html",
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "site.js",
+      "status": 200,
+      "matches_release_source": true
+    },
+    {
+      "path": "style.css",
+      "status": 200,
+      "matches_release_source": true
     }
   ],
   "validation": [
-    "Universal Release build passed",
+    "Universal Release build passed for arm64 and x86_64",
+    "All 46 logic tests passed, including remote touch prompt regressions",
+    "Quick presets matched toolbar height and displayed compact labels in Mac playback",
     "Strict code-signature verification passed",
     "Stapled Apple notarization ticket validated",
     "Gatekeeper accepted Notarized Developer ID",
-    "Launched exact DMG app and played local Sintel MKV",
-    "All uploaded asset hashes matched local artifacts",
+    "Installed version 0.9.5 (6) from the exact release DMG in /Applications/Vela.app",
+    "Verified skip-intro click and next-episode Return activation with controls hidden in installed Mac app",
+    "All four uploaded asset hashes matched local artifacts",
     "Public DMG redownload matched original SHA-256",
-    "All 19 deployed site files returned HTTP 200",
-    "Published HTML exactly matched website source"
+    "All 19 deployed site files returned HTTP 200 and exactly matched release source",
+    "Public website download links point to version 0.9.5"
   ]
 }
