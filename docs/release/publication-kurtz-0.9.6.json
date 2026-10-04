@@ -85,5 +85,244 @@
     "No physical iPhone/iPad/Apple TV qualification or Store release",
     "Shorts audio measured but not subjectively listened to in this session"
   ],
-  "historical_release_records": "Kept unchanged; legacy names/tags/download filenames are intentional"
+  "historical_release_records": "Kept unchanged; legacy names/tags/download filenames are intentional",
+  "github_ci": {
+    "status": "passed",
+    "run": 37168517078,
+    "url": "https://github.com/ralleur/kurtz/actions/runs/37168517078",
+    "commit": "e8921f179905411a0f4e389a2f7c93818b1456a3",
+    "completed_at": "2026-10-04T02:01:32Z",
+    "verified_at": "2026-10-04T02:07:32+00:00",
+    "source_relationship": {
+      "release_commit": "680f2aa04823c6159c9d4a31e951efcdc036d794",
+      "app_sources_and_resources_unchanged": true,
+      "scope": "Supplementary archives at a later commit with CI, packaging-tool, metadata and documentation changes only; the published release and its source bundle remain unchanged.",
+      "changed_paths_since_release": [
+        ".github/ISSUE_TEMPLATE/bug-report.yaml",
+        ".github/ISSUE_TEMPLATE/config.yml",
+        ".github/ISSUE_TEMPLATE/feature-request.yaml",
+        ".github/workflows/ci.yml",
+        ".github/workflows/testflight.yml",
+        "docs/rebranding-kurtz.md",
+        "docs/release/README.md",
+        "docs/release/publication-kurtz-0.9.6.json",
+        "fastlane/Fastfile.swift",
+        "marketing/dmg/README.md",
+        "marketing/dmg/archive-vela/final-prompts.txt",
+        "marketing/dmg/archive-vela/installer-preview.png",
+        "marketing/dmg/archive-vela/wordmark-prompt.txt",
+        "marketing/dmg/installer-preview.png",
+        "website/README.md"
+      ]
+    },
+    "runner": "macos-26-arm64",
+    "xcode": "26.6 (17F113)",
+    "tests": {
+      "count": 46,
+      "suites": 9,
+      "conclusion": "passed"
+    },
+    "jobs": [
+      {
+        "name": "Mac Catalyst regression build",
+        "id": 111336463263,
+        "conclusion": "success",
+        "completed_at": "2026-10-04T01:50:01Z",
+        "url": "https://github.com/ralleur/kurtz/actions/runs/37168517078/job/111336463263"
+      },
+      {
+        "name": "Playback source and kurtz logic",
+        "id": 111336463381,
+        "conclusion": "success",
+        "completed_at": "2026-10-04T01:38:39Z",
+        "url": "https://github.com/ralleur/kurtz/actions/runs/37168517078/job/111336463381"
+      },
+      {
+        "name": "Build \ud83d\udd28 (Swiftfin tvOS, tvos)",
+        "id": 111336463390,
+        "conclusion": "success",
+        "completed_at": "2026-10-04T02:01:32Z",
+        "url": "https://github.com/ralleur/kurtz/actions/runs/37168517078/job/111336463390"
+      },
+      {
+        "name": "Build \ud83d\udd28 (Swiftfin, ios)",
+        "id": 111336463422,
+        "conclusion": "success",
+        "completed_at": "2026-10-04T01:57:22Z",
+        "url": "https://github.com/ralleur/kurtz/actions/runs/37168517078/job/111336463422"
+      }
+    ],
+    "unsigned_archives": [
+      {
+        "run": 37168517078,
+        "source_commit": "e8921f179905411a0f4e389a2f7c93818b1456a3",
+        "artifact_id": 11290609445,
+        "artifact": "kurtz-ios-unsigned",
+        "artifact_zip_sha256": "b1d8c0718a9ff3f0d65bd4e8fdcefa7ee4fa36ecc908d8ba4e233550393a1b3d",
+        "github_digest_matches": true,
+        "ipa": "kurtz-ios-unsigned.ipa",
+        "ipa_sha256": "155431b9826123ce56dd2d16d5c46014697f2395fd6e13e93bab1006548244a8",
+        "zip_integrity": "passed (outer artifact and inner IPA CRC)",
+        "app": "Payload/kurtz.app",
+        "metadata": {
+          "CFBundleDisplayName": "kurtz",
+          "CFBundleName": "kurtz",
+          "CFBundleExecutable": "kurtz",
+          "CFBundleIdentifier": "com.ralleur.vela",
+          "CFBundleShortVersionString": "0.9.6",
+          "CFBundleVersion": "8",
+          "CFBundleSupportedPlatforms": [
+            "iPhoneOS"
+          ],
+          "UIDeviceFamily": [
+            1,
+            2
+          ],
+          "MinimumOSVersion": "18.6",
+          "DTXcode": "2660",
+          "DTXcodeBuild": "17F113",
+          "DTSDKName": "iphoneos26.5",
+          "UIAppFonts": [
+            "NotoSansCJK-Regular.ttc",
+            "Sora-Regular.ttf",
+            "Sora-SemiBold.ttf",
+            "Sora-Bold.ttf"
+          ],
+          "CFBundleURLTypes": [
+            {
+              "CFBundleTypeRole": "Editor",
+              "CFBundleURLSchemes": [
+                "kurtz",
+                "vela"
+              ]
+            }
+          ],
+          "CFBundleIcons": {
+            "CFBundleAlternateIcons": {
+              "AppIcon-kurtz-light": {
+                "CFBundleIconName": "AppIcon-kurtz-light"
+              }
+            },
+            "CFBundlePrimaryIcon": {
+              "CFBundleIconFiles": [
+                "AppIcon-kurtz60x60"
+              ],
+              "CFBundleIconName": "AppIcon-kurtz"
+            }
+          },
+          "CFBundleIcons~ipad": {
+            "CFBundleAlternateIcons": {
+              "AppIcon-kurtz-light": {
+                "CFBundleIconName": "AppIcon-kurtz-light"
+              }
+            },
+            "CFBundlePrimaryIcon": {
+              "CFBundleIconFiles": [
+                "AppIcon-kurtz60x60",
+                "AppIcon-kurtz76x76"
+              ],
+              "CFBundleIconName": "AppIcon-kurtz"
+            }
+          }
+        },
+        "registered_fonts_present": true,
+        "signing": "unsigned CI archive; not a distribution-signed app",
+        "architectures": [
+          "arm64"
+        ],
+        "size_in_bytes": 77422090,
+        "artifact_created_at": "2026-10-04T01:56:55Z"
+      },
+      {
+        "run": 37168517078,
+        "source_commit": "e8921f179905411a0f4e389a2f7c93818b1456a3",
+        "artifact_id": 11289958981,
+        "artifact": "kurtz-tvos-unsigned",
+        "artifact_zip_sha256": "c7178178552c01534a333f587cef1ca04de18de6dcddda0ba8c80fa096aa15af",
+        "github_digest_matches": true,
+        "ipa": "kurtz-tvos-unsigned.ipa",
+        "ipa_sha256": "01ddb298c10ef8f00a2e9bc04e3e0653870cff3a619f344775cbd738d7b57122",
+        "zip_integrity": "passed (outer artifact and inner IPA CRC)",
+        "app": "Payload/kurtz.app",
+        "metadata": {
+          "CFBundleDisplayName": "kurtz",
+          "CFBundleName": "kurtz",
+          "CFBundleExecutable": "kurtz",
+          "CFBundleIdentifier": "com.ralleur.vela",
+          "CFBundleShortVersionString": "0.9.6",
+          "CFBundleVersion": "74",
+          "CFBundleSupportedPlatforms": [
+            "AppleTVOS"
+          ],
+          "UIDeviceFamily": [
+            3
+          ],
+          "MinimumOSVersion": "26.1",
+          "DTXcode": "2660",
+          "DTXcodeBuild": "17F113",
+          "DTSDKName": "appletvos26.5",
+          "UIAppFonts": [
+            "NotoSansCJK-Regular.ttc",
+            "Sora-Regular.ttf",
+            "Sora-SemiBold.ttf",
+            "Sora-Bold.ttf"
+          ],
+          "CFBundleURLTypes": [
+            {
+              "CFBundleTypeRole": "Editor",
+              "CFBundleURLSchemes": [
+                "kurtz",
+                "vela"
+              ]
+            }
+          ],
+          "CFBundleIcons": {
+            "CFBundlePrimaryIcon": "App Icon"
+          },
+          "TVTopShelfImage": {
+            "TVTopShelfPrimaryImage": "Top Shelf Image",
+            "TVTopShelfPrimaryImageWide": "Top Shelf Image Wide"
+          }
+        },
+        "registered_fonts_present": true,
+        "signing": "unsigned CI archive; not a distribution-signed app",
+        "architectures": [
+          "arm64"
+        ],
+        "size_in_bytes": 86178456,
+        "artifact_created_at": "2026-10-04T02:00:59Z"
+      }
+    ],
+    "earlier_attempts": [
+      {
+        "run": 37164770282,
+        "commit": "680f2aa04823c6159c9d4a31e951efcdc036d794",
+        "conclusion": "failure",
+        "cause": "Xcode 27 installation timed out before app archiving; the sibling matrix job was cancelled. Mac Catalyst and 46 tests passed."
+      },
+      {
+        "run": 37165335340,
+        "commit": "ea4fb13a3acdb2227872d51e491e8caece2afd6a",
+        "conclusion": "failure",
+        "cause": "Same Xcode installation timeout before app archiving; the sibling matrix job was cancelled. Mac Catalyst and 46 tests passed."
+      },
+      {
+        "run": 37168280665,
+        "commit": "51a693891205016073df65665132427d61b11723",
+        "conclusion": "failure",
+        "cause": "Installed Xcode selection succeeded, but fastlane auto-selected the Mac workspace without its generated package setup. iOS/tvOS package resolution failed; Mac Catalyst and 46 tests passed."
+      }
+    ],
+    "build_fixes": [
+      {
+        "commit": "51a693891205016073df65665132427d61b11723",
+        "change": "Pin installed Xcode 26.6, select it without downloading, and allow both matrix jobs to finish independently."
+      },
+      {
+        "commit": "e8921f179905411a0f4e389a2f7c93818b1456a3",
+        "change": "Explicitly choose Swiftfin.xcodeproj and its committed Package.resolved for iOS/tvOS archives."
+      }
+    ],
+    "qualification_limit": "Unsigned iOS/tvOS CI archives verify compilation and package contents, not physical-device playback, distribution signing, TestFlight or Store approval."
+  }
 }
