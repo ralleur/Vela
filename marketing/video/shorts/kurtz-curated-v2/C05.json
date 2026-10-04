@@ -1,0 +1,72 @@
+{
+  "id": "C05",
+  "product": "kurtz",
+  "version": "kurtz branding revision 2; original Vela feature recordings from 4 October 2026, exact capture binary version not retained",
+  "revision": "v2",
+  "language": "en",
+  "ui_exception": "German series-outlook card, explicitly requested by owner",
+  "file": "kurtz-c05-less-interface-v2.mp4",
+  "duration": 13,
+  "shots": [
+    {
+      "source": "build/launch/raw/vela-curated-v1/clean-window-en.mov",
+      "source_in": 10,
+      "source_out": 15,
+      "seconds": 5,
+      "lines": [
+        "Controls,",
+        "when you need them."
+      ],
+      "action_result": "Actual visible controls fade away during uninterrupted local playback.",
+      "crop": [
+        0,
+        32,
+        824,
+        464
+      ],
+      "note": "Local MP4 · Feature capture · 4 Oct 2026",
+      "source_sha256": "55fc755053a28ed33c092390384284835e5f122d7d967225003d5709990c57e2"
+    },
+    {
+      "source": "build/launch/raw/vela-curated-v1/clean-window-en.mov",
+      "source_in": 15,
+      "source_out": 18,
+      "seconds": 6,
+      "lines": [
+        "Then just",
+        "the film."
+      ],
+      "action_result": "Actual clean result continues, followed by a deliberate 3-second hold.",
+      "crop": [
+        0,
+        32,
+        824,
+        464
+      ],
+      "hold": 3,
+      "quote": [
+        "“…nothing left",
+        "to take away.”",
+        "— Antoine de Saint-Exupéry"
+      ],
+      "note": "Local MP4 · Feature capture · 4 Oct 2026",
+      "source_sha256": "55fc755053a28ed33c092390384284835e5f122d7d967225003d5709990c57e2"
+    },
+    {
+      "seconds": 2,
+      "lines": [
+        "Discover kurtz",
+        "ralleur.github.io/kurtz"
+      ],
+      "visual": "endcard",
+      "action_result": "kurtz vector wordmark and current destination; neutral CTA"
+    }
+  ],
+  "title": "Less interface. More film. | kurtz for Mac",
+  "description": "Real kurtz Mac playback: controls appear when needed and disappear again, leaving the film. The last three seconds hold the completed clean-window result. “Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.” — Antoine de Saint-Exupéry. The on-screen excerpt uses the wording supplied by the owner.\n\nkurtz for macOS · Beta. Local files work without a Jellyfin server. Jellyfin features require your server; episode prompts depend on available chapters/segments and metadata. VLC is the default local playback engine; compatibility depends on the file.\nDiscover kurtz: https://ralleur.github.io/kurtz/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Library artwork also includes Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Film excerpts cropped/resized. Composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. kurtz branding and third-party UI/marks retain their own rights. Music: original Ralleur production, existing hauser-D / hauser-F masters; source-film audio removed. Built on Swiftfin: https://github.com/jellyfin/Swiftfin . kurtz is independent of Jellyfin, Swiftfin and the filmmakers.\n\n#kurtz #MacApps #Jellyfin\n\nProduction provenance: this kurtz branding edition reuses the original 4 October 2026 Vela feature recordings. The original UI is cropped, never repainted; timings and completed actions are preserved. The library still is identified separately in the scene manifest.",
+  "CTA": "Discover kurtz",
+  "destination": "https://ralleur.github.io/kurtz/",
+  "music": "hauser-D.wav",
+  "music_offset": 7,
+  "capture_provenance": "../vela-curated-v1/capture-build.json"
+}

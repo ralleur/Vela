@@ -30,7 +30,7 @@ for path,p in pages.items():
     for url in p.urls:
         u=urlsplit(url)
         if u.scheme or u.netloc:continue
-        assert not u.path.startswith('/'), f'Root-relative path breaks /Vela/: {url}'
+        assert not u.path.startswith('/'), f'Root-relative path breaks /kurtz/: {url}'
         target=(path.parent/unquote(u.path)).resolve() if u.path else path
         if target.is_dir():target/='index.html'
         assert target.is_relative_to(SOURCE.resolve()), f'Link escapes website: {url}'

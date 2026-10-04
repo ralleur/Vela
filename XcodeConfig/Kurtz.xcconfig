@@ -1,0 +1,13 @@
+//
+// Public kurtz app identity. Signing credentials belong in the ignored
+// DevelopmentTeam.xcconfig file, copied from DevelopmentTeam.example.xcconfig.
+//
+
+PRODUCT_BUNDLE_IDENTIFIER = com.ralleur.vela
+PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*] = com.ralleur.vela.mac
+KURTZ_DISPLAY_NAME = kurtz
+KURTZ_APP_ICON = kurtz App Icon & Top Shelf Image
+KURTZ_IOS_APP_ICON = AppIcon-kurtz
+KURTZ_IOS_ENTITLEMENTS[sdk=macosx*] = Swiftfin/Kurtz/Kurtz-Mac.entitlements
+
+// Stable bundle IDs and preference keys retain existing accounts and bookmarks.

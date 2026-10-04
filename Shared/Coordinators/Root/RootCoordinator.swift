@@ -41,7 +41,7 @@ final class RootCoordinator: ObservableObject {
     }
 
     private var started = false
-    private var selectedAccentColor: Color = .jellyfinPurple
+    private var selectedAccentColor: Color = .kurtzAccent
     private var accentColorCancellable: AnyCancellable?
     private var appearanceCancellable: AnyCancellable?
     private var currentSessionCancellable: AnyCancellable?
@@ -134,7 +134,7 @@ final class RootCoordinator: ObservableObject {
         splashScreenCancellable?.cancel()
 
         accentColorCancellable = Task {
-            applyAccentColor(.jellyfinPurple)
+            applyAccentColor(.kurtzAccent)
         }
         .asAnyCancellable()
 
@@ -165,10 +165,11 @@ final class RootCoordinator: ObservableObject {
         let isDark = appearance == .dark || (
             appearance == .system && UIApplication.shared.keyWindow?.traitCollection.userInterfaceStyle == .dark
         )
-        let resolvedColor = isIncreasedContrastEnabled ? color.mix(
+        let legibleColor = !isDark && color == .kurtzAccent ? KurtzBrand.graphite : color
+        let resolvedColor = isIncreasedContrastEnabled ? legibleColor.mix(
             with: isDark ? .white : .black,
             by: 0.25
-        ) : color
+        ) : legibleColor
 
         Defaults[.accentColor] = resolvedColor
 

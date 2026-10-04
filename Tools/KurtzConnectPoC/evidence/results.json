@@ -1,0 +1,116 @@
+{
+  "scope": "same Mac, loopback control/STUN/DERP; no WAN benchmark",
+  "tailscale": "v1.102.5",
+  "image": "jellyfin/jellyfin:10.11.11",
+  "runs": [
+    {
+      "authenticated": true,
+      "avPlayerAdvancedSeconds": 0.541621875,
+      "bulk32MiB_Mbps": [
+        17432.477780585396,
+        28878.65006055216,
+        25129.99412556316
+      ],
+      "expectedRoute": "local-baseline",
+      "jellyfinVersion": "10.11.11",
+      "libraryItems": 1,
+      "native": "macOS-arm64",
+      "publicInfoMs": 10.440945625305176,
+      "scope": "local lab; not WAN or physical Apple TV",
+      "videoRange206": true,
+      "webSocketEcho": true,
+      "processWallSeconds": 1.6235215410000023,
+      "processPeakRSSBytes": 140623872,
+      "processCPUSeconds": 0.14
+    },
+    {
+      "after": {
+        "derpRegion": "",
+        "hasDirectEndpoint": true,
+        "probeLatencyMs": 0.39233300000000004,
+        "route": "direct-peer",
+        "rxBytes": 114239052,
+        "txBytes": 1939604
+      },
+      "authenticated": true,
+      "avPlayerAdvancedSeconds": 0.516473542,
+      "before": {
+        "derpRegion": "",
+        "hasDirectEndpoint": true,
+        "probeLatencyMs": 0.21779199999999999,
+        "route": "direct-peer",
+        "rxBytes": 1036,
+        "txBytes": 1012
+      },
+      "bulk32MiB_Mbps": [
+        660.4259247553802,
+        766.9064976592957,
+        719.5791292603635
+      ],
+      "expectedRoute": "direct-peer",
+      "jellyfinVersion": "10.11.11",
+      "libraryItems": 1,
+      "native": "macOS-arm64",
+      "negativeChecks": [
+        "missing capability",
+        "foreign Origin",
+        "off-origin redirect"
+      ],
+      "publicInfoMs": 18.99898052215576,
+      "scope": "local lab; not WAN or physical Apple TV",
+      "videoRange206": true,
+      "webSocketEcho": true,
+      "processWallSeconds": 2.423346125000002,
+      "processPeakRSSBytes": 267288576,
+      "processCPUSeconds": 1.98
+    },
+    {
+      "after": {
+        "derpRegion": "local-lab",
+        "hasDirectEndpoint": false,
+        "probeLatencyMs": 0.557458,
+        "route": "derp-relay",
+        "rxBytes": 114380572,
+        "txBytes": 4188220
+      },
+      "authenticated": true,
+      "avPlayerAdvancedSeconds": 0.516648208,
+      "before": {
+        "derpRegion": "local-lab",
+        "hasDirectEndpoint": false,
+        "probeLatencyMs": 0.519583,
+        "route": "derp-relay",
+        "rxBytes": 1036,
+        "txBytes": 908
+      },
+      "bulk32MiB_Mbps": [
+        216.48431651111235,
+        273.50035185441845,
+        295.8824353342119
+      ],
+      "expectedRoute": "derp-relay",
+      "jellyfinVersion": "10.11.11",
+      "libraryItems": 1,
+      "native": "macOS-arm64",
+      "negativeChecks": [
+        "missing capability",
+        "foreign Origin",
+        "off-origin redirect"
+      ],
+      "publicInfoMs": 60.68599224090576,
+      "scope": "local lab; not WAN or physical Apple TV",
+      "videoRange206": true,
+      "webSocketEcho": true,
+      "processWallSeconds": 7.368891791999999,
+      "processPeakRSSBytes": 163790848,
+      "processCPUSeconds": 2.73
+    }
+  ],
+  "imageID": "sha256:aefb67e6a7ff1debdd154a78a7bbb780fd0c873d8639210a7f6a2016ad2b35db",
+  "observedAtUTC": "2026-10-02T23:07:02.806731+00:00",
+  "hostModel": "Mac16,9",
+  "hostOS": "27.0",
+  "go": "go version go1.27.1 darwin/arm64",
+  "xcode": "Xcode 27.0\nBuild version 27A266a",
+  "probeSourceSHA256": "81014f13679a34aa45b931daed211cfdc31cdfdd5adc2ed222846a2172317d21"
+}

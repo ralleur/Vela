@@ -1,19 +1,19 @@
-# Vela 0.9.5 — distribution source and licenses
+# kurtz 0.9.6 — distribution source and licenses
 
-The release contains Vela/Swiftfin application code, Swift packages, static
+The release contains kurtz/Swiftfin application code, Swift packages, static
 libVLC and the GPL-enabled libmpv framework. The combined executable distribution
 is provided under **GPL-3.0-or-later**; MPL-2.0 notices continue to apply to the
-Vela/Swiftfin source files. This uses MPL-2.0 section 3.3's secondary-license
+kurtz/Swiftfin source files. This uses MPL-2.0 section 3.3's secondary-license
 permission for the combined work. MIT/BSD/Apache/LGPL and other component
 notices remain in force. No warranty is provided.
 
-- [Vela 0.9.5 source](https://github.com/ralleur/Vela/tree/vela-0.9.5)
-- [Vela source archive](https://github.com/ralleur/Vela/archive/refs/tags/vela-0.9.5.tar.gz)
-- [Release downloads, including the source bundle](https://github.com/ralleur/Vela/releases/tag/vela-0.9.5)
+- [kurtz 0.9.6 source](https://github.com/ralleur/kurtz/tree/kurtz-0.9.6)
+- [kurtz source archive](https://github.com/ralleur/kurtz/archive/refs/tags/kurtz-0.9.6.tar.gz)
+- [Release downloads, including the source bundle](https://github.com/ralleur/kurtz/releases/tag/kurtz-0.9.6)
 - [MPL-2.0](../../LICENSE.md), [GPL-3.0](licenses/GPL-3.0.txt),
   [GPL-2.0](licenses/GPL-2.0.txt), [LGPL-3.0](licenses/LGPL-3.0.txt),
   [LGPL-2.1](licenses/LGPL-2.1.txt)
-- [Bundled source-package copyright/license notices](../../Shared/Resources/VelaThirdPartyNotices.txt)
+- [Bundled source-package copyright/license notices](../../Shared/Resources/KurtzThirdPartyNotices.txt)
 
 ## Matching engine inputs
 
@@ -44,21 +44,21 @@ The original MPVUI artifact SHA-256 is
 
 ## Source delivery and rebuilding
 
-The source bundle offered beside the DMG contains the exact Vela release tree,
+The source bundle offered beside the DMG contains the exact kurtz release tree,
 pinned Swift-package sources, mpv/FFmpeg/VLC sources, component build recipes,
 patches and this index. Source archives in the index are free to download from
 the immutable upstream URLs as well. Platform SDKs and system libraries come
 from Apple/Xcode. Upstream component source downloads referenced by the recipes
 are not all duplicated in the bundle; the recipes identify their exact inputs.
 
-Run `Tools/vela/prepare-mac-packages.sh` to apply Vela's Catalyst packaging fixes.
+Run `Tools/kurtz/prepare-mac-packages.sh` to apply kurtz's Catalyst packaging fixes.
 These change BlurHashKit's image-platform handling and the mpv framework's
-versioned directory layout; the script is part of the Vela source archive.
+versioned directory layout; the script is part of the kurtz source archive.
 Use [BUILDING.md](../BUILDING.md) to compile the application. To modify/relink an
 engine, build its pinned source using its recorded upstream recipe and replace
-the corresponding local package artifact before rebuilding Vela. You can sign
+the corresponding local package artifact before rebuilding kurtz. You can sign
 your modified app with your own Apple development team; the release signing
-key is not needed to compile or modify it. Vela adds no DRM or restriction on
+key is not needed to compile or modify it. kurtz adds no DRM or restriction on
 modifying these libraries.
 
 The release was compiled with Xcode 27.0 on macOS, with arm64 and x86_64 slices.
@@ -78,9 +78,8 @@ DMG and writes its SHA-256. It does not replace an installed app.
 
 ## Installer presentation
 
-The current download uses a logo-derived Vela wordmark, custom Finder background, fixed icon positions and
+The current download uses a logo-derived kurtz wordmark, custom Finder background, fixed icon positions and
 a direct Applications-folder link. Only the app and destination are visible.
 The app's existing notices remain accessible in Settings; complete release
 license/source records are retained under `.licenses` in the disk image.
-The 0.9.5 installer retains the artwork introduced in 0.9.4 revision 3, with a
-new application executable and notarization ticket. See [installer artwork and reproduction](../../marketing/dmg/README.md).
+The 0.9.6 installer introduces the kurtz identity and a newly signed application. See [installer artwork and reproduction](../../marketing/dmg/README.md).

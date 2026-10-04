@@ -6,7 +6,7 @@
 // Copyright (c) 2026 Jellyfin & Jellyfin Contributors
 //
 
-// Vela playback abstractions. Licensed under MPL-2.0.
+// kurtz playback abstractions. Licensed under MPL-2.0.
 import Combine
 import Foundation
 import SwiftUI

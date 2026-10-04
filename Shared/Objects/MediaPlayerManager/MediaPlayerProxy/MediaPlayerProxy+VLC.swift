@@ -200,7 +200,7 @@ class VLCMediaPlayerProxy: VideoMediaPlayerProxy,
     private func failPlayback(_ error: Error) {
         manager?.logger.error("SwiftVLC error: \(error)")
         manager?
-            .error(ErrorMessage(manager?.playbackItem?.discoversTracks == true ? VelaStrings
+            .error(ErrorMessage(manager?.playbackItem?.discoversTracks == true ? KurtzStrings
                     .text("This video could not be played. It may be damaged or use an unsupported format.") : error.localizedDescription))
     }
 
@@ -233,6 +233,8 @@ class VLCMediaPlayerProxy: VideoMediaPlayerProxy,
             // The bundled libass has no CoreText font provider. Its supported
             // fonts-directory option supplies the Mac's readable system fonts.
             media.addOption(":ssa-fontsdir=/System/Library/Fonts")
+            #endif
+            #if os(iOS)
             if let encoding = UserDefaults.standard.string(forKey: "vela.subtitle.encoding"), !encoding.isEmpty {
                 media.addOption(":subsdec-encoding=\(encoding)")
             }

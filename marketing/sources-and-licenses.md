@@ -1,6 +1,8 @@
 # Sources, rights and reproduction
 
-All public visuals in this package show real Vela or actual macOS UI. No app
+Current website screenshots show the actual kurtz 0.9.6 app. The six current
+Shorts reuse approved original Vela feature footage, with explicit provenance,
+in the kurtz identity. Historical captures retain their original labels. No app
 controls or capabilities were painted in or removed. Exports may crop the outer
 window/title strip (including the operating system's screen-capture indicator),
 resize and compress. Phone crops are identified in the capture manifest.
@@ -15,9 +17,10 @@ resize and compress. Phone crops are identified in the capture manifest.
 
 Only excerpts/frames are published in this package. The entire films and credit
 rolls remain in the ignored local masters. Spring was considered but not used;
-its original master download required a Studio subscription. No licensed music
-track was added. The final videos are intentionally silent and read through
-on-screen titles/captions; source-film sound is not reused.
+its original master download required a Studio subscription. The original launch films were silent. The current six feature Shorts use
+the original Ralleur/Hauser D and F music masters from the approved production,
+with their provenance in each edit. No new third-party track was introduced;
+source-film sound is not reused.
 
 ## Demo artwork and redistribution
 
@@ -31,7 +34,7 @@ CC BY 3.0 with the credits above. Adapted Caminandes posters and compositions
 that include them (including library captures and videos) are offered under
 CC BY-SA 3.0 with the credits above. Keep these credits and license links when
 sharing. This grant covers the new composition and licensed film imagery, not
-ownership of macOS UI, third-party marks, Vela branding or a change to the app's
+ownership of macOS UI, third-party marks, kurtz branding or a change to the app's
 source license. No endorsement by filmmakers is claimed.
 
 Ready-to-paste video/post credit:
@@ -44,19 +47,26 @@ Ready-to-paste video/post credit:
 
 ## App, marks and fonts
 
-- Vela glyph: `Swiftfin/Vela/AppIcon-vela.icon/Assets/Glyph.png`; the icon's own
-  background is `#11151e`. The original artwork is retained, resized for web/video.
+- kurtz wordmark and symbol: clean vector paths in `Tools/marketing/build-kurtz-brand.cjs`,
+  based on the owner's supplied concept, preserved in `brand/reference`.
+  Graphite `#1F1F1F`, Ivory `#FAF8F1`, Electric Yellow `#FFE600`.
+- DMG illustration: generated with Imagegen from the owner's branding direction;
+  prompt and retained source are in `marketing/dmg`. Exact vector mark and local
+  Sora text are composited reproducibly over that illustration.
 - Swiftfin: [upstream](https://github.com/jellyfin/Swiftfin), MPL-2.0. Existing
   LICENSE.md, headers and acknowledgements retained. Prominent prose credit in
   README, site, main film and a dedicated Short. No upstream logo used as ours.
 - Jellyfin: [branding policy](https://jellyfin.org/docs/general/contributing/branding/).
-  Distinct Vela name/mark; text describes interoperability; explicit independence.
-- Playback libraries: existing [notices](../Shared/Resources/VelaThirdPartyNotices.txt).
+  Distinct kurtz name/mark; text describes interoperability; explicit independence.
+- Playback libraries: existing [notices](../Shared/Resources/KurtzThirdPartyNotices.txt).
   The current `Libmpv-GPL` binary and libVLC need their own release/source review.
   A marketing asset review is not binary distribution clearance.
-- Website: system font stack, no font download. Typeset raster/video assets:
-  installed Arial/Arial Bold; fonts are rendered, not redistributed.
-- Hauser is a narrative reference only. No Hauser logos, screenshots or artwork copied.
+- App, website and current media: local Sora Regular, SemiBold and Bold,
+  distributed under the SIL Open Font License in `Shared/Resources/Fonts` and
+  `website/assets/fonts`. The pinned source is recorded in `brand/README.md`.
+  Historical launch artwork used system/Arial fonts and remains unchanged.
+- Hauser supplies the approved editorial standard and original Ralleur music.
+  No Hauser product logos or screenshots are used as kurtz branding.
 
 ## Storage
 

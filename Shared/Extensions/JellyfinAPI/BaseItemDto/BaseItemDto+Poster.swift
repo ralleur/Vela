@@ -93,8 +93,8 @@ extension BaseItemDto: Poster {
                 posterDisplayType: displayType
             )
 
-            // Vela: "Neue Folge" badge
-            VelaNewEpisodeBadge(item: self)
+            // kurtz: "Neue Folge" badge
+            KurtzNewEpisodeBadge(item: self)
 
             PosterSelectionOverlay()
         }

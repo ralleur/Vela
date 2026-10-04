@@ -1,11 +1,11 @@
 Independent apps. Thoughtfully made.
 
-I build Vela and Hauser. Here I share new features, practical walkthroughs and a look behind the scenes.
+I build kurtz and Hauser. Here I share new features, practical walkthroughs and a look behind the scenes.
 
-Vela — a modern Mac video player for your local files and Jellyfin library.
+kurtz — a modern Mac video player for your local files and Jellyfin library.
 Hauser — a room-first smart home interface for Apple Home and Home Assistant.
 
 Two apps. One independent developer.
 
-Ich entwickle Vela und Hauser. Hier findest du neue Funktionen, praktische Anwendungsfälle und Einblicke in die Entwicklung.
+Ich entwickle kurtz und Hauser. Hier findest du neue Funktionen, praktische Anwendungsfälle und Einblicke in die Entwicklung.
 

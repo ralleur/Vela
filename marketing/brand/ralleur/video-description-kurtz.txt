@@ -1,0 +1,8 @@
+kurtz by Ralleur.
+A modern Mac video player for your local files and Jellyfin library.
+
+Download kurtz: https://ralleur.github.io/kurtz/
+Source code: https://github.com/ralleur/kurtz
+More from Ralleur: https://www.youtube.com/@ralleurapps
+
+kurtz is an independent fork of Swiftfin and is not an official or endorsed Jellyfin or Swiftfin application.

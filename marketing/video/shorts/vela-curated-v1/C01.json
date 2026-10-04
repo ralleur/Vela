@@ -1,0 +1,79 @@
+{
+  "id": "C01",
+  "product": "Vela",
+  "version": "Mac development capture, 4 Oct 2026; exact capture binary version not retained",
+  "revision": "v1",
+  "language": "en",
+  "ui_exception": "German series-outlook card, explicitly requested by owner",
+  "file": "vela-c01-skip-intro-v1.mp4",
+  "duration": 10.0,
+  "shots": [
+    {
+      "source": "build/launch/raw/vela-curated-v1/skip-intro-en.mov",
+      "source_in": 12,
+      "source_out": 15.7,
+      "seconds": 3.7,
+      "lines": [
+        "Skip the intro."
+      ],
+      "action_result": "Visible Skip Intro button; actual click near the end of this shot.",
+      "crop": [
+        0,
+        32,
+        824,
+        464
+      ],
+      "detail": [
+        430,
+        276,
+        370,
+        100
+      ],
+      "detail_label": "SKIP INTRO",
+      "note": "Jellyfin demo · Requires intro metadata",
+      "source_sha256": "86a86be31eef6d45c5c2d6db028dd518b82e6085af11c91efda826d3595b4b39"
+    },
+    {
+      "source": "build/launch/raw/vela-curated-v1/skip-intro-en.mov",
+      "source_in": 15.7,
+      "source_out": 18,
+      "seconds": 4.3,
+      "lines": [
+        "One click.",
+        "Back to the story."
+      ],
+      "action_result": "Button disappears after the real seek to 0:20; playback continues. Final 2 seconds deliberately hold the last captured result.",
+      "crop": [
+        0,
+        32,
+        824,
+        464
+      ],
+      "hold": 2,
+      "detail": [
+        0,
+        370,
+        330,
+        65
+      ],
+      "detail_label": "STRAIGHT TO THE STORY",
+      "note": "Jellyfin · Demo library",
+      "source_sha256": "86a86be31eef6d45c5c2d6db028dd518b82e6085af11c91efda826d3595b4b39"
+    },
+    {
+      "seconds": 2,
+      "lines": [
+        "Discover Vela",
+        "ralleur.github.io/Vela"
+      ],
+      "visual": "endcard",
+      "action_result": "Vela wordmark and verified destination; neutral CTA"
+    }
+  ],
+  "title": "Skip the intro. Get back to the story. | Vela",
+  "description": "A real click on Vela’s Skip Intro button jumps to the end of the marked intro. Captured in a local Jellyfin demonstration library with licensed Blender footage and explicit chapter markers. This is metadata-based skipping, not automatic recognition of every intro.\n\nVela for macOS · Beta. Local files work without a Jellyfin server. Jellyfin features require your server; episode prompts depend on available chapters/segments and metadata. VLC is the default local playback engine; compatibility depends on the file.\nDiscover Vela: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Library artwork also includes Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Film excerpts cropped/resized. Composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Music: original Ralleur production, existing hauser-D / hauser-F masters; source-film audio removed. Built on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent of Jellyfin, Swiftfin and the filmmakers.\n\n#Vela #MacApps #Jellyfin",
+  "CTA": "Discover Vela",
+  "destination": "https://ralleur.github.io/Vela/",
+  "music": "hauser-D.wav",
+  "music_offset": 7
+}

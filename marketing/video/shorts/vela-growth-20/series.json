@@ -1,0 +1,1407 @@
+[
+  {
+    "id": "V01",
+    "slug": "wait-this-is-free",
+    "hook": "Wait. This is free?",
+    "alternateHook": "A Pro unlock? There isn’t one.",
+    "title": "A free Mac video player with Jellyfin built in",
+    "audience": "Mac app discovery",
+    "hypothesis": "Price surprise earns entry; useful product proof prevents empty free-app bait.",
+    "firstThreeSeconds": "Live Vela playback from frame 0; FREE appears at 0.8s. The first body beat proves local/Jellyfin support.",
+    "beats": [
+      {
+        "text": [
+          "Wait.",
+          "This is free?"
+        ],
+        "visual": "price",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "Your local files."
+        ],
+        "visual": "file",
+        "duration": 2,
+        "start": 3
+      },
+      {
+        "text": [
+          "Your Jellyfin library."
+        ],
+        "visual": "library",
+        "duration": 2,
+        "start": 5
+      },
+      {
+        "text": [
+          "One player.",
+          "The whole app."
+        ],
+        "visual": "pair",
+        "duration": 2.5,
+        "start": 7
+      },
+      {
+        "text": [
+          "No subscription.",
+          "No Pro unlock."
+        ],
+        "visual": "free",
+        "duration": 2.5,
+        "start": 9.5
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 12.0
+      }
+    ],
+    "duration": 14.0,
+    "file": "vela-01-wait-this-is-free.mp4",
+    "initialWave": true,
+    "music": "hauser-D.wav",
+    "musicOffset": 7,
+    "description": "A proper Mac player, with local files and Jellyfin in the same app. The whole app is free.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #OpenSource"
+  },
+  {
+    "id": "V02",
+    "slug": "jellyfin-meet-downloads",
+    "hook": "Jellyfin. Meet your Downloads.",
+    "alternateHook": "Your Jellyfin client has a second job.",
+    "title": "Jellyfin and local MKVs in one Mac player",
+    "audience": "Mac + Jellyfin users",
+    "hypothesis": "Connect a familiar product to a specific missing everyday use.",
+    "firstThreeSeconds": "A local-file picker and real Jellyfin library meet during the first 1.2s; source labels are visible from frame 0.",
+    "beats": [
+      {
+        "text": [
+          "Jellyfin.",
+          "Meet your Downloads."
+        ],
+        "visual": "pair",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "A film on",
+          "your server."
+        ],
+        "visual": "detail",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "A file on",
+          "your Mac."
+        ],
+        "visual": "file",
+        "duration": 2.5,
+        "start": 5.5
+      },
+      {
+        "text": [
+          "The same",
+          "playback controls."
+        ],
+        "visual": "controlsStill",
+        "duration": 2.5,
+        "start": 8.0
+      },
+      {
+        "text": [
+          "Both belong here."
+        ],
+        "visual": "local",
+        "duration": 2.5,
+        "start": 10.5
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.0
+      }
+    ],
+    "duration": 15.0,
+    "file": "vela-02-jellyfin-meet-downloads.mp4",
+    "initialWave": true,
+    "music": "hauser-F.wav",
+    "musicOffset": 0,
+    "description": "Your files and your Jellyfin library lead to the same player. That is the idea behind Vela.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #Jellyfin"
+  },
+  {
+    "id": "V03",
+    "slug": "watch-the-controls",
+    "hook": "Watch the controls.",
+    "alternateHook": "My favourite feature disappears.",
+    "title": "The Mac video player that gets out of the way",
+    "audience": "Mac design and video viewers",
+    "hypothesis": "A small, immediate visual payoff can hold interest without prior brand awareness.",
+    "firstThreeSeconds": "An editorial wipe between matching real controls-visible/hidden captures starts at 0.6s and completes at 1.2s.",
+    "beats": [
+      {
+        "text": [
+          "Watch",
+          "the controls."
+        ],
+        "visual": "controls",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "There when",
+          "you need them."
+        ],
+        "visual": "controlsStill",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "Gone when",
+          "you don’t."
+        ],
+        "visual": "clean",
+        "duration": 2.5,
+        "start": 5.5
+      },
+      {
+        "text": [
+          "More room",
+          "for the film."
+        ],
+        "visual": "local",
+        "duration": 3,
+        "start": 8.0
+      },
+      {
+        "text": [
+          "That’s the idea."
+        ],
+        "visual": "full",
+        "duration": 2,
+        "start": 11.0
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.0
+      }
+    ],
+    "duration": 15.0,
+    "file": "vela-03-watch-the-controls.mp4",
+    "initialWave": true,
+    "music": "hauser-E.wav",
+    "musicOffset": 15,
+    "description": "Vela’s controls are there when you need them, then make room for the film. The opening compares two matching captured player states.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #OpenSource"
+  },
+  {
+    "id": "V04",
+    "slug": "an-mkv-not-a-project",
+    "hook": "An MKV. Not a project.",
+    "alternateHook": "It’s a video file. Let’s watch it.",
+    "title": "Open an MKV on Mac with Vela",
+    "audience": "Mac users with local video files",
+    "hypothesis": "A familiar file-format irritation leads directly to successful playback.",
+    "firstThreeSeconds": "The selected Sintel.mkv is shown immediately, followed at 1s by its actual Vela playback recording; this is an edit, not a latency test.",
+    "beats": [
+      {
+        "text": [
+          "An MKV.",
+          "Not a project."
+        ],
+        "visual": "filePlay",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "Open the video."
+        ],
+        "visual": "file",
+        "duration": 2,
+        "start": 3
+      },
+      {
+        "text": [
+          "Vela plays it."
+        ],
+        "visual": "local",
+        "duration": 3,
+        "start": 5
+      },
+      {
+        "text": [
+          "Subtitles?",
+          "Right here."
+        ],
+        "visual": "subtitles",
+        "duration": 2.5,
+        "start": 8
+      },
+      {
+        "text": [
+          "Now watch."
+        ],
+        "visual": "clean",
+        "duration": 2.5,
+        "start": 10.5
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.0
+      }
+    ],
+    "duration": 15.0,
+    "file": "vela-04-an-mkv-not-a-project.mp4",
+    "initialWave": true,
+    "music": "hauser-D.wav",
+    "musicOffset": 7,
+    "description": "Open a local MKV in Vela and start watching. This shows the tested Sintel demo file, not a promise about every possible codec.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #OpenSource"
+  },
+  {
+    "id": "V05",
+    "slug": "why-switch-apps",
+    "hook": "Why am I switching apps?",
+    "alternateHook": "The video moved. Why should the player?",
+    "title": "Local video or Jellyfin — why switch players?",
+    "audience": "Mac + Jellyfin users",
+    "hypothesis": "A recognisable unnecessary decision makes the shared player valuable.",
+    "firstThreeSeconds": "Local and Jellyfin evidence cut at 0 and 1s, then share one player view at 2s.",
+    "beats": [
+      {
+        "text": [
+          "Why am I",
+          "switching apps?"
+        ],
+        "visual": "sourceSwitch",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "This one lives",
+          "on my Mac."
+        ],
+        "visual": "file",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "That one lives",
+          "on my server."
+        ],
+        "visual": "library",
+        "duration": 2.5,
+        "start": 5.5
+      },
+      {
+        "text": [
+          "I just want",
+          "to press play."
+        ],
+        "visual": "server",
+        "duration": 3,
+        "start": 8.0
+      },
+      {
+        "text": [
+          "One familiar",
+          "place to watch."
+        ],
+        "visual": "controlsStill",
+        "duration": 2,
+        "start": 11.0
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.0
+      }
+    ],
+    "duration": 15.0,
+    "file": "vela-05-why-switch-apps.mp4",
+    "initialWave": false,
+    "music": "hauser-F.wav",
+    "musicOffset": 0,
+    "description": "The source of a video should not decide which app you open. Vela puts local files and your Jellyfin library together.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #Jellyfin"
+  },
+  {
+    "id": "V06",
+    "slug": "no-account-just-play",
+    "hook": "No account. Just press play.",
+    "alternateHook": "A local video shouldn’t need a login.",
+    "title": "Play local videos on Mac without an account",
+    "audience": "Mac users with local files",
+    "hypothesis": "Remove one clear obstacle while qualifying the claim as local playback.",
+    "firstThreeSeconds": "Local MKV evidence leads to real playback by 1s; a LOCAL FILES label scopes the no-account claim.",
+    "beats": [
+      {
+        "text": [
+          "No account.",
+          "Just press play."
+        ],
+        "visual": "filePlay",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "For a file",
+          "on your Mac…"
+        ],
+        "visual": "file",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "…no server",
+          "is needed."
+        ],
+        "visual": "local",
+        "duration": 3,
+        "start": 5.5
+      },
+      {
+        "text": [
+          "Open it.",
+          "Make yourself comfy."
+        ],
+        "visual": "clean",
+        "duration": 3,
+        "start": 8.5
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 11.5
+      }
+    ],
+    "duration": 13.5,
+    "file": "vela-06-no-account-just-play.mp4",
+    "initialWave": false,
+    "music": "hauser-B.wav",
+    "musicOffset": 14,
+    "description": "Local video playback in Vela needs no account or server. Connecting a Jellyfin library is an optional, separate path.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #OpenSource"
+  },
+  {
+    "id": "V07",
+    "slug": "subtitle-file-belongs-here",
+    "hook": "Your subtitle file belongs here.",
+    "alternateHook": "Got an SRT? Your player should take it.",
+    "title": "Add external subtitles in Vela for Mac",
+    "audience": "Mac viewers using subtitle files",
+    "hypothesis": "A specific useful answer can attract saves and relevant search interest.",
+    "firstThreeSeconds": "The real subtitle menu is already shown, with the Add Subtitle File option outlined at 0.6s.",
+    "beats": [
+      {
+        "text": [
+          "Your subtitle file",
+          "belongs here."
+        ],
+        "visual": "subtitleAdd",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "Open the",
+          "subtitle menu."
+        ],
+        "visual": "subtitles",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "Add Subtitle File…"
+        ],
+        "visual": "subtitleAdd",
+        "duration": 2.5,
+        "start": 5.5
+      },
+      {
+        "text": [
+          "SRT · ASS/SSA · VTT"
+        ],
+        "visual": "subtitleAdd",
+        "duration": 2.5,
+        "start": 8.0
+      },
+      {
+        "text": [
+          "Your file.",
+          "Your subtitles."
+        ],
+        "visual": "local",
+        "duration": 2.5,
+        "start": 10.5
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.0
+      }
+    ],
+    "duration": 15.0,
+    "file": "vela-07-subtitle-file-belongs-here.mp4",
+    "initialWave": true,
+    "music": "hauser-E.wav",
+    "musicOffset": 15,
+    "description": "Add an external SRT, ASS/SSA or VTT subtitle file in Vela. The menu is an actual app capture; the outline is an editorial highlight.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #OpenSource"
+  },
+  {
+    "id": "V08",
+    "slug": "local-or-server",
+    "hook": "Local or server? Same player.",
+    "alternateHook": "Two sources. One set of controls.",
+    "title": "One Mac player for local files and Jellyfin",
+    "audience": "Mac + Jellyfin users",
+    "hypothesis": "Make the central promise understandable as a comparison without lengthy setup.",
+    "firstThreeSeconds": "Source labels identify each real capture; local and server playback replace the source cards by 2s.",
+    "beats": [
+      {
+        "text": [
+          "Local or server?",
+          "Same player."
+        ],
+        "visual": "sourceSwitch",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "Local video."
+        ],
+        "visual": "local",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "Jellyfin video."
+        ],
+        "visual": "server",
+        "duration": 2.5,
+        "start": 5.5
+      },
+      {
+        "text": [
+          "Same controls.",
+          "Same app."
+        ],
+        "visual": "controlsStill",
+        "duration": 3,
+        "start": 8.0
+      },
+      {
+        "text": [
+          "Less switching."
+        ],
+        "visual": "pair",
+        "duration": 2,
+        "start": 11.0
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.0
+      }
+    ],
+    "duration": 15.0,
+    "file": "vela-08-local-or-server.mp4",
+    "initialWave": false,
+    "music": "hauser-D.wav",
+    "musicOffset": 7,
+    "description": "A local video and a film on your Jellyfin server use the same Vela player.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #Jellyfin"
+  },
+  {
+    "id": "V09",
+    "slug": "where-is-pro",
+    "hook": "Where’s the Pro version?",
+    "alternateHook": "The whole app. No upgrade screen.",
+    "title": "No Pro tier. The whole Mac app is free.",
+    "audience": "Mac app discovery",
+    "hypothesis": "Answer a price objection, then show why the free app is worth considering.",
+    "firstThreeSeconds": "Real playback begins immediately; NO PRO TIER replaces the price question at 0.8s.",
+    "beats": [
+      {
+        "text": [
+          "Where’s the",
+          "Pro version?"
+        ],
+        "visual": "price",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "There isn’t one."
+        ],
+        "visual": "free",
+        "duration": 2,
+        "start": 3
+      },
+      {
+        "text": [
+          "Local files.",
+          "Included."
+        ],
+        "visual": "file",
+        "duration": 2,
+        "start": 5
+      },
+      {
+        "text": [
+          "Jellyfin.",
+          "Included."
+        ],
+        "visual": "library",
+        "duration": 2,
+        "start": 7
+      },
+      {
+        "text": [
+          "The whole app.",
+          "Free."
+        ],
+        "visual": "pair",
+        "duration": 3,
+        "start": 9
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 12
+      }
+    ],
+    "duration": 14,
+    "file": "vela-09-where-is-pro.mp4",
+    "initialWave": false,
+    "music": "hauser-B.wav",
+    "musicOffset": 14,
+    "description": "There is no Pro edition, subscription or in-app purchase in Vela. This is the whole app.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #OpenSource"
+  },
+  {
+    "id": "V10",
+    "slug": "your-mac-your-jellyfin",
+    "hook": "Your Mac. Your Jellyfin library.",
+    "alternateHook": "Jellyfin users: keep watching here.",
+    "title": "A Jellyfin player for your Mac — meet Vela",
+    "audience": "Mac + Jellyfin users",
+    "hypothesis": "Audience identity and recognisable library UI qualify viewers immediately.",
+    "firstThreeSeconds": "Actual Jellyfin home is visible on the first frame; the camera closes in on the Continue Watching row.",
+    "beats": [
+      {
+        "text": [
+          "Your Mac.",
+          "Your Jellyfin library."
+        ],
+        "visual": "libraryHook",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "Your library."
+        ],
+        "visual": "library",
+        "duration": 2,
+        "start": 3
+      },
+      {
+        "text": [
+          "Choose a film."
+        ],
+        "visual": "detail",
+        "duration": 2.5,
+        "start": 5
+      },
+      {
+        "text": [
+          "Press play."
+        ],
+        "visual": "server",
+        "duration": 3,
+        "start": 7.5
+      },
+      {
+        "text": [
+          "Local files",
+          "are welcome too."
+        ],
+        "visual": "file",
+        "duration": 2.5,
+        "start": 10.5
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.0
+      }
+    ],
+    "duration": 15.0,
+    "file": "vela-10-your-mac-your-jellyfin.mp4",
+    "initialWave": false,
+    "music": "hauser-F.wav",
+    "musicOffset": 0,
+    "description": "Browse your Jellyfin library, open a film and watch in Vela on Mac. You can open local files in the same app.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #Jellyfin"
+  },
+  {
+    "id": "V11",
+    "slug": "vlc-got-this-right",
+    "hook": "VLC got one thing right.",
+    "alternateHook": "A video player should play the file.",
+    "title": "VLC got this right: just play the video",
+    "audience": "Mac users and open-source community",
+    "hypothesis": "Familiarity opens the story; respectful attribution builds credibility.",
+    "firstThreeSeconds": "The statement sits over actual local playback; the answer JUST PLAY THE FILE appears within the first 1.2s.",
+    "beats": [
+      {
+        "text": [
+          "VLC got",
+          "one thing right."
+        ],
+        "visual": "vlc",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "Just play",
+          "the file."
+        ],
+        "visual": "local",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "Vela uses VLC",
+          "for local playback.*"
+        ],
+        "visual": "controlsStill",
+        "duration": 3,
+        "footnote": "*Default engine · compatibility depends on the file",
+        "start": 5.5
+      },
+      {
+        "text": [
+          "And brings",
+          "Jellyfin along."
+        ],
+        "visual": "library",
+        "duration": 2.5,
+        "start": 8.5
+      },
+      {
+        "text": [
+          "Thank you,",
+          "VideoLAN."
+        ],
+        "visual": "vlc",
+        "duration": 2.5,
+        "start": 11.0
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.5
+      }
+    ],
+    "duration": 15.5,
+    "file": "vela-11-vlc-got-this-right.mp4",
+    "initialWave": false,
+    "music": "hauser-D.wav",
+    "musicOffset": 7,
+    "description": "Vela carries forward the expectation that a player should play the file. VLC is the default local engine; mpv is also bundled. Compatibility depends on the file. Thank you, VideoLAN: https://www.videolan.org/ and mpv: https://mpv.io/ .\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #OpenSource"
+  },
+  {
+    "id": "V12",
+    "slug": "favourite-feature-disappears",
+    "hook": "My favourite feature disappears.",
+    "alternateHook": "A good player knows when to leave.",
+    "title": "My favourite feature in this Mac player disappears",
+    "audience": "Mac design and indie-app audience",
+    "hypothesis": "First-person curiosity resolves into a visible design choice.",
+    "firstThreeSeconds": "Matching captured player states wipe from controls to film in the opening 1.2s.",
+    "beats": [
+      {
+        "text": [
+          "My favourite feature",
+          "disappears."
+        ],
+        "visual": "controls",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "Need a control?"
+        ],
+        "visual": "controlsStill",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "It’s right there."
+        ],
+        "visual": "subtitles",
+        "duration": 2.5,
+        "start": 5.5
+      },
+      {
+        "text": [
+          "Ready to watch?"
+        ],
+        "visual": "clean",
+        "duration": 2.5,
+        "start": 8.0
+      },
+      {
+        "text": [
+          "Just the film."
+        ],
+        "visual": "local",
+        "duration": 3,
+        "start": 10.5
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.5
+      }
+    ],
+    "duration": 15.5,
+    "file": "vela-12-favourite-feature-disappears.mp4",
+    "initialWave": false,
+    "music": "hauser-E.wav",
+    "musicOffset": 15,
+    "description": "The point of the player is the video. Vela puts the controls within reach, then lets them get out of the way.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #OpenSource"
+  },
+  {
+    "id": "V13",
+    "slug": "did-not-build-alone",
+    "hook": "I didn’t build this alone.",
+    "alternateHook": "This Mac app started with Swiftfin.",
+    "title": "Vela is built on Swiftfin — with gratitude",
+    "audience": "Open-source and indie-app community",
+    "hypothesis": "An honest origin story earns trust and credits the people behind the useful product.",
+    "firstThreeSeconds": "Real Jellyfin UI appears immediately; Swiftfin → Vela is an editorial lineage label visible by 0.8s.",
+    "beats": [
+      {
+        "text": [
+          "I didn’t build",
+          "this alone."
+        ],
+        "visual": "upstream",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "Swiftfin built",
+          "the foundation."
+        ],
+        "visual": "library",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "An Apple client",
+          "for Jellyfin."
+        ],
+        "visual": "server",
+        "duration": 2.5,
+        "start": 5.5
+      },
+      {
+        "text": [
+          "Vela adds",
+          "local Mac files."
+        ],
+        "visual": "file",
+        "duration": 2.5,
+        "start": 8.0
+      },
+      {
+        "text": [
+          "Open source.",
+          "Built together."
+        ],
+        "visual": "upstream",
+        "duration": 3,
+        "start": 10.5
+      },
+      {
+        "text": [
+          "Built on Swiftfin.",
+          "With gratitude."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.5
+      }
+    ],
+    "duration": 15.5,
+    "file": "vela-13-did-not-build-alone.mp4",
+    "initialWave": false,
+    "music": "hauser-B.wav",
+    "musicOffset": 14,
+    "description": "Vela is a fork of Swiftfin. Its Apple Jellyfin client foundation made this possible; Vela adds a broader Mac role with local-file playback. Thank you to the upstream contributors.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #OpenSource"
+  },
+  {
+    "id": "V14",
+    "slug": "ui-can-leave",
+    "hook": "The movie’s good. The UI can leave.",
+    "alternateHook": "I came here to watch the film.",
+    "title": "Less interface. More film. Vela for Mac.",
+    "audience": "Mac video viewers and design audience",
+    "hypothesis": "A blunt visual statement makes unobtrusive UI emotionally legible.",
+    "firstThreeSeconds": "Visible controls yield to the matching clean frame at 0.6–1.2s.",
+    "beats": [
+      {
+        "text": [
+          "The movie’s good.",
+          "The UI can leave."
+        ],
+        "visual": "controls",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "Pause.",
+          "Seek. Choose."
+        ],
+        "visual": "controlsStill",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "Then get",
+          "out of the way."
+        ],
+        "visual": "clean",
+        "duration": 2.5,
+        "start": 5.5
+      },
+      {
+        "text": [
+          "A player that",
+          "lets you watch."
+        ],
+        "visual": "local",
+        "duration": 3,
+        "start": 8.0
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 11.0
+      }
+    ],
+    "duration": 13.0,
+    "file": "vela-14-ui-can-leave.mp4",
+    "initialWave": false,
+    "music": "hauser-E.wav",
+    "musicOffset": 15,
+    "description": "Vela keeps playback controls handy and makes space for the film when you are watching.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #OpenSource"
+  },
+  {
+    "id": "V15",
+    "slug": "one-shortcut",
+    "hook": "One shortcut. Your local video.",
+    "alternateHook": "Command–O. Pick a video. Watch.",
+    "title": "Open a local video in Vela with Command–O",
+    "audience": "Mac keyboard users",
+    "hypothesis": "A tiny workflow offers immediate practical value and a searchable promise.",
+    "firstThreeSeconds": "⌘O appears at frame 0 with the actual Open Video picker; playback follows at 1.2s.",
+    "beats": [
+      {
+        "text": [
+          "One shortcut.",
+          "Your local video."
+        ],
+        "visual": "keyboard",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "01  Press ⌘O."
+        ],
+        "visual": "keyboardStill",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "02  Pick your video."
+        ],
+        "visual": "file",
+        "duration": 2.5,
+        "start": 5.5
+      },
+      {
+        "text": [
+          "03  Watch."
+        ],
+        "visual": "local",
+        "duration": 3,
+        "start": 8.0
+      },
+      {
+        "text": [
+          "That’s the workflow."
+        ],
+        "visual": "clean",
+        "duration": 2,
+        "start": 11.0
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.0
+      }
+    ],
+    "duration": 15.0,
+    "file": "vela-15-one-shortcut.mp4",
+    "initialWave": false,
+    "music": "hauser-F.wav",
+    "musicOffset": 0,
+    "description": "In Vela on Mac, Command–O opens the native Open Video picker. Pick a local file and watch. The edit shows captured states, not measured opening speed.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #OpenSource"
+  },
+  {
+    "id": "V16",
+    "slug": "remember-free-apps",
+    "hook": "Remember free desktop apps?",
+    "alternateHook": "Free used to mean the whole app.",
+    "title": "A free Mac app with no subscription or Pro tier",
+    "audience": "Mac app discovery",
+    "hypothesis": "Nostalgia opens the door; real current utility keeps the promise grounded.",
+    "firstThreeSeconds": "Actual Mac player footage from frame 0; THE WHOLE APP appears at 0.8s.",
+    "beats": [
+      {
+        "text": [
+          "Remember free",
+          "desktop apps?"
+        ],
+        "visual": "price",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "Here’s one."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "start": 3
+      },
+      {
+        "text": [
+          "Local videos."
+        ],
+        "visual": "file",
+        "duration": 2,
+        "start": 5
+      },
+      {
+        "text": [
+          "Your Jellyfin library."
+        ],
+        "visual": "library",
+        "duration": 2,
+        "start": 7
+      },
+      {
+        "text": [
+          "No subscription.",
+          "No Pro tier."
+        ],
+        "visual": "free",
+        "duration": 3,
+        "start": 9
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 12
+      }
+    ],
+    "duration": 14,
+    "file": "vela-16-remember-free-apps.mp4",
+    "initialWave": false,
+    "music": "hauser-B.wav",
+    "musicOffset": 14,
+    "description": "Free means the whole app. Vela plays local video on your Mac and connects to your Jellyfin library.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #OpenSource"
+  },
+  {
+    "id": "V17",
+    "slug": "which-language",
+    "hook": "Which language do you want?",
+    "alternateHook": "Your movie. Your subtitle choice.",
+    "title": "Choose subtitles in Vela for Mac",
+    "audience": "Mac viewers using subtitles",
+    "hypothesis": "Visible language options answer a real viewing preference without a broad feature list.",
+    "firstThreeSeconds": "The actual embedded subtitle menu is visible from frame 0, with a gentle camera move toward the available options.",
+    "beats": [
+      {
+        "text": [
+          "Which language",
+          "do you want?"
+        ],
+        "visual": "subtitles",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "See the available",
+          "subtitle tracks."
+        ],
+        "visual": "subtitles",
+        "duration": 3,
+        "start": 3
+      },
+      {
+        "text": [
+          "Or bring",
+          "your own file."
+        ],
+        "visual": "subtitleAdd",
+        "duration": 2.5,
+        "start": 6
+      },
+      {
+        "text": [
+          "Then enjoy",
+          "the video."
+        ],
+        "visual": "local",
+        "duration": 3,
+        "start": 8.5
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 11.5
+      }
+    ],
+    "duration": 13.5,
+    "file": "vela-17-which-language.mp4",
+    "initialWave": false,
+    "music": "hauser-E.wav",
+    "musicOffset": 15,
+    "description": "Choose from subtitle tracks provided by your video, or add a supported subtitle file. Available languages depend on the media; Vela does not invent or automatically translate subtitles.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #OpenSource"
+  },
+  {
+    "id": "V18",
+    "slug": "server-movie-mac-player",
+    "hook": "Your server’s movie. Your Mac’s player.",
+    "alternateHook": "Keep your library. Enjoy the player.",
+    "title": "Watch your Jellyfin library in Vela for Mac",
+    "audience": "Mac + Jellyfin users",
+    "hypothesis": "Connect self-hosted ownership to the everyday viewing experience.",
+    "firstThreeSeconds": "The actual library is present on the first frame; the crop moves to its playable films.",
+    "beats": [
+      {
+        "text": [
+          "Your server’s movie.",
+          "Your Mac’s player."
+        ],
+        "visual": "libraryHook",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "Connect",
+          "your Jellyfin server."
+        ],
+        "visual": "library",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "Choose from",
+          "your own library."
+        ],
+        "visual": "detail",
+        "duration": 2.5,
+        "start": 5.5
+      },
+      {
+        "text": [
+          "Make room",
+          "for the film."
+        ],
+        "visual": "server",
+        "duration": 3,
+        "start": 8.0
+      },
+      {
+        "text": [
+          "Free Mac app.",
+          "Your server stays yours."
+        ],
+        "visual": "clean",
+        "duration": 2.5,
+        "start": 11.0
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.5
+      }
+    ],
+    "duration": 15.5,
+    "file": "vela-18-server-movie-mac-player.mp4",
+    "initialWave": false,
+    "music": "hauser-D.wav",
+    "musicOffset": 7,
+    "description": "Vela is a player for your existing Jellyfin server. Browse your library and watch in the same player that handles your local Mac files.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #Jellyfin"
+  },
+  {
+    "id": "V19",
+    "slug": "file-tonight",
+    "hook": "A file tonight. Jellyfin tomorrow.",
+    "alternateHook": "Different source. Same movie night.",
+    "title": "Local files tonight, Jellyfin tomorrow — same Mac app",
+    "audience": "Mac + Jellyfin users",
+    "hypothesis": "An ordinary viewing routine makes the central product promise memorable.",
+    "firstThreeSeconds": "Local picker, Jellyfin library and shared player appear in that order during the opening 3s.",
+    "beats": [
+      {
+        "text": [
+          "A file tonight.",
+          "Jellyfin tomorrow."
+        ],
+        "visual": "sourceSwitch",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "Tonight’s download."
+        ],
+        "visual": "file",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "Tomorrow’s",
+          "library pick."
+        ],
+        "visual": "detail",
+        "duration": 2.5,
+        "start": 5.5
+      },
+      {
+        "text": [
+          "One player",
+          "for both evenings."
+        ],
+        "visual": "server",
+        "duration": 3,
+        "start": 8.0
+      },
+      {
+        "text": [
+          "Just watch",
+          "the video."
+        ],
+        "visual": "local",
+        "duration": 2.5,
+        "start": 11.0
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.5
+      }
+    ],
+    "duration": 15.5,
+    "file": "vela-19-file-tonight.mp4",
+    "initialWave": false,
+    "music": "hauser-F.wav",
+    "musicOffset": 0,
+    "description": "Whether the video is a file on your Mac or a film on your Jellyfin server, Vela gives it the same player.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #Jellyfin"
+  },
+  {
+    "id": "V20",
+    "slug": "wanted-one-player",
+    "hook": "I wanted one player.",
+    "alternateHook": "My Jellyfin client needed one more thing.",
+    "title": "Why I built Vela: local files and Jellyfin in one player",
+    "audience": "Mac + Jellyfin users and indie-app audience",
+    "hypothesis": "The maker’s specific problem frames a credible reason for the product to exist.",
+    "firstThreeSeconds": "Actual local and Jellyfin source cards move toward a shared player within the opening.",
+    "beats": [
+      {
+        "text": [
+          "I wanted",
+          "one player."
+        ],
+        "visual": "pair",
+        "duration": 3,
+        "start": 0
+      },
+      {
+        "text": [
+          "For files",
+          "on my Mac."
+        ],
+        "visual": "file",
+        "duration": 2.5,
+        "start": 3
+      },
+      {
+        "text": [
+          "For films",
+          "on my Jellyfin server."
+        ],
+        "visual": "library",
+        "duration": 2.5,
+        "start": 5.5
+      },
+      {
+        "text": [
+          "Built on Swiftfin."
+        ],
+        "visual": "upstream",
+        "duration": 2.5,
+        "start": 8.0
+      },
+      {
+        "text": [
+          "Free.",
+          "Ready for movie night."
+        ],
+        "visual": "local",
+        "duration": 3,
+        "start": 10.5
+      },
+      {
+        "text": [
+          "Vela.",
+          "Just watch."
+        ],
+        "visual": "local",
+        "duration": 2,
+        "cta": true,
+        "start": 13.5
+      }
+    ],
+    "duration": 15.5,
+    "file": "vela-20-wanted-one-player.mp4",
+    "initialWave": false,
+    "music": "hauser-B.wav",
+    "musicOffset": 14,
+    "description": "I wanted my Jellyfin client to be useful when the video was just a file on my Mac. That became Vela, built on Swiftfin with gratitude.\n\nVela is a free, open-source Mac video player with Jellyfin built in. Vela 0.9.4 Beta · macOS 15.6+ · Apple silicon and Intel. A Jellyfin server is needed for the server-library features; local files need no server or account.\nDownload and details: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Cropped/resized excerpts and demo artwork. This video composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Original Hauser music used with this production.\nBuilt on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent, not endorsed by Jellyfin or Swiftfin.\n\n#Vela #MacApps #Jellyfin"
+  }
+]

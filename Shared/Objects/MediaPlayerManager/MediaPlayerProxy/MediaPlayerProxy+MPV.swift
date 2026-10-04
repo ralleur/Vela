@@ -162,7 +162,7 @@ extension MPVMediaPlayerProxy {
             proxy.isBuffering.value = true
 
             let start = max(.zero, (item.metadata.startSeconds ?? .zero) - .seconds(Defaults[.VideoPlayer.resumeOffset]))
-            #if targetEnvironment(macCatalyst)
+            #if os(iOS)
             let encoding = UserDefaults.standard.string(forKey: "vela.subtitle.encoding") ?? ""
             player.setProperty("sub-codepage", to: encoding.isEmpty ? "auto" : encoding)
             #endif
@@ -231,7 +231,7 @@ extension MPVMediaPlayerProxy {
                 manager
                     .error(manager.playbackItem?
                         .discoversTracks == true ?
-                        ErrorMessage(VelaStrings.text("This video could not be played. It may be damaged or use an unsupported format.")) :
+                        ErrorMessage(KurtzStrings.text("This video could not be played. It may be damaged or use an unsupported format.")) :
                         error)
             case .idle, .ready, .buffering, .seeking, .stopped:
                 break

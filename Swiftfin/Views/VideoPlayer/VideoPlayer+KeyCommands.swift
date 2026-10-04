@@ -179,12 +179,12 @@ extension VideoPlayer {
                         )
                     }
 
-                    // Vela: Return triggers the visible prompt ("Intro überspringen", …)
+                    // kurtz: Return triggers the visible prompt ("Intro überspringen", …)
                     KeyCommandAction(
-                        title: VelaStrings.promptKeyCommand,
+                        title: KurtzStrings.promptKeyCommand,
                         input: "\r"
                     ) {
-                        VelaPlaybackPrompts.shared.performPrompt()
+                        KurtzPlaybackPrompts.shared.performPrompt()
                     }
                 }
         }

@@ -1,46 +1,27 @@
-# Vela installer artwork
+# kurtz installer artwork
 
-A graphite background with a flowing periwinkle/glass ribbon, small luminous
-spheres and a subtle drag arrow. The Finder window contains only two visible
-items: the real Vela app and an Applications-folder link.
+The installer uses the owner's Graphite/Ivory/Electric Yellow palette, the exact
+vector wordmark, Sora, and the claim “Good videos go further.” Its softly lit curl
+illustration was generated with the built-in Imagegen tool; the original is
+`kurtz-background-art.png`. `build-kurtz-dmg.cjs` composes the checked-in vector
+mark and font over that artwork. `background.svg` and `background@2x.png` are the
+reproducible 1536 × 1024 source and Finder background.
 
-`background@2x.png` is an opaque RGB image, 1536 × 1024 pixels. It was created
-with the built-in **Imagegen** tool, then refined for opacity and readable
-Finder labels. The heading is a bespoke wordmark derived from the app symbol:
-a rounded V, the original blue-dot accent, and matching rounded lowercase
-lettering with angled terminals. The [background prompts](final-prompts.txt)
-and [wordmark edit prompt](wordmark-prompt.txt) are retained.
-The artwork is new; it contains no movie still or fabricated app icon.
+Finder draws the real app icon and Applications link. No fake app UI is baked
+into the background. The window is 768 × 512 points, with 112-point icons at
+(244, 216) and (524, 216). Only `kurtz.app` and `Applications` are visible.
+License/source records stay under `.licenses`; the app exposes its notices too.
+The signed app is never modified when styling the volume.
 
-## Finder layout
-
-- Window: 768 × 512 points; no sidebar, toolbar or path bar.
-- Icons: 112 points, centered at `(224, 230)` and `(544, 230)`.
-- Small silver-blue surfaces sit behind Finder's black filename labels.
-- The volume uses Vela's existing app icon.
-- A multi-resolution TIFF includes the 1× and 2× image representations.
-
-Finder draws the two icons and their labels; they are not part of the bitmap.
-The Applications link resolves to `/Applications`. Open-source notices remain
-available in the app, and full distribution records are retained under the
-hidden `.licenses` directory. There are no extra visible text documents.
-
-## Rebuild
+Rebuild with the build-only environment containing `Tools/kurtz/dmg-requirements.txt`:
 
 ```sh
-python3 -m venv build/dmg-tools
-build/dmg-tools/bin/python -m pip install -r Tools/vela/dmg-requirements.txt
-build/dmg-tools/bin/python Tools/vela/package-dmg.py \
-  build/release/notarized/Vela.app --output build/release/installer-r3 --revision 3
+node Tools/marketing/build-kurtz-dmg.cjs
+build/dmg-tools/bin/python Tools/kurtz/package-dmg.py \
+  build/release/0.9.6/notarized-ship/kurtz.app \
+  --output build/release/kurtz-0.9.6/installer
 ```
 
-The builder refuses to overwrite an existing image or working directory.
-`style-dmg.py` writes Finder metadata using `ds_store` and `mac_alias`, following
-the [dmgbuild settings format](https://dmgbuild.readthedocs.io/en/latest/settings.html).
-Build dependencies are pinned and are not shipped inside Vela.
-
-The app's signed contents stay unchanged. In particular, no FinderInfo
-attribute is added to the app bundle, which would invalidate strict signature
-verification. The image is compressed as UDZO with an APFS volume; ASIF is only
-an intermediate format on newer build hosts. Package revision 3 identifies the
-wordmark update while the application remains version 0.9.4, build 5.
+The packager requires a universal, Developer-ID-signed app with a stapled ticket
+for production and refuses to overwrite an existing output. Legacy artwork and
+release images remain in Git history and the original release artifacts.

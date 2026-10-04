@@ -1,0 +1,9 @@
+kurtz curated Shorts v2 — 4 October 2026
+
+All six exact MP4 exports pass full decode, dimensions, frame-rate, timing, color and audio checks. Their hashes and measurements are in technical-validation.json.
+
+Visual/editorial method: first/middle/last samples of every scene in every export; dense 4 fps samples across intro click/result, episode transition, controls fading and local file opening. Timed reading of the preserved 10–13 second cuts. All brand text, credits, final logo and lowercase destination were inspected. No missing result, reversed action or cropped caption observed. Deliberate result holds are declared in scene metadata. German outlook cards remain as requested.
+
+Audio was not listened to in this session. Existing original music masters and timings are unchanged; decode, loudness and peak measurements pass. This is not described as a complete watch-and-listen pass.
+
+Original Vela footage and exports remain untouched; this is a new kurtz editorial branding edition. No uploads or schedules were made.

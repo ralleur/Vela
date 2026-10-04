@@ -1,0 +1,614 @@
+[
+  {
+    "video": "/Users/ai/workspace/vela-swiftfin/build/launch/exports/kurtz-curated-v2/kurtz-c01-skip-intro-v2.mp4",
+    "sha256": "b2a79b99ef5c3110a2266d1b99af32e6e51a11f0615f4e677bcd780e51f0e53e",
+    "technical": "passed",
+    "errors": [],
+    "duration": 10.0,
+    "integratedLUFS": -14.1,
+    "truePeakDBTP": -1.6,
+    "editorial": "required",
+    "pacing": "required",
+    "listening": "required",
+    "samples": [
+      {
+        "scene": 1,
+        "frame": 0,
+        "file": "scene-01-1.jpg",
+        "lines": [
+          "Skip the intro."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 55,
+        "file": "scene-01-2.jpg",
+        "lines": [
+          "Skip the intro."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 110,
+        "file": "scene-01-3.jpg",
+        "lines": [
+          "Skip the intro."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 111,
+        "file": "scene-02-1.jpg",
+        "lines": [
+          "One click.",
+          "Back to the story."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 175,
+        "file": "scene-02-2.jpg",
+        "lines": [
+          "One click.",
+          "Back to the story."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 239,
+        "file": "scene-02-3.jpg",
+        "lines": [
+          "One click.",
+          "Back to the story."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 240,
+        "file": "scene-03-1.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 269,
+        "file": "scene-03-2.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 299,
+        "file": "scene-03-3.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      }
+    ]
+  },
+  {
+    "video": "/Users/ai/workspace/vela-swiftfin/build/launch/exports/kurtz-curated-v2/kurtz-c02-next-episode-v2.mp4",
+    "sha256": "3a06d72e764e5bf7fa25d9fc19202f208fb72b428cdfdec0cf89537f8885ff0b",
+    "technical": "passed",
+    "errors": [],
+    "duration": 10.0,
+    "integratedLUFS": -14.3,
+    "truePeakDBTP": -2.1,
+    "editorial": "required",
+    "pacing": "required",
+    "listening": "required",
+    "samples": [
+      {
+        "scene": 1,
+        "frame": 0,
+        "file": "scene-01-1.jpg",
+        "lines": [
+          "Next episode.",
+          "One click."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 59,
+        "file": "scene-01-2.jpg",
+        "lines": [
+          "Next episode.",
+          "One click."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 119,
+        "file": "scene-01-3.jpg",
+        "lines": [
+          "Next episode.",
+          "One click."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 120,
+        "file": "scene-02-1.jpg",
+        "lines": [
+          "And you\u2019re",
+          "already watching."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 179,
+        "file": "scene-02-2.jpg",
+        "lines": [
+          "And you\u2019re",
+          "already watching."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 239,
+        "file": "scene-02-3.jpg",
+        "lines": [
+          "And you\u2019re",
+          "already watching."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 240,
+        "file": "scene-03-1.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 269,
+        "file": "scene-03-2.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 299,
+        "file": "scene-03-3.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      }
+    ]
+  },
+  {
+    "video": "/Users/ai/workspace/vela-swiftfin/build/launch/exports/kurtz-curated-v2/kurtz-c03-episode-date-v2.mp4",
+    "sha256": "3030f790df00d20f42c01d7bf76949769e450d4cf90ea125976523686571a43d",
+    "technical": "passed",
+    "errors": [],
+    "duration": 10.0,
+    "integratedLUFS": -14.1,
+    "truePeakDBTP": -1.6,
+    "editorial": "required",
+    "pacing": "required",
+    "listening": "required",
+    "samples": [
+      {
+        "scene": 1,
+        "frame": 0,
+        "file": "scene-01-1.jpg",
+        "lines": [
+          "When\u2019s the",
+          "next episode?"
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 44,
+        "file": "scene-01-2.jpg",
+        "lines": [
+          "When\u2019s the",
+          "next episode?"
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 89,
+        "file": "scene-01-3.jpg",
+        "lines": [
+          "When\u2019s the",
+          "next episode?"
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 90,
+        "file": "scene-02-1.jpg",
+        "lines": [
+          "The date.",
+          "Right here."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 164,
+        "file": "scene-02-2.jpg",
+        "lines": [
+          "The date.",
+          "Right here."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 239,
+        "file": "scene-02-3.jpg",
+        "lines": [
+          "The date.",
+          "Right here."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 240,
+        "file": "scene-03-1.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 269,
+        "file": "scene-03-2.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 299,
+        "file": "scene-03-3.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      }
+    ]
+  },
+  {
+    "video": "/Users/ai/workspace/vela-swiftfin/build/launch/exports/kurtz-curated-v2/kurtz-c04-season-outlook-v2.mp4",
+    "sha256": "a9112cd746a568033ff5299799b2ab415cb8c8918043a94047b9a28e17147a1f",
+    "technical": "passed",
+    "errors": [],
+    "duration": 10.0,
+    "integratedLUFS": -14.3,
+    "truePeakDBTP": -2.1,
+    "editorial": "required",
+    "pacing": "required",
+    "listening": "required",
+    "samples": [
+      {
+        "scene": 1,
+        "frame": 0,
+        "file": "scene-01-1.jpg",
+        "lines": [
+          "Another season?"
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 44,
+        "file": "scene-01-2.jpg",
+        "lines": [
+          "Another season?"
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 89,
+        "file": "scene-01-3.jpg",
+        "lines": [
+          "Another season?"
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 90,
+        "file": "scene-02-1.jpg",
+        "lines": [
+          "Announced.",
+          "Date still pending."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 164,
+        "file": "scene-02-2.jpg",
+        "lines": [
+          "Announced.",
+          "Date still pending."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 239,
+        "file": "scene-02-3.jpg",
+        "lines": [
+          "Announced.",
+          "Date still pending."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 240,
+        "file": "scene-03-1.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 269,
+        "file": "scene-03-2.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 299,
+        "file": "scene-03-3.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      }
+    ]
+  },
+  {
+    "video": "/Users/ai/workspace/vela-swiftfin/build/launch/exports/kurtz-curated-v2/kurtz-c05-less-interface-v2.mp4",
+    "sha256": "940215905636eb964368f1a70c16deb27b5e38ba7dc190b01247ef9548605126",
+    "technical": "passed",
+    "errors": [],
+    "duration": 13.0,
+    "integratedLUFS": -14.0,
+    "truePeakDBTP": -1.6,
+    "editorial": "required",
+    "pacing": "required",
+    "listening": "required",
+    "samples": [
+      {
+        "scene": 1,
+        "frame": 0,
+        "file": "scene-01-1.jpg",
+        "lines": [
+          "Controls,",
+          "when you need them."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 74,
+        "file": "scene-01-2.jpg",
+        "lines": [
+          "Controls,",
+          "when you need them."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 149,
+        "file": "scene-01-3.jpg",
+        "lines": [
+          "Controls,",
+          "when you need them."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 150,
+        "file": "scene-02-1.jpg",
+        "lines": [
+          "Then just",
+          "the film."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 239,
+        "file": "scene-02-2.jpg",
+        "lines": [
+          "Then just",
+          "the film."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 329,
+        "file": "scene-02-3.jpg",
+        "lines": [
+          "Then just",
+          "the film."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 330,
+        "file": "scene-03-1.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 359,
+        "file": "scene-03-2.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 389,
+        "file": "scene-03-3.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      }
+    ]
+  },
+  {
+    "video": "/Users/ai/workspace/vela-swiftfin/build/launch/exports/kurtz-curated-v2/kurtz-c06-your-video-player-v2.mp4",
+    "sha256": "c7fca2f44d4189d5d3dc8ac861585ef3fd0042b6fba9729532f0fa9c483d7635",
+    "technical": "passed",
+    "errors": [],
+    "duration": 13.0,
+    "integratedLUFS": -14.2,
+    "truePeakDBTP": -1.7,
+    "editorial": "required",
+    "pacing": "required",
+    "listening": "required",
+    "samples": [
+      {
+        "scene": 1,
+        "frame": 0,
+        "file": "scene-01-1.jpg",
+        "lines": [
+          "Open a video."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 38,
+        "file": "scene-01-2.jpg",
+        "lines": [
+          "Open a video."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 77,
+        "file": "scene-01-3.jpg",
+        "lines": [
+          "Open a video."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 78,
+        "file": "scene-02-1.jpg",
+        "lines": [
+          "Open a video."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 92,
+        "file": "scene-02-2.jpg",
+        "lines": [
+          "Open a video."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 107,
+        "file": "scene-02-3.jpg",
+        "lines": [
+          "Open a video."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 108,
+        "file": "scene-03-1.jpg",
+        "lines": [
+          "VLC-powered.",
+          "kurtz-designed."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 173,
+        "file": "scene-03-2.jpg",
+        "lines": [
+          "VLC-powered.",
+          "kurtz-designed."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 239,
+        "file": "scene-03-3.jpg",
+        "lines": [
+          "VLC-powered.",
+          "kurtz-designed."
+        ]
+      },
+      {
+        "scene": 4,
+        "frame": 240,
+        "file": "scene-04-1.jpg",
+        "lines": [
+          "Jellyfin,",
+          "when you want it."
+        ]
+      },
+      {
+        "scene": 4,
+        "frame": 284,
+        "file": "scene-04-2.jpg",
+        "lines": [
+          "Jellyfin,",
+          "when you want it."
+        ]
+      },
+      {
+        "scene": 4,
+        "frame": 329,
+        "file": "scene-04-3.jpg",
+        "lines": [
+          "Jellyfin,",
+          "when you want it."
+        ]
+      },
+      {
+        "scene": 5,
+        "frame": 330,
+        "file": "scene-05-1.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      },
+      {
+        "scene": 5,
+        "frame": 359,
+        "file": "scene-05-2.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      },
+      {
+        "scene": 5,
+        "frame": 389,
+        "file": "scene-05-3.jpg",
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ]
+      }
+    ]
+  }
+]

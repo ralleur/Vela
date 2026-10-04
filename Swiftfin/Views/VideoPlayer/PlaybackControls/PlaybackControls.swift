@@ -12,7 +12,8 @@ import SwiftUI
 extension VideoPlayer {
 
     struct PlaybackControls: View {
-        @Environment(\.accessibilityReduceMotion) private var reduceMotion
+        @Environment(\.accessibilityReduceMotion)
+        private var reduceMotion
 
         // since this view ignores safe area, it must
         // get safe area insets from parent views
@@ -88,14 +89,14 @@ extension VideoPlayer {
                 PlaybackButtons()
                     .isVisible(!isScrubbing && containerState.isPresentingPlaybackControls)
 
-                // Vela: skip intro, next episode, favorite prompts; Mac window handling
-                VelaPlaybackPromptOverlay()
-                VelaMacPlayerSupport()
+                // kurtz: skip intro, next episode, favorite prompts; Mac window handling
+                KurtzPlaybackPromptOverlay()
+                KurtzMacPlayerSupport()
             }
             #if targetEnvironment(macCatalyst)
-            .modifier(VelaMacKeyCommands())
+            .modifier(KurtzMacKeyCommands())
             #else
-            .modifier(VideoPlayer.KeyCommandsModifier())
+                .modifier(VideoPlayer.KeyCommandsModifier())
             #endif
             .animation(.linear(duration: 0.1), value: isScrubbing)
             .animation(reduceMotion ? nil : .bouncy(duration: 0.4), value: containerState.isPresentingSupplement)

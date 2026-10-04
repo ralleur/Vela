@@ -25,7 +25,9 @@ struct UserSessionRootView: View {
                 ProgressView()
             case .signedOut:
                 #if targetEnvironment(macCatalyst)
-                VelaWelcomeView()
+                KurtzWelcomeView()
+                #elseif os(iOS)
+                NavigationStack { KurtzMobileHomeView() }
                 #else
                 NavigationInjectionView(coordinator: .init()) { SelectUserView() }
                 #endif
@@ -38,11 +40,11 @@ struct UserSessionRootView: View {
         }
         .animation(.linear(duration: 0.1), value: userSessionManager.state)
         .task {
-            #if targetEnvironment(macCatalyst)
+            #if os(iOS)
             // Let a cold-launch document event reach the file host before restoring
             // any server connection. Browse Jellyfin normally after the file closes.
             try? await Task.sleep(for: .milliseconds(200))
-            while VelaLocalFiles.shared.isOpeningOrPlaying, !Task.isCancelled {
+            while KurtzLocalFiles.shared.isOpeningOrPlaying, !Task.isCancelled {
                 try? await Task.sleep(for: .milliseconds(250))
             }
             guard !Task.isCancelled else { return }

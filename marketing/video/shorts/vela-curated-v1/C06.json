@@ -1,0 +1,104 @@
+{
+  "id": "C06",
+  "product": "Vela",
+  "version": "Mac development capture, 4 Oct 2026; exact capture binary version not retained",
+  "revision": "v1",
+  "language": "en",
+  "ui_exception": "German series-outlook card, explicitly requested by owner",
+  "file": "vela-c06-your-video-player-v1.mp4",
+  "duration": 13.0,
+  "shots": [
+    {
+      "source": "build/launch/raw/vela-curated-v1/local-result-final.mov",
+      "source_in": 3,
+      "source_out": 5.6,
+      "seconds": 2.6,
+      "lines": [
+        "Open a video."
+      ],
+      "action_result": "Native file dialog → actual Open action → the same file starts in Vela.",
+      "crop": [
+        0,
+        16,
+        880,
+        480
+      ],
+      "detail": [
+        20,
+        176,
+        305,
+        55
+      ],
+      "detail_label": "YOUR LOCAL FILES",
+      "note": "Native file dialog · Actual app interaction",
+      "source_sha256": "c9ae92fa9606137b7e4cdff4f3e5d4faa16c843da48d2d26150dca002d85ac39"
+    },
+    {
+      "source": "build/launch/raw/vela-curated-v1/local-result-final.mov",
+      "source_in": 5.6,
+      "source_out": 6.6,
+      "seconds": 1,
+      "lines": [
+        "Open a video."
+      ],
+      "action_result": "The real file dialog closes and the chosen MP4 appears. A 0.9-second app/decoder flash after this completed opening is omitted.",
+      "crop": [
+        28,
+        32,
+        824,
+        464
+      ],
+      "note": "Actual file opening · Brief loading cut",
+      "source_sha256": "c9ae92fa9606137b7e4cdff4f3e5d4faa16c843da48d2d26150dca002d85ac39"
+    },
+    {
+      "source": "build/launch/raw/vela-curated-v1/local-result-final.mov",
+      "source_in": 7.5,
+      "source_out": 11.9,
+      "seconds": 4.4,
+      "lines": [
+        "VLC-powered.",
+        "Vela-designed."
+      ],
+      "action_result": "Same local file plays continuously after opening.",
+      "crop": [
+        28,
+        32,
+        824,
+        464
+      ],
+      "note": "Local playback · Compatibility depends on the file",
+      "source_sha256": "c9ae92fa9606137b7e4cdff4f3e5d4faa16c843da48d2d26150dca002d85ac39"
+    },
+    {
+      "source": "marketing/screenshots/macos/jellyfin-home.jpg",
+      "source_in": 0,
+      "source_out": 3,
+      "seconds": 3,
+      "lines": [
+        "Jellyfin,",
+        "when you want it."
+      ],
+      "action_result": "Held real Vela Jellyfin home capture; editorial change of source, no connection gesture claimed.",
+      "visual": "still",
+      "crop": null,
+      "note": "Optional Jellyfin library · Server required",
+      "source_sha256": "5b89bfc4c35f79c718825f3dc4b2cb640eb5c939e134e93624f085e19d9ee3c3"
+    },
+    {
+      "seconds": 2,
+      "lines": [
+        "Discover Vela",
+        "ralleur.github.io/Vela"
+      ],
+      "visual": "endcard",
+      "action_result": "Vela wordmark and verified destination; neutral CTA"
+    }
+  ],
+  "title": "Your files. Your Jellyfin library. Your Mac player. | Vela",
+  "description": "Open a local MP4 in Vela, watch it with the VLC-based local engine, and connect your Jellyfin library when you want it. The native file dialog and following playback come from one real capture. A 0.9-second app/decoder flash after the opening result is removed; this is not a launch-speed benchmark. The final library view is a clearly separate held capture. Vela supports local MKV, MP4 and MOV workflows; this Short does not claim that every possible file or codec will work, nor does it change Finder defaults.\n\nVela for macOS · Beta. Local files work without a Jellyfin server. Jellyfin features require your server; episode prompts depend on available chapters/segments and metadata. VLC is the default local playback engine; compatibility depends on the file.\nDiscover Vela: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Library artwork also includes Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Film excerpts cropped/resized. Composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Music: original Ralleur production, existing hauser-D / hauser-F masters; source-film audio removed. Built on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent of Jellyfin, Swiftfin and the filmmakers.\n\n#Vela #MacApps #Jellyfin",
+  "CTA": "Discover Vela",
+  "destination": "https://ralleur.github.io/Vela/",
+  "music": "hauser-F.wav",
+  "music_offset": 0
+}

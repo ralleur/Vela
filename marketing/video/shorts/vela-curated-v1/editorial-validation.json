@@ -1,0 +1,97 @@
+{
+  "revision": "v1",
+  "date": "2026-10-04",
+  "timezone": "Europe/Berlin",
+  "method": "First/middle/last exported frames for every scene, 360x640 phone previews, 4-fps action/cut sequences and timed reading estimates. Browser playback of all six exact exports completed at 1x without media errors. This is not a claim of having watched and listened continuously in full.",
+  "limits": [
+    "Subjective listening not performed; machine decode and loudness only.",
+    "Exact capture binary version unverified; later build inspection is not substituted."
+  ],
+  "publishing": "Not requested; nothing uploaded, scheduled or published.",
+  "clips": [
+    {
+      "id": "C01",
+      "file": "vela-c01-skip-intro-v1.mp4",
+      "sha256": "841bd62ddc47435d22571f466d60a76da8d4b91e4b0057c85f8ce9bd211086f2",
+      "duration": 10.0,
+      "integratedLUFS": -14.1,
+      "truePeakDBTP": -1.6,
+      "technical": "passed",
+      "picture_text_crop": "passed",
+      "pacing": "passed via timed scene readings and dense action frames",
+      "normal_speed_playback": "browser completed 1x; ended=true; error=null",
+      "listening": "unperformed: no perceptual audio monitoring available",
+      "observations": "First frame presents the actual Skip Intro control. 3.7 sec setup/action, 4.3 sec completed seek/result, 2 sec endcard. Button disappearance and timeline jump agree with the copy; final 2 sec of result intentionally held."
+    },
+    {
+      "id": "C02",
+      "file": "vela-c02-next-episode-v1.mp4",
+      "sha256": "02d08ed0fa55f8aaeb46353110e9880903b0b229674089e66bf7eab3509792af",
+      "duration": 10.0,
+      "integratedLUFS": -14.3,
+      "truePeakDBTP": -2.1,
+      "technical": "passed",
+      "picture_text_crop": "passed",
+      "pacing": "passed via timed scene readings and dense action frames",
+      "normal_speed_playback": "browser completed 1x; ended=true; error=null",
+      "listening": "unperformed: no perceptual audio monitoring available",
+      "observations": "Actual next-episode title/number visible for 4 sec, followed by 4 sec of next-episode playback and 2 sec endcard. Cut moved to the exact state change so NEXT UP does not label the new episode's Skip Intro button. Real dark paused end frame retained under legible prompt."
+    },
+    {
+      "id": "C03",
+      "file": "vela-c03-episode-date-v1.mp4",
+      "sha256": "476b88d1c3774ce01b0187e83e2134ac8082ad7fd288dff23df03b25bfdcd7e6",
+      "duration": 10.0,
+      "integratedLUFS": -14.1,
+      "truePeakDBTP": -1.6,
+      "technical": "passed",
+      "picture_text_crop": "passed",
+      "pacing": "passed via timed scene readings and dense action frames",
+      "normal_speed_playback": "browser completed 1x; ended=true; error=null",
+      "listening": "unperformed: no perceptual audio monitoring available",
+      "observations": "Actual passive German date card, eight seconds total to read both headline and enlarged UI, followed by 2 sec endcard. English copy accurately summarizes the card. Demo library and capture date visible; no click or unsupported automatic availability promised."
+    },
+    {
+      "id": "C04",
+      "file": "vela-c04-season-outlook-v1.mp4",
+      "sha256": "ed120fcf0b4fb9505e6435fccb2759073f18f2a181c3d04e212670f83acc46b7",
+      "duration": 10.0,
+      "integratedLUFS": -14.3,
+      "truePeakDBTP": -2.1,
+      "technical": "passed",
+      "picture_text_crop": "passed",
+      "pacing": "passed via timed scene readings and dense action frames",
+      "normal_speed_playback": "browser completed 1x; ended=true; error=null",
+      "listening": "unperformed: no perceptual audio monitoring available",
+      "observations": "Actual passive German season card, eight seconds total reading time, then 2 sec endcard. English copy accurately distinguishes announcement from a pending date. Demo library and capture date visible."
+    },
+    {
+      "id": "C05",
+      "file": "vela-c05-less-interface-v1.mp4",
+      "sha256": "fd052ec5c4ad5b60563cc9f068519dbeec25da750769a4fe4a814c7482a34950",
+      "duration": 13.0,
+      "integratedLUFS": -14.0,
+      "truePeakDBTP": -1.6,
+      "technical": "passed",
+      "picture_text_crop": "passed",
+      "pacing": "passed via timed scene readings and dense action frames",
+      "normal_speed_playback": "browser completed 1x; ended=true; error=null",
+      "listening": "unperformed: no perceptual audio monitoring available",
+      "observations": "Five seconds show controls becoming hidden; the outcome caption starts after their disappearance. Six seconds for clean playback plus short quote excerpt (last 3 sec intentionally held); 2 sec endcard. Read time is sufficient for the two-line excerpt and attribution."
+    },
+    {
+      "id": "C06",
+      "file": "vela-c06-your-video-player-v1.mp4",
+      "sha256": "d143c928f911317217db8cb405b7c058cf310ab320d391477bc4ffed4a63e530",
+      "duration": 13.0,
+      "integratedLUFS": -14.2,
+      "truePeakDBTP": -1.7,
+      "technical": "passed",
+      "picture_text_crop": "passed",
+      "pacing": "passed via timed scene readings and dense action frames",
+      "normal_speed_playback": "browser completed 1x; ended=true; error=null",
+      "listening": "unperformed: no perceptual audio monitoring available",
+      "observations": "Native file selection/opening remains visible across 2.6 sec + 1 sec. 0.9 sec app/decoder flash removed only after file opening visibly succeeds; 4.4 sec playback follows. Separate real Jellyfin library still holds for 3 sec, then 2 sec endcard. No startup-speed benchmark claimed. Both sides of revised cuts rechecked at 4 fps."
+    }
+  ]
+}

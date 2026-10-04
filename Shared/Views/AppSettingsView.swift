@@ -57,9 +57,9 @@ struct AppSettingsView: View {
     }
 
     var body: some View {
-        Form(image: .jellyfinBlobBlue) {
+        Form(image: .kurtzWatermark) {
 
-            Section(L10n.swiftfin) {
+            Section {
                 ChevronButton(L10n.aboutApp) {
                     router.route(to: .aboutApp)
                 }
@@ -67,10 +67,11 @@ struct AppSettingsView: View {
 
             #if os(iOS)
             Section(L10n.customize) {
-
+                #if !targetEnvironment(macCatalyst)
                 ChevronButton(L10n.appIcon) {
                     router.route(to: .appIconSelector)
                 }
+                #endif
 
                 if !selectUserUseSplashscreen {
                     Picker(

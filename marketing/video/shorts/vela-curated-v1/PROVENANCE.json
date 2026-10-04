@@ -1,0 +1,63 @@
+{
+  "capture": "Actual Vela macOS window recording and native file dialog; licensed demo films in isolated Jellyfin demo library. No fabricated application UI.",
+  "film_credits": "See per-video descriptions and marketing/sources-and-licenses.md; new series includes original Ralleur music.",
+  "metadata": "TVmaze Slow Horses, https://www.tvmaze.com/shows/45039/slow-horses ; CC BY-SA 4.0 https://creativecommons.org/licenses/by-sa/4.0/ . Captured 4 October 2026. German UI exception requested by owner.",
+  "brand": "Approved Vela wordmark SVG; raster copy derived for rendering, no brand substitution.",
+  "sources": [
+    {
+      "path": "build/launch/raw/vela-curated-v1/clean-window-en.mov",
+      "sha256": "55fc755053a28ed33c092390384284835e5f122d7d967225003d5709990c57e2",
+      "bytes": 9352133
+    },
+    {
+      "path": "build/launch/raw/vela-curated-v1/episode-date.mov",
+      "sha256": "b0fa85a3f741e9d7fc5b7455de2a31741cda6acd1554d8b3347659b16152cead",
+      "bytes": 2533167
+    },
+    {
+      "path": "build/launch/raw/vela-curated-v1/local-result-final.mov",
+      "sha256": "c9ae92fa9606137b7e4cdff4f3e5d4faa16c843da48d2d26150dca002d85ac39",
+      "bytes": 10640310
+    },
+    {
+      "path": "build/launch/raw/vela-curated-v1/next-episode-en.mov",
+      "sha256": "aa54693e4499fca2657d7dc0adea8a9e913378c9261d38eb281bb761bfb2e322",
+      "bytes": 8537679
+    },
+    {
+      "path": "build/launch/raw/vela-curated-v1/season-outlook.mov",
+      "sha256": "268eb70db8241af23b91adbd031a838e2c1ea298647a89fa23c7235642d76411",
+      "bytes": 2562907
+    },
+    {
+      "path": "build/launch/raw/vela-curated-v1/skip-intro-en.mov",
+      "sha256": "86a86be31eef6d45c5c2d6db028dd518b82e6085af11c91efda826d3595b4b39",
+      "bytes": 10306856
+    },
+    {
+      "path": "build/launch/vela-growth-20/public/music/hauser-D.wav",
+      "sha256": "c36952f7b50af343a7f6747cf97c3ec5b82db30db92f7ddea37bb446b5840456",
+      "bytes": 12864044
+    },
+    {
+      "path": "build/launch/vela-growth-20/public/music/hauser-F.wav",
+      "sha256": "793302f48900047fbb6ca0027bf40b92e7d7979e1fb10b60dfb4896c74f371d6",
+      "bytes": 12653456
+    },
+    {
+      "path": "marketing/brand/vela-wordmark.svg",
+      "sha256": "403fe92d406b17dc79396059772c10a6cfe38290f9f6189764a2885900ed145d",
+      "bytes": 12560
+    },
+    {
+      "path": "marketing/screenshots/macos/jellyfin-home.jpg",
+      "sha256": "5b89bfc4c35f79c718825f3dc4b2cb640eb5c939e134e93624f085e19d9ee3c3",
+      "bytes": 80364
+    },
+    {
+      "path": "marketing/video/shorts/vela-curated-v1/assets/vela-wordmark.png",
+      "sha256": "1e5d29cac3dbad3e29eaae3ca49c86b2991de73c69e3b521b8287c71f6e1a5da",
+      "bytes": 10860
+    }
+  ]
+}

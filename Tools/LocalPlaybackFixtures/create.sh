@@ -7,7 +7,7 @@ command -v ffmpeg >/dev/null || { echo 'ffmpeg is required.' >&2; exit 1; }
 cat > "$out/captions.srt" <<'SRT'
 1
 00:00:01,000 --> 00:00:10,000
-Vela local playback: subtitle track one
+kurtz local playback: subtitle track one
 
 2
 00:00:11,000 --> 00:00:59,000
@@ -23,7 +23,7 @@ Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour,
 Style: Default,Helvetica,38,&H0000FFFF,&H000000FF,&H00000000,&H80000000,0,0,0,0,100,100,0,0,1,2,1,2,10,10,30,1
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
-Dialogue: 0,0:00:00.00,0:10:00.00,Default,,0,0,0,,Vela: styled external ASS subtitles
+Dialogue: 0,0:00:00.00,0:10:00.00,Default,,0,0,0,,kurtz: styled external ASS subtitles
 ASS
 if [[ ! -f "$out/multi.mp4" ]]; then
     ffmpeg -hide_banner -loglevel error -n -f lavfi -i 'testsrc2=size=1280x720:rate=30' \

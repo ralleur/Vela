@@ -176,7 +176,7 @@ extension VideoPlayer.PlaybackControls {
                         .frame(maxWidth: .infinity, alignment: .leading)
                 } else {
                     #if targetEnvironment(macCatalyst)
-                    VelaTimeline()
+                    KurtzTimeline()
                         .trackingSize($sliderSize)
                     #else
                     capsuleSlider

@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>kurtz — Privacy</title>
+  <meta name="description" content="How kurtz handles local videos, playback history and connections to your Jellyfin server.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="nav wrap"><a class="brand" href="index.html">kurtz</a><a href="index.html#platforms">Platforms</a></header>
+<main class="wrap" style="max-width: 800px; padding-block: 48px;">
+  <h1>Privacy in kurtz.</h1>
+  <p>Last updated: 4 October 2026. kurtz is an independent, free, open-source player by Ralleur. Mac is available in beta; iPhone/iPad and Apple TV releases are in preparation.</p>
+  <h2>Your local videos</h2>
+  <p>Local playback on Mac and the iPhone/iPad development version does not require a kurtz or Jellyfin account. kurtz reads files you choose and does not upload those video files to Ralleur. Local playback does not create Jellyfin playback reports.</p>
+  <h2>History and settings</h2>
+  <p>Recent-file references, playback positions, track choices and settings are stored on your device. You can clear or disable local history in Settings. This removes saved history, not your video files. Device backups may include app data according to your operating-system settings.</p>
+  <h2>Your Jellyfin server</h2>
+  <p>When you connect Jellyfin, kurtz sends sign-in requests, media requests and server-playback progress to the server you configure. Access tokens are stored using Apple's Keychain. The server operator controls its own logs and data. A connected server session can continue normal network activity while you watch a local file.</p>
+  <h2>Episode information</h2>
+  <p>For supported series outlooks, kurtz may contact TVmaze for episode or season information. This is associated with Jellyfin series features, not local-file playback.</p>
+  <h2>Diagnostics and permissions</h2>
+  <p>kurtz has no advertising or integrated analytics service. It keeps local diagnostic logs for troubleshooting. If you share logs in a support request, check them for server addresses and other private information first. File and local-network permissions are used for the features you choose. Apple may process system diagnostics according to your device settings.</p>
+  <h2>Contact and source</h2>
+  <p>For privacy questions, use the <a href="https://github.com/ralleur/kurtz/issues">kurtz issue tracker</a>; do not post passwords, access tokens or private media there. You can inspect the <a href="https://github.com/ralleur/kurtz">source code</a> and <a href="https://github.com/ralleur/kurtz/blob/kurtz/docs/release/app-review.md">release preparation notes</a>.</p>
+</main>
+<footer class="wrap"><p><a href="index.html">Back to kurtz</a></p></footer>
+</body>
+</html>

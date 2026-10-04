@@ -9,51 +9,28 @@
 import Foundation
 
 enum AppIcon: String, CaseIterable, Displayable, Identifiable {
-
-    case jellyfin
-    case red
-    case orange
-    case yellow
-    case green
-    case blue
+    case graphite
+    case ivory
 
     var iconName: String {
-        "AppIcon-dark-\(rawValue)"
+        self == .graphite ? "AppIcon-kurtz" : "AppIcon-kurtz-light"
     }
 
     var id: String {
-        iconName
+        rawValue
     }
 
     var alternateIconName: String? {
-        self == .blue ? nil : iconName
+        self == .graphite ? nil : iconName
     }
 
+    // Fixed palette names from the owner’s brand guide, identical in every locale.
+    // swiftlint:disable:next hard_coded_display_string
     var displayTitle: String {
-        switch self {
-        case .jellyfin:
-            L10n.jellyfin
-        case .red:
-            L10n.red
-        case .orange:
-            L10n.orange
-        case .yellow:
-            L10n.yellow
-        case .green:
-            L10n.green
-        case .blue:
-            L10n.blue
-        }
+        self == .graphite ? "Graphite" : "Ivory"
     }
 
     static func resolve(alternateIconName: String?) -> Self {
-        guard let alternateIconName,
-              alternateIconName.hasPrefix("AppIcon-dark-")
-        else {
-            return .blue
-        }
-
-        let rawValue = alternateIconName.dropFirst("AppIcon-dark-".count)
-        return Self(rawValue: String(rawValue)) ?? .blue
+        alternateIconName == "AppIcon-kurtz-light" ? .ivory : .graphite
     }
 }

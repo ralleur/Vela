@@ -781,9 +781,9 @@ extension VideoPlayer {
             if !containerState.isPresentingOverlay,
                !containerState.isScrubbing,
                !containerState.isPresentingSupplement,
-               VelaPromptPolicy.keepsControlsHiddenOnTouch(
-                   prompt: VelaPlaybackPrompts.shared.prompt,
-                   hasNextEpisode: VelaPlaybackPrompts.shared.nextEpisode != nil || manager.queue?.hasNextItem == true
+               KurtzPromptPolicy.keepsControlsHiddenOnTouch(
+                   prompt: KurtzPlaybackPrompts.shared.prompt,
+                   hasNextEpisode: KurtzPlaybackPrompts.shared.nextEpisode != nil || manager.queue?.hasNextItem == true
                )
             {
                 return
@@ -888,8 +888,8 @@ extension VideoPlayer {
 
         private func handleSelectEnded(_ press: UIPress, event: UIPressesEvent?) {
             if !containerState.isPresentingOverlay {
-                // Vela: a visible prompt ("Intro überspringen", …) takes the press
-                if VelaPlaybackPrompts.shared.performPrompt() {
+                // kurtz: a visible prompt ("Intro überspringen", …) takes the press
+                if KurtzPlaybackPrompts.shared.performPrompt() {
                     return
                 }
 

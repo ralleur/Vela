@@ -113,11 +113,11 @@ struct VideoPlayer: View {
             isPresented: .constant(manager.error != nil)
         ) {
             if let retry = manager.retryPlayback {
-                Button(VelaStrings.text("Try Compatible Playback")) { retry() }
+                Button(KurtzStrings.text("Try Compatible Playback")) { retry() }
             }
-            #if targetEnvironment(macCatalyst)
+            #if os(iOS)
             if manager.playbackItem?.discoversTracks == true {
-                Button(VelaStrings.text("Choose Another Video…")) { VelaLocalFiles.shared.showPicker(subtitle: false) }
+                Button(KurtzStrings.text("Choose Another Video…")) { KurtzLocalFiles.shared.showPicker(subtitle: false) }
             }
             #endif
             Button(L10n.close, role: .cancel) {

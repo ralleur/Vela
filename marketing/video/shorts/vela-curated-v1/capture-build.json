@@ -1,0 +1,16 @@
+{
+  "CFBundleIdentifier": "com.ralleur.vela.mac",
+  "CFBundleShortVersionString": "0.9.6",
+  "CFBundleVersion": "7",
+  "MinimumOSVersion": null,
+  "executable_sha256": "03a602f1094422b94a32742fc278b25927883e7c01d1a4640b130b2701d0b630",
+  "capture_timezone": "Europe/Berlin",
+  "capture_dates": [
+    "2026-10-03",
+    "2026-10-04"
+  ],
+  "brand_wordmark_sha256": "403fe92d406b17dc79396059772c10a6cfe38290f9f6189764a2885900ed145d",
+  "inspection_scope": "Post-capture build inspection only; this executable was rebuilt at 00:28 after all feature captures (00:01\u201300:15). Its version/hash are NOT asserted as the capture version.",
+  "exact_capture_version": "unverified; development build launched from build/dd-mac/Build/Products/Debug-maccatalyst/Swiftfin.app",
+  "existing_library_still_version": "0.9.4 (5), see marketing/screenshots/build.json"
+}

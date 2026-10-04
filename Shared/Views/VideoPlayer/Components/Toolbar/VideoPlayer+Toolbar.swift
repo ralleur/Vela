@@ -42,7 +42,9 @@ extension VideoPlayer.PlaybackControls {
                     containerState.select(supplement: nil)
                 } else {
                     manager.stop()
-                    if manager.onStop == nil { router.dismiss() }
+                    if manager.onStop == nil {
+                        router.dismiss()
+                    }
                 }
             } label: {
                 AlternateLayoutView {
@@ -72,13 +74,15 @@ extension VideoPlayer.PlaybackControls {
 
                 #if targetEnvironment(macCatalyst)
                 HStack(spacing: 8) {
-                    Button { manager.isMuted.toggle() } label: { Image(systemName: manager.isMuted ? "speaker.slash.fill" : "speaker.wave.2.fill") }
-                        .accessibilityLabel(VelaStrings.text(manager.isMuted ? "Unmute" : "Mute"))
-                    Slider(value: $manager.volume, in: 0...1).frame(width: 80).accessibilityLabel(VelaStrings.text("Volume"))
+                    Button { manager.isMuted.toggle() } label: {
+                        Image(systemName: manager.isMuted ? "speaker.slash.fill" : "speaker.wave.2.fill")
+                    }
+                    .accessibilityLabel(KurtzStrings.text(manager.isMuted ? "Unmute" : "Mute"))
+                    Slider(value: $manager.volume, in: 0 ... 1).frame(width: 80).accessibilityLabel(KurtzStrings.text("Volume"))
                 }.font(.body)
                 #endif
-                // Vela: language presets
-                VelaLanguagePresetButtons()
+                // kurtz: language presets
+                KurtzLanguagePresetButtons()
 
                 ActionButtons()
                     .frame(height: Self.buttonSize)

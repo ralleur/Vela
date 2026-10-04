@@ -1,0 +1,18 @@
+{
+  "fill": {
+    "solid": "srgb:0.98039,0.97255,0.94510,1.00000"
+  },
+  "groups": [
+    {
+      "layers": [
+        {
+          "image-name": "Glyph.png",
+          "name": "kurtz"
+        }
+      ]
+    }
+  ],
+  "supported-platforms": {
+    "squares": "shared"
+  }
+}

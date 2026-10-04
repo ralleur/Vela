@@ -1,7 +1,7 @@
 name: Project site
 on:
   push:
-    branches: [vela]
+    branches: [kurtz]
     paths: ['website/**', 'Tools/marketing/build-site.py', '.github/workflows/pages.yml']
   pull_request:
     paths: ['website/**', 'Tools/marketing/build-site.py', '.github/workflows/pages.yml']
@@ -13,7 +13,7 @@ concurrency:
   cancel-in-progress: true
 jobs:
   build:
-    if: github.repository == 'ralleur/Vela'
+    if: github.repository == 'ralleur/kurtz'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -25,7 +25,7 @@ jobs:
         with:
           path: build/site
   deploy:
-    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/vela'
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/kurtz'
     needs: build
     runs-on: ubuntu-latest
     permissions:

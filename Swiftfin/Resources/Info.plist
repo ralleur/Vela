@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>$(VELA_DISPLAY_NAME:default=$(PRODUCT_NAME))</string>
+	<string>$(KURTZ_DISPLAY_NAME:default=$(PRODUCT_NAME))</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -13,7 +13,7 @@
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>$(VELA_DISPLAY_NAME:default=$(PRODUCT_NAME))</string>
+	<string>$(KURTZ_DISPLAY_NAME:default=$(PRODUCT_NAME))</string>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
@@ -25,8 +25,8 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>swiftfin</string>
-				<string>jellyfin</string>
+				<string>kurtz</string>
+				<string>vela</string>
 			</array>
 		</dict>
 	</array>
@@ -65,6 +65,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>NotoSansCJK-Regular.ttc</string>
+		<string>Sora-Regular.ttf</string>
+		<string>Sora-SemiBold.ttf</string>
+		<string>Sora-Bold.ttf</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
@@ -82,7 +85,7 @@
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIImageName</key>
-		<string>jellyfin-blob-blue</string>
+		<string>KurtzWatermark</string>
 		<key>UIImageRespectsSafeAreaInsets</key>
 		<true/>
 	</dict>
@@ -90,8 +93,6 @@
 	<array>
 		<string>armv7</string>
 	</array>
-	<key>UIRequiresFullScreen</key>
-	<true/>
 	<key>UIStatusBarHidden</key>
 	<true/>
 	<key>UISupportedInterfaceOrientations</key>
@@ -103,6 +104,7 @@
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>

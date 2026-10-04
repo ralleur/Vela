@@ -18,9 +18,9 @@ extension JellyfinClient.Configuration {
         accessToken: String? = nil
     ) -> Self {
 
-        // Vela: the Mac app shows up as a Mac, not as an iPad
+        // kurtz: the Mac app shows up as a Mac, not as an iPad
         let isMac = ProcessInfo.processInfo.isMacCatalystApp
-        let client = "Swiftfin \(isMac ? "macOS" : UIDevice.platform)"
+        let client = "kurtz \(isMac ? "macOS" : UIDevice.platform)"
         let deviceName = (isMac ? "Mac" : UIDevice.current.name)
             .folding(options: .diacriticInsensitive, locale: .current)
             .unicodeScalars

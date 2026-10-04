@@ -1,0 +1,491 @@
+[
+  {
+    "id": "C01",
+    "product": "kurtz",
+    "version": "kurtz branding revision 2; original Vela feature recordings from 4 October 2026, exact capture binary version not retained",
+    "revision": "v2",
+    "language": "en",
+    "ui_exception": "German series-outlook card, explicitly requested by owner",
+    "file": "kurtz-c01-skip-intro-v2.mp4",
+    "duration": 10.0,
+    "shots": [
+      {
+        "source": "build/launch/raw/vela-curated-v1/skip-intro-en.mov",
+        "source_in": 12,
+        "source_out": 15.7,
+        "seconds": 3.7,
+        "lines": [
+          "Skip the intro."
+        ],
+        "action_result": "Visible Skip Intro button; actual click near the end of this shot.",
+        "crop": [
+          0,
+          32,
+          824,
+          464
+        ],
+        "detail": [
+          430,
+          276,
+          370,
+          100
+        ],
+        "detail_label": "SKIP INTRO",
+        "note": "Jellyfin demo · Requires intro metadata",
+        "source_sha256": "86a86be31eef6d45c5c2d6db028dd518b82e6085af11c91efda826d3595b4b39"
+      },
+      {
+        "source": "build/launch/raw/vela-curated-v1/skip-intro-en.mov",
+        "source_in": 15.7,
+        "source_out": 18,
+        "seconds": 4.3,
+        "lines": [
+          "One click.",
+          "Back to the story."
+        ],
+        "action_result": "Button disappears after the real seek to 0:20; playback continues. Final 2 seconds deliberately hold the last captured result.",
+        "crop": [
+          0,
+          32,
+          824,
+          464
+        ],
+        "hold": 2,
+        "detail": [
+          0,
+          370,
+          330,
+          65
+        ],
+        "detail_label": "STRAIGHT TO THE STORY",
+        "note": "Jellyfin · Demo library",
+        "source_sha256": "86a86be31eef6d45c5c2d6db028dd518b82e6085af11c91efda826d3595b4b39"
+      },
+      {
+        "seconds": 2,
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ],
+        "visual": "endcard",
+        "action_result": "kurtz vector wordmark and current destination; neutral CTA"
+      }
+    ],
+    "title": "Skip the intro. Get back to the story. | kurtz",
+    "description": "A real click on kurtz’s Skip Intro button jumps to the end of the marked intro. Captured in a local Jellyfin demonstration library with licensed Blender footage and explicit chapter markers. This is metadata-based skipping, not automatic recognition of every intro.\n\nkurtz for macOS · Beta. Local files work without a Jellyfin server. Jellyfin features require your server; episode prompts depend on available chapters/segments and metadata. VLC is the default local playback engine; compatibility depends on the file.\nDiscover kurtz: https://ralleur.github.io/kurtz/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Library artwork also includes Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Film excerpts cropped/resized. Composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. kurtz branding and third-party UI/marks retain their own rights. Music: original Ralleur production, existing hauser-D / hauser-F masters; source-film audio removed. Built on Swiftfin: https://github.com/jellyfin/Swiftfin . kurtz is independent of Jellyfin, Swiftfin and the filmmakers.\n\n#kurtz #MacApps #Jellyfin\n\nProduction provenance: this kurtz branding edition reuses the original 4 October 2026 Vela feature recordings. The original UI is cropped, never repainted; timings and completed actions are preserved. The library still is identified separately in the scene manifest.",
+    "CTA": "Discover kurtz",
+    "destination": "https://ralleur.github.io/kurtz/",
+    "music": "hauser-D.wav",
+    "music_offset": 7,
+    "capture_provenance": "../vela-curated-v1/capture-build.json"
+  },
+  {
+    "id": "C02",
+    "product": "kurtz",
+    "version": "kurtz branding revision 2; original Vela feature recordings from 4 October 2026, exact capture binary version not retained",
+    "revision": "v2",
+    "language": "en",
+    "ui_exception": "German series-outlook card, explicitly requested by owner",
+    "file": "kurtz-c02-next-episode-v2.mp4",
+    "duration": 10,
+    "shots": [
+      {
+        "source": "build/launch/raw/vela-curated-v1/next-episode-en.mov",
+        "source_in": 2,
+        "source_out": 6,
+        "seconds": 4,
+        "lines": [
+          "Next episode.",
+          "One click."
+        ],
+        "action_result": "Actual Next Episode prompt with S1:E2 and title; real click and beginning of playback.",
+        "crop": [
+          0,
+          32,
+          824,
+          464
+        ],
+        "detail": [
+          500,
+          306,
+          306,
+          90
+        ],
+        "detail_label": "NEXT UP",
+        "note": "Jellyfin demo library",
+        "source_sha256": "aa54693e4499fca2657d7dc0adea8a9e913378c9261d38eb281bb761bfb2e322"
+      },
+      {
+        "source": "build/launch/raw/vela-curated-v1/next-episode-en.mov",
+        "source_in": 6,
+        "source_out": 10,
+        "seconds": 4,
+        "lines": [
+          "And you’re",
+          "already watching."
+        ],
+        "action_result": "New episode plays continuously after the click; no restart or simulated transition.",
+        "crop": [
+          0,
+          32,
+          824,
+          464
+        ],
+        "note": "S1:E2 · Big Buck Bunny · Demo episode",
+        "source_sha256": "aa54693e4499fca2657d7dc0adea8a9e913378c9261d38eb281bb761bfb2e322"
+      },
+      {
+        "seconds": 2,
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ],
+        "visual": "endcard",
+        "action_result": "kurtz vector wordmark and current destination; neutral CTA"
+      }
+    ],
+    "title": "The next episode is one click away | kurtz",
+    "description": "kurtz shows the next episode’s number and title, then starts it with one click. This recording uses the explicitly named Open Cinema Stories demo library, assembled from licensed Blender clips. The dark first background is the real paused end-of-episode frame; the actual Next Episode control is magnified for readability.\n\nkurtz for macOS · Beta. Local files work without a Jellyfin server. Jellyfin features require your server; episode prompts depend on available chapters/segments and metadata. VLC is the default local playback engine; compatibility depends on the file.\nDiscover kurtz: https://ralleur.github.io/kurtz/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Library artwork also includes Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Film excerpts cropped/resized. Composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. kurtz branding and third-party UI/marks retain their own rights. Music: original Ralleur production, existing hauser-D / hauser-F masters; source-film audio removed. Built on Swiftfin: https://github.com/jellyfin/Swiftfin . kurtz is independent of Jellyfin, Swiftfin and the filmmakers.\n\n#kurtz #MacApps #Jellyfin\n\nProduction provenance: this kurtz branding edition reuses the original 4 October 2026 Vela feature recordings. The original UI is cropped, never repainted; timings and completed actions are preserved. The library still is identified separately in the scene manifest.",
+    "CTA": "Discover kurtz",
+    "destination": "https://ralleur.github.io/kurtz/",
+    "music": "hauser-F.wav",
+    "music_offset": 0,
+    "capture_provenance": "../vela-curated-v1/capture-build.json"
+  },
+  {
+    "id": "C03",
+    "product": "kurtz",
+    "version": "kurtz branding revision 2; original Vela feature recordings from 4 October 2026, exact capture binary version not retained",
+    "revision": "v2",
+    "language": "en",
+    "ui_exception": "German series-outlook card, explicitly requested by owner",
+    "file": "kurtz-c03-episode-date-v2.mp4",
+    "duration": 10,
+    "shots": [
+      {
+        "source": "build/launch/raw/vela-curated-v1/episode-date.mov",
+        "source_in": 0,
+        "source_out": 3,
+        "seconds": 3,
+        "lines": [
+          "When’s the",
+          "next episode?"
+        ],
+        "action_result": "Actual passive kurtz outlook card; held capture, no interaction claimed.",
+        "crop": [
+          0,
+          32,
+          824,
+          464
+        ],
+        "detail": [
+          488,
+          300,
+          308,
+          80
+        ],
+        "detail_label": "LIVE TVMAZE DATA · DEMO LIBRARY",
+        "note": "German UI card · Captured 4 Oct 2026",
+        "source_sha256": "b0fa85a3f741e9d7fc5b7455de2a31741cda6acd1554d8b3347659b16152cead"
+      },
+      {
+        "source": "build/launch/raw/vela-curated-v1/episode-date.mov",
+        "source_in": 3,
+        "source_out": 8,
+        "seconds": 5,
+        "lines": [
+          "The date.",
+          "Right here."
+        ],
+        "action_result": "Same continuous capture of the readable air-date card.",
+        "crop": [
+          0,
+          32,
+          824,
+          464
+        ],
+        "detail": [
+          488,
+          300,
+          308,
+          80
+        ],
+        "detail_label": "LIVE TVMAZE DATA · DEMO LIBRARY",
+        "note": "German UI card · Captured 4 Oct 2026",
+        "source_sha256": "b0fa85a3f741e9d7fc5b7455de2a31741cda6acd1554d8b3347659b16152cead"
+      },
+      {
+        "seconds": 2,
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ],
+        "visual": "endcard",
+        "action_result": "kurtz vector wordmark and current destination; neutral CTA"
+      }
+    ],
+    "title": "When is the next episode? kurtz shows the date.",
+    "description": "When your library has no next episode, kurtz can display its air date from TVmaze. The real German card reads: “The next episode (S6E4) arrives on Wednesday, 7 October.” This is a clearly labelled metadata demo: live TVmaze information for Slow Horses S6E3 paired with licensed Blender demo footage, not footage from that series. Snapshot captured 4 October 2026, Europe/Berlin. Dates and availability may change. German UI card retained at the owner’s request. Metadata source: TVmaze, https://www.tvmaze.com/shows/45039/slow-horses (CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/); dates summarized by kurtz.\n\nkurtz for macOS · Beta. Local files work without a Jellyfin server. Jellyfin features require your server; episode prompts depend on available chapters/segments and metadata. VLC is the default local playback engine; compatibility depends on the file.\nDiscover kurtz: https://ralleur.github.io/kurtz/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Library artwork also includes Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Film excerpts cropped/resized. Composition: CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/. kurtz branding and third-party UI/marks retain their own rights. Music: original Ralleur production, existing hauser-D / hauser-F masters; source-film audio removed. Built on Swiftfin: https://github.com/jellyfin/Swiftfin . kurtz is independent of Jellyfin, Swiftfin and the filmmakers.\n\n#kurtz #MacApps #Jellyfin\n\nProduction provenance: this kurtz branding edition reuses the original 4 October 2026 Vela feature recordings. The original UI is cropped, never repainted; timings and completed actions are preserved. The library still is identified separately in the scene manifest.",
+    "CTA": "Discover kurtz",
+    "destination": "https://ralleur.github.io/kurtz/",
+    "music": "hauser-D.wav",
+    "music_offset": 7,
+    "capture_provenance": "../vela-curated-v1/capture-build.json"
+  },
+  {
+    "id": "C04",
+    "product": "kurtz",
+    "version": "kurtz branding revision 2; original Vela feature recordings from 4 October 2026, exact capture binary version not retained",
+    "revision": "v2",
+    "language": "en",
+    "ui_exception": "German series-outlook card, explicitly requested by owner",
+    "file": "kurtz-c04-season-outlook-v2.mp4",
+    "duration": 10,
+    "shots": [
+      {
+        "source": "build/launch/raw/vela-curated-v1/season-outlook.mov",
+        "source_in": 0,
+        "source_out": 3,
+        "seconds": 3,
+        "lines": [
+          "Another season?"
+        ],
+        "action_result": "Actual passive kurtz season-outlook card; no interaction claimed.",
+        "crop": [
+          0,
+          32,
+          824,
+          464
+        ],
+        "detail": [
+          488,
+          300,
+          308,
+          80
+        ],
+        "detail_label": "LIVE TVMAZE DATA · DEMO LIBRARY",
+        "note": "German UI card · Captured 4 Oct 2026",
+        "source_sha256": "268eb70db8241af23b91adbd031a838e2c1ea298647a89fa23c7235642d76411"
+      },
+      {
+        "source": "build/launch/raw/vela-curated-v1/season-outlook.mov",
+        "source_in": 3,
+        "source_out": 8,
+        "seconds": 5,
+        "lines": [
+          "Announced.",
+          "Date still pending."
+        ],
+        "action_result": "Continuous real card accurately distinguishes announced from dated.",
+        "crop": [
+          0,
+          32,
+          824,
+          464
+        ],
+        "detail": [
+          488,
+          300,
+          308,
+          80
+        ],
+        "detail_label": "LIVE TVMAZE DATA · DEMO LIBRARY",
+        "note": "German UI card · Captured 4 Oct 2026",
+        "source_sha256": "268eb70db8241af23b91adbd031a838e2c1ea298647a89fa23c7235642d76411"
+      },
+      {
+        "seconds": 2,
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ],
+        "visual": "endcard",
+        "action_result": "kurtz vector wordmark and current destination; neutral CTA"
+      }
+    ],
+    "title": "Another season? kurtz tells you what is known.",
+    "description": "kurtz’s series outlook distinguishes an announced season from a confirmed premiere date. The real German card says: “Season 7 is announced; there is no date yet.” Live TVmaze metadata for Slow Horses after S6E6, paired with licensed Blender footage in an explicitly named demo library. This is not footage from Slow Horses. Snapshot captured 4 October 2026, Europe/Berlin; metadata may change. German UI card retained at the owner’s request. Metadata source: TVmaze, https://www.tvmaze.com/shows/45039/slow-horses (CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/); dates summarized by kurtz.\n\nkurtz for macOS · Beta. Local files work without a Jellyfin server. Jellyfin features require your server; episode prompts depend on available chapters/segments and metadata. VLC is the default local playback engine; compatibility depends on the file.\nDiscover kurtz: https://ralleur.github.io/kurtz/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Library artwork also includes Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Film excerpts cropped/resized. Composition: CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/. kurtz branding and third-party UI/marks retain their own rights. Music: original Ralleur production, existing hauser-D / hauser-F masters; source-film audio removed. Built on Swiftfin: https://github.com/jellyfin/Swiftfin . kurtz is independent of Jellyfin, Swiftfin and the filmmakers.\n\n#kurtz #MacApps #Jellyfin\n\nProduction provenance: this kurtz branding edition reuses the original 4 October 2026 Vela feature recordings. The original UI is cropped, never repainted; timings and completed actions are preserved. The library still is identified separately in the scene manifest.",
+    "CTA": "Discover kurtz",
+    "destination": "https://ralleur.github.io/kurtz/",
+    "music": "hauser-F.wav",
+    "music_offset": 0,
+    "capture_provenance": "../vela-curated-v1/capture-build.json"
+  },
+  {
+    "id": "C05",
+    "product": "kurtz",
+    "version": "kurtz branding revision 2; original Vela feature recordings from 4 October 2026, exact capture binary version not retained",
+    "revision": "v2",
+    "language": "en",
+    "ui_exception": "German series-outlook card, explicitly requested by owner",
+    "file": "kurtz-c05-less-interface-v2.mp4",
+    "duration": 13,
+    "shots": [
+      {
+        "source": "build/launch/raw/vela-curated-v1/clean-window-en.mov",
+        "source_in": 10,
+        "source_out": 15,
+        "seconds": 5,
+        "lines": [
+          "Controls,",
+          "when you need them."
+        ],
+        "action_result": "Actual visible controls fade away during uninterrupted local playback.",
+        "crop": [
+          0,
+          32,
+          824,
+          464
+        ],
+        "note": "Local MP4 · Feature capture · 4 Oct 2026",
+        "source_sha256": "55fc755053a28ed33c092390384284835e5f122d7d967225003d5709990c57e2"
+      },
+      {
+        "source": "build/launch/raw/vela-curated-v1/clean-window-en.mov",
+        "source_in": 15,
+        "source_out": 18,
+        "seconds": 6,
+        "lines": [
+          "Then just",
+          "the film."
+        ],
+        "action_result": "Actual clean result continues, followed by a deliberate 3-second hold.",
+        "crop": [
+          0,
+          32,
+          824,
+          464
+        ],
+        "hold": 3,
+        "quote": [
+          "“…nothing left",
+          "to take away.”",
+          "— Antoine de Saint-Exupéry"
+        ],
+        "note": "Local MP4 · Feature capture · 4 Oct 2026",
+        "source_sha256": "55fc755053a28ed33c092390384284835e5f122d7d967225003d5709990c57e2"
+      },
+      {
+        "seconds": 2,
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ],
+        "visual": "endcard",
+        "action_result": "kurtz vector wordmark and current destination; neutral CTA"
+      }
+    ],
+    "title": "Less interface. More film. | kurtz for Mac",
+    "description": "Real kurtz Mac playback: controls appear when needed and disappear again, leaving the film. The last three seconds hold the completed clean-window result. “Perfection is achieved, not when there is nothing more to add, but when there is nothing left to take away.” — Antoine de Saint-Exupéry. The on-screen excerpt uses the wording supplied by the owner.\n\nkurtz for macOS · Beta. Local files work without a Jellyfin server. Jellyfin features require your server; episode prompts depend on available chapters/segments and metadata. VLC is the default local playback engine; compatibility depends on the file.\nDiscover kurtz: https://ralleur.github.io/kurtz/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Library artwork also includes Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Film excerpts cropped/resized. Composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. kurtz branding and third-party UI/marks retain their own rights. Music: original Ralleur production, existing hauser-D / hauser-F masters; source-film audio removed. Built on Swiftfin: https://github.com/jellyfin/Swiftfin . kurtz is independent of Jellyfin, Swiftfin and the filmmakers.\n\n#kurtz #MacApps #Jellyfin\n\nProduction provenance: this kurtz branding edition reuses the original 4 October 2026 Vela feature recordings. The original UI is cropped, never repainted; timings and completed actions are preserved. The library still is identified separately in the scene manifest.",
+    "CTA": "Discover kurtz",
+    "destination": "https://ralleur.github.io/kurtz/",
+    "music": "hauser-D.wav",
+    "music_offset": 7,
+    "capture_provenance": "../vela-curated-v1/capture-build.json"
+  },
+  {
+    "id": "C06",
+    "product": "kurtz",
+    "version": "kurtz branding revision 2; original Vela feature recordings from 4 October 2026, exact capture binary version not retained",
+    "revision": "v2",
+    "language": "en",
+    "ui_exception": "German series-outlook card, explicitly requested by owner",
+    "file": "kurtz-c06-your-video-player-v2.mp4",
+    "duration": 13.0,
+    "shots": [
+      {
+        "source": "build/launch/raw/vela-curated-v1/local-result-final.mov",
+        "source_in": 3,
+        "source_out": 5.6,
+        "seconds": 2.6,
+        "lines": [
+          "Open a video."
+        ],
+        "action_result": "Native file dialog → actual Open action → the same file starts in kurtz.",
+        "crop": [
+          0,
+          16,
+          880,
+          480
+        ],
+        "detail": [
+          20,
+          176,
+          305,
+          55
+        ],
+        "detail_label": "YOUR LOCAL FILES",
+        "note": "Native file dialog · Actual app interaction",
+        "source_sha256": "c9ae92fa9606137b7e4cdff4f3e5d4faa16c843da48d2d26150dca002d85ac39"
+      },
+      {
+        "source": "build/launch/raw/vela-curated-v1/local-result-final.mov",
+        "source_in": 5.6,
+        "source_out": 6.6,
+        "seconds": 1,
+        "lines": [
+          "Open a video."
+        ],
+        "action_result": "The real file dialog closes and the chosen MP4 appears. A 0.9-second app/decoder flash after this completed opening is omitted.",
+        "crop": [
+          28,
+          32,
+          824,
+          464
+        ],
+        "note": "Actual file opening · Brief loading cut",
+        "source_sha256": "c9ae92fa9606137b7e4cdff4f3e5d4faa16c843da48d2d26150dca002d85ac39"
+      },
+      {
+        "source": "build/launch/raw/vela-curated-v1/local-result-final.mov",
+        "source_in": 7.5,
+        "source_out": 11.9,
+        "seconds": 4.4,
+        "lines": [
+          "VLC-powered.",
+          "kurtz-designed."
+        ],
+        "action_result": "Same local file plays continuously after opening.",
+        "crop": [
+          28,
+          32,
+          824,
+          464
+        ],
+        "note": "Local playback · Compatibility depends on the file",
+        "source_sha256": "c9ae92fa9606137b7e4cdff4f3e5d4faa16c843da48d2d26150dca002d85ac39"
+      },
+      {
+        "source": "marketing/screenshots/macos/jellyfin-home.jpg",
+        "source_in": 0,
+        "source_out": 3,
+        "seconds": 3,
+        "lines": [
+          "Jellyfin,",
+          "when you want it."
+        ],
+        "action_result": "Held original Vela 0.9.4 Jellyfin home capture, rebranded editorial frame; no connection gesture claimed.",
+        "visual": "still",
+        "crop": null,
+        "note": "Optional Jellyfin library · Server required",
+        "source_sha256": "5b89bfc4c35f79c718825f3dc4b2cb640eb5c939e134e93624f085e19d9ee3c3"
+      },
+      {
+        "seconds": 2,
+        "lines": [
+          "Discover kurtz",
+          "ralleur.github.io/kurtz"
+        ],
+        "visual": "endcard",
+        "action_result": "kurtz vector wordmark and current destination; neutral CTA"
+      }
+    ],
+    "title": "Your files. Your Jellyfin library. Your Mac player. | kurtz",
+    "description": "Open a local MP4 in kurtz, watch it with the VLC-based local engine, and connect your Jellyfin library when you want it. The native file dialog and following playback come from one real capture. A 0.9-second app/decoder flash after the opening result is removed; this is not a launch-speed benchmark. The final library view is a clearly separate held capture. kurtz supports local MKV, MP4 and MOV workflows; this Short does not claim that every possible file or codec will work, nor does it change Finder defaults.\n\nkurtz for macOS · Beta. Local files work without a Jellyfin server. Jellyfin features require your server; episode prompts depend on available chapters/segments and metadata. VLC is the default local playback engine; compatibility depends on the file.\nDiscover kurtz: https://ralleur.github.io/kurtz/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Library artwork also includes Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Film excerpts cropped/resized. Composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. kurtz branding and third-party UI/marks retain their own rights. Music: original Ralleur production, existing hauser-D / hauser-F masters; source-film audio removed. Built on Swiftfin: https://github.com/jellyfin/Swiftfin . kurtz is independent of Jellyfin, Swiftfin and the filmmakers.\n\n#kurtz #MacApps #Jellyfin\n\nProduction provenance: this kurtz branding edition reuses the original 4 October 2026 Vela feature recordings. The original UI is cropped, never repainted; timings and completed actions are preserved. The library still is identified separately in the scene manifest.",
+    "CTA": "Discover kurtz",
+    "destination": "https://ralleur.github.io/kurtz/",
+    "music": "hauser-F.wav",
+    "music_offset": 0,
+    "capture_provenance": "../vela-curated-v1/capture-build.json"
+  }
+]

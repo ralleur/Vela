@@ -1,0 +1,62 @@
+[
+  {
+    "id": "C01",
+    "file_sha256": "b2a79b99ef5c3110a2266d1b99af32e6e51a11f0615f4e677bcd780e51f0e53e",
+    "technical": "passed",
+    "editorial": "passed",
+    "method": "Exact final export: scene first/middle/last frames; 4 fps samples around actions for C01/C02/C05/C06; timed reading of unchanged 10\u201313 second edits; deliberate holds identified.",
+    "brand": "Sora, Graphite/Ivory/Yellow, lowercase kurtz master and current destination checked",
+    "listening": "not performed; decode, loudness and peak checks passed",
+    "historical_footage": "Preserved and disclosed; UI never repainted"
+  },
+  {
+    "id": "C02",
+    "file_sha256": "3a06d72e764e5bf7fa25d9fc19202f208fb72b428cdfdec0cf89537f8885ff0b",
+    "technical": "passed",
+    "editorial": "passed",
+    "method": "Exact final export: scene first/middle/last frames; 4 fps samples around actions for C01/C02/C05/C06; timed reading of unchanged 10\u201313 second edits; deliberate holds identified.",
+    "brand": "Sora, Graphite/Ivory/Yellow, lowercase kurtz master and current destination checked",
+    "listening": "not performed; decode, loudness and peak checks passed",
+    "historical_footage": "Preserved and disclosed; UI never repainted"
+  },
+  {
+    "id": "C03",
+    "file_sha256": "3030f790df00d20f42c01d7bf76949769e450d4cf90ea125976523686571a43d",
+    "technical": "passed",
+    "editorial": "passed",
+    "method": "Exact final export: scene first/middle/last frames; 4 fps samples around actions for C01/C02/C05/C06; timed reading of unchanged 10\u201313 second edits; deliberate holds identified.",
+    "brand": "Sora, Graphite/Ivory/Yellow, lowercase kurtz master and current destination checked",
+    "listening": "not performed; decode, loudness and peak checks passed",
+    "historical_footage": "Preserved and disclosed; UI never repainted"
+  },
+  {
+    "id": "C04",
+    "file_sha256": "a9112cd746a568033ff5299799b2ab415cb8c8918043a94047b9a28e17147a1f",
+    "technical": "passed",
+    "editorial": "passed",
+    "method": "Exact final export: scene first/middle/last frames; 4 fps samples around actions for C01/C02/C05/C06; timed reading of unchanged 10\u201313 second edits; deliberate holds identified.",
+    "brand": "Sora, Graphite/Ivory/Yellow, lowercase kurtz master and current destination checked",
+    "listening": "not performed; decode, loudness and peak checks passed",
+    "historical_footage": "Preserved and disclosed; UI never repainted"
+  },
+  {
+    "id": "C05",
+    "file_sha256": "940215905636eb964368f1a70c16deb27b5e38ba7dc190b01247ef9548605126",
+    "technical": "passed",
+    "editorial": "passed",
+    "method": "Exact final export: scene first/middle/last frames; 4 fps samples around actions for C01/C02/C05/C06; timed reading of unchanged 10\u201313 second edits; deliberate holds identified.",
+    "brand": "Sora, Graphite/Ivory/Yellow, lowercase kurtz master and current destination checked",
+    "listening": "not performed; decode, loudness and peak checks passed",
+    "historical_footage": "Preserved and disclosed; UI never repainted"
+  },
+  {
+    "id": "C06",
+    "file_sha256": "c7fca2f44d4189d5d3dc8ac861585ef3fd0042b6fba9729532f0fa9c483d7635",
+    "technical": "passed",
+    "editorial": "passed",
+    "method": "Exact final export: scene first/middle/last frames; 4 fps samples around actions for C01/C02/C05/C06; timed reading of unchanged 10\u201313 second edits; deliberate holds identified.",
+    "brand": "Sora, Graphite/Ivory/Yellow, lowercase kurtz master and current destination checked",
+    "listening": "not performed; decode, loudness and peak checks passed",
+    "historical_footage": "Preserved and disclosed; UI never repainted"
+  }
+]

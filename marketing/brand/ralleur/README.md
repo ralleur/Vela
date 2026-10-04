@@ -1,15 +1,15 @@
 # Ralleur brand kit
 
-Ralleur is the developer and shared YouTube identity behind Vela and Hauser.
+Ralleur is the developer and shared YouTube identity behind kurtz and Hauser.
 The app names, icons and product identities stay independent. The graphic
 wordmark is lowercase `ralleur`; the channel display name is `Ralleur`.
 
 ## Final artwork
 
 The final mark is a lowercase **r**, built as a native SVG to extend the existing
-Hauser and Vela visual language: rounded strokes, light lettering, dark ground
+Hauser and kurtz visual language: rounded strokes, light lettering, dark ground
 and a detached colored dot. The 64-unit round stroke is shared with Hauser's
-existing signet. Mint is Ralleur's accent; Vela keeps blue and Hauser keeps gold.
+existing signet. Mint is Ralleur's accent; kurtz keeps blue and Hauser keeps gold.
 
 | Asset | File |
 | --- | --- |
@@ -22,7 +22,7 @@ existing signet. Mint is Ralleur's accent; Vela keeps blue and Hauser keeps gold
 | Review-only mobile banner crop | `preview-mobile.png` |
 | Optional video watermark, 150 × 150 | `ralleur-video-watermark.png` |
 | Channel description | `channel-description.txt` |
-| Product description copy | `video-description-vela.txt`, `video-description-hauser.txt` |
+| Product description copy | `video-description-kurtz.txt`, `video-description-hauser.txt` |
 
 Colors: ground `#11151e`, lettering `#f8f4f1`, mint `#77c9b5`.
 The banner uses Avenir Next, with Arial as fallback in the editable SVG. The PNG
@@ -39,11 +39,11 @@ from the vector source with `source/build-brand.cjs` (Node.js + sharp).
 - Handle: `@ralleurapps` (`@ralleur` was unavailable in YouTube Studio)
 - Channel: https://www.youtube.com/@ralleurapps
 - Hauser playlist: https://www.youtube.com/playlist?list=PLeC9vk38g52Q
-- Vela playlist: https://www.youtube.com/playlist?list=PLVH8jM4ugSbs
+- kurtz playlist: https://www.youtube.com/playlist?list=PLVH8jM4ugSbs
 - Home section: Apps by Ralleur
 - Tagline: Independent apps. Thoughtfully made.
 
-The Hauser playlist contains the four already-public product videos. Vela's
+The Hauser playlist contains the four already-public product videos. kurtz's
 playlist is ready for its first upload. Existing private and scheduled videos
 were not published. Existing public Hauser descriptions gained a short
 `Hauser by Ralleur.` signature and product link, preserving their original text.

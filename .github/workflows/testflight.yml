@@ -1,13 +1,13 @@
 name: "TestFlight ✈️"
 
 on:
-  schedule:
-    # 1st of every month at 12pm EST / 1pm EDT (17:00 UTC)
-    - cron: '0 17 1 * *'
-  repository_dispatch:
-    types: [testflight]
   workflow_dispatch:
     inputs:
+      releaseGatesChecked:
+        description: "Decoder licenses, device qualification and App Review checklist have been completed for this commit"
+        required: true
+        default: false
+        type: boolean
       platform:
         description: "Platform"
         required: true
@@ -17,12 +17,13 @@ on:
           - iOS
           - tvOS
       version:
-        description: "Version"
-        required: false
+        description: "Explicit kurtz beta version (0.9.x)"
+        required: true
+        default: "0.9.6"
         type: string
       build:
-        description: "Build"
-        required: false
+        description: "Build number greater than every previous upload for the selected platforms"
+        required: true
         type: number
       xcodeVersion:
         description: "Xcode"
@@ -79,11 +80,13 @@ jobs:
   test_build:
     name: Build and upload to TestFlight
     needs: resolve_platform
+    if: github.repository == 'ralleur/kurtz' && inputs.releaseGatesChecked
+    environment: apple-release
     runs-on: macos-26
     strategy:
       matrix: ${{ fromJSON(needs.resolve_platform.outputs.matrix) }}
     env:
-      XCODE_VERSION: "26.6"
+      XCODE_VERSION: "27.0"
       PLATFORM: ${{ matrix.platform }}
       SCHEME: ${{ matrix.scheme }}
       BUILD_CERTIFICATE_BASE64: ${{ github.event.client_payload.BUILD_CERTIFICATE_BASE64 || secrets.BUILD_CERTIFICATE_BASE64 }}
@@ -103,7 +106,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
         with:
-          ref: ${{ github.event.client_payload.ref || 'main' }}
+          ref: ${{ github.sha }}
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0
 

@@ -187,7 +187,7 @@ struct UserSignInView: View {
             .fontWeight(.semibold)
             .backport
             .buttonStyle(.glassProminent.shadow(false))
-            .tint(.jellyfinPurple)
+            .tint(.kurtzAccent)
             #if os(iOS)
             .controlSize(.large)
             .listRowSeparator(.hidden)
@@ -215,7 +215,7 @@ struct UserSignInView: View {
                 .fontWeight(.semibold)
                 .backport
                 .buttonStyle(.glassProminent.shadow(false))
-                .tint(.jellyfinPurple)
+                .tint(.kurtzAccent)
                 #if os(iOS)
                 .controlSize(.large)
                 #endif

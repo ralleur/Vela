@@ -2,24 +2,24 @@ name: "Build 🔨"
 
 on:
   push:
-    branches: [ main ]
+    branches: [ kurtz, main ]
   pull_request:
     types:
       - opened
       - reopened
       - synchronize
       - ready_for_review
-    branches: [ main ]
+    branches: [ kurtz, main ]
 
 jobs:
   playback-logic:
-    name: Playback source and Vela logic
+    name: Playback source and kurtz logic
     runs-on: macos-26
     steps:
       - name: Checkout
         uses: actions/checkout@v7
-      - name: Run source-independent playback and Vela tests
-        run: swift test --package-path Tools/VelaLogicTests
+      - name: Run source-independent playback and kurtz tests
+        run: swift test --package-path Tools/KurtzLogicTests
 
   build:
     name: "Build 🔨"
@@ -33,7 +33,7 @@ jobs:
     runs-on: macos-26
 
     env:
-      XCODE_VERSION: "26.6"
+      XCODE_VERSION: "27.0"
 
     steps:
       - name: Checkout
@@ -101,3 +101,17 @@ jobs:
             build/SourcePackages/artifacts
             build/SourcePackages/workspace-state.json
           key: ${{ steps.swift-packages.outputs.cache-primary-key }}
+
+  mac-catalyst:
+    name: Mac Catalyst regression build
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@v7
+      - name: Prepare pinned Mac dependencies
+        run: Tools/kurtz/prepare-mac-packages.sh
+      - name: Compile Mac Catalyst without distribution signing
+        run: >-
+          xcodebuild -workspace kurtz.xcworkspace -scheme Swiftfin
+          -configuration Debug -destination 'platform=macOS,variant=Mac Catalyst'
+          -derivedDataPath build/dd-mac-ci -skipMacroValidation -skipPackagePluginValidation
+          CODE_SIGNING_ALLOWED=NO build

@@ -23,14 +23,14 @@ extension VideoPlayer.PlaybackControls.Toolbar.ActionButtons {
         var body: some View {
             Button {
                 #if targetEnvironment(macCatalyst)
-                VelaMiniPlayer.toggleFullScreen()
+                KurtzMiniPlayer.toggleFullScreen()
                 #else
                 isAspectFilled.toggle()
                 #endif
             } label: {
                 Group {
                     #if targetEnvironment(macCatalyst)
-                    Label("Vollbild", systemImage: VideoPlayerActionButton.aspectFill.systemImage)
+                    Label(KurtzStrings.text("Fullscreen"), systemImage: VideoPlayerActionButton.aspectFill.systemImage)
                     #else
                     if isAspectFilled {
                         Label(

@@ -13,13 +13,14 @@ import UIKit
 @main
 struct SwiftfinApp: App {
     #if targetEnvironment(macCatalyst)
-    @UIApplicationDelegateAdaptor(VelaFileMenuDelegate.self) private var fileMenu
+    @UIApplicationDelegateAdaptor(KurtzFileMenuDelegate.self)
+    private var fileMenu
     #endif
 
     init() {
         Self.configure()
         #if DEBUG && targetEnvironment(macCatalyst)
-        VelaDebugSnapshot.install()
+        KurtzDebugSnapshot.install()
         #endif
 
         UIScrollView.appearance().keyboardDismissMode = .onDrag
@@ -33,9 +34,9 @@ struct SwiftfinApp: App {
     @ViewBuilder
     private var initialContent: some View {
         #if DEBUG && targetEnvironment(macCatalyst)
-        if ProcessInfo.processInfo.arguments.contains("-VelaLocalOnly") {
+        if ProcessInfo.processInfo.arguments.contains("-KurtzLocalOnly") {
             // Exercising the player before any account/store/authentication startup.
-            VelaWelcomeView()
+            KurtzWelcomeView()
         } else {
             authenticatedContent
         }
@@ -46,7 +47,7 @@ struct SwiftfinApp: App {
 
     private var authenticatedContent: some View {
         WithLocalUserAuthentication {
-            RootView().supportedOrientations(UIDevice.isPad ? .allButUpsideDown : .portrait)
+            RootView().supportedOrientations(UIDevice.isPad ? .all : .portrait)
         }
     }
 
@@ -55,15 +56,14 @@ struct SwiftfinApp: App {
             OverlayToastView {
                 PreferencesView {
                     initialContent
-                    #if targetEnvironment(macCatalyst)
-                    .modifier(VelaSettingsHost())
-                    #endif
+                        #if targetEnvironment(macCatalyst)
+                            .modifier(KurtzSettingsHost())
+                        #endif
                 }
             }
             .ignoresSafeArea()
-            #if targetEnvironment(macCatalyst)
-            .modifier(VelaFileHost())
-            #endif
+            .modifier(KurtzFileHost())
+            .font(KurtzBrand.body)
         }
     }
 }

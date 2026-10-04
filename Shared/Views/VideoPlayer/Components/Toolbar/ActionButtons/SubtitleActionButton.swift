@@ -33,19 +33,19 @@ extension VideoPlayer.PlaybackControls.Toolbar.ActionButtons {
         private func content(playbackItem: MediaPlayerItem) -> some View {
             Picker(L10n.subtitles, selection: $selectedSubtitleStreamIndex) {
                 ForEach(playbackItem.subtitleStreams.prepending(.none), id: \.index) { stream in
-                    Text(stream.index == -1 ? VelaStrings.text("Off") : (stream.displayTitle ?? L10n.unknown))
+                    Text(stream.index == -1 ? KurtzStrings.text("Off") : (stream.displayTitle ?? L10n.unknown))
                         .tag(stream.index as Int?)
                 }
             }
             #if targetEnvironment(macCatalyst)
             .pickerStyle(.inline)
             #endif
-            #if targetEnvironment(macCatalyst)
+            #if os(iOS)
             Divider()
             if playbackItem.discoversTracks {
-                Button(VelaStrings.text("Add Subtitle File…")) { VelaLocalFiles.shared.showPicker(subtitle: true) }
+                Button(KurtzStrings.text("Add Subtitle File…")) { KurtzLocalFiles.shared.showPicker(subtitle: true) }
             }
-            VelaTrackTimingMenu(subtitles: true)
+            KurtzTrackTimingMenu(subtitles: true)
             #endif
         }
 

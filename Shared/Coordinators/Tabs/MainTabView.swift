@@ -32,15 +32,20 @@ struct MainTabView: View {
     private static var defaultTabCoordinator: TabCoordinator {
         #if os(iOS)
         TabCoordinator {
-            // Vela: own home screen
-            TabItem.contentGroup(provider: VelaHomeContentGroupProvider())
+            #if !targetEnvironment(macCatalyst)
+            TabItem(id: "kurtz-files", title: KurtzStrings.text("Files"), systemImage: "play.rectangle") {
+                KurtzMobileHomeView()
+            }
+            #endif
+            // kurtz: own home screen
+            TabItem.contentGroup(provider: KurtzHomeContentGroupProvider())
             TabItem.search
             TabItem.media
         }
         #else
         TabCoordinator {
-            // Vela: own home screen
-            TabItem.contentGroup(provider: VelaHomeContentGroupProvider())
+            // kurtz: own home screen
+            TabItem.contentGroup(provider: KurtzHomeContentGroupProvider())
             TabItem.library(
                 title: L10n.tvShowsCapitalized,
                 systemName: "tv",
@@ -72,7 +77,7 @@ struct MainTabView: View {
         NavigationInjectionView(coordinator: tab.coordinator) {
             tab.item.content
                 #if os(iOS)
-                    .if(tabCoordinator.tabs.first?.item.id == tab.item.id) { view in
+                    .if(tabCoordinator.tabs.first(where: { $0.item.id != "kurtz-files" })?.item.id == tab.item.id) { view in
                         view.topBarTrailing {
                             FirstTabSettingsBarButton()
                         }
@@ -159,10 +164,10 @@ private struct FirstTabSettingsBarButton: View {
         {
             #if targetEnvironment(macCatalyst)
             Menu {
-                Button(VelaStrings.text("Settings…")) {
-                    NotificationCenter.default.post(name: VelaSettings.open, object: nil)
+                Button(KurtzStrings.text("Settings…")) {
+                    NotificationCenter.default.post(name: KurtzSettings.open, object: nil)
                 }
-                Button(VelaStrings.text("Accounts and Servers…")) { router.route(to: .settings) }
+                Button(KurtzStrings.text("Accounts and Servers…")) { router.route(to: .settings) }
             } label: {
                 AlternateLayoutView {
                     Image(systemName: "gearshape.fill")
@@ -174,7 +179,7 @@ private struct FirstTabSettingsBarButton: View {
                     )
                 }
             }
-            .accessibilityLabel(VelaStrings.text("Settings and Accounts"))
+            .accessibilityLabel(KurtzStrings.text("Settings and Accounts"))
             #else
             SettingsBarButton(
                 server: userSession.server,

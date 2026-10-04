@@ -66,7 +66,7 @@ extension Defaults.Keys {
     ///
     /// This is set externally whenever the app or user accent colors change,
     /// depending on the current app state.
-    static var accentColor: Key<Color> = AppKey("accentColor", default: .jellyfinPurple)
+    static var accentColor: Key<Color> = AppKey("accentColor", default: .kurtzAccent)
 
     /// The _real_ appearance key to be used.
     ///
@@ -92,7 +92,7 @@ extension Defaults.Keys {
     static let signOutOnBackground: Key<Bool> = AppKey("signOutOnBackground", default: true)
     static let signOutOnClose: Key<Bool> = AppKey("signOutOnClose", default: false)
 
-    enum Vela {
+    enum Kurtz {
 
         enum Mac {
 
@@ -111,7 +111,7 @@ extension Defaults.Keys {
     /// The accent color default for user contexts.
     /// Only use for `set`, use `accentColor` for `get`.
     static var userAccentColor: Key<Color> {
-        UserKey("userAccentColor", default: .jellyfinPurple)
+        UserKey("userAccentColor", default: .kurtzAccent)
     }
 
     /// The appearance default for user contexts.

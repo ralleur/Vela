@@ -1,53 +1,30 @@
-# Vela launch language
+# kurtz copy
 
-**Definition:** A modern macOS video player with Jellyfin built in.
-
-**Headline:** Just watch the video.
-
+**Claim:** Good videos go further.
+**Description:** A free Mac video player for local files and Jellyfin.
 **Supporting line:** Your files. Your Jellyfin library. One player.
 
-**Promise:** The place a video comes from should not decide which app you open.
+kurtz brings local videos and your Jellyfin library into the same player. Open
+a file, choose your audio and subtitles, and let the controls disappear when
+you are watching. There is no subscription, Pro unlock or trial period.
 
-**Comfort:** There when you need it. Gone when you don't.
+The current Mac beta is 0.9.6 (8), distributed as a Developer ID signed,
+notarized universal DMG for macOS 15.6 or later. Intel is included in the binary;
+runtime checks were on Apple silicon. iPhone/iPad and Apple TV sources and
+simulator builds are available, but no App Store release is announced.
 
-**Free:** No subscription. No in-app purchases. No Pro unlock. This is the whole app.
+Download: https://ralleur.github.io/kurtz/
+Source: https://github.com/ralleur/kurtz
 
-**Lineage:** Built on Swiftfin. With gratitude.
-
-## Short description
-
-Vela is a modern macOS video player with Jellyfin built in. Open a local file,
-browse your server library and use the same player for both. Free and open
-source, built on the work of Swiftfin and its contributors.
-
-## Launch post
-
-I wanted my Jellyfin client to be useful when the video was just a file on my Mac.
-
-Vela is a fork of Swiftfin, whose Apple client foundation made this possible.
-It brings local files and Jellyfin into the same player: open a video, choose
-subtitles or an audio track, go fullscreen, and let the controls get out of the
-way. Local files need no account; local history stays on the Mac.
-
-There is no Pro edition, subscription or in-app purchase. Vela is free and open
-source.
-
-This presentation shows the 0.9.4 beta source build. The older public 0.9.3 Mac
-ZIP predates the local-player work and is development-signed, not notarized.
-Build instructions and limitations: https://github.com/ralleur/Vela
-
-Credit to Swiftfin, Jellyfin and their contributors. Vela is independent and
-is not an official or endorsed Jellyfin/Swiftfin app.
-
-Attach the clean-player screenshot and the Jellyfin detail screenshot. Include
-the matching film credits from sources-and-licenses.md wherever these are posted.
+Built on Swiftfin, with gratitude to its contributors. kurtz is independent
+and is not an official or endorsed Jellyfin/Swiftfin app.
 
 ## Copy rules
 
-- Say Mac Catalyst when discussing architecture; don't promise a pure AppKit app.
-- Never call the floating window system Picture-in-Picture.
-- Do not equate the public 0.9.3 package with the 0.9.4 source preview.
-- Don't claim all formats, HDR, Dolby audio or hardware acceleration universally.
-- Use “Jellyfin built in” as a client/interoperability description, not a bundled server.
-- Free is a distribution fact, not an attack on another player.
-- Keep Swiftfin credit within the narrative, not only a footer.
+- Always write kurtz in lowercase, including headings and sentence starts.
+- Do not imply social viewing, sync or other features from the concept mockup.
+- Local files need no account; a Jellyfin library needs an existing server.
+- Say Mac Catalyst when describing architecture. Do not call the floating
+  window system Picture-in-Picture or claim universal codec/HDR compatibility.
+- Credit actual film excerpts and distinguish old footage from new captures.
+- Preserve historical Vela versions and downloads under their original names.

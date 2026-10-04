@@ -1,0 +1,614 @@
+[
+  {
+    "video": "/Users/ai/workspace/vela-swiftfin/build/launch/exports/vela-curated-v1/vela-c01-skip-intro-v1.mp4",
+    "sha256": "841bd62ddc47435d22571f466d60a76da8d4b91e4b0057c85f8ce9bd211086f2",
+    "technical": "passed",
+    "errors": [],
+    "duration": 10.0,
+    "integratedLUFS": -14.1,
+    "truePeakDBTP": -1.6,
+    "editorial": "required",
+    "pacing": "required",
+    "listening": "required",
+    "samples": [
+      {
+        "scene": 1,
+        "frame": 0,
+        "file": "scene-01-1.jpg",
+        "lines": [
+          "Skip the intro."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 55,
+        "file": "scene-01-2.jpg",
+        "lines": [
+          "Skip the intro."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 110,
+        "file": "scene-01-3.jpg",
+        "lines": [
+          "Skip the intro."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 111,
+        "file": "scene-02-1.jpg",
+        "lines": [
+          "One click.",
+          "Back to the story."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 175,
+        "file": "scene-02-2.jpg",
+        "lines": [
+          "One click.",
+          "Back to the story."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 239,
+        "file": "scene-02-3.jpg",
+        "lines": [
+          "One click.",
+          "Back to the story."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 240,
+        "file": "scene-03-1.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 269,
+        "file": "scene-03-2.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 299,
+        "file": "scene-03-3.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      }
+    ]
+  },
+  {
+    "video": "/Users/ai/workspace/vela-swiftfin/build/launch/exports/vela-curated-v1/vela-c02-next-episode-v1.mp4",
+    "sha256": "02d08ed0fa55f8aaeb46353110e9880903b0b229674089e66bf7eab3509792af",
+    "technical": "passed",
+    "errors": [],
+    "duration": 10.0,
+    "integratedLUFS": -14.3,
+    "truePeakDBTP": -2.1,
+    "editorial": "required",
+    "pacing": "required",
+    "listening": "required",
+    "samples": [
+      {
+        "scene": 1,
+        "frame": 0,
+        "file": "scene-01-1.jpg",
+        "lines": [
+          "Next episode.",
+          "One click."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 59,
+        "file": "scene-01-2.jpg",
+        "lines": [
+          "Next episode.",
+          "One click."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 119,
+        "file": "scene-01-3.jpg",
+        "lines": [
+          "Next episode.",
+          "One click."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 120,
+        "file": "scene-02-1.jpg",
+        "lines": [
+          "And you\u2019re",
+          "already watching."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 179,
+        "file": "scene-02-2.jpg",
+        "lines": [
+          "And you\u2019re",
+          "already watching."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 239,
+        "file": "scene-02-3.jpg",
+        "lines": [
+          "And you\u2019re",
+          "already watching."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 240,
+        "file": "scene-03-1.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 269,
+        "file": "scene-03-2.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 299,
+        "file": "scene-03-3.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      }
+    ]
+  },
+  {
+    "video": "/Users/ai/workspace/vela-swiftfin/build/launch/exports/vela-curated-v1/vela-c03-episode-date-v1.mp4",
+    "sha256": "476b88d1c3774ce01b0187e83e2134ac8082ad7fd288dff23df03b25bfdcd7e6",
+    "technical": "passed",
+    "errors": [],
+    "duration": 10.0,
+    "integratedLUFS": -14.1,
+    "truePeakDBTP": -1.6,
+    "editorial": "required",
+    "pacing": "required",
+    "listening": "required",
+    "samples": [
+      {
+        "scene": 1,
+        "frame": 0,
+        "file": "scene-01-1.jpg",
+        "lines": [
+          "When\u2019s the",
+          "next episode?"
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 44,
+        "file": "scene-01-2.jpg",
+        "lines": [
+          "When\u2019s the",
+          "next episode?"
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 89,
+        "file": "scene-01-3.jpg",
+        "lines": [
+          "When\u2019s the",
+          "next episode?"
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 90,
+        "file": "scene-02-1.jpg",
+        "lines": [
+          "The date.",
+          "Right here."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 164,
+        "file": "scene-02-2.jpg",
+        "lines": [
+          "The date.",
+          "Right here."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 239,
+        "file": "scene-02-3.jpg",
+        "lines": [
+          "The date.",
+          "Right here."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 240,
+        "file": "scene-03-1.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 269,
+        "file": "scene-03-2.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 299,
+        "file": "scene-03-3.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      }
+    ]
+  },
+  {
+    "video": "/Users/ai/workspace/vela-swiftfin/build/launch/exports/vela-curated-v1/vela-c04-season-outlook-v1.mp4",
+    "sha256": "ed120fcf0b4fb9505e6435fccb2759073f18f2a181c3d04e212670f83acc46b7",
+    "technical": "passed",
+    "errors": [],
+    "duration": 10.0,
+    "integratedLUFS": -14.3,
+    "truePeakDBTP": -2.1,
+    "editorial": "required",
+    "pacing": "required",
+    "listening": "required",
+    "samples": [
+      {
+        "scene": 1,
+        "frame": 0,
+        "file": "scene-01-1.jpg",
+        "lines": [
+          "Another season?"
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 44,
+        "file": "scene-01-2.jpg",
+        "lines": [
+          "Another season?"
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 89,
+        "file": "scene-01-3.jpg",
+        "lines": [
+          "Another season?"
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 90,
+        "file": "scene-02-1.jpg",
+        "lines": [
+          "Announced.",
+          "Date still pending."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 164,
+        "file": "scene-02-2.jpg",
+        "lines": [
+          "Announced.",
+          "Date still pending."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 239,
+        "file": "scene-02-3.jpg",
+        "lines": [
+          "Announced.",
+          "Date still pending."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 240,
+        "file": "scene-03-1.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 269,
+        "file": "scene-03-2.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 299,
+        "file": "scene-03-3.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      }
+    ]
+  },
+  {
+    "video": "/Users/ai/workspace/vela-swiftfin/build/launch/exports/vela-curated-v1/vela-c05-less-interface-v1.mp4",
+    "sha256": "fd052ec5c4ad5b60563cc9f068519dbeec25da750769a4fe4a814c7482a34950",
+    "technical": "passed",
+    "errors": [],
+    "duration": 13.0,
+    "integratedLUFS": -14.0,
+    "truePeakDBTP": -1.6,
+    "editorial": "required",
+    "pacing": "required",
+    "listening": "required",
+    "samples": [
+      {
+        "scene": 1,
+        "frame": 0,
+        "file": "scene-01-1.jpg",
+        "lines": [
+          "Controls,",
+          "when you need them."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 74,
+        "file": "scene-01-2.jpg",
+        "lines": [
+          "Controls,",
+          "when you need them."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 149,
+        "file": "scene-01-3.jpg",
+        "lines": [
+          "Controls,",
+          "when you need them."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 150,
+        "file": "scene-02-1.jpg",
+        "lines": [
+          "Then just",
+          "the film."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 239,
+        "file": "scene-02-2.jpg",
+        "lines": [
+          "Then just",
+          "the film."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 329,
+        "file": "scene-02-3.jpg",
+        "lines": [
+          "Then just",
+          "the film."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 330,
+        "file": "scene-03-1.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 359,
+        "file": "scene-03-2.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 389,
+        "file": "scene-03-3.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      }
+    ]
+  },
+  {
+    "video": "/Users/ai/workspace/vela-swiftfin/build/launch/exports/vela-curated-v1/vela-c06-your-video-player-v1.mp4",
+    "sha256": "d143c928f911317217db8cb405b7c058cf310ab320d391477bc4ffed4a63e530",
+    "technical": "passed",
+    "errors": [],
+    "duration": 13.0,
+    "integratedLUFS": -14.2,
+    "truePeakDBTP": -1.7,
+    "editorial": "required",
+    "pacing": "required",
+    "listening": "required",
+    "samples": [
+      {
+        "scene": 1,
+        "frame": 0,
+        "file": "scene-01-1.jpg",
+        "lines": [
+          "Open a video."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 38,
+        "file": "scene-01-2.jpg",
+        "lines": [
+          "Open a video."
+        ]
+      },
+      {
+        "scene": 1,
+        "frame": 77,
+        "file": "scene-01-3.jpg",
+        "lines": [
+          "Open a video."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 78,
+        "file": "scene-02-1.jpg",
+        "lines": [
+          "Open a video."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 92,
+        "file": "scene-02-2.jpg",
+        "lines": [
+          "Open a video."
+        ]
+      },
+      {
+        "scene": 2,
+        "frame": 107,
+        "file": "scene-02-3.jpg",
+        "lines": [
+          "Open a video."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 108,
+        "file": "scene-03-1.jpg",
+        "lines": [
+          "VLC-powered.",
+          "Vela-designed."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 173,
+        "file": "scene-03-2.jpg",
+        "lines": [
+          "VLC-powered.",
+          "Vela-designed."
+        ]
+      },
+      {
+        "scene": 3,
+        "frame": 239,
+        "file": "scene-03-3.jpg",
+        "lines": [
+          "VLC-powered.",
+          "Vela-designed."
+        ]
+      },
+      {
+        "scene": 4,
+        "frame": 240,
+        "file": "scene-04-1.jpg",
+        "lines": [
+          "Jellyfin,",
+          "when you want it."
+        ]
+      },
+      {
+        "scene": 4,
+        "frame": 284,
+        "file": "scene-04-2.jpg",
+        "lines": [
+          "Jellyfin,",
+          "when you want it."
+        ]
+      },
+      {
+        "scene": 4,
+        "frame": 329,
+        "file": "scene-04-3.jpg",
+        "lines": [
+          "Jellyfin,",
+          "when you want it."
+        ]
+      },
+      {
+        "scene": 5,
+        "frame": 330,
+        "file": "scene-05-1.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      },
+      {
+        "scene": 5,
+        "frame": 359,
+        "file": "scene-05-2.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      },
+      {
+        "scene": 5,
+        "frame": 389,
+        "file": "scene-05-3.jpg",
+        "lines": [
+          "Discover Vela",
+          "ralleur.github.io/Vela"
+        ]
+      }
+    ]
+  }
+]

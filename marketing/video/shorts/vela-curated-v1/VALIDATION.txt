@@ -1,0 +1,44 @@
+VELA CURATED SHORTS — FINAL EXPORT VALIDATION
+Revision v1 · 4 October 2026 · Europe/Berlin
+
+First/middle/last exported frames for every scene, 360x640 phone previews, 4-fps action/cut sequences and timed reading estimates. Browser playback of all six exact exports completed at 1x without media errors. This is not a claim of having watched and listened continuously in full.
+
+All six: full decode passed; 1080x1920, H.264 yuv420p, 30 fps, BT.709 limited, AAC stereo 48 kHz. Intended duration/frame counts passed. No unintended full-canvas black/placeholder frames found. Intentional low-motion cards and result holds documented below.
+All six: picture/text, action/result, crop and reading time passed by the stated review method. Vela wordmark and neutral two-second Discover Vela closing card inspected. Destination https://ralleur.github.io/Vela/ returned HTTP 200. No price or trial claim.
+Audio: original Ralleur music only, source-film audio excluded in renderer; numerical loudness and true peak passed. Subjective listening remains UNPERFORMED because perceptual audio monitoring is unavailable. Therefore this is not an unconditional listening/overall sensory sign-off.
+Exact capture build version unverified. See capture-build.json for the limited post-capture inspection.
+
+C01 · vela-c01-skip-intro-v1.mp4 · 10 sec
+SHA256 841bd62ddc47435d22571f466d60a76da8d4b91e4b0057c85f8ce9bd211086f2
+Technical PASS · -14.1 LUFS · -1.6 dBTP
+First frame presents the actual Skip Intro control. 3.7 sec setup/action, 4.3 sec completed seek/result, 2 sec endcard. Button disappearance and timeline jump agree with the copy; final 2 sec of result intentionally held.
+
+C02 · vela-c02-next-episode-v1.mp4 · 10 sec
+SHA256 02d08ed0fa55f8aaeb46353110e9880903b0b229674089e66bf7eab3509792af
+Technical PASS · -14.3 LUFS · -2.1 dBTP
+Actual next-episode title/number visible for 4 sec, followed by 4 sec of next-episode playback and 2 sec endcard. Cut moved to the exact state change so NEXT UP does not label the new episode's Skip Intro button. Real dark paused end frame retained under legible prompt.
+
+C03 · vela-c03-episode-date-v1.mp4 · 10 sec
+SHA256 476b88d1c3774ce01b0187e83e2134ac8082ad7fd288dff23df03b25bfdcd7e6
+Technical PASS · -14.1 LUFS · -1.6 dBTP
+Actual passive German date card, eight seconds total to read both headline and enlarged UI, followed by 2 sec endcard. English copy accurately summarizes the card. Demo library and capture date visible; no click or unsupported automatic availability promised.
+
+C04 · vela-c04-season-outlook-v1.mp4 · 10 sec
+SHA256 ed120fcf0b4fb9505e6435fccb2759073f18f2a181c3d04e212670f83acc46b7
+Technical PASS · -14.3 LUFS · -2.1 dBTP
+Actual passive German season card, eight seconds total reading time, then 2 sec endcard. English copy accurately distinguishes announcement from a pending date. Demo library and capture date visible.
+
+C05 · vela-c05-less-interface-v1.mp4 · 13 sec
+SHA256 fd052ec5c4ad5b60563cc9f068519dbeec25da750769a4fe4a814c7482a34950
+Technical PASS · -14.0 LUFS · -1.6 dBTP
+Five seconds show controls becoming hidden; the outcome caption starts after their disappearance. Six seconds for clean playback plus short quote excerpt (last 3 sec intentionally held); 2 sec endcard. Read time is sufficient for the two-line excerpt and attribution.
+
+C06 · vela-c06-your-video-player-v1.mp4 · 13 sec
+SHA256 d143c928f911317217db8cb405b7c058cf310ab320d391477bc4ffed4a63e530
+Technical PASS · -14.2 LUFS · -1.7 dBTP
+Native file selection/opening remains visible across 2.6 sec + 1 sec. 0.9 sec app/decoder flash removed only after file opening visibly succeeds; 4.4 sec playback follows. Separate real Jellyfin library still holds for 3 sec, then 2 sec endcard. No startup-speed benchmark claimed. Both sides of revised cuts rechecked at 4 fps.
+
+Observed defects corrected before this validation: C02 caption/cut boundary aligned to next-episode playback; C06 brief black loading flash removed after the opening action/result; H.264 BT.709 colour tags explicitly written into the final bitstream. Affected clips were re-exported and revalidated.
+Evidence: build/launch/vela-curated-v1/qa/C01..C06 contains first/middle/last scene sheets, 4-fps temporal pages, full-decode logs, black/freeze logs and hash-linked audit reports. technical-validation.json retains the helper's required manual-check placeholders; editorial-validation.json and this file supply the actual review findings.
+
+Not requested; nothing uploaded, scheduled or published.

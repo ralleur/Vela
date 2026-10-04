@@ -1,0 +1,79 @@
+{
+  "id": "C04",
+  "product": "kurtz",
+  "version": "kurtz branding revision 2; original Vela feature recordings from 4 October 2026, exact capture binary version not retained",
+  "revision": "v2",
+  "language": "en",
+  "ui_exception": "German series-outlook card, explicitly requested by owner",
+  "file": "kurtz-c04-season-outlook-v2.mp4",
+  "duration": 10,
+  "shots": [
+    {
+      "source": "build/launch/raw/vela-curated-v1/season-outlook.mov",
+      "source_in": 0,
+      "source_out": 3,
+      "seconds": 3,
+      "lines": [
+        "Another season?"
+      ],
+      "action_result": "Actual passive kurtz season-outlook card; no interaction claimed.",
+      "crop": [
+        0,
+        32,
+        824,
+        464
+      ],
+      "detail": [
+        488,
+        300,
+        308,
+        80
+      ],
+      "detail_label": "LIVE TVMAZE DATA · DEMO LIBRARY",
+      "note": "German UI card · Captured 4 Oct 2026",
+      "source_sha256": "268eb70db8241af23b91adbd031a838e2c1ea298647a89fa23c7235642d76411"
+    },
+    {
+      "source": "build/launch/raw/vela-curated-v1/season-outlook.mov",
+      "source_in": 3,
+      "source_out": 8,
+      "seconds": 5,
+      "lines": [
+        "Announced.",
+        "Date still pending."
+      ],
+      "action_result": "Continuous real card accurately distinguishes announced from dated.",
+      "crop": [
+        0,
+        32,
+        824,
+        464
+      ],
+      "detail": [
+        488,
+        300,
+        308,
+        80
+      ],
+      "detail_label": "LIVE TVMAZE DATA · DEMO LIBRARY",
+      "note": "German UI card · Captured 4 Oct 2026",
+      "source_sha256": "268eb70db8241af23b91adbd031a838e2c1ea298647a89fa23c7235642d76411"
+    },
+    {
+      "seconds": 2,
+      "lines": [
+        "Discover kurtz",
+        "ralleur.github.io/kurtz"
+      ],
+      "visual": "endcard",
+      "action_result": "kurtz vector wordmark and current destination; neutral CTA"
+    }
+  ],
+  "title": "Another season? kurtz tells you what is known.",
+  "description": "kurtz’s series outlook distinguishes an announced season from a confirmed premiere date. The real German card says: “Season 7 is announced; there is no date yet.” Live TVmaze metadata for Slow Horses after S6E6, paired with licensed Blender footage in an explicitly named demo library. This is not footage from Slow Horses. Snapshot captured 4 October 2026, Europe/Berlin; metadata may change. German UI card retained at the owner’s request. Metadata source: TVmaze, https://www.tvmaze.com/shows/45039/slow-horses (CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/); dates summarized by kurtz.\n\nkurtz for macOS · Beta. Local files work without a Jellyfin server. Jellyfin features require your server; episode prompts depend on available chapters/segments and metadata. VLC is the default local playback engine; compatibility depends on the file.\nDiscover kurtz: https://ralleur.github.io/kurtz/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Library artwork also includes Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Film excerpts cropped/resized. Composition: CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/. kurtz branding and third-party UI/marks retain their own rights. Music: original Ralleur production, existing hauser-D / hauser-F masters; source-film audio removed. Built on Swiftfin: https://github.com/jellyfin/Swiftfin . kurtz is independent of Jellyfin, Swiftfin and the filmmakers.\n\n#kurtz #MacApps #Jellyfin\n\nProduction provenance: this kurtz branding edition reuses the original 4 October 2026 Vela feature recordings. The original UI is cropped, never repainted; timings and completed actions are preserved. The library still is identified separately in the scene manifest.",
+  "CTA": "Discover kurtz",
+  "destination": "https://ralleur.github.io/kurtz/",
+  "music": "hauser-F.wav",
+  "music_offset": 0,
+  "capture_provenance": "../vela-curated-v1/capture-build.json"
+}

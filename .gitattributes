@@ -2,3 +2,11 @@
 # Enable the diff driver in each checkout with:
 # git config --local diff.strings.textconv 'iconv -f UTF-16 -t UTF-8'
 *.strings -text diff=strings
+
+# Preserve imported license/provenance bytes, including their original whitespace.
+Shared/Resources/Fonts/Sora-OFL.txt -whitespace
+website/assets/fonts/Sora-OFL.txt -whitespace
+Shared/Resources/KurtzThirdPartyNotices.txt -whitespace
+Tools/KurtzConnectPoC/evidence/third-party-licenses.csv -whitespace
+marketing/video/shorts/vela-growth-20/RESULTS.csv -whitespace
+marketing/video/shorts/vela-growth-20/BEATS.md -whitespace

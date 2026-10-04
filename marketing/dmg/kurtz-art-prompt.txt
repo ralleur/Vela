@@ -1,0 +1,5 @@
+AI-generated background art, 4 October 2026. Reference: owner-supplied kurtz branding sheet.
+
+Polished macOS DMG background art, 1536×1024. Opaque Graphite #1F1F1F, Ivory #FAF8F1 and Electric Yellow #FFE600. Calm, modern and friendly. Softly lit sculptural curled ribbon motifs at the far lower right and upper left, yellow highlights. Leave top central space and middle open for native app and Applications icons. Two ivory label plates, a slender central arrow. No words, logo, screenshots, photographs or blue/purple. Exact typography and logo are added by build-kurtz-dmg.cjs from reproducible vector masters.
+
+Original generation: /Users/ai/.codex/generated_images/01a103e5-779f-7b60-ad64-2cf4ad2cb6df/exec-981a4f15-544c-44cf-b8f5-cb9914bebb6e.png

@@ -15,18 +15,18 @@ struct AboutAppView: View {
     private var router
 
     var body: some View {
-        Form(image: .jellyfinBlobBlue) {
+        Form(image: .kurtzWatermark) {
 
             #if os(iOS)
             Section {
                 VStack(alignment: .center, spacing: 10) {
 
-                    Image("VelaWatermark")
+                    Image("KurtzWatermark")
                         .resizable()
                         .aspectRatio(1, contentMode: .fit)
                         .frame(height: 150)
 
-                    Text(verbatim: "Vela")
+                    Text(verbatim: "kurtz")
                         .fontWeight(.semibold)
                         .font(.title2)
                 }
@@ -70,6 +70,16 @@ struct AboutAppView: View {
 
             Section {
 
+                Text(KurtzStrings.text("Built on Swiftfin. An independent app by Ralleur."))
+                #if os(tvOS)
+                ChevronButton(
+                    KurtzStrings.text("Open Source Notices"),
+                    systemName: "text.document"
+                ) {
+                    router.route(to: NavigationRoute(id: "kurtz-notices") { KurtzTVNoticesView() })
+                }
+                #endif
+
                 // tvOS cannot open generic web links
                 #if !os(tvOS)
                 ChevronButton(
@@ -77,7 +87,7 @@ struct AboutAppView: View {
                     image: .logoGithub,
                     external: true
                 ) {
-                    UIApplication.shared.open(URL(string: "https://github.com/ralleur/Vela")!)
+                    UIApplication.shared.open(URL(string: "https://github.com/ralleur/kurtz")!)
                 }
 
                 ChevronButton(
@@ -86,7 +96,7 @@ struct AboutAppView: View {
                     systemName: "text.document",
                     external: true
                 ) {
-                    UIApplication.shared.open(URL(string: "https://github.com/ralleur/Vela/blob/vela/LICENSE.md")!)
+                    UIApplication.shared.open(URL(string: "https://github.com/ralleur/kurtz/blob/kurtz/LICENSE.md")!)
                 }
 
                 ChevronButton(
@@ -94,7 +104,7 @@ struct AboutAppView: View {
                     systemName: "plus.circle.fill",
                     external: true
                 ) {
-                    UIApplication.shared.open(URL(string: "https://github.com/ralleur/Vela/issues")!)
+                    UIApplication.shared.open(URL(string: "https://github.com/ralleur/kurtz/issues")!)
                 }
                 .symbolRenderingMode(.monochrome)
                 #endif

@@ -1,0 +1,25 @@
+Compile/link checks only; no signed app or device runtime.
+
+tvos:
+build/tvos/link-probe.dylib:
+Load command 10
+      cmd LC_BUILD_VERSION
+  cmdsize 32
+ platform TVOS
+    minos 26.1
+      sdk 27.0
+   ntools 1
+     tool LD
+  version 27037.1
+
+catalyst:
+build/catalyst/link-probe.dylib:
+Load command 10
+      cmd LC_BUILD_VERSION
+  cmdsize 32
+ platform MACCATALYST
+    minos 18.6
+      sdk 27.0
+   ntools 1
+     tool LD
+  version 27037.1

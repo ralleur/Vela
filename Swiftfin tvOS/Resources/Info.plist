@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>CFBundleDisplayName</key>
-	<string>$(VELA_DISPLAY_NAME:default=$(PRODUCT_NAME))</string>
+	<string>$(KURTZ_DISPLAY_NAME:default=$(PRODUCT_NAME))</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -23,8 +23,8 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>swiftfin</string>
-				<string>jellyfin</string>
+				<string>kurtz</string>
+				<string>vela</string>
 			</array>
 		</dict>
 	</array>
@@ -48,6 +48,9 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>NotoSansCJK-Regular.ttc</string>
+		<string>Sora-Regular.ttf</string>
+		<string>Sora-SemiBold.ttf</string>
+		<string>Sora-Bold.ttf</string>
 	</array>
 	<key>UILaunchScreen</key>
 	<dict>

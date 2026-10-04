@@ -25,7 +25,7 @@ struct VideoPlayerSettingsView: View {
     private var videoPlayerType
 
     #if targetEnvironment(macCatalyst)
-    @Default(.Vela.Mac.showPlayerWindowTitle)
+    @Default(.Kurtz.Mac.showPlayerWindowTitle)
     private var showPlayerWindowTitle
     #endif
 
@@ -168,11 +168,11 @@ struct VideoPlayerSettingsView: View {
     @ViewBuilder
     private var macWindowSettings: some View {
         Section {
-            Toggle(VelaStrings.showPlayerWindowTitle, isOn: $showPlayerWindowTitle)
+            Toggle(KurtzStrings.showPlayerWindowTitle, isOn: $showPlayerWindowTitle)
         } header: {
-            Text(VelaStrings.macWindow)
+            Text(KurtzStrings.macWindow)
         } footer: {
-            Text(VelaStrings.showPlayerWindowTitleDescription)
+            Text(KurtzStrings.showPlayerWindowTitleDescription)
         }
     }
     #endif

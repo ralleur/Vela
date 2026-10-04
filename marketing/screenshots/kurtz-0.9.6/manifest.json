@@ -1,0 +1,120 @@
+[
+  {
+    "id": "player-clean",
+    "raw": "build/rebrand-kurtz/captures/player-clean-final.png",
+    "raw_size": [
+      823,
+      383
+    ],
+    "crop": null,
+    "export_size": [
+      823,
+      383
+    ],
+    "sha256": "009b028812214e8ef1dd1993221c387f3f40ddd4b7ee948a0c1c961cf7caf302",
+    "app": "kurtz 0.9.6 (8) Release, Mac Catalyst",
+    "date": "2026-10-04",
+    "kind": "actual application capture",
+    "notes": "Only openly licensed demo media; no personal library. Native menus retain platform selection colors."
+  },
+  {
+    "id": "player-controls",
+    "raw": "build/rebrand-kurtz/captures/player-controls-final.png",
+    "raw_size": [
+      823,
+      383
+    ],
+    "crop": null,
+    "export_size": [
+      823,
+      383
+    ],
+    "sha256": "d79d5c5a3fa36377ef8b52580f2df3578d2c4f7791b22f6543bcac6fd64b2ab7",
+    "app": "kurtz 0.9.6 (8) Release, Mac Catalyst",
+    "date": "2026-10-04",
+    "kind": "actual application capture",
+    "notes": "Only openly licensed demo media; no personal library. Native menus retain platform selection colors."
+  },
+  {
+    "id": "local-workflow",
+    "raw": "build/rebrand-kurtz/captures/local-workflow-final.png",
+    "raw_size": [
+      880,
+      448
+    ],
+    "crop": null,
+    "export_size": [
+      880,
+      448
+    ],
+    "sha256": "065e6b190dcdde064026c1f34cbaf34deb55b85a437e6f1916b3f6005753fc31",
+    "app": "kurtz 0.9.6 (8) Release, Mac Catalyst",
+    "date": "2026-10-04",
+    "kind": "actual application capture",
+    "notes": "Only openly licensed demo media; no personal library. Native menus retain platform selection colors."
+  },
+  {
+    "id": "jellyfin-home",
+    "raw": "build/rebrand-kurtz/captures/jellyfin-home-final.png",
+    "raw_size": [
+      823,
+      515
+    ],
+    "crop": [
+      0,
+      0,
+      823,
+      363
+    ],
+    "export_size": [
+      823,
+      363
+    ],
+    "sha256": "85eb6df1f341a0830735b560a1b8150af1356b13f6eff8faf973a63b62cc2a96",
+    "app": "kurtz 0.9.6 (8) Release, Mac Catalyst",
+    "date": "2026-10-04",
+    "kind": "actual application capture",
+    "notes": "Only openly licensed demo media; no personal library. Native menus retain platform selection colors."
+  },
+  {
+    "id": "jellyfin-detail",
+    "raw": "build/rebrand-kurtz/captures/jellyfin-detail-final.png",
+    "raw_size": [
+      823,
+      515
+    ],
+    "crop": null,
+    "export_size": [
+      823,
+      515
+    ],
+    "sha256": "9ffb042c52c2bac411b458eab2b3cd9ec99e09b37350fce1ab09dd045ec3f43a",
+    "app": "kurtz 0.9.6 (8) Release, Mac Catalyst",
+    "date": "2026-10-04",
+    "kind": "actual application capture",
+    "notes": "Only openly licensed demo media; no personal library. Native menus retain platform selection colors."
+  },
+  {
+    "id": "subtitles",
+    "raw": "build/rebrand-kurtz/captures/subtitles-final.png",
+    "raw_size": [
+      3840,
+      2160
+    ],
+    "crop": [
+      3420,
+      20,
+      3840,
+      450
+    ],
+    "export_size": [
+      420,
+      430
+    ],
+    "sha256": "8a61081e4ff4da2872ce29ae7240a1da6b0f8038309a038350274794799d8005",
+    "app": "kurtz 0.9.6 (8) Release, Mac Catalyst",
+    "date": "2026-10-04",
+    "kind": "actual application capture",
+    "notes": "Only openly licensed demo media; no personal library. Native menus retain platform selection colors."
+  }
+]

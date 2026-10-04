@@ -1,0 +1,72 @@
+{
+  "id": "C02",
+  "product": "Vela",
+  "version": "Mac development capture, 4 Oct 2026; exact capture binary version not retained",
+  "revision": "v1",
+  "language": "en",
+  "ui_exception": "German series-outlook card, explicitly requested by owner",
+  "file": "vela-c02-next-episode-v1.mp4",
+  "duration": 10,
+  "shots": [
+    {
+      "source": "build/launch/raw/vela-curated-v1/next-episode-en.mov",
+      "source_in": 2,
+      "source_out": 6,
+      "seconds": 4,
+      "lines": [
+        "Next episode.",
+        "One click."
+      ],
+      "action_result": "Actual Next Episode prompt with S1:E2 and title; real click and beginning of playback.",
+      "crop": [
+        0,
+        32,
+        824,
+        464
+      ],
+      "detail": [
+        500,
+        306,
+        306,
+        90
+      ],
+      "detail_label": "NEXT UP",
+      "note": "Jellyfin demo library",
+      "source_sha256": "aa54693e4499fca2657d7dc0adea8a9e913378c9261d38eb281bb761bfb2e322"
+    },
+    {
+      "source": "build/launch/raw/vela-curated-v1/next-episode-en.mov",
+      "source_in": 6,
+      "source_out": 10,
+      "seconds": 4,
+      "lines": [
+        "And you’re",
+        "already watching."
+      ],
+      "action_result": "New episode plays continuously after the click; no restart or simulated transition.",
+      "crop": [
+        0,
+        32,
+        824,
+        464
+      ],
+      "note": "S1:E2 · Big Buck Bunny · Demo episode",
+      "source_sha256": "aa54693e4499fca2657d7dc0adea8a9e913378c9261d38eb281bb761bfb2e322"
+    },
+    {
+      "seconds": 2,
+      "lines": [
+        "Discover Vela",
+        "ralleur.github.io/Vela"
+      ],
+      "visual": "endcard",
+      "action_result": "Vela wordmark and verified destination; neutral CTA"
+    }
+  ],
+  "title": "The next episode is one click away | Vela",
+  "description": "Vela shows the next episode’s number and title, then starts it with one click. This recording uses the explicitly named Open Cinema Stories demo library, assembled from licensed Blender clips. The dark first background is the real paused end-of-episode frame; the actual Next Episode control is magnified for readability.\n\nVela for macOS · Beta. Local files work without a Jellyfin server. Jellyfin features require your server; episode prompts depend on available chapters/segments and metadata. VLC is the default local playback engine; compatibility depends on the file.\nDiscover Vela: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Library artwork also includes Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Film excerpts cropped/resized. Composition: CC BY-SA 3.0, https://creativecommons.org/licenses/by-sa/3.0/. Vela branding and third-party UI/marks retain their own rights. Music: original Ralleur production, existing hauser-D / hauser-F masters; source-film audio removed. Built on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent of Jellyfin, Swiftfin and the filmmakers.\n\n#Vela #MacApps #Jellyfin",
+  "CTA": "Discover Vela",
+  "destination": "https://ralleur.github.io/Vela/",
+  "music": "hauser-F.wav",
+  "music_offset": 0
+}

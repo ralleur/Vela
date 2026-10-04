@@ -1,0 +1,79 @@
+{
+  "id": "C03",
+  "product": "Vela",
+  "version": "Mac development capture, 4 Oct 2026; exact capture binary version not retained",
+  "revision": "v1",
+  "language": "en",
+  "ui_exception": "German series-outlook card, explicitly requested by owner",
+  "file": "vela-c03-episode-date-v1.mp4",
+  "duration": 10,
+  "shots": [
+    {
+      "source": "build/launch/raw/vela-curated-v1/episode-date.mov",
+      "source_in": 0,
+      "source_out": 3,
+      "seconds": 3,
+      "lines": [
+        "When’s the",
+        "next episode?"
+      ],
+      "action_result": "Actual passive Vela outlook card; held capture, no interaction claimed.",
+      "crop": [
+        0,
+        32,
+        824,
+        464
+      ],
+      "detail": [
+        488,
+        300,
+        308,
+        80
+      ],
+      "detail_label": "LIVE TVMAZE DATA · DEMO LIBRARY",
+      "note": "German UI card · Captured 4 Oct 2026",
+      "source_sha256": "b0fa85a3f741e9d7fc5b7455de2a31741cda6acd1554d8b3347659b16152cead"
+    },
+    {
+      "source": "build/launch/raw/vela-curated-v1/episode-date.mov",
+      "source_in": 3,
+      "source_out": 8,
+      "seconds": 5,
+      "lines": [
+        "The date.",
+        "Right here."
+      ],
+      "action_result": "Same continuous capture of the readable air-date card.",
+      "crop": [
+        0,
+        32,
+        824,
+        464
+      ],
+      "detail": [
+        488,
+        300,
+        308,
+        80
+      ],
+      "detail_label": "LIVE TVMAZE DATA · DEMO LIBRARY",
+      "note": "German UI card · Captured 4 Oct 2026",
+      "source_sha256": "b0fa85a3f741e9d7fc5b7455de2a31741cda6acd1554d8b3347659b16152cead"
+    },
+    {
+      "seconds": 2,
+      "lines": [
+        "Discover Vela",
+        "ralleur.github.io/Vela"
+      ],
+      "visual": "endcard",
+      "action_result": "Vela wordmark and verified destination; neutral CTA"
+    }
+  ],
+  "title": "When is the next episode? Vela shows the date.",
+  "description": "When your library has no next episode, Vela can display its air date from TVmaze. The real German card reads: “The next episode (S6E4) arrives on Wednesday, 7 October.” This is a clearly labelled metadata demo: live TVmaze information for Slow Horses S6E3 paired with licensed Blender demo footage, not footage from that series. Snapshot captured 4 October 2026, Europe/Berlin. Dates and availability may change. German UI card retained at the owner’s request. Metadata source: TVmaze, https://www.tvmaze.com/shows/45039/slow-horses (CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/); dates summarized by Vela.\n\nVela for macOS · Beta. Local files work without a Jellyfin server. Jellyfin features require your server; episode prompts depend on available chapters/segments and metadata. VLC is the default local playback engine; compatibility depends on the file.\nDiscover Vela: https://ralleur.github.io/Vela/\n\nDemo films: Sintel © Blender Foundation / durian.blender.org and Big Buck Bunny © 2008 Blender Foundation / www.bigbuckbunny.org (CC BY 3.0). Library artwork also includes Caminandes: Gran Dillama © Caminandes team / Blender Foundation, (CC) caminandes.com (CC BY-SA 3.0). Film excerpts cropped/resized. Composition: CC BY-SA 4.0, https://creativecommons.org/licenses/by-sa/4.0/. Vela branding and third-party UI/marks retain their own rights. Music: original Ralleur production, existing hauser-D / hauser-F masters; source-film audio removed. Built on Swiftfin: https://github.com/jellyfin/Swiftfin . Vela is independent of Jellyfin, Swiftfin and the filmmakers.\n\n#Vela #MacApps #Jellyfin",
+  "CTA": "Discover Vela",
+  "destination": "https://ralleur.github.io/Vela/",
+  "music": "hauser-D.wav",
+  "music_offset": 7
+}
