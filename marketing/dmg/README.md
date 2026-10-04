@@ -25,3 +25,6 @@ build/dmg-tools/bin/python Tools/kurtz/package-dmg.py \
 The packager requires a universal, Developer-ID-signed app with a stapled ticket
 for production and refuses to overwrite an existing output. Legacy artwork and
 release images remain in Git history and the original release artifacts.
+
+The original Vela prompts are preserved verbatim in `archive-vela/`. They are
+historical provenance; current illustration instructions are in `kurtz-art-prompt.txt`.
