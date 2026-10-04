@@ -162,13 +162,13 @@ class Fastfile: LaneFile {
             xcodeproj: .userDefined(xcodeProject)
         )
 
-        let outputDirectory = "fastlane/build/\(sanitizedName(for: scheme))"
+        let outputDirectory = "fastlane/build/\(distributionName(for: scheme))"
         try? FileManager.default.removeItem(atPath: outputDirectory)
 
         buildApp(
             scheme: .userDefined(scheme),
             outputDirectory: outputDirectory,
-            outputName: .userDefined("\(sanitizedName(for: scheme)).ipa"),
+            outputName: .userDefined("\(distributionName(for: scheme)).ipa"),
             skipArchive: .userDefined(false),
             sdk: .userDefined(sdk),
             xcargs: .userDefined("-skipMacroValidation -skipPackagePluginValidation"),
@@ -184,7 +184,7 @@ class Fastfile: LaneFile {
                 .trimOption()
         }
         
-        let ipa = "\(outputDirectory)/\(sanitizedName(for: scheme)).ipa"
+        let ipa = "\(outputDirectory)/\(distributionName(for: scheme)).ipa"
         guard FileManager.default.fileExists(atPath: ipa) else {
             fail("couldn't find ipa file")
         }
@@ -219,7 +219,7 @@ class Fastfile: LaneFile {
             skipPackageIpa: .userDefined(true),
             skipArchive: .userDefined(false),
             skipCodesigning: .userDefined(true),
-            archivePath: .userDefined("fastlane/build/\(sanitizedName(for: scheme)).xcarchive"),
+            archivePath: .userDefined("fastlane/build/\(distributionName(for: scheme)).xcarchive"),
             sdk: .userDefined(sdk(forScheme: scheme)),
             xcargs: .userDefined("-skipMacroValidation -skipPackagePluginValidation"),
             skipProfileDetection: true,
@@ -283,13 +283,8 @@ class Fastfile: LaneFile {
         return "ios"
     }
 
-    private func sanitizedName(for scheme: String) -> String {
-        let allowed = CharacterSet.alphanumerics.union(CharacterSet(charactersIn: "-_"))
-        let sanitizedScalars = scheme.unicodeScalars.map { scalar in
-            allowed.contains(scalar) ? Character(scalar) : "-"
-        }
-
-        return String(sanitizedScalars)
+    private func distributionName(for scheme: String) -> String {
+        scheme.localizedCaseInsensitiveContains("tvos") ? "kurtz-tvos" : "kurtz-ios"
     }
 }
 
