@@ -25,6 +25,7 @@ jobs:
     name: "Build 🔨"
     if: github.event.pull_request.draft == false
     strategy:
+      fail-fast: false
       matrix:
         include:
           - scheme: Swiftfin
@@ -35,7 +36,8 @@ jobs:
     runs-on: macos-26
 
     env:
-      XCODE_VERSION: "27.0"
+      # Installed on the macos-26 runner; CI must not download Xcode interactively.
+      XCODE_VERSION: "26.6"
 
     steps:
       - name: Checkout

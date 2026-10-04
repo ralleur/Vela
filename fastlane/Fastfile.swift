@@ -209,8 +209,12 @@ class Fastfile: LaneFile {
             fail("missing or incorrect options")
         }
 
-        if let xcodeVersion = options["xcodeVersion"] {
-            xcodes(version: xcodeVersion)
+        if let xcodeVersion = options["xcodeVersion"]?.trimOption() {
+            xcodes(
+                version: xcodeVersion,
+                updateList: .userDefined(false),
+                selectForCurrentBuildOnly: .userDefined(true)
+            )
         }
 
         buildApp(
