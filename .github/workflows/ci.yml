@@ -26,9 +26,11 @@ jobs:
     if: github.event.pull_request.draft == false
     strategy:
       matrix:
-        scheme:
-          - "Swiftfin"
-          - "Swiftfin tvOS"
+        include:
+          - scheme: Swiftfin
+            platform: ios
+          - scheme: Swiftfin tvOS
+            platform: tvos
 
     runs-on: macos-26
 
@@ -73,23 +75,23 @@ jobs:
 
       - name: Package unsigned IPA
         env:
-          SCHEME: ${{ matrix.scheme }}
+          PACKAGE_NAME: kurtz-${{ matrix.platform }}
         run: |
           set -euo pipefail
           mkdir -p fastlane/build/Payload
           cp -R fastlane/build/*.xcarchive/Products/Applications/*.app fastlane/build/Payload/
           cd fastlane/build
-          zip -r -y "$SCHEME-unsigned.ipa" Payload
+          zip -r -y "$PACKAGE_NAME-unsigned.ipa" Payload
 
       - name: Upload unsigned IPA
         uses: actions/upload-artifact@v7
         with:
-          name: ${{ matrix.scheme }}-unsigned
+          name: kurtz-${{ matrix.platform }}-unsigned
           path: fastlane/build/*-unsigned.ipa
           if-no-files-found: error
           compression-level: 0
 
-      # Populate the shared cache from main,
+      # Populate the shared cache from the default branch,
       # PR caches are isolated to their merge ref
       - name: Save Swift packages
         if: ${{ github.event_name == 'push' && steps.swift-packages.outputs.cache-hit != 'true' }}

@@ -188,11 +188,11 @@ jobs:
         run: |
           set -euo pipefail
 
-          release_date="$(gh release view --json publishedAt -q '.publishedAt' 2>/dev/null || true)"
+          release_date="$(gh release view -R ralleur/kurtz --json publishedAt -q '.publishedAt' 2>/dev/null || true)"
           log=""
 
           if [ -n "$release_date" ]; then
-            log="$(gh pr list \
+            log="$(gh pr list -R ralleur/kurtz \
               --state merged \
               --label 'release highlight' \
               --search "merged:>=$release_date" \
@@ -278,7 +278,7 @@ jobs:
         if: ${{ !cancelled() && hashFiles('fastlane/build/**/*.ipa') != '' }}
         uses: actions/upload-artifact@v7
         with:
-          name: ${{ matrix.scheme }}-testflight
+          name: kurtz-${{ matrix.platform }}-testflight
           path: fastlane/build/**/*.ipa
           if-no-files-found: error
           compression-level: 0

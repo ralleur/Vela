@@ -19,7 +19,7 @@ Rebuild with the build-only environment containing `Tools/kurtz/dmg-requirements
 node Tools/marketing/build-kurtz-dmg.cjs
 build/dmg-tools/bin/python Tools/kurtz/package-dmg.py \
   build/release/0.9.6/notarized-ship/kurtz.app \
-  --output build/release/kurtz-0.9.6/installer
+  --output build/release/0.9.6/installer
 ```
 
 The packager requires a universal, Developer-ID-signed app with a stapled ticket

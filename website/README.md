@@ -1,7 +1,7 @@
 # kurtz project website
 
 Static HTML, CSS and one small progressive-enhancement script. No npm install,
-framework, external fonts, analytics or build-time network access.
+framework, remote font services, analytics or build-time network access.
 
 ```sh
 python3 Tools/marketing/build-site.py
@@ -23,7 +23,7 @@ manually. The workflow is scoped to `ralleur/kurtz`. Publish a versioned release
 asset before updating the public download links. The current installer is
 `kurtz-0.9.6-macOS-universal.dmg` on release `kurtz-0.9.6`.
 
-Responsive image choices include a portrait library crop. The comparison uses
+Responsive image choices include a compact library crop. The comparison uses
 an intentionally scrollable full-player image on narrow screens so its controls
 remain legible. The site works without JavaScript; the alternate capture is a
 normal link. Motion is limited to anchor scrolling and honors reduced motion.

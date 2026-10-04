@@ -83,3 +83,6 @@ a direct Applications-folder link. Only the app and destination are visible.
 The app's existing notices remain accessible in Settings; complete release
 license/source records are retained under `.licenses` in the disk image.
 The 0.9.6 installer introduces the kurtz identity and a newly signed application. See [installer artwork and reproduction](../../marketing/dmg/README.md).
+
+[Exact 0.9.6 publication evidence, signatures and asset digests](publication-kurtz-0.9.6.json).
+The release source tree is commit `680f2aa04823c6159c9d4a31e951efcdc036d794`. Later documentation/CI metadata commits do not change the published application.

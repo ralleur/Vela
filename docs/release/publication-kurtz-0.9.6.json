@@ -1,0 +1,89 @@
+{
+  "release": "https://github.com/ralleur/kurtz/releases/tag/kurtz-0.9.6",
+  "tag": "kurtz-0.9.6",
+  "source_commit": "680f2aa04823c6159c9d4a31e951efcdc036d794",
+  "published_at": "2026-10-04T00:22:49Z",
+  "dmg": {
+    "file": "kurtz-0.9.6-macOS-universal.dmg",
+    "sha256": "8b034e7b696b2f2c256a5aa5315c1ac7126d0c98aeef9e5681c297ba3b944a52",
+    "version": "0.9.6",
+    "build": "8",
+    "packaging_revision": 1,
+    "architectures": [
+      "x86_64",
+      "arm64"
+    ],
+    "minimum_macos": "15.6",
+    "development_only": false,
+    "size": 139419648,
+    "window_points": [
+      768,
+      512
+    ],
+    "visible_items": [
+      "kurtz.app",
+      "Applications"
+    ],
+    "background_sha256": "a5b5f42c836711b93f0dd31776e8f638492ef875a7b0c9986c45d8ed321d5902"
+  },
+  "source_bundle": {
+    "commit": "680f2aa04823c6159c9d4a31e951efcdc036d794",
+    "dependency_archives": 59,
+    "sha256": "1e372282263ed3f901ed9bc80e8dc07dce6b741bee80640df5a9a2b494704125"
+  },
+  "github_assets": [
+    {
+      "name": "kurtz-0.9.6-macOS-universal.dmg",
+      "size": 139419648,
+      "digest": "sha256:8b034e7b696b2f2c256a5aa5315c1ac7126d0c98aeef9e5681c297ba3b944a52",
+      "url": "https://github.com/ralleur/kurtz/releases/download/kurtz-0.9.6/kurtz-0.9.6-macOS-universal.dmg"
+    },
+    {
+      "name": "kurtz-0.9.6-macOS-universal.dmg.sha256",
+      "size": 98,
+      "digest": "sha256:d0b9d7d358f46b2285f29d412063de86f9c1d7058e186e600c8abc57bf8baac2",
+      "url": "https://github.com/ralleur/kurtz/releases/download/kurtz-0.9.6/kurtz-0.9.6-macOS-universal.dmg.sha256"
+    },
+    {
+      "name": "kurtz-0.9.6-sources.tar.gz",
+      "size": 401022926,
+      "digest": "sha256:1e372282263ed3f901ed9bc80e8dc07dce6b741bee80640df5a9a2b494704125",
+      "url": "https://github.com/ralleur/kurtz/releases/download/kurtz-0.9.6/kurtz-0.9.6-sources.tar.gz"
+    },
+    {
+      "name": "kurtz-0.9.6-sources.tar.gz.sha256",
+      "size": 93,
+      "digest": "sha256:c67878110c9c476038fa00bb5802ab5cea30f8f7f69691498590c57d695091b5",
+      "url": "https://github.com/ralleur/kurtz/releases/download/kurtz-0.9.6/kurtz-0.9.6-sources.tar.gz.sha256"
+    }
+  ],
+  "verified": {
+    "logic_tests": 46,
+    "swiftlint_violations": 0,
+    "changed_swift_format_violations": 0,
+    "mac_release": [
+      "arm64",
+      "x86_64"
+    ],
+    "ios_simulator": "0.9.6 (8)",
+    "tvos_simulator": "0.9.6 (74)",
+    "strict_signing": true,
+    "notarized_stapled_gatekeeper": true,
+    "installed_app": "/Applications/kurtz.app",
+    "finder_dmg_visual": true,
+    "website_pages_run": 37164770285,
+    "website_desktop_mobile_checked": true,
+    "six_shorts_export_checks": "marketing/video/shorts/kurtz-curated-v2/VALIDATION.txt",
+    "simulator_code_signatures": "ad-hoc signatures verified with codesign --deep --strict; not device distribution signing",
+    "public_asset_digests_match": true,
+    "legacy_site_redirect": "https://ralleur.github.io/Vela/ \u2192 https://ralleur.github.io/kurtz/ (browser verified)",
+    "redirect_pages_run": 37165114163,
+    "renamed_connect_probe_go_tests": "passed; probe is not part of the shipping application"
+  },
+  "limits": [
+    "Intel and minimum-OS runtime not qualified",
+    "No physical iPhone/iPad/Apple TV qualification or Store release",
+    "Shorts audio measured but not subjectively listened to in this session"
+  ],
+  "historical_release_records": "Kept unchanged; legacy names/tags/download filenames are intentional"
+}

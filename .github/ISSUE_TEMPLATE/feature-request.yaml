@@ -14,7 +14,7 @@ body:
       label: "This feature request respects the following points:"
       description: Please help us by ensuring that you meet all the following conditions.
       options:
-        - label: This feature has **not** already been requested on [GitHub](https://github.com/jellyfin/Swiftfin/issues?q=is%3Aissue%20state%3Aopen%20type%3AFeature).
+        - label: This feature has **not** already been requested on [GitHub](https://github.com/ralleur/kurtz/issues?q=is%3Aissue%20state%3Aopen%20type%3AFeature).
           required: true
         - label: I agree to follow Jellyfin's [Code of Conduct](https://jellyfin.org/docs/general/community-standards.html#code-of-conduct).
           required: true
@@ -37,6 +37,6 @@ body:
       label: Describe the feature you'd like to see
       description: Please provide a clear and detailed description of the feature you're requesting.
       placeholder: |
-        I am looking for Swiftfin to support Music Libraries and Playlists. Ideally, this would use a folder structure so I would be able to see Artist > Album > Song.
+        I am looking for kurtz to support Music Libraries and Playlists. Ideally, this would use a folder structure so I would be able to see Artist > Album > Song.
     validations:
       required: true
