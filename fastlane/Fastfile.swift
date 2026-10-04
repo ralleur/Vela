@@ -166,6 +166,7 @@ class Fastfile: LaneFile {
         try? FileManager.default.removeItem(atPath: outputDirectory)
 
         buildApp(
+            project: .userDefined(xcodeProject),
             scheme: .userDefined(scheme),
             outputDirectory: outputDirectory,
             outputName: .userDefined("\(distributionName(for: scheme)).ipa"),
@@ -218,6 +219,7 @@ class Fastfile: LaneFile {
         }
 
         buildApp(
+            project: .userDefined(xcodeProject),
             scheme: .userDefined(scheme),
             outputDirectory: "fastlane/build",
             skipPackageIpa: .userDefined(true),
